@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noUnusedParameters": false,
+    "outDir": "dist-transpiled",
+    "declarationDir": "dist/types",
+    "jsx": "react"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

@@ -1,0 +1,35 @@
+name: Continuous
+
+on: [push]
+
+jobs:
+  BuildAndTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Lerna globally
+        run: npm install lerna --global
+
+      - name: Update npm registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm run test
+
+      - name: Build server in the background
+        run: npm run test:build-server
+
+      - name: Start server in the background
+        run: npm run test:start-server &
+
+      - uses: cypress-io/github-action@v2
+        with:
+          working-directory: packages/testing

@@ -1,0 +1,41 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import readme from '../readme.md'
+
+<span id="story--components-accordion--basic" style={{ opacity: 0 }}></span>
+
+# Accordion
+
+Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
+
+<Canvas>
+  <Story id="components-accordion--basic" />
+</Canvas>
+
+## With Icons
+
+Use the properties `open-label` & `open-icon` to change the content of the trigger button.
+
+<Canvas>
+  <Story id="components-accordion--with-icons" />
+</Canvas>
+
+## With Card
+
+<Canvas>
+  <Story id="components-accordion--with-card" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

@@ -1,0 +1,13 @@
+bal-radio-group {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  &.bal-select-button {
+    display: flex;
+    flex: 1;
+    border: 1px solid $blue-2;
+    border-radius: 100px;
+    padding: 4px;
+  }
+}

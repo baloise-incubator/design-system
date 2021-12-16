@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs'
+import AngularLogo from '../assets/images/angular.svg'
+import VueLogo from '../assets/images/vue.png'
+import ReactLogo from '../assets/images/react.svg'
+import HTMLLogo from '../assets/images/html.png'
+import StorybookLogo from '../assets/images/storybook/logo.svg'
+import CypressLogo from '../assets/images/cypress.png'
+import EyeLogo from '../../../../icons/svg/icon-read-only.svg'
+
+<Meta
+  title="Getting-Started/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Getting Started
+
+In this section we give a small intro into our toolchain.
+
+## Documentation
+
+To learn how the documentation of this Baloise Design System works visit the page [How to use Storybook](?path=/docs/getting-started-how-to-use-storybook--page).
+
+<div className="link-list" style={{ display: 'block' }}>
+  <a className="link-item" href="?path=/docs/getting-started-how-to-use-storybook--page">
+    <img src={StorybookLogo} alt="storybook" />
+    <span>
+      <strong>How to use Storybook</strong>
+      Storybook is a tool for UI development. It makes development faster and easier by isolating components. This allows you to work on one component at a time. You can develop entire
+      UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
+    </span>
+  </a>
+</div>
+
+## Integration
+
+The Baloise Design System can be used with any Web-Technolgie, however we deliver for Angular, Vue and React a deticated library with proxy components.
+
+> For more integration documentation like react or svelte go to the stencil documentation about [Framework Integration](https://stenciljs.com/docs/overview).
+
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-html5-overview--page">
+    <img src={HTMLLogo} alt="html5" />
+    <span>
+      <strong>HTML5</strong>
+      Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-overview--page">
+    <img src={AngularLogo} alt="angular" />
+    <span>
+      <strong>
+        Angular <small>(10.2.x ✔ 11.x.x ✔ 12.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-vue-overview--page">
+    <img src={VueLogo} alt="vue" />
+    <span>
+      <strong>
+        Vue <small>(3.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the Vue.JS Framework and the usage of the Sass variables.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-react-overview--page">
+    <img src={ReactLogo} alt="react" />
+    <span>
+      <strong>
+        React <small>(17.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the React Library and the usage of the Sass variables.
+    </span>
+  </a>
+</div>
+
+## Testing
+
+We test our web application with the tool [Cypress](https://www.cypress.io/).
+
+<div className="link-list" style={{ display: 'block' }}>
+  <a className="link-item" href="?path=/docs/getting-started-testing--page">
+    <img src={CypressLogo} alt="cypress" />
+    <span>
+      <strong>E-2-E Testing with Cypress</strong>
+      The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like should or click have been overriden to
+      work with our components.
+    </span>
+  </a>
+</div>
+
+## Customize
+
+It is possible to run the Baloise Design System in yellow instead blue.
+
+<div className="link-list" style={{ display: 'block' }}>
+  <a className="link-item" href="?path=/story/getting-started-customize--page">
+    <img src={EyeLogo} alt="Customize" />
+    <span>
+      <strong>Customize with SCSS variables</strong>
+      The Baloise Design System provides a collection of scss variables, which can be altered during build time.
+    </span>
+  </a>
+</div>
+
+<br />
+<br />
+<br />

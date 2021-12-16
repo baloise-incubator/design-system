@@ -1,0 +1,59 @@
+{
+  "name": "@baloise/design-system-next-testing",
+  "version": "0.0.0",
+  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "homepage": "https://design.baloise.dev",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs",
+    "bulma-css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "serve": "cypress open",
+    "test": "cypress run",
+    "cy:install": "cypress install",
+    "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
+    "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
+    "build:compile": "tsc -p tsconfig.build.json",
+    "build:bundle": "rollup --config rollup.config.js",
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@baloise/design-system-next-components": "4.3.1",
+    "@baloise/web-app-utils": "^2.0.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/jquery": "^3.5.6",
+    "@types/node": "^14.17.21",
+    "cypress": "^8.5.0",
+    "cypress-file-upload": "^5.0.8",
+    "http-server": "^13.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.58.0",
+    "start-server-and-test": "^1.14.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.4.3"
+  },
+  "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
+}

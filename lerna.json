@@ -1,0 +1,24 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "0.0.0",
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        ".build/**",
+        ".github/**",
+        "examples/**",
+        "resources/**",
+        "**/*.md",
+        "**/*.mdx",
+        "**/*.html"
+      ],
+      "message": "chore(): release"
+    },
+    "version": {
+      "message": "chore(): release",
+      "private": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    "outDir": ".tmp"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/stories", "**/*.stories.*"]
+}

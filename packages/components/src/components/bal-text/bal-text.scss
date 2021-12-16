@@ -1,0 +1,29 @@
+bal-text {
+  @include margin(0);
+  @include padding(0);
+  @include lhCrop(1.3);
+  @include font-smoothing();
+
+  display: inline;
+  position: static;
+  font-family: $family-primary;
+  font-weight: $weight-normal;
+  font-size: $size-normal !important;
+  line-height: 20px;
+  word-break: break-word;
+
+  span {
+    word-break: break-word;
+  }
+
+  &.is-bold,
+  &.is-bold span {
+    font-weight: $weight-bold !important;
+  }
+
+  &.is-small,
+  &.is-small span {
+    font-size: $size-small !important;
+    line-height: 16px !important;
+  }
+}

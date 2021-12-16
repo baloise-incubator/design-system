@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <p id="bal-file-upload-messages"></p>
+        <bal-file-upload id="bal-file-upload-example" accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
+        <bal-button class="mt-2" id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
+      </section>
+      <script>
+        var messages = []
+        var fileUpload = document.getElementById('bal-file-upload-example')
+        var clearButton = document.getElementById('bal-file-upload-clear')
+
+        fileUpload.addEventListener('balRejectedFile', event => {
+          var div = document.createElement('div')
+          var text = document.createTextNode('The file "' + event.detail.file.name + '" could not be uploaded, because of "' + event.detail.reasons.join(', ') + '"')
+          div.appendChild(text)
+          div.setAttribute('class', 'notification is-warning mb-4')
+          document.getElementById('bal-file-upload-messages').appendChild(div)
+        })
+
+        clearButton.addEventListener('click', () => {
+          fileUpload.clear()
+        })
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs'
+
+import ReactLogo from '../../assets/images/react.svg'
+import GithubLogo from '../../assets/images/github.png'
+import IconInfo from '../../../../../icons/svg/icon-info.svg'
+
+<Meta
+  title="Getting-Started/React/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-app id="#react">
+  <div className="columns py-4">
+    <div className="column is-one-quarter is-flex is-justify-content-center">
+      <img style={{ width: '128px' }} src={ReactLogo} />
+    </div>
+    <div className="column is-flex is-justify-content-center is-flex-direction-column">
+      <h4 className="title is-size-4 mb-6">@baloise/design-system-components-react</h4>
+      <h5 className="subtitle is-size-5">combines the core Baloise Design System experience with the tooling and APIs that are tailored to React Developers.</h5>
+    </div>
+  </div>
+</bal-doc-app>
+
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-react-installation--page">
+    <img src={IconInfo} alt="installation" />
+    <span>
+      <strong>Installation</strong>
+      Guide how to use the Baloise Design System with a React application.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-react-usage--page">
+    <img src={ReactLogo} alt="installation" />
+    <span>
+      <strong>Component Usage</strong>
+      Explains how to use the Baloise Design System component in your React application
+    </span>
+  </a>
+  <a className="link-item" href="https://github.com/baloise/design-system-examples/tree/main/react" target="_blank">
+    <img src={GithubLogo} alt="github" />
+    <span>
+      <strong>Example Repo</strong>A basic React application with sass and the installed Baloise Design System.
+    </span>
+  </a>
+</div>
