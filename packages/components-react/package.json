@@ -55,6 +55,6 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "0.0.0"
+    "@baloise/design-system-next-components": "^0.0.0"
   }
 }
