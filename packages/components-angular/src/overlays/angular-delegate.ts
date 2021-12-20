@@ -7,9 +7,7 @@ import {
   NgZone,
   ViewContainerRef,
 } from '@angular/core'
-import { FrameworkDelegate } from '@baloise/design-system-components'
-
-// import { NavParams } from '../directives/navigation/nav-params';
+import { FrameworkDelegate } from '@baloise/design-system-next-components'
 
 @Injectable()
 export class AngularDelegate {

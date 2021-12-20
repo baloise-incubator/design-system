@@ -12,7 +12,6 @@
     "email": "gerhard.hirschfeld@baloise.ch",
     "url": "https://github.com/hirsch88"
   },
-  "private": true,
   "keywords": [
     "design-system",
     "web-components",
@@ -37,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-components": "4.3.1",
+    "@baloise/design-system-next-components": "^0.0.0",
     "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {

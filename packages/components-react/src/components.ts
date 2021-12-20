@@ -3,7 +3,7 @@
 /* auto-generated react proxies */
 import { createReactComponent } from './react-component-lib';
 
-import type { JSX } from '@baloise/design-system-components';
+import type { JSX } from '@baloise/design-system-next-components';
 
 
 
