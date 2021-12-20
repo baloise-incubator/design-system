@@ -1,9 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "homepage": "https://design.baloise.dev",
   "author": {
     "name": "Gery Hirschfeld",
