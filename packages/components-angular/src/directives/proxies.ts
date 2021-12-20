@@ -3,7 +3,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@baloise/design-system-components';
+import { Components } from '@baloise/design-system-next-components';
 
 
 export declare interface BalAccordion extends Components.BalAccordion {}
@@ -624,7 +624,7 @@ export class BalFieldMessage {
   }
 }
 
-import { FileUploadRejectedFile } from '@baloise/design-system-components';
+import { FileUploadRejectedFile } from '@baloise/design-system-next-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
   inputs: ['accept', 'disabled', 'hasFileList', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
@@ -902,7 +902,7 @@ export class BalListItemTitle {
   }
 }
 
-import { OverlayEventDetail } from '@baloise/design-system-components';
+import { OverlayEventDetail } from '@baloise/design-system-next-components';
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
   inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'interface', 'isClosable', 'modalWidth'],
@@ -1390,7 +1390,7 @@ export class BalTable {
   }
 }
 
-import { BalTabOption } from '@baloise/design-system-components';
+import { BalTabOption } from '@baloise/design-system-next-components';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
   inputs: ['action', 'actionLabel', 'clickable', 'expanded', 'interface', 'rounded'],
