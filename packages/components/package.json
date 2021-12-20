@@ -64,8 +64,8 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-next-fonts": "0.0.0",
-    "@baloise/design-system-next-icons": "0.0.0",
+    "@baloise/design-system-next-fonts": "^0.0.0",
+    "@baloise/design-system-next-icons": "^0.0.0",
     "@baloise/web-app-utils": "^2.0.10",
     "@stencil/core": "^2.11.0",
     "bulma": "^0.9.3",

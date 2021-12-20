@@ -36,7 +36,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-components": "0.0.0",
     "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {
