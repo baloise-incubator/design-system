@@ -13,6 +13,8 @@
     ".github/**",
     ".husky/**",
     "resources/**",
+    "**/.build/**",
+    "**/generated/**",
     "**/stories/**",
     "**/*.spec.ts",
     "**/*.test.ts",
