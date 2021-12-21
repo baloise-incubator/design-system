@@ -1,9 +1,6 @@
-name: Release
+name: Canary Release
 
-on:
-  push:
-    branches:
-      - next
+on: [pull_request]
 
 jobs:
   Publish:
@@ -28,10 +25,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch all Tags and Pull
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git pull
+      # - name: Fetch all Tags and Pull
+      #   run: |
+      #     git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      #     git pull
 
       - uses: actions/setup-node@v2
         with:
@@ -44,23 +41,23 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: EndBug/add-and-commit@v5
-        with:
-          message: 'chore(): update build artifacts'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: EndBug/add-and-commit@v5
+      #   with:
+      #     message: 'chore(): update build artifacts'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        run: 'npm run release'
+        run: 'npm run release:canary'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update Lock files
-        run: 'npm run update:lock'
+      # - name: Update Lock files
+      #   run: 'npm run update:lock'
 
-      - uses: EndBug/add-and-commit@v5
-        with:
-          message: 'chore(): update lock files'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: EndBug/add-and-commit@v5
+      #   with:
+      #     message: 'chore(): update lock files'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
