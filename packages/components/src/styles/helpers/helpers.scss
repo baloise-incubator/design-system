@@ -10,48 +10,57 @@
   flex-direction: row-reverse !important;
 }
 
-.has-background-light {
-  background: $white-bis;
-}
+// .has-background-light {
+//   background: $white-bis;
+// }
 
-.has-border-blue {
-  border: 1px solid $blue-3;
-}
+// .has-border-blue {
+//   border: 1px solid $blue-3;
+// }
 
-.has-border-blue-dark {
-  border: 1px solid $blue-8;
-}
+// .has-border-blue-dark {
+//   border: 1px solid $blue-6;
+// }
 
-.has-border-success {
-  border: 1px solid $success;
-}
+// .has-border-success {
+//   border: 1px solid $success;
+// }
 
-.has-border-danger {
-  border: 1px solid $danger;
-}
+// .has-border-danger {
+//   border: 1px solid $danger;
+// }
 
-.has-border-warning {
-  border: 1px solid $danger;
-}
+// .has-border-warning {
+//   border: 1px solid $danger;
+// }
 
-.has-border-bold {
-  border-width: 2px;
-}
+// .has-border-bold {
+//   border-width: 2px;
+// }
 
-.has-border-blue-light {
-  border: 1px solid $blue-2;
-}
+// .has-border-blue-light {
+//   border: 1px solid $blue-2;
+// }
 
-.has-border-blue-inverted {
-  border: 1px solid $blue-5;
-}
+// .has-border-blue-inverted {
+//   border: 1px solid $blue-5;
+// }
 
-.has-border-grey {
-  border: 1px solid $grey;
-}
+// .has-border-grey {
+//   border: 1px solid $grey;
+// }
 
 .has-border-radius {
   border-radius: $radius;
+}
+
+.has-border-radius-large {
+  border-radius: $radius-large;
+}
+
+.has-border-radius-large-top {
+  border-top-left-radius: $radius-large;
+  border-top-right-radius: $radius-large;
 }
 
 .clickable {

@@ -74,7 +74,7 @@ export const parameters = {
       },
       {
         name: 'blue',
-        value: '#039',
+        value: '#000d6e',
       },
     ],
   },
@@ -91,7 +91,6 @@ export const parameters = {
         'Components',
         'Templates',
         'Contributing',
-        // ['Component', 'Controller', 'Testing'],
       ],
     },
   },
