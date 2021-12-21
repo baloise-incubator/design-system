@@ -1,9 +1,6 @@
-name: Release
+name: Canary Release
 
-on:
-  push:
-    branches:
-      - next
+on: [pull_request]
 
 jobs:
   Publish:
@@ -51,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        run: 'npm run release'
+        run: 'npm run release:canary'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
