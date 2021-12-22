@@ -585,12 +585,12 @@ export const BalDocColor = /*@__PURE__*/ defineComponent({
     },
     color: {
       type: String,
-      default: 'primary',
+      default: '',
       required: false,
     },
     subject: {
       type: String,
-      default: 'Primary',
+      default: '',
       required: false,
     },
     description: {
@@ -599,6 +599,11 @@ export const BalDocColor = /*@__PURE__*/ defineComponent({
       required: false,
     },
     scssVars: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    hexVars: {
       type: String,
       default: '',
       required: false,
