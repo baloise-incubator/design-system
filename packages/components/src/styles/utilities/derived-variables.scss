@@ -9,6 +9,20 @@ $danger: $red !default;
 $light: $white-bis !default;
 $dark: $blue !default;
 
+$success-1: $green-1 !default;
+$success-2: $green-2 !default;
+$success-3: $green-3 !default;
+$success-4: $green-4 !default;
+$success-5: $green-5 !default;
+$success-6: $green-6 !default;
+
+$danger-1: $red-1 !default;
+$danger-2: $red-2 !default;
+$danger-3: $red-3 !default;
+$danger-4: $red-4 !default;
+$danger-5: $red-5 !default;
+$danger-6: $red-6 !default;
+
 // Invert colors
 $yellow-invert: findColorInvert($yellow) !default;
 $green-invert: findColorInvert($green) !default;
@@ -211,6 +225,18 @@ $shades: mergeColorMaps(
     'yellow-4': $yellow-4,
     'yellow-5': $yellow-5,
     'yellow-6': $yellow-6,
+    'success-1': $success-1,
+    'success-2': $success-2,
+    'success-3': $success-3,
+    'success-4': $success-4,
+    'success-5': $success-5,
+    'success-6': $success-6,
+    'danger-1': $danger-1,
+    'danger-2': $danger-2,
+    'danger-3': $danger-3,
+    'danger-4': $danger-4,
+    'danger-5': $danger-5,
+    'danger-6': $danger-6,
   ),
   $custom-shades
 ) !default;

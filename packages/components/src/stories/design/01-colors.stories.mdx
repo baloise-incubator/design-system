@@ -34,7 +34,7 @@ The main color for text is the core blue color and for dark background the inver
   </div>
 </bal-doc-app>
 
-### Backgrounds
+### Background Colors
 
 There are 6 colors, which can be used for backgrounds. However, the white color is the default and the others should be uses carefully.
 
@@ -79,6 +79,18 @@ Neutral colors are typically used for text, borders and subtle backgrounds when 
   </div>
 </bal-doc-app>
 
+## Border colors
+
+Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-4" color="blue" description="Border for focused form controls"></bal-doc-color>
+    <bal-doc-color class="column is-4" color="grey-3" description="Border for form controls"></bal-doc-color>
+    <bal-doc-color class="column is-4" color="grey-5" description="Not defined yet"></bal-doc-color>
+  </div>
+</bal-doc-app>
+
 ## Alert Colors
 
 To draw attention to important informations or actions we used our Alert colors palette.
@@ -93,6 +105,41 @@ To draw attention to important informations or actions we used our Alert colors 
   </div>
 </bal-doc-app>
 
+### Form Validation
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color description="Main valid color" class="column is-4" color="success-5" inverted></bal-doc-color>
+    <bal-doc-color description="Main invalid color" class="column is-4" color="danger-5" inverted></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+The success colors are use in form validation to present the form control as valid to the user.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-2" color="success-6" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-5" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-4" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-3" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-2" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-1" background></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+The danger colors are use in form validation to present the form control as invalid to the user.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-2" color="danger-6" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-5" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-4" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-3" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-2" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-1" background></bal-doc-color>
+  </div>
+</bal-doc-app>
+
 ## Support Colors
 
 To support our blue core, we have a variety of colors to keep things fresh and interesting. They are used for Baloise Shapes, Illustrations, background colors and to highlight design elements.
@@ -100,7 +147,7 @@ To support our blue core, we have a variety of colors to keep things fresh and i
 <bal-doc-app>
   <div class="columns is-multiline">
     <bal-doc-color background class="column is-2" color="green-6" hex-vars="#1b5951" inverted></bal-doc-color>
-    <bal-doc-color background class="column is-2" color="green-5" hex-vars="#00b28f"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-5" hex-vars="#00b28f" inverted></bal-doc-color>
     <bal-doc-color background class="column is-2" color="green-4" hex-vars="#21d9ac"></bal-doc-color>
     <bal-doc-color background class="column is-2" color="green-3" hex-vars="#94e3d4"></bal-doc-color>
     <bal-doc-color background class="column is-2" color="green-2" hex-vars="#cbf2ec"></bal-doc-color>
@@ -146,9 +193,11 @@ Out of the color tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/color-helpers/).
 
-import { ColorHelpers } from './01-colors.templates.ts'
+import { ColorHelpers, BorderHelpers } from './01-colors.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
+
+### Colors
 
 <Canvas withSource="none">
   <bal-doc-app>{html(ColorHelpers)}</bal-doc-app>
@@ -158,5 +207,18 @@ import dedent from 'ts-dedent'
   language="html"
   code={dedent`
      ${ColorHelpers}
+  `}
+/>
+
+### Borders
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(BorderHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${BorderHelpers}
   `}
 />
