@@ -397,13 +397,13 @@ export class BalDocApp {
 
 export declare interface BalDocColor extends Components.BalDocColor {}
 @ProxyCmp({
-  inputs: ['background', 'color', 'description', 'inverted', 'scssVars', 'subject']
+  inputs: ['background', 'color', 'description', 'hexVars', 'inverted', 'scssVars', 'subject']
 })
 @Component({
   selector: 'bal-doc-color',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['background', 'color', 'description', 'inverted', 'scssVars', 'subject']
+  inputs: ['background', 'color', 'description', 'hexVars', 'inverted', 'scssVars', 'subject']
 })
 export class BalDocColor {
   protected el: HTMLElement;
