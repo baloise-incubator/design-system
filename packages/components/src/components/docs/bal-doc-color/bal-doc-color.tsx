@@ -20,8 +20,8 @@ export class BalDocColor {
     const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
     return (
       <Host class="bal-app">
-        <div class="box">
-          <div class={`has-background-${this.color} has-border-radius-large-top is-flex is-justify-content-center is-align-items-center`}>
+        <div class="box has-radius-large">
+          <div class={`has-background-${this.color} has-radius-large-top is-flex is-justify-content-center is-align-items-center`}>
             <strong class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} is-size-2 py-4`} style={{ minHeight: '80px' }}>
               {this.background ? 'A-a' : ''}
             </strong>
