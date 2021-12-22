@@ -36,8 +36,25 @@ jobs:
       - name: Build
         run: npm run build
 
+      - uses: EndBug/add-and-commit@v5
+        with:
+          message: 'chore(): update build artifacts'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish to NPM
         run: 'npm run release:canary'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Lock files
+        run: 'npm run update:lock'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      - uses: EndBug/add-and-commit@v5
+        with:
+          message: 'chore(): update lock files'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
