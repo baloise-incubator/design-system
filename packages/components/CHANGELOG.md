@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.9-next.0](https://github.com/baloise-incubator/design-system/compare/v5.0.8-next.0...v5.0.9-next.0) (2021-12-22)
+
+
+### Features
+
+* change base colors ([9b883b6](https://github.com/baloise-incubator/design-system/commit/9b883b6b3d29012c60aa22870fbf2cbd023eeeb2))
+* **color:** add new colors ([5cdc84f](https://github.com/baloise-incubator/design-system/commit/5cdc84f4b0f4a947f511379914b16e9f317c3f94))
+* **colors:** add css colors and borders ([495d951](https://github.com/baloise-incubator/design-system/commit/495d951de21d30349bd7dc3c9bbdc22e6ac7a2f7))
+
+
+
+
+
 # [5.0.0](https://github.com/baloise/design-system/compare/v4.0.0...v5.0.0) (2021-12-20)
 
 ### BREAKING CHANGES

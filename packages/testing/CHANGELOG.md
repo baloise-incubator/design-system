@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.9-next.0](https://github.com/baloise-incubator/design-system/compare/v5.0.8-next.0...v5.0.9-next.0) (2021-12-22)
+
+**Note:** Version bump only for package @baloise/design-system-next-testing
+
+
+
+
+
 # [5.0.0](https://github.com/baloise/design-system/compare/v4.0.0...v5.0.0) (2021-12-20)
 
 ### BREAKING CHANGES
