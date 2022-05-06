@@ -13,13 +13,12 @@ export class StageBody implements ComponentInterface {
 
   render() {
     return (
-      <Host class="hero-body">
-        <div
-          class={{
-            'container': true,
-            'is-compact': this.compact,
-          }}
-        >
+      <Host
+        class={{
+          'bal-stage-body': true,
+        }}
+      >
+        <div class="container">
           <slot></slot>
         </div>
       </Host>
