@@ -1608,6 +1608,10 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
+          * If true the Baloise Shape is set
+         */
+        "hasShape"?: boolean | undefined;
+        /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
@@ -1619,10 +1623,6 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact": boolean;
     }
     interface BalStageFoot {
     }
@@ -4260,6 +4260,10 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
+          * If true the Baloise Shape is set
+         */
+        "hasShape"?: boolean | undefined;
+        /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
@@ -4271,10 +4275,6 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact"?: boolean;
     }
     interface BalStageFoot {
     }

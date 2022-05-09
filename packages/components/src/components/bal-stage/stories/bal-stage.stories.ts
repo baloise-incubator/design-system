@@ -9,6 +9,7 @@ const component = BalComponentStory({
   args: {
     color: 'red',
     inverted: false,
+    hasShape: true,
   },
 })
 
