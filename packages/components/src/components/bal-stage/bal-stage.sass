@@ -1,6 +1,13 @@
 .bal-stage
   position: relative
 
+  section
+    margin-bottom: 22px
+    +tablet
+      margin-bottom: 40px
+    +desktop
+      margin-bottom: 66px
+
   .bal-stage-content
     position: relative
     display: block
@@ -14,6 +21,13 @@
         min-height: 400px
         align-items: flex-end
         padding: 6rem 0
+
+      .container > *
+        max-width: calc(100% - 66px)
+        +tablet
+          max-width: calc(100% - 120px)
+        +desktop
+          max-width: calc(100% - 198px)
 
     +modifier(is-purple)
       .bal-stage-body
@@ -64,7 +78,7 @@
       position: absolute
       text-align: center
       font-size: 0.5rem
-      bottom: -22px
+      bottom: 0
       right: 1rem
       width: 66px
       height: 66px
@@ -72,12 +86,10 @@
       color: var(--bal-color-white)
 
       +tablet
-        bottom: -40px
         width: 120px
         height: 120px
 
       +desktop
-        bottom: -66px
         right: 2rem
         width: 198px
         height: 198px
