@@ -1657,12 +1657,6 @@ export namespace Components {
     }
     interface BalStageHead {
     }
-    interface BalStageImage {
-        /**
-          * Source of the background image.
-         */
-        "src": string;
-    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -2465,12 +2459,6 @@ declare global {
         prototype: HTMLBalStageHeadElement;
         new (): HTMLBalStageHeadElement;
     };
-    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
-    }
-    var HTMLBalStageImageElement: {
-        prototype: HTMLBalStageImageElement;
-        new (): HTMLBalStageImageElement;
-    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -2612,7 +2600,6 @@ declare global {
         "bal-stage-body": HTMLBalStageBodyElement;
         "bal-stage-foot": HTMLBalStageFootElement;
         "bal-stage-head": HTMLBalStageHeadElement;
-        "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -4345,12 +4332,6 @@ declare namespace LocalJSX {
     }
     interface BalStageHead {
     }
-    interface BalStageImage {
-        /**
-          * Source of the background image.
-         */
-        "src"?: string;
-    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -4738,7 +4719,6 @@ declare namespace LocalJSX {
         "bal-stage-body": BalStageBody;
         "bal-stage-foot": BalStageFoot;
         "bal-stage-head": BalStageHead;
-        "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -4840,7 +4820,6 @@ declare module "@stencil/core" {
             "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
             "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
-            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
