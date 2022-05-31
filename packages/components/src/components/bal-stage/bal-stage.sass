@@ -1,13 +1,6 @@
 .bal-stage
   position: relative
 
-  section
-    margin-bottom: 22px
-    +tablet
-      margin-bottom: 40px
-    +desktop
-      margin-bottom: 66px
-
   .bal-stage-content
     position: relative
     display: block
@@ -93,3 +86,15 @@
         right: 2rem
         width: 198px
         height: 198px
+
+.has-background-image
+  .bal-stage-body
+    background: no-repeat center/cover var(--bal-background-image)
+
+.has-shape
+  section
+    margin-bottom: 22px
+    +tablet
+      margin-bottom: 40px
+    +desktop
+      margin-bottom: 66px
