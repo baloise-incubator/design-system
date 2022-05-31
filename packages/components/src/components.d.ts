@@ -1635,11 +1635,15 @@ export namespace Components {
         /**
           * If true the Baloise Shape is set
          */
-        "hasShape"?: boolean | undefined;
+        "hasShape": boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
+        /**
+          * source set for the css background-image
+         */
+        "srcSet": any;
     }
     interface BalStageBackLink {
         /**
@@ -4319,11 +4323,15 @@ declare namespace LocalJSX {
         /**
           * If true the Baloise Shape is set
          */
-        "hasShape"?: boolean | undefined;
+        "hasShape"?: boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
+        /**
+          * source set for the css background-image
+         */
+        "srcSet"?: any;
     }
     interface BalStageBackLink {
         /**
