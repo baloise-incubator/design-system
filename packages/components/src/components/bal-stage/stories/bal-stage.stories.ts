@@ -10,6 +10,12 @@ const component = BalComponentStory({
     color: 'red',
     inverted: false,
     hasShape: true,
+    srcSet: {
+      mobile: 'https://via.placeholder.com/320x180',
+      tablet: 'https://via.placeholder.com/769x250',
+      desktop:
+        'https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg',
+    },
   },
 })
 
@@ -32,7 +38,6 @@ export const StageWithImage = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
-  <bal-stage-image src="https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg"></bal-stage-image>
   <bal-stage-body>
     <bal-stage-back-link href="#">Link</bal-stage-back-link>
     <bal-heading class="mb-2" space="none">Title</bal-heading>
