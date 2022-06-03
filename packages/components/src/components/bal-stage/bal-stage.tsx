@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
 import { Props } from '../../props'
 import { isPlatform } from '../../'
+import { Platforms, PlatformSrcSet } from '../../types'
 
 @Component({
   tag: 'bal-stage',
@@ -8,11 +9,11 @@ import { isPlatform } from '../../'
 export class Stage implements ComponentInterface {
   @Element() el!: HTMLElement
 
-  @State() viewPort = 'mobile'
+  @State() viewPort: Platforms = 'mobile'
   /**
    * Defines the background color of the stage section
    */
-  @Prop() color: Props.BalStageColor = 'white'
+  @Prop() color: Props.BalStageColor = 'red'
 
   /**
    * If true the Baloise Shape is set
@@ -27,27 +28,29 @@ export class Stage implements ComponentInterface {
   /**
    * source set for the css background-image
    */
-  @Prop() srcSet: any
+  @Prop() srcSet?: PlatformSrcSet
 
   getImageSrc() {
-    if (isPlatform('mobile') && this.srcSet.mobile) {
+    if (isPlatform('mobile') && this.srcSet?.mobile) {
       this.viewPort = 'mobile'
-    } else if (isPlatform('tablet') && this.srcSet.tablet) {
+    } else if (isPlatform('tablet') && this.srcSet?.tablet) {
       this.viewPort = 'tablet'
-    } else if (isPlatform('desktop') && this.srcSet.desktop) {
+    } else if (isPlatform('desktop') && this.srcSet?.desktop) {
       this.viewPort = 'desktop'
-    } else {
-      this.viewPort = Object.keys(this.srcSet)[0]
     }
   }
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.getImageSrc()
+    if (this.srcSet) {
+      this.getImageSrc()
+    }
   }
 
   componentDidLoad() {
-    this.getImageSrc()
+    if (this.srcSet) {
+      this.getImageSrc()
+    }
   }
 
   render() {

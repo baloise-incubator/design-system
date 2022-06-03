@@ -5,6 +5,12 @@ interface IsPlatformSignature {
   (win: Window, plt: Platforms): boolean
 }
 
+export interface PlatformSrcSet {
+  mobile?: Platforms
+  tablet?: Platforms
+  desktop?: Platforms
+}
+
 export const getPlatforms = (win?: any) => setupPlatforms(win)
 
 export const isPlatform: IsPlatformSignature = (

@@ -6,17 +6,6 @@ const component = BalComponentStory({
   title: 'Components/Stage',
   component: BalStage,
   docs,
-  args: {
-    color: 'red',
-    inverted: false,
-    hasShape: true,
-    srcSet: {
-      mobile: 'https://via.placeholder.com/320x180',
-      tablet: 'https://via.placeholder.com/769x250',
-      desktop:
-        'https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg',
-    },
-  },
 })
 
 export default component.story
@@ -31,7 +20,11 @@ export const Basic = args => ({
   </bal-stage-body>
 </bal-stage>`,
 })
-Basic.args = {}
+Basic.args = {
+  color: 'red',
+  inverted: false,
+  hasShape: true,
+}
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const StageWithImage = args => ({
@@ -45,7 +38,15 @@ export const StageWithImage = args => ({
   </bal-stage-body>
 </bal-stage>`,
 })
-StageWithImage.args = {}
+StageWithImage.args = {
+  hasShape: true,
+  srcSet: {
+    mobile: 'https://via.placeholder.com/320x180',
+    tablet: 'https://via.placeholder.com/769x250',
+    desktop:
+      'https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg',
+  },
+}
 StageWithImage.parameters = { ...component.sourceCode(StageWithImage) }
 
 export const StageWithBackLink = args => ({
@@ -59,5 +60,9 @@ export const StageWithBackLink = args => ({
   </bal-stage-body>
 </bal-stage>`,
 })
-StageWithBackLink.args = {}
+StageWithBackLink.args = {
+  color: 'red',
+  inverted: false,
+  hasShape: true,
+}
 StageWithBackLink.parameters = { ...component.sourceCode(StageWithBackLink) }
