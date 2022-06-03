@@ -58,7 +58,7 @@ export class Stage implements ComponentInterface {
       <Host
         class={{
           'bal-stage': true,
-          'has-background-image': this.srcSet != undefined,
+          'has-background-image': !!this.srcSet,
           'has-shape': this.hasShape,
         }}
         style={this.srcSet ? { '--bal-background-image': `url('${this.srcSet[this.viewPort]}')` } : {}}

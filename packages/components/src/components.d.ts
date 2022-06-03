@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
+import { PlatformSrcSet, Props } from "./types";
 import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { Props as Props2 } from ".";
@@ -1643,7 +1643,7 @@ export namespace Components {
         /**
           * source set for the css background-image
          */
-        "srcSet": any;
+        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**
@@ -4318,7 +4318,7 @@ declare namespace LocalJSX {
         /**
           * source set for the css background-image
          */
-        "srcSet"?: any;
+        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**

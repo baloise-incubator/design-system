@@ -6,9 +6,9 @@ interface IsPlatformSignature {
 }
 
 export interface PlatformSrcSet {
-  mobile?: Platforms
-  tablet?: Platforms
-  desktop?: Platforms
+  mobile?: string
+  tablet?: string
+  desktop?: string
 }
 
 export const getPlatforms = (win?: any) => setupPlatforms(win)
