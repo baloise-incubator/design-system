@@ -46,7 +46,7 @@
     "@angular/core": "^10.2.5",
     "@angular/forms": "^10.2.5",
     "@angular/platform-browser": "^10.2.5",
-    "ng-packagr": "^10.1.2",
+    "ng-packagr": "^11.2.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.0.7",
     "zone.js": "^0.10.3"
