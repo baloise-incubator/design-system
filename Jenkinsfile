@@ -9,7 +9,7 @@ pipeline {
         stage("Build and test frontend") {
             steps {
                 container('nodejs') {
-                    sh 'npm jenkins'
+                    sh 'npm run jenkins'
                 }
             }
         }
