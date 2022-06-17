@@ -117,6 +117,11 @@
           &:focus-visible
             &:not(:active)
               @extend %focus-inverted-shadow
+        +modifier(context-header)
+          flex-direction: row-reverse
+          gap: 7px
+          +widescreen
+            gap: 11px
         +modifier(context-navbar)
           +touch
             color: var(--bal-color-primary)

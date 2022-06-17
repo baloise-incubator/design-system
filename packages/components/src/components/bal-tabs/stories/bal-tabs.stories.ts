@@ -38,6 +38,31 @@ Basic.parameters = {
   controls: { exclude: ['clickable'] },
 }
 
+export const Header = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+ 
+  <bal-tab-item value="tab-e" label="Tab E" icon="nav-go-down">Content of Tab E</bal-tab-item>
+  <bal-tab-item value="tab-f" label="Tab F" icon="nav-go-down">Content of Tab F</bal-tab-item>
+</bal-tabs>`,
+})
+Header.args = {
+  interface: 'header',
+  border: true,
+  fullwidth: true,
+  expanded: false,
+  vertical: false,
+  selectOnMobile: false,
+}
+Header.parameters = {
+  // viewport: {
+  //   defaultViewport: 'small',
+  // },
+  ...component.sourceCode(Header),
+  controls: { exclude: ['clickable'] },
+}
+
 export const Mobile = args => ({
   components: { ...component.components },
   setup: () => ({ args }),

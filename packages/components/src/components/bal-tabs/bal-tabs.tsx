@@ -109,9 +109,11 @@ export class Tabs {
     this.debounceChanged()
     this.updateTabs()
 
-    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-      this.updateTabs()
-    })
+    if (this.interface !== 'header') {
+      this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+        this.updateTabs()
+      })
+    }
   }
 
   disconnectedCallback() {
@@ -124,7 +126,7 @@ export class Tabs {
   componentDidLoad() {
     this.didInit = true
     let value = this.value
-    if (value === undefined || value === '') {
+    if ((value === undefined || value === '') && this.interface !== 'header') {
       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
       if (availableTabs.length > 0) {
         value = availableTabs[0].value
@@ -187,6 +189,28 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
+          if (this.interface === 'header') {
+            this.tabsOptions.map(i => {
+              if (i.value === tab.value) {
+                i.icon = 'nav-go-up'
+              } else {
+                i.icon = 'nav-go-down'
+              }
+            })
+          }
+        } else {
+          if (this.interface === 'header') {
+            if (tab.value === this.value) {
+              this.value = ''
+              this.balChange.emit(this.value)
+              this.tabsOptions.map(i => {
+                if (i.value === tab.value) {
+                  console.log('DOWN??')
+                  i.icon = 'nav-go-down'
+                }
+              })
+            }
+          }
         }
       }
     }
@@ -222,6 +246,8 @@ export class Tabs {
               this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
             }
           }
+        } else {
+          this.lineWidth = 0
         }
       }
     }, timeout)
