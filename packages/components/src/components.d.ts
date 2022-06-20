@@ -209,6 +209,10 @@ export namespace Components {
          */
         "selected": boolean;
         /**
+          * Defines the space of the card content.
+         */
+        "space": Props.BalCardSpace;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -320,6 +324,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -719,6 +727,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Overrides the default subtitle file size
          */
@@ -1369,6 +1381,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -1493,6 +1509,10 @@ export namespace Components {
           * If `true` the filtering is done outside the component.
          */
         "remote": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -3005,6 +3025,10 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
         /**
+          * Defines the space of the card content.
+         */
+        "space"?: Props.BalCardSpace;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -3128,6 +3152,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -3542,6 +3570,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Overrides the default subtitle file size
          */
@@ -4230,6 +4262,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
           * The tabindex of the control.
          */
         "value"?: number | string | boolean;
@@ -4357,6 +4393,10 @@ declare namespace LocalJSX {
           * If `true` the filtering is done outside the component.
          */
         "remote"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Defines the height of the popover list.
          */
