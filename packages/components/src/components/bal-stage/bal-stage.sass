@@ -21,7 +21,9 @@
           max-width: calc(100% - 120px)
         +desktop
           max-width: calc(100% - 198px)
-
+    +modifier(is-blue)
+      .bal-stage-body
+        background: var(--bal-color-primary-5)
     +modifier(is-purple)
       .bal-stage-body
         background: var(--bal-color-purple-3)
@@ -36,7 +38,6 @@
         background: var(--bal-color-yellow-3)
     +modifier(is-inverted)
       .bal-stage-body
-        background: var(--bal-color-primary-5)
         h1
           color: var(--bal-color-white)
         h2
