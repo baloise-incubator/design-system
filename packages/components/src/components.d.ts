@@ -1532,6 +1532,27 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color": | 'green'
+    | 'green-light'
+    | 'red'
+    | 'red-light'
+    | 'purple'
+    | 'purple-light'
+    | 'tangerine'
+    | 'tangerine-light';
+        /**
+          * The shape rotation
+         */
+        "rotation"?: 0 | 90 | 180 | 270;
+        /**
+          * The shape variation
+         */
+        "variation": '1' | '2' | '3';
+    }
     interface BalSheet {
     }
     interface BalSlider {
@@ -1651,6 +1672,10 @@ export namespace Components {
           * Defines the background color of the stage section
          */
         "color": Props.BalStageColor;
+        /**
+          * class to set the container width
+         */
+        "containerClass": string;
         /**
           * If true the Baloise Shape is set
          */
@@ -2559,6 +2584,12 @@ declare global {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
     };
+    interface HTMLBalShapeElement extends Components.BalShape, HTMLStencilElement {
+    }
+    var HTMLBalShapeElement: {
+        prototype: HTMLBalShapeElement;
+        new (): HTMLBalShapeElement;
+    };
     interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
     }
     var HTMLBalSheetElement: {
@@ -2748,6 +2779,7 @@ declare global {
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
@@ -4356,6 +4388,27 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalShape {
+        /**
+          * The shape color
+         */
+        "color"?: | 'green'
+    | 'green-light'
+    | 'red'
+    | 'red-light'
+    | 'purple'
+    | 'purple-light'
+    | 'tangerine'
+    | 'tangerine-light';
+        /**
+          * The shape rotation
+         */
+        "rotation"?: 0 | 90 | 180 | 270;
+        /**
+          * The shape variation
+         */
+        "variation"?: '1' | '2' | '3';
+    }
     interface BalSheet {
     }
     interface BalSlider {
@@ -4491,6 +4544,10 @@ declare namespace LocalJSX {
           * Defines the background color of the stage section
          */
         "color"?: Props.BalStageColor;
+        /**
+          * class to set the container width
+         */
+        "containerClass"?: string;
         /**
           * If true the Baloise Shape is set
          */
@@ -4905,6 +4962,7 @@ declare namespace LocalJSX {
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-shape": BalShape;
         "bal-sheet": BalSheet;
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
@@ -5009,6 +5067,7 @@ declare module "@stencil/core" {
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
