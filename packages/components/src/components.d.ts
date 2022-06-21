@@ -1090,6 +1090,27 @@ export namespace Components {
          */
         "size": Props.BalLogoSize;
     }
+    interface BalMainNavigation {
+        /**
+          * TODO: describe
+         */
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
+    }
+    interface BalMainNavigationActions {
+    }
+    interface BalMainNavigationLinks {
+    }
+    interface BalMainNavigationMenu {
+        "toggle": (isMenuActive: boolean) => Promise<void>;
+    }
+    interface BalMainNavigationMenuButtons {
+    }
+    interface BalMainNavigationMenuContent {
+    }
     interface BalModal {
         "close": () => Promise<void>;
         /**
@@ -2004,6 +2025,10 @@ export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalListItemAccordionHeadElement;
 }
+export interface BalMainNavigationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalMainNavigationElement;
+}
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalModalElement;
@@ -2429,6 +2454,42 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
+    interface HTMLBalMainNavigationElement extends Components.BalMainNavigation, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationElement: {
+        prototype: HTMLBalMainNavigationElement;
+        new (): HTMLBalMainNavigationElement;
+    };
+    interface HTMLBalMainNavigationActionsElement extends Components.BalMainNavigationActions, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationActionsElement: {
+        prototype: HTMLBalMainNavigationActionsElement;
+        new (): HTMLBalMainNavigationActionsElement;
+    };
+    interface HTMLBalMainNavigationLinksElement extends Components.BalMainNavigationLinks, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationLinksElement: {
+        prototype: HTMLBalMainNavigationLinksElement;
+        new (): HTMLBalMainNavigationLinksElement;
+    };
+    interface HTMLBalMainNavigationMenuElement extends Components.BalMainNavigationMenu, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuElement: {
+        prototype: HTMLBalMainNavigationMenuElement;
+        new (): HTMLBalMainNavigationMenuElement;
+    };
+    interface HTMLBalMainNavigationMenuButtonsElement extends Components.BalMainNavigationMenuButtons, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuButtonsElement: {
+        prototype: HTMLBalMainNavigationMenuButtonsElement;
+        new (): HTMLBalMainNavigationMenuButtonsElement;
+    };
+    interface HTMLBalMainNavigationMenuContentElement extends Components.BalMainNavigationMenuContent, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuContentElement: {
+        prototype: HTMLBalMainNavigationMenuContentElement;
+        new (): HTMLBalMainNavigationMenuContentElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -2706,6 +2767,12 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
+        "bal-main-navigation": HTMLBalMainNavigationElement;
+        "bal-main-navigation-actions": HTMLBalMainNavigationActionsElement;
+        "bal-main-navigation-links": HTMLBalMainNavigationLinksElement;
+        "bal-main-navigation-menu": HTMLBalMainNavigationMenuElement;
+        "bal-main-navigation-menu-buttons": HTMLBalMainNavigationMenuButtonsElement;
+        "bal-main-navigation-menu-content": HTMLBalMainNavigationMenuContentElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -3870,6 +3937,30 @@ declare namespace LocalJSX {
          */
         "size"?: Props.BalLogoSize;
     }
+    interface BalMainNavigation {
+        /**
+          * TODO: describe
+         */
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalMainNavigationCustomEvent<MouseEvent>) => void;
+    }
+    interface BalMainNavigationActions {
+    }
+    interface BalMainNavigationLinks {
+    }
+    interface BalMainNavigationMenu {
+    }
+    interface BalMainNavigationMenuButtons {
+    }
+    interface BalMainNavigationMenuContent {
+    }
     interface BalModal {
         /**
           * The component to display inside of the modal.
@@ -4844,6 +4935,12 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
+        "bal-main-navigation": BalMainNavigation;
+        "bal-main-navigation-actions": BalMainNavigationActions;
+        "bal-main-navigation-links": BalMainNavigationLinks;
+        "bal-main-navigation-menu": BalMainNavigationMenu;
+        "bal-main-navigation-menu-buttons": BalMainNavigationMenuButtons;
+        "bal-main-navigation-menu-content": BalMainNavigationMenuContent;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -4946,6 +5043,12 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
+            "bal-main-navigation": LocalJSX.BalMainNavigation & JSXBase.HTMLAttributes<HTMLBalMainNavigationElement>;
+            "bal-main-navigation-actions": LocalJSX.BalMainNavigationActions & JSXBase.HTMLAttributes<HTMLBalMainNavigationActionsElement>;
+            "bal-main-navigation-links": LocalJSX.BalMainNavigationLinks & JSXBase.HTMLAttributes<HTMLBalMainNavigationLinksElement>;
+            "bal-main-navigation-menu": LocalJSX.BalMainNavigationMenu & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuElement>;
+            "bal-main-navigation-menu-buttons": LocalJSX.BalMainNavigationMenuButtons & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuButtonsElement>;
+            "bal-main-navigation-menu-content": LocalJSX.BalMainNavigationMenuContent & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuContentElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;

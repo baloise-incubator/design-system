@@ -102,6 +102,7 @@
     "vite",
     "vue",
     "WCAG",
-    "xsmall"
+    "xsmall",
+    "metanav"
   ]
 }
