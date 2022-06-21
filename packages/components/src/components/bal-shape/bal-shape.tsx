@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -10,25 +11,17 @@ export class Shape implements ComponentInterface {
   /**
    * The shape variation
    */
-  @Prop() variation: '1' | '2' | '3' = '1'
+  @Prop() variation: Props.BalShapeVariation = '1'
 
   /**
    * The shape color
    */
-  @Prop() color:
-    | 'green'
-    | 'green-light'
-    | 'red'
-    | 'red-light'
-    | 'purple'
-    | 'purple-light'
-    | 'tangerine'
-    | 'tangerine-light' = 'green'
+  @Prop() color: Props.BalShapeColor = 'green'
 
   /**
    * The shape rotation
    */
-  @Prop() rotation?: 0 | 90 | 180 | 270 = 0
+  @Prop() rotation?: Props.BalShapeRotation = '0'
 
   render() {
     const block = BEM.block('shape')

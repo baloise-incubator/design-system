@@ -1556,22 +1556,15 @@ export namespace Components {
         /**
           * The shape color
          */
-        "color": | 'green'
-    | 'green-light'
-    | 'red'
-    | 'red-light'
-    | 'purple'
-    | 'purple-light'
-    | 'tangerine'
-    | 'tangerine-light';
+        "color": Props.BalShapeColor;
         /**
           * The shape rotation
          */
-        "rotation"?: 0 | 90 | 180 | 270;
+        "rotation"?: Props.BalShapeRotation;
         /**
           * The shape variation
          */
-        "variation": '1' | '2' | '3';
+        "variation": Props.BalShapeVariation;
     }
     interface BalSheet {
     }
@@ -4432,22 +4425,15 @@ declare namespace LocalJSX {
         /**
           * The shape color
          */
-        "color"?: | 'green'
-    | 'green-light'
-    | 'red'
-    | 'red-light'
-    | 'purple'
-    | 'purple-light'
-    | 'tangerine'
-    | 'tangerine-light';
+        "color"?: Props.BalShapeColor;
         /**
           * The shape rotation
          */
-        "rotation"?: 0 | 90 | 180 | 270;
+        "rotation"?: Props.BalShapeRotation;
         /**
           * The shape variation
          */
-        "variation"?: '1' | '2' | '3';
+        "variation"?: Props.BalShapeVariation;
     }
     interface BalSheet {
     }
