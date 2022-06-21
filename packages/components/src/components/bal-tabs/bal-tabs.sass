@@ -10,7 +10,6 @@
     display: block
     flex: 1
     width: 100%
-
   +element(tabs)
     +overflow-touch
     +unselectable
@@ -120,6 +119,11 @@
         +modifier(context-header)
           flex-direction: row-reverse
           gap: 7px
+          .bal-icon
+            transition: transform .8s ease-in-out
+          &.bal-tabs__tabs__item__button--active
+            .bal-icon
+              transform: rotateX(180deg)
           +widescreen
             gap: 11px
         +modifier(context-navbar)

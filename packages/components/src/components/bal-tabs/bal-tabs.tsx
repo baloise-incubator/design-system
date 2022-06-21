@@ -189,26 +189,11 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
-          if (this.interface === 'header') {
-            this.tabsOptions.map(i => {
-              if (i.value === tab.value) {
-                i.icon = 'nav-go-up'
-              } else {
-                i.icon = 'nav-go-down'
-              }
-            })
-          }
         } else {
           if (this.interface === 'header') {
             if (tab.value === this.value) {
               this.value = ''
               this.balChange.emit(this.value)
-              this.tabsOptions.map(i => {
-                if (i.value === tab.value) {
-                  console.log('DOWN??')
-                  i.icon = 'nav-go-down'
-                }
-              })
             }
           }
         }
