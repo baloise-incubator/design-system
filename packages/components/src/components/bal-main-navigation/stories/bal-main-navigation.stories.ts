@@ -79,7 +79,7 @@ export const Basic = args => ({
       </bal-popover>
     </bal-main-navigation-actions>
     <bal-main-navigation-links slot="tabs">
-      <bal-tabs interface="navbar" inverted v-model="myActiveTab">
+      <bal-tabs interface="mainnav" inverted v-model="myActiveTab">
         <bal-tab-item value="tab-a" label="Tab A" href="https://www.google.com"></bal-tab-item>
         <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
         <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
