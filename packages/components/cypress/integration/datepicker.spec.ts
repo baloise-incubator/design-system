@@ -6,9 +6,8 @@ const formatDateString = (date: Date) => formatISO(date, { representation: 'date
 const format = (date: Date) => {
   const day = `${date.getDate()}`
   const month = `${date.getMonth() + 1}`
-  const pad = (text: string) => (text.length === 1 ? `0${text}` : text)
 
-  return `.${pad(day)}.${pad(month)}.${date.getFullYear()}`
+  return `${day}.${month}.${date.getFullYear()}`
 }
 
 describe('Datepicker', () => {
