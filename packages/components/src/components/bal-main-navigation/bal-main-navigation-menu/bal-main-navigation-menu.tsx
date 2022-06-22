@@ -19,7 +19,7 @@ export class NavbarMenu {
   }
 
   render() {
-    const navMenuEl = BEM.block('metanav').element('menu')
+    const navMenuEl = BEM.block('mainnav').element('metabar').element('menu')
 
     return (
       <Host

@@ -8,7 +8,7 @@ import { BEM } from '../../../utils/bem'
 })
 export class MainNavigationLinks {
   render() {
-    const linksEl = BEM.block('metanav').element('links')
+    const linksEl = BEM.block('mainnav').element('metabar').element('links')
 
     return (
       <Host

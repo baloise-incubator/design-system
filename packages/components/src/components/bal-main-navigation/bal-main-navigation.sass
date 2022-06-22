@@ -1,74 +1,78 @@
-+block(metanav)
-  +unselectable
-  position: relative
-  display: block
-  background: var(--bal-color-primary-inverted)
-  height: 64px
-  max-height: 64px
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1)
-  +desktop
-    background: var(--bal-color-primary)
-    height: 48px
-    max-height: 48px
-    box-shadow: none
-  nav
-    display: flex
-    height: 100%
-    gap: .5rem
-    align-items: center
-
-  +element(actions)
-    display: flex
-    flex-shrink: 0
-    justify-content: flex-end
-    align-items: center
-    margin-left: auto
-    gap: .5rem
-
-  +element(menu)
-    position: static
-    display: none
-
-    +modifier(active)
-      +touch
-        position: fixed
-        display: block
-        background: var(--bal-color-white)
-
-    +touch
-      overflow-y: auto
-      flex-direction: column-reverse
-      top: 64px
-      left: 0
-      bottom: 0
-      right: 0
-      z-index: -1
-
++block(mainnav)
+  +element(metabar)
+    +unselectable
+    position: relative
+    display: block
+    background: var(--bal-color-primary-inverted)
+    height: 64px
+    max-height: 64px
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1)
     +desktop
+      background: var(--bal-color-primary)
+      height: 48px
+      max-height: 48px
+      box-shadow: none
+    nav
       display: flex
-      flex: 1
-      gap: 1rem
-
-    +element(content)
-      padding: 0 1rem
-
-    +element(buttons)
-      display: flex
+      height: 100%
+      gap: .5rem
       align-items: center
+
+    +element(actions)
+      display: flex
+      flex-shrink: 0
+      justify-content: flex-end
+      align-items: center
+      margin-left: auto
       gap: .5rem
 
+    +element(menu)
+      position: static
+      display: none
+
+      +modifier(active)
+        +touch
+          position: fixed
+          display: block
+          background: var(--bal-color-white)
+
       +touch
-        position: sticky
-        top: 100%
-        justify-content: center
-        background: #F6F6F6
-        padding: 0.5rem
+        overflow-y: auto
+        flex-direction: column-reverse
+        top: 64px
+        left: 0
+        bottom: 0
+        right: 0
+        z-index: -1
 
       +desktop
-        margin-left: auto
-
-      > .field
+        display: flex
         flex: 1
+        gap: 1rem
+
+      +element(content)
+        padding: 0 1rem
+
+      +element(buttons)
+        display: flex
+        align-items: center
+        gap: .5rem
+
+        +touch
+          position: sticky
+          top: 100%
+          justify-content: center
+          background: #F6F6F6
+          padding: 0.5rem
+
         +desktop
-          flex-shrink: 0
-          align-items: center
+          margin-left: auto
+
+        > .field
+          flex: 1
+          +desktop
+            flex-shrink: 0
+            align-items: center
+  +element(mainbar)
+    +unselectable
+    display: block

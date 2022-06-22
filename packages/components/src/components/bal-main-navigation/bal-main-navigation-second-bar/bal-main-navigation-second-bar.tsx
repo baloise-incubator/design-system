@@ -1,10 +1,10 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { BEM } from '../../utils/bem'
+import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation',
+  tag: 'bal-main-navigation-second-bar',
 })
-export class MainNavigation implements ComponentInterface {
+export class MainNavigationSecondBar implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
@@ -18,12 +18,13 @@ export class MainNavigation implements ComponentInterface {
   @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
 
   render() {
-    const mainNavigationEl = BEM.block('mainnav')
+    const mainBarEl = BEM.block('mainnav').element('mainbar')
 
     return (
       <Host
         class={{
-          ...mainNavigationEl.class(),
+          ...mainBarEl.class(),
+          'is-hidden-touch': true,
         }}
       >
         <slot></slot>

@@ -1111,6 +1111,26 @@ export namespace Components {
     }
     interface BalMainNavigationMenuContent {
     }
+    interface BalMainNavigationMetaBar {
+        /**
+          * TODO: describe
+         */
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
+    }
+    interface BalMainNavigationSecondBar {
+        /**
+          * TODO: describe
+         */
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
+    }
     interface BalModal {
         "close": () => Promise<void>;
         /**
@@ -2025,9 +2045,9 @@ export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalListItemAccordionHeadElement;
 }
-export interface BalMainNavigationCustomEvent<T> extends CustomEvent<T> {
+export interface BalMainNavigationMetaBarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBalMainNavigationElement;
+    target: HTMLBalMainNavigationMetaBarElement;
 }
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2490,6 +2510,18 @@ declare global {
         prototype: HTMLBalMainNavigationMenuContentElement;
         new (): HTMLBalMainNavigationMenuContentElement;
     };
+    interface HTMLBalMainNavigationMetaBarElement extends Components.BalMainNavigationMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMetaBarElement: {
+        prototype: HTMLBalMainNavigationMetaBarElement;
+        new (): HTMLBalMainNavigationMetaBarElement;
+    };
+    interface HTMLBalMainNavigationSecondBarElement extends Components.BalMainNavigationSecondBar, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationSecondBarElement: {
+        prototype: HTMLBalMainNavigationSecondBarElement;
+        new (): HTMLBalMainNavigationSecondBarElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -2773,6 +2805,8 @@ declare global {
         "bal-main-navigation-menu": HTMLBalMainNavigationMenuElement;
         "bal-main-navigation-menu-buttons": HTMLBalMainNavigationMenuButtonsElement;
         "bal-main-navigation-menu-content": HTMLBalMainNavigationMenuContentElement;
+        "bal-main-navigation-meta-bar": HTMLBalMainNavigationMetaBarElement;
+        "bal-main-navigation-second-bar": HTMLBalMainNavigationSecondBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -3946,10 +3980,6 @@ declare namespace LocalJSX {
           * Link of the logo
          */
         "logoPath"?: string;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalMainNavigationCustomEvent<MouseEvent>) => void;
     }
     interface BalMainNavigationActions {
     }
@@ -3960,6 +3990,30 @@ declare namespace LocalJSX {
     interface BalMainNavigationMenuButtons {
     }
     interface BalMainNavigationMenuContent {
+    }
+    interface BalMainNavigationMetaBar {
+        /**
+          * TODO: describe
+         */
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalMainNavigationMetaBarCustomEvent<MouseEvent>) => void;
+    }
+    interface BalMainNavigationSecondBar {
+        /**
+          * TODO: describe
+         */
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
     }
     interface BalModal {
         /**
@@ -4941,6 +4995,8 @@ declare namespace LocalJSX {
         "bal-main-navigation-menu": BalMainNavigationMenu;
         "bal-main-navigation-menu-buttons": BalMainNavigationMenuButtons;
         "bal-main-navigation-menu-content": BalMainNavigationMenuContent;
+        "bal-main-navigation-meta-bar": BalMainNavigationMetaBar;
+        "bal-main-navigation-second-bar": BalMainNavigationSecondBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -5049,6 +5105,8 @@ declare module "@stencil/core" {
             "bal-main-navigation-menu": LocalJSX.BalMainNavigationMenu & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuElement>;
             "bal-main-navigation-menu-buttons": LocalJSX.BalMainNavigationMenuButtons & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuButtonsElement>;
             "bal-main-navigation-menu-content": LocalJSX.BalMainNavigationMenuContent & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuContentElement>;
+            "bal-main-navigation-meta-bar": LocalJSX.BalMainNavigationMetaBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationMetaBarElement>;
+            "bal-main-navigation-second-bar": LocalJSX.BalMainNavigationSecondBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationSecondBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;

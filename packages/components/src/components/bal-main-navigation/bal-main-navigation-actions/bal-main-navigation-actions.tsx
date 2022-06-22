@@ -32,7 +32,7 @@ export class MainNavigationActions {
   }
 
   render() {
-    const actionsEl = BEM.block('metanav').element('actions')
+    const actionsEl = BEM.block('mainnav').element('metabar').element('actions')
 
     return (
       <Host

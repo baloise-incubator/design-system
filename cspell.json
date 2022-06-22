@@ -103,6 +103,8 @@
     "vue",
     "WCAG",
     "xsmall",
-    "metanav"
+    "mainnav",
+    "metabar",
+    "mainbar"
   ]
 }

@@ -8,7 +8,7 @@ import { BEM } from '../../../utils/bem'
 })
 export class MainNavigationMenuContent {
   render() {
-    const contentEl = BEM.block('metanav').element('menu').element('content')
+    const contentEl = BEM.block('mainnav').element('metabar').element('menu').element('content')
 
     return (
       <Host

@@ -30,7 +30,7 @@ export class BalMainNavigationMenuButtons {
   }
 
   render() {
-    const navMenuEndEl = BEM.block('metanav').element('menu').element('buttons')
+    const navMenuEndEl = BEM.block('mainnav').element('metabar').element('menu').element('buttons')
 
     return (
       <Host class={{ ...navMenuEndEl.class() }}>
