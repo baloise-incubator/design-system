@@ -1,6 +1,8 @@
 export namespace Props {
   export type BalAccordionColor = 'primary' | 'info'
 
+  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
@@ -26,6 +28,7 @@ export namespace Props {
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
+  export type BalCardSpace = 'small' | '' | 'medium' | 'large'
   export type BalCardColor =
     | 'white'
     | 'primary'
@@ -120,7 +123,7 @@ export namespace Props {
     | ''
 
   export type BalModalInterface = 'light' | 'card'
-  export type BalModalSpace = 'small' | 'medium' | 'large'
+  export type BalModalSpace = 'small' | '' | 'medium'
   export type ComponentProps = { [key: string]: any }
   // eslint-disable-next-line
   export type ComponentRef = Function | HTMLElement | string | null

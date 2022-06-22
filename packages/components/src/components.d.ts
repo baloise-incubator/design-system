@@ -5,11 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
+import { Events, Props } from "./types";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -173,6 +174,10 @@ export namespace Components {
           * The value of the button, which is submitted with the form data.
          */
         "position": Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse": boolean;
     }
     interface BalCard {
         /**
@@ -203,6 +208,10 @@ export namespace Components {
           * If `true` the card gets a light background to indicate a selection.
          */
         "selected": boolean;
+        /**
+          * Defines the space of the card content.
+         */
+        "space": Props.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
          */
@@ -315,6 +324,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
@@ -715,6 +728,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Overrides the default subtitle file size
          */
         "subTitle"?: (file: File) => string;
@@ -736,6 +753,11 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size": Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -1156,10 +1178,6 @@ export namespace Components {
          */
         "hasBackdrop": boolean;
         /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface": Props.BalModalInterface;
-        /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable": boolean;
@@ -1404,6 +1422,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -1528,6 +1550,10 @@ export namespace Components {
           * If `true` the filtering is done outside the component.
          */
         "remote": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -1828,6 +1854,10 @@ export namespace Components {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color": Props.BalTagColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -2366,6 +2396,18 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
+    }
+    var HTMLBalFormColElement: {
+        prototype: HTMLBalFormColElement;
+        new (): HTMLBalFormColElement;
+    };
+    interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
+    }
+    var HTMLBalFormGridElement: {
+        prototype: HTMLBalFormGridElement;
+        new (): HTMLBalFormGridElement;
+    };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
     var HTMLBalHeadingElement: {
@@ -2781,6 +2823,8 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form-col": HTMLBalFormColElement;
+        "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -2866,7 +2910,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: BalAccordionCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -3015,6 +3059,10 @@ declare namespace LocalJSX {
           * The value of the button, which is submitted with the form data.
          */
         "position"?: Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse"?: boolean;
     }
     interface BalCard {
         /**
@@ -3045,6 +3093,10 @@ declare namespace LocalJSX {
           * If `true` the card gets a light background to indicate a selection.
          */
         "selected"?: boolean;
+        /**
+          * Defines the space of the card content.
+         */
+        "space"?: Props.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
          */
@@ -3156,7 +3208,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value property has changed.
          */
-        "onBalChange"?: (event: BalCheckboxCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalCheckboxCustomEvent<Events.BalCheckboxChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3169,6 +3221,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
@@ -3190,7 +3246,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<any[]>) => void;
+        "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * If `true`, the user cannot interact with the radios.
          */
@@ -3322,7 +3378,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: BalDatepickerCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3334,7 +3390,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalDatepickerCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerInputDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -3584,6 +3640,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
           * Overrides the default subtitle file size
          */
         "subTitle"?: (file: File) => string;
@@ -3605,6 +3665,11 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size"?: Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -3767,7 +3832,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalInputCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalInputCustomEvent<Events.BalInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3779,7 +3844,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalInputCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalInputCustomEvent<Events.BalInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3863,11 +3928,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalInputStepperCustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has decreased.
+         */
+        "onBalDecrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has increased.
+         */
+        "onBalIncrease"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperChangeDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: BalInputStepperCustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalInputStepperCustomEvent<Events.BalInputStepperInputDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4035,10 +4108,6 @@ declare namespace LocalJSX {
          */
         "hasBackdrop"?: boolean;
         /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface"?: Props.BalModalInterface;
-        /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable"?: boolean;
@@ -4151,7 +4220,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalNumberInputCustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4163,7 +4232,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalNumberInputCustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -4227,7 +4296,7 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: BalPopoverCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
           * If `true` the field spans over the whole width.
@@ -4292,7 +4361,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalRadioCustomEvent<boolean>) => void;
+        "onBalChange"?: (event: BalRadioCustomEvent<Events.BalRadioChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4305,6 +4374,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -4330,7 +4403,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: BalRadioGroupCustomEvent<number | string | boolean>) => void;
+        "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4404,7 +4477,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: BalSelectCustomEvent<string | string[] | undefined>) => void;
+        "onBalChange"?: (event: BalSelectCustomEvent<Events.BalSelectChangeDetail>) => void;
         /**
           * Emitted when the input got clicked.
          */
@@ -4433,6 +4506,10 @@ declare namespace LocalJSX {
           * If `true` the filtering is done outside the component.
          */
         "remote"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -4502,7 +4579,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: BalSliderCustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: BalSliderCustomEvent<Events.BalSliderChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4737,13 +4814,17 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalTagColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
           * If `true` a light version of the color is displayed
          */
         "light"?: boolean;
         /**
           * Emitted when the input got clicked.
          */
-        "onBalCloseClick"?: (event: BalTagCustomEvent<MouseEvent>) => void;
+        "onBalCloseClick"?: (event: BalTagCustomEvent<Events.BalTagCloseClickDetail>) => void;
         /**
           * The size of the tag element
          */
@@ -4837,7 +4918,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: BalTextareaCustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: BalTextareaCustomEvent<Events.BalTextareaChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4849,7 +4930,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalTextareaCustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: BalTextareaCustomEvent<Events.BalTextareaInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -4971,6 +5052,8 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form-col": BalFormCol;
+        "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -5081,6 +5164,8 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
+            "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
