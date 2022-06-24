@@ -28,6 +28,11 @@ export class ListItem {
   @Prop() accordion = false
 
   /**
+   * If `true` the list item can be used as an accordion inside another accordion
+   */
+  @Prop() subAccordionItem = false
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -133,6 +138,7 @@ export class ListItem {
             'is-accordion': this.accordion,
             'is-disabled': this.disabled,
             'is-list-item-clickable': this.accordion,
+            'is-sub-accordion-item': this.subAccordionItem,
           }}
         >
           <div>

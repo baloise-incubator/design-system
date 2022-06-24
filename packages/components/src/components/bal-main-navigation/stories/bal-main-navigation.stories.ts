@@ -87,16 +87,16 @@ export const Basic = args => ({
     </bal-main-navigation-links>
     <bal-main-navigation-menu slot="menu">
       <bal-main-navigation-menu-content>
-        <bal-list class="px-4" border size="large">
+        <bal-list class="px-4" border meta-nav-accordion size="large">
           <bal-list-item accordion>
-            <bal-list-item-accordion-head accordion-open>
+            <bal-list-item-accordion-head>
               <bal-list-item-content>
                   <bal-list-item-title>Accordion List Item</bal-list-item-title>
               </bal-list-item-content>
             </bal-list-item-accordion-head>
             <bal-list-item-accordion-body>
-              <bal-list-item accordion>
-            <bal-list-item-accordion-head accordion-open>
+              <bal-list-item accordion sub-accordion-item>
+            <bal-list-item-accordion-head>
               <bal-list-item-content>
                   <bal-list-item-title>Accordion List Item</bal-list-item-title>
               </bal-list-item-content>
