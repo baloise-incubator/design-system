@@ -96,17 +96,63 @@ export const Basic = args => ({
             </bal-list-item-accordion-head>
             <bal-list-item-accordion-body>
               <bal-list-item accordion sub-accordion-item>
-            <bal-list-item-accordion-head>
-              <bal-list-item-content>
-                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
-              </bal-list-item-content>
-            </bal-list-item-accordion-head>
-            <bal-list-item-accordion-body>
-              <p class="pb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </bal-list-item-accordion-body>
-          </bal-list-item>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                      <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body>
+                  <bal-main-navigation-menu-panel link-href="/" link-name="Alle Versicherungslösungen">
+                    <div slot="left">
+                      <bal-main-navigation-menu-panel-list headline="Wohnen & Recht" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Haushaltsversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Haftpflicht</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Einzel Gegenstände vom Handy bis zum e-Bike</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Rechtsschutz</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                      <bal-main-navigation-menu-panel-list headline="Wohneigentum" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                      <bal-main-navigation-menu-panel-list headline="Fahrzeuge & Reisen" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Auto</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Motorrad</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Velo</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Boot</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Fahrzeug Innenraum (auch Wohnwagen)</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Reiseversicherung</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                      <bal-main-navigation-menu-panel-list headline="Personen (Unfall, Krankheit, Tod)" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Unfallversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Todesfallrisikoversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Krankentaggeldversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Lebensversicherung & Life Coach</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Erwerbsunfähigkeitsversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Unfallversicherung für Hausangestellte</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                    </div>
+                    <div slot="right">
+                      <bal-main-navigation-menu-panel-list is-service headline="Services" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                    </div>
+                  </bal-main-navigation-menu-panel>
+                </bal-list-item-accordion-body>
+              </bal-list-item>
             </bal-list-item-accordion-body>
           </bal-list-item>
           <bal-list-item accordion>
@@ -159,5 +205,71 @@ Basic.args = {}
 Basic.parameters = {
   layout: 'fullscreen',
   ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const MenuPanel = args => ({
+  components: {
+    ...component.components,
+  },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<bal-main-navigation-menu-panel class="p-4" link-href="/" link-name="Alle Versicherungslösungen">
+    <div slot="left">
+      <bal-main-navigation-menu-panel-list headline="Wohnen & Recht" href="https://google.com">
+        <div slot="links">
+          <bal-main-navigation-menu-panel-list-item href="/">Haushaltsversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Haftpflicht</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Einzel Gegenstände vom Handy bis zum e-Bike</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Rechtsschutz</bal-main-navigation-menu-panel-list-item>
+        </div>
+      </bal-main-navigation-menu-panel-list>
+      <bal-main-navigation-menu-panel-list headline="Wohneigentum" href="https://google.com">
+        <div slot="links">
+          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+        </div>
+      </bal-main-navigation-menu-panel-list>
+      <bal-main-navigation-menu-panel-list headline="Fahrzeuge & Reisen" href="https://google.com">
+        <div slot="links">
+          <bal-main-navigation-menu-panel-list-item href="/">Auto</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Motorrad</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Velo</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Boot</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Fahrzeug Innenraum (auch Wohnwagen)</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Reiseversicherung</bal-main-navigation-menu-panel-list-item>
+        </div>
+      </bal-main-navigation-menu-panel-list>
+      <bal-main-navigation-menu-panel-list headline="Personen (Unfall, Krankheit, Tod)" href="https://google.com">
+        <div slot="links">
+          <bal-main-navigation-menu-panel-list-item href="/">Unfallversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Todesfallrisikoversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Krankentaggeldversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Lebensversicherung & Life Coach</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Erwerbsunfähigkeitsversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Unfallversicherung für Hausangestellte</bal-main-navigation-menu-panel-list-item>
+        </div>
+      </bal-main-navigation-menu-panel-list>
+    </div>
+    <div slot="right">
+      <bal-main-navigation-menu-panel-list is-service headline="Services" href="https://google.com">
+        <div slot="links">
+          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+        </div>
+      </bal-main-navigation-menu-panel-list>
+    </div>
+</bal-main-navigation-menu-panel>`,
+})
+MenuPanel.args = {}
+MenuPanel.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(MenuPanel),
   controls: { exclude: excludedControls },
 }

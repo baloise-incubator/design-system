@@ -1052,6 +1052,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "metaNavAccordion": boolean;
+        /**
           * Defines the min height of the list item
          */
         "size": Props.BalListSize;
@@ -1077,6 +1081,10 @@ export namespace Components {
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
+        /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem": boolean;
         /**
           * Specifies where to open the linked document
          */
@@ -1136,6 +1144,18 @@ export namespace Components {
     interface BalMainNavigationMenuButtons {
     }
     interface BalMainNavigationMenuContent {
+    }
+    interface BalMainNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalMainNavigationMenuPanelList {
+        "headline"?: string;
+        "href"?: string;
+        "isService": boolean;
+    }
+    interface BalMainNavigationMenuPanelListItem {
+        "href"?: string;
     }
     interface BalMainNavigationMetaBar {
         /**
@@ -2574,6 +2594,24 @@ declare global {
         prototype: HTMLBalMainNavigationMenuContentElement;
         new (): HTMLBalMainNavigationMenuContentElement;
     };
+    interface HTMLBalMainNavigationMenuPanelElement extends Components.BalMainNavigationMenuPanel, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuPanelElement: {
+        prototype: HTMLBalMainNavigationMenuPanelElement;
+        new (): HTMLBalMainNavigationMenuPanelElement;
+    };
+    interface HTMLBalMainNavigationMenuPanelListElement extends Components.BalMainNavigationMenuPanelList, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuPanelListElement: {
+        prototype: HTMLBalMainNavigationMenuPanelListElement;
+        new (): HTMLBalMainNavigationMenuPanelListElement;
+    };
+    interface HTMLBalMainNavigationMenuPanelListItemElement extends Components.BalMainNavigationMenuPanelListItem, HTMLStencilElement {
+    }
+    var HTMLBalMainNavigationMenuPanelListItemElement: {
+        prototype: HTMLBalMainNavigationMenuPanelListItemElement;
+        new (): HTMLBalMainNavigationMenuPanelListItemElement;
+    };
     interface HTMLBalMainNavigationMetaBarElement extends Components.BalMainNavigationMetaBar, HTMLStencilElement {
     }
     var HTMLBalMainNavigationMetaBarElement: {
@@ -2877,6 +2915,9 @@ declare global {
         "bal-main-navigation-menu": HTMLBalMainNavigationMenuElement;
         "bal-main-navigation-menu-buttons": HTMLBalMainNavigationMenuButtonsElement;
         "bal-main-navigation-menu-content": HTMLBalMainNavigationMenuContentElement;
+        "bal-main-navigation-menu-panel": HTMLBalMainNavigationMenuPanelElement;
+        "bal-main-navigation-menu-panel-list": HTMLBalMainNavigationMenuPanelListElement;
+        "bal-main-navigation-menu-panel-list-item": HTMLBalMainNavigationMenuPanelListItemElement;
         "bal-main-navigation-meta-bar": HTMLBalMainNavigationMetaBarElement;
         "bal-main-navigation-second-bar": HTMLBalMainNavigationSecondBarElement;
         "bal-modal": HTMLBalModalElement;
@@ -4005,6 +4046,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the list can be used as an accordion in meta nav
+         */
+        "metaNavAccordion"?: boolean;
+        /**
           * Defines the min height of the list item
          */
         "size"?: Props.BalListSize;
@@ -4034,6 +4079,10 @@ declare namespace LocalJSX {
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
+        /**
+          * If `true` the list item can be used as an accordion inside another accordion
+         */
+        "subAccordionItem"?: boolean;
         /**
           * Specifies where to open the linked document
          */
@@ -4096,6 +4145,18 @@ declare namespace LocalJSX {
     interface BalMainNavigationMenuButtons {
     }
     interface BalMainNavigationMenuContent {
+    }
+    interface BalMainNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalMainNavigationMenuPanelList {
+        "headline"?: string;
+        "href"?: string;
+        "isService"?: boolean;
+    }
+    interface BalMainNavigationMenuPanelListItem {
+        "href"?: string;
     }
     interface BalMainNavigationMetaBar {
         /**
@@ -5129,6 +5190,9 @@ declare namespace LocalJSX {
         "bal-main-navigation-menu": BalMainNavigationMenu;
         "bal-main-navigation-menu-buttons": BalMainNavigationMenuButtons;
         "bal-main-navigation-menu-content": BalMainNavigationMenuContent;
+        "bal-main-navigation-menu-panel": BalMainNavigationMenuPanel;
+        "bal-main-navigation-menu-panel-list": BalMainNavigationMenuPanelList;
+        "bal-main-navigation-menu-panel-list-item": BalMainNavigationMenuPanelListItem;
         "bal-main-navigation-meta-bar": BalMainNavigationMetaBar;
         "bal-main-navigation-second-bar": BalMainNavigationSecondBar;
         "bal-modal": BalModal;
@@ -5242,6 +5306,9 @@ declare module "@stencil/core" {
             "bal-main-navigation-menu": LocalJSX.BalMainNavigationMenu & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuElement>;
             "bal-main-navigation-menu-buttons": LocalJSX.BalMainNavigationMenuButtons & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuButtonsElement>;
             "bal-main-navigation-menu-content": LocalJSX.BalMainNavigationMenuContent & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuContentElement>;
+            "bal-main-navigation-menu-panel": LocalJSX.BalMainNavigationMenuPanel & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelElement>;
+            "bal-main-navigation-menu-panel-list": LocalJSX.BalMainNavigationMenuPanelList & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelListElement>;
+            "bal-main-navigation-menu-panel-list-item": LocalJSX.BalMainNavigationMenuPanelListItem & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelListItemElement>;
             "bal-main-navigation-meta-bar": LocalJSX.BalMainNavigationMetaBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationMetaBarElement>;
             "bal-main-navigation-second-bar": LocalJSX.BalMainNavigationSecondBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationSecondBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
