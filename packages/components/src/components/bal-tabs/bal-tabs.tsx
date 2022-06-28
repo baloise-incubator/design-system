@@ -224,11 +224,11 @@ export class Tabs {
             }
           } else {
             if (listElement?.clientWidth !== undefined) {
-              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : 32)
+              this.lineWidth = listElement.clientWidth - (this.expanded || this.interface === 'header' ? 0 : 32)
             }
 
             if (listElement?.offsetLeft !== undefined) {
-              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
+              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded || this.interface === 'header' ? 0 : 16)
             }
           }
         } else {

@@ -1817,6 +1817,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * Tab icon not available for the steps.
+         */
+        "inMainNavigation"?: boolean;
+        /**
           * Label for the tab.
          */
         "label": string;
@@ -2120,6 +2124,10 @@ export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
 export interface BalMainNavigationMetaBarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalMainNavigationMetaBarElement;
+}
+export interface BalMainNavigationSecondBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalMainNavigationSecondBarElement;
 }
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4181,6 +4189,10 @@ declare namespace LocalJSX {
           * Link of the logo
          */
         "logoPath"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalMainNavigationSecondBarCustomEvent<MouseEvent>) => void;
     }
     interface BalModal {
         /**
@@ -4846,6 +4858,10 @@ declare namespace LocalJSX {
           * Tab icon not available for the steps.
          */
         "icon"?: string;
+        /**
+          * Tab icon not available for the steps.
+         */
+        "inMainNavigation"?: boolean;
         /**
           * Label for the tab.
          */

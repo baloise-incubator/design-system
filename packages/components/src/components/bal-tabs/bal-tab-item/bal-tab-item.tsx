@@ -60,6 +60,11 @@ export class TabItem {
   @Prop() icon?: string = undefined
 
   /**
+   * Tab icon not available for the steps.
+   */
+  @Prop() inMainNavigation?: boolean = false
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<MouseEvent | CustomEvent>
@@ -97,12 +102,34 @@ export class TabItem {
     }
   }
 
+  componentWillUpdate() {
+    if (this.inMainNavigation && this.el.firstElementChild) {
+      const parent = this.el.closest('bal-tab-item')
+      const parentNav = this.el.closest('nav')
+      const firstChildHeight =
+        this.el.firstElementChild.clientHeight && this.isActive
+          ? this.el.firstElementChild.clientHeight.toString(10)
+          : '0'
+      !!(firstChildHeight && parent) && parent.setAttribute('style', `height:${firstChildHeight}px`)
+      !!parentNav && this.isActive
+        ? parentNav.classList.add('active-navbar')
+        : !!parentNav && parentNav.classList.remove('active-navbar')
+    }
+  }
+
   render() {
     return (
-      <Host>
-        <div style={{ display: this.isActive ? 'block' : 'none' }}>
-          <slot />
-        </div>
+      <Host class={this.isActive && this.inMainNavigation ? 'bal-tab-item--active-tab' : ''}>
+        {this.inMainNavigation && (
+          <div>
+            <slot />
+          </div>
+        )}
+        {!this.inMainNavigation && (
+          <div style={{ display: this.isActive ? 'block' : 'none' }}>
+            <slot />
+          </div>
+        )}
       </Host>
     )
   }

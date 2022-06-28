@@ -198,7 +198,41 @@ export const Basic = args => ({
       </bal-main-navigation-menu-buttons>
     </bal-main-navigation-menu>
   </bal-main-navigation-meta-bar>
-  <bal-main-navigation-second-bar>MAIN BAR</bal-main-navigation-second-bar>
+  <bal-main-navigation-second-bar>
+    <div slot="second-tabs">
+        <bal-tabs interface="header">
+          <bal-tab-item value="tab-g" label="LONG LONG LONG very long Tab G" icon="nav-go-down" inMainNavigation>
+            <table class="table is-fullwidth is-striped is-hoverable p-0">
+              <thead>
+                  <th>Selected</th>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th></th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                          <bal-checkbox id="checkbox1"></bal-checkbox>
+                      </td>
+                      <td>Tony Stark</td>
+                      <td>
+                          <bal-tag size="small" color="green">Ready</bal-tag>
+                      </td>
+                      <td class="has-buttons">
+                          <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                          <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+          </bal-tab-item>
+          <bal-tab-item value="tab-h" label="Long text Tab H" icon="nav-go-down" inMainNavigation>Content long tab Item text H</bal-tab-item>
+          <bal-tab-item value="tab-i" label="Very very long text Tab I" icon="nav-go-down" inMainNavigation>Content of Tab I</bal-tab-item>
+          <bal-tab-item value="tab-l" label="Very long text Tab L" icon="nav-go-down" inMainNavigation>Content Very long tab Item text L</bal-tab-item>
+          <bal-tab-item value="tab-m" label="Long Text Tab M" href="#" inMainNavigation></bal-tab-item>
+        </bal-tabs>
+      </div>
+  </bal-main-navigation-second-bar>
 </bal-main-navigation>`,
 })
 Basic.args = {}

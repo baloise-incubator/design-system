@@ -10,6 +10,38 @@
     display: block
     flex: 1
     width: 100%
+  +modifier(context-header)
+    .bal-tabs__tabs__item
+      margin-right: 2rem
+      &:last-child
+        margin-right: 0
+    bal-tab-item
+      position: absolute
+      top: 100%
+      left: 0
+      right: 0
+      bottom: auto
+      width: 100%
+      box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1)
+      pointer-events: none
+      height: 0
+      transition: height .8s ease-in-out, border-radius .8s ease-in-out
+      background-color: lightblue
+      transform-origin: top center
+      border-radius: 12px
+      > *
+        width: 100%
+        padding: 15px 48px
+        opacity: 0
+        transition: opacity .4s ease-in-out
+      //TODO add large-desktop viewport
+      &.bal-tab-item--active-tab
+        pointer-events: auto
+        border-top-left-radius: 0
+        border-top-right-radius: 0
+        > *
+          opacity: 1
+          transition: opacity .6s .4s ease-in-out
   +element(tabs)
     +overflow-touch
     +unselectable
@@ -19,6 +51,7 @@
     font-size: $size-normal
     justify-content: space-between
     white-space: nowrap
+    //test push
     ul
       align-items: center
       display: flex
@@ -46,7 +79,6 @@
       padding: 0
       justify-content: center
       align-items: center
-      display: flex
       +modifier(fullwidth)
         flex-grow: 1
         flex-basis: 0
@@ -67,7 +99,6 @@
           flex-basis: 0
           width: 100%
           justify-content: flex-start
-
       +element(button)
         position: relative
         display: flex
@@ -119,13 +150,15 @@
         +modifier(context-header)
           flex-direction: row-reverse
           gap: 7px
+          padding-left: 0
+          padding-right: 0
+          +widescreen
+            gap: 11px
           .bal-icon
             transition: transform .8s ease-in-out
           &.bal-tabs__tabs__item__button--active
             .bal-icon
               transform: rotateX(180deg)
-          +widescreen
-            gap: 11px
         +modifier(context-navbar)
           +touch
             color: var(--bal-color-primary)
