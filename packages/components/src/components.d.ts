@@ -1408,6 +1408,8 @@ export namespace Components {
          */
         "scrollable": number;
     }
+    interface BalProductSlider {
+    }
     interface BalRadio {
         /**
           * If `true`, the radio is selected.
@@ -2716,6 +2718,12 @@ declare global {
         prototype: HTMLBalPopoverContentElement;
         new (): HTMLBalPopoverContentElement;
     };
+    interface HTMLBalProductSliderElement extends Components.BalProductSlider, HTMLStencilElement {
+    }
+    var HTMLBalProductSliderElement: {
+        prototype: HTMLBalProductSliderElement;
+        new (): HTMLBalProductSliderElement;
+    };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
     var HTMLBalRadioElement: {
@@ -2942,6 +2950,7 @@ declare global {
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
+        "bal-product-slider": HTMLBalProductSliderElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
@@ -4427,6 +4436,8 @@ declare namespace LocalJSX {
          */
         "scrollable"?: number;
     }
+    interface BalProductSlider {
+    }
     interface BalRadio {
         /**
           * If `true`, the radio is selected.
@@ -5225,6 +5236,7 @@ declare namespace LocalJSX {
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
+        "bal-product-slider": BalProductSlider;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
@@ -5341,6 +5353,7 @@ declare module "@stencil/core" {
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
+            "bal-product-slider": LocalJSX.BalProductSlider & JSXBase.HTMLAttributes<HTMLBalProductSliderElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
