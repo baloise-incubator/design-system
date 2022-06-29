@@ -32,8 +32,15 @@ export class MainNavigationSecondBar implements ComponentInterface {
           'is-hidden-touch': true,
         }}
       >
-        <nav role="navigation" aria-label="Secondary navigation TODO i18n" class={{}}>
-          <a class={{}} href={this.logoPath} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+        <nav
+          role="navigation"
+          aria-label="Secondary navigation TODO i18n"
+          class={{
+            container: true,
+            [`is-${this.container}`]: this.container !== '',
+          }}
+        >
+          <a class="pt-4 pb-4" href={this.logoPath} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
             <bal-logo size="normal" color="blue" />
           </a>
           <slot name="second-tabs"></slot>

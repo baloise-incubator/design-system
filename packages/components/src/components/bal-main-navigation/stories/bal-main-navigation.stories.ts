@@ -229,7 +229,7 @@ export const Basic = args => ({
           <bal-tab-item value="tab-h" label="Long text Tab H" icon="nav-go-down" inMainNavigation>Content long tab Item text H</bal-tab-item>
           <bal-tab-item value="tab-i" label="Very very long text Tab I" icon="nav-go-down" inMainNavigation>Content of Tab I</bal-tab-item>
           <bal-tab-item value="tab-l" label="Very long text Tab L" icon="nav-go-down" inMainNavigation>Content Very long tab Item text L</bal-tab-item>
-          <bal-tab-item value="tab-m" label="Long Text Tab M" href="#" inMainNavigation></bal-tab-item>
+          <bal-tab-item value="tab-m" label="Short Text" href="#" inMainNavigation></bal-tab-item>
         </bal-tabs>
       </div>
   </bal-main-navigation-second-bar>
