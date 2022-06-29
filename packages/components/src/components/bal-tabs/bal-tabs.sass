@@ -51,7 +51,6 @@
     font-size: $size-normal
     justify-content: space-between
     white-space: nowrap
-    //test push
     ul
       align-items: center
       display: flex
@@ -154,6 +153,11 @@
           padding-right: 0
           +widescreen
             gap: 11px
+            padding-top: 1.75rem
+            padding-bottom: 1.75rem
+          +fullhd
+            padding-top: 2.38rem
+            padding-bottom: 2.38rem
           .bal-icon
             transition: transform .8s ease-in-out
           &.bal-tabs__tabs__item__button--active
