@@ -250,9 +250,46 @@ export const Basic = args => ({
                   </div>
                 </bal-main-navigation-menu-panel-list>
               </div>
-          </bal-main-navigation-menu-panel>
+            </bal-main-navigation-menu-panel>
           </bal-tab-item>
-          <bal-tab-item value="tab-h" label="Long text Tab H" icon="nav-go-down" inMainNavigation>Content long tab Item text H</bal-tab-item>
+          <bal-tab-item value="tab-h" label="Long text Tab H" icon="nav-go-down" inMainNavigation>
+            <bal-main-navigation-menu-panel class="p-4" link-href="/" link-name="Alle Versicherungslösungen">
+              <div slot="left">
+                <bal-main-navigation-menu-panel-list headline="Wohnen & Recht" href="https://google.com">
+                  <div slot="links">
+                    <bal-main-navigation-menu-panel-list-item href="/">Haushaltsversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Haftpflicht</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Einzel Gegenstände vom Handy bis zum e-Bike</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Rechtsschutz</bal-main-navigation-menu-panel-list-item>
+                  </div>
+                </bal-main-navigation-menu-panel-list>
+                <bal-main-navigation-menu-panel-list headline="Wohneigentum" href="https://google.com">
+                  <div slot="links">
+                    <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                  </div>
+                </bal-main-navigation-menu-panel-list>
+              </div>
+              <div slot="right">
+                <bal-main-navigation-menu-panel-list is-service headline="Services" href="https://google.com">
+                  <div slot="links">
+                    <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                  </div>
+                </bal-main-navigation-menu-panel-list>
+                <bal-main-navigation-menu-panel-list is-service headline="Second" href="https://google.com">
+                  <div slot="links">
+                    <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                    <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                  </div>
+                </bal-main-navigation-menu-panel-list>
+              </div>
+            </bal-main-navigation-menu-panel>
+          </bal-tab-item>
           <bal-tab-item value="tab-i" label="Very very long text Tab I" icon="nav-go-down" inMainNavigation>Content of Tab I</bal-tab-item>
           <bal-tab-item value="tab-l" label="Very long text Tab L" icon="nav-go-down" inMainNavigation>Content Very long tab Item text L</bal-tab-item>
           <bal-tab-item value="tab-m" label="Short Text" href="#" inMainNavigation></bal-tab-item>
