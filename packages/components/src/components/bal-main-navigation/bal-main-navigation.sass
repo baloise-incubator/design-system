@@ -110,26 +110,28 @@
   +element(mainbar)
     +unselectable
     display: block
+    height: auto
+    z-index: 1000
     +until-widescreen
       width: 100vw
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
     nav
       display: flex
-      width: 100%
       justify-content: space-between
       flex-wrap: wrap
       align-items: center
       padding: 0 48px
-      //TODO re-apply background-color: var(--bal-color-white)
-      background-color: pink
+      background-color: var(--bal-color-white)
       position: relative
-      //> a
-      //  padding-top: 1rem
+      +until-widescreen
+        width: 100vw !important
+        max-width: none
     +widescreen
-      //width: calc(100vw - 160px)
       margin: 1rem auto 0
       nav
         border-radius: 12px
         transition: border-radius .8s ease-in-out
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
         &.active-navbar
           border-bottom-left-radius: 0
           border-bottom-right-radius: 0
