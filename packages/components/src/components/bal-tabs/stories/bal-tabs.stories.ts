@@ -31,10 +31,22 @@ Basic.args = {
   selectOnMobile: false,
 }
 Basic.parameters = {
-  // viewport: {
-  //   defaultViewport: 'small',
-  // },
   ...component.sourceCode(Basic),
+  controls: { exclude: ['clickable'] },
+}
+
+export const Vertical = Basic.bind({})
+Vertical.args = {
+  interface: 'tabs',
+  value: 'tab-b',
+  border: true,
+  fullwidth: true,
+  expanded: false,
+  vertical: true,
+  selectOnMobile: false,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
   controls: { exclude: ['clickable'] },
 }
 
@@ -42,7 +54,7 @@ export const Header = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-tabs v-bind="args" v-model="args.value">
- 
+
   <bal-tab-item value="tab-e" label="Tab E" icon="nav-go-down">Content of Tab E</bal-tab-item>
   <bal-tab-item value="tab-f" label="Tab F" icon="nav-go-down">Content of Tab F</bal-tab-item>
 </bal-tabs>`,
