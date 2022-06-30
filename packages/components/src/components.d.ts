@@ -1707,6 +1707,10 @@ export namespace Components {
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
+        /**
+          * Defines size of the stage
+         */
+        "size": Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
@@ -4605,6 +4609,10 @@ declare namespace LocalJSX {
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
+        /**
+          * Defines size of the stage
+         */
+        "size"?: Props.BalStageSize;
     }
     interface BalStageBackLink {
         /**
