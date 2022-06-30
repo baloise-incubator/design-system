@@ -60,6 +60,10 @@
               margin-bottom: 2.5rem
             +desktop
               margin-bottom: 2rem
+          > div > div:first-of-type > div
+            +widescreen
+              display: flex
+              flex-wrap: wrap
 
           +element(list)
             position: relative
@@ -77,6 +81,11 @@
                 left: 0
                 right: 0
 
+            +modifier(context-default)
+              +widescreen
+                width: calc(50% - 30px)
+                &:nth-child(odd)
+                  margin-right: 60px
 
       +element(buttons)
         display: flex

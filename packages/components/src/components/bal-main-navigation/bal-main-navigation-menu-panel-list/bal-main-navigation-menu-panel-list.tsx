@@ -32,6 +32,7 @@ export class BalMainNavigationMenuPanelList {
         class={{
           'is-block mb-7': true,
           ...navMenuPanelListEl.class(),
+          ...navMenuPanelListEl.modifier(`context-${this.isService ? 'service' : 'default'}`).class(),
         }}
       >
         <bal-card class="m-0" flat color={`${this.isService ? 'grey' : ''}`}>

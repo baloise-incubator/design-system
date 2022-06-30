@@ -34,10 +34,10 @@ export class BalMainNavigationMenuPanel {
           </a>
         )}
         <div class="columns is-multiline">
-          <div class={{ 'column is-full is-6-desktop': true, 'pb-0': this.isTouch }}>
+          <div class={{ 'column is-full is-6-desktop is-two-thirds-widescreen': true, 'py-0': this.isTouch }}>
             <slot name="left"></slot>
           </div>
-          <div class={{ 'column is-full is-6-desktop': true, 'pt-0': this.isTouch }}>
+          <div class={{ 'column is-full is-6-desktop is-one-third-widescreen': true, 'pt-0': this.isTouch }}>
             <slot name="right"></slot>
           </div>
         </div>
