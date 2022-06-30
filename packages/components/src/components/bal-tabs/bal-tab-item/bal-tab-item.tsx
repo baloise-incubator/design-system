@@ -102,18 +102,14 @@ export class TabItem {
     }
   }
 
-  componentWillUpdate() {
+  componentShouldUpdate() {
     if (this.inMainNavigation && this.el.firstElementChild) {
       const parent = this.el.closest('bal-tab-item')
-      const parentNav = this.el.closest('nav')
       const firstChildHeight =
         this.el.firstElementChild.clientHeight && this.isActive
           ? this.el.firstElementChild.clientHeight.toString(10)
           : '0'
       !!(firstChildHeight && parent) && parent.setAttribute('style', `height:${firstChildHeight}px`)
-      !!parentNav && this.isActive
-        ? parentNav.classList.add('active-navbar')
-        : !!parentNav && parentNav.classList.remove('active-navbar')
     }
   }
 

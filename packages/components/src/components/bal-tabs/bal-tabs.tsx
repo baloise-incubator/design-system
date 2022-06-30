@@ -189,15 +189,25 @@ export class Tabs {
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
           await this.select(tab)
+          this.interface === 'header' && this.setActiveNav(true, event)
         } else {
           if (this.interface === 'header') {
             if (tab.value === this.value) {
               this.value = ''
               this.balChange.emit(this.value)
+              this.setActiveNav(false, event)
             }
           }
         }
       }
+    }
+  }
+
+  private setActiveNav(active: boolean, event: MouseEvent | CustomEvent) {
+    const target = event.target as HTMLElement
+    const parentNav = target ? target.closest('nav') : null
+    if (!!parentNav) {
+      active ? parentNav.classList.add('active-navbar') : parentNav.classList.remove('active-navbar')
     }
   }
 
