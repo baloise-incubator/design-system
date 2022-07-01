@@ -10,41 +10,64 @@
     display: block
     flex: 1
     width: 100%
-  +modifier(context-header)
-    .bal-tabs__tabs
-      > ul
-        width: 100%
-    .bal-tabs__tabs__item
-      margin-right: 2rem
-      &:last-child
-        margin-right: 0
-    bal-tab-item
-      position: absolute
-      top: 100%
-      left: 0
-      right: 0
-      bottom: auto
-      width: 100%
-      box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1)
-      pointer-events: none
-      height: 0
-      transition: height .8s ease-in-out, border-radius .8s ease-in-out
-      background-color: lightblue
-      transform-origin: top center
-      border-radius: 12px
-      > *
-        width: 100%
-        padding: 15px 48px
-        opacity: 0
-        transition: opacity .4s ease-in-out
-      //TODO add large-desktop viewport
-      &.bal-tab-item--active-tab
-        pointer-events: auto
-        border-top-left-radius: 0
-        border-top-right-radius: 0
-        > *
-          opacity: 1
-          transition: opacity .6s .4s ease-in-out
+  //+modifier(context-header)
+  //MOVE TO MAIN NAVIGATION CSS
+  //  .bal-tabs__tabs
+  //    > ul
+  //      width: 100%
+  //  .bal-tabs__tabs__item
+  //    margin-right: 2rem
+  //    &:last-child
+  //      margin-right: 0
+  //  bal-tab-item
+  //    position: absolute
+  //    top: 100%
+  //    left: 0
+  //    right: 0
+  //    bottom: auto
+  //    width: 100%
+  //    pointer-events: none
+  //    height: 0
+  //    transition: height .8s ease-in-out, border-radius .8s ease-in-out
+  //    background-color: var(--bal-color-white)
+  //    transform-origin: top center
+  //    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+  //    z-index: -1000
+  //    +widescreen
+  //      z-index: 1000
+  //      border-radius: 12px
+  //
+  //      &::before
+  //        content: ''
+  //        display: block
+  //        opacity: 0
+  //        box-shadow: none
+  //        height: 1px
+  //        background-color: var(--bal-color-grey-3)
+  //        top: 0
+  //        left: 12px
+  //        width: calc(100% - 24px)
+  //        transition: height .4s .4s ease-in-out, opacity .4s .4s ease-in-out, width .8s ease-in-out, left .8s ease-in-out
+  //    > *
+  //      width: 100%
+  //      padding: 1rem 3rem
+  //      opacity: 0
+  //      transition: opacity .4s ease-in-out
+  //    //TODO add large-desktop viewport
+  //    &.bal-tab-item--active-tab
+  //      pointer-events: auto
+  //      border-top-left-radius: 0
+  //      border-top-right-radius: 0
+  //      +widescreen
+  //        &::before
+  //          opacity: 1
+  //          height: 1px
+  //          width: 100%
+  //          left: 0
+  //          transition: opacity .4s ease-in-out, height .4s .2s ease-in-out, width .4s ease-in-out, left .4s ease-in-out
+  //      > *
+  //        opacity: 1
+  //        transition: opacity .6s .4s ease-in-out
   +element(tabs)
     +overflow-touch
     +unselectable
@@ -154,6 +177,7 @@
           gap: 7px
           padding-left: 0
           padding-right: 0
+          line-height: 2rem
           +widescreen
             gap: 11px
             padding-top: 1.75rem

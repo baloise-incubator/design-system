@@ -123,6 +123,15 @@ export class Tabs {
     }
   }
 
+  handleOutsideClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.contains(this.el) && this.interface === 'header') {
+      this.value = ''
+      const nav = this.el.closest('nav')
+      !!nav && nav.classList.remove('active-navbar')
+    }
+  }
+
   componentDidLoad() {
     this.didInit = true
     let value = this.value
@@ -135,6 +144,7 @@ export class Tabs {
 
     this.value = value
     this.valueChanged(value, this.value)
+    document.addEventListener('click', this.handleOutsideClick)
   }
 
   componentDidRender() {
