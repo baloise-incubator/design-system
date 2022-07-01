@@ -92,6 +92,7 @@ export namespace Props {
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'header' | 'mainnav'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
+  export type BalTabsVertical = boolean | 'mobile' | 'tablet'
 
   export type BalTagColor =
     | 'blue'
@@ -108,7 +109,7 @@ export namespace Props {
     | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
 
-  export type BalTextSize = 'small' | 'lead' | ''
+  export type BalTextSize = 'small' | 'lead' | 'block' | ''
   export type BalTextSpace = 'none' | 'bottom' | 'top' | 'all' | ''
   export type BalTextColor =
     | 'white'
