@@ -65,7 +65,7 @@ export const Basic = args => ({
   <bal-main-navigation-meta-bar>
     <bal-main-navigation-actions slot="actions">
       <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-      <bal-popover v-model="isActive">
+      <bal-popover>
         <bal-button class="is-hidden-touch" bal-popover-trigger color="light" inverted size="small" icon="account" @click="toggle()">
           <span>Login</span>
         </bal-button>
@@ -172,26 +172,13 @@ export const Basic = args => ({
       </bal-main-navigation-menu-content>
       <bal-main-navigation-menu-buttons>
         <bal-button href="tel://00800 24 800 800" square inverted icon="call"></bal-button>
-        <bal-popover>
+        <bal-popover v-model="isActive">
           <bal-button bal-popover-trigger square inverted size="small" icon="web" @click="toggle()"></bal-button>
-          <bal-popover-content class="p-2">
-            <bal-list border>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>English</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>Français</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>Italiano</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-            </bal-list>
+          <bal-popover-content style="inset: 8px auto auto 0!important;" class="p-2">
+            <bal-heading class="is-flex is-justify-content-center" level="h4">Sprache wählen</bal-heading>
+            <bal-button class="mb-2" expanded color="light">English</bal-button>
+            <bal-button class="mb-2" expanded color="light">Deutsch</bal-button>
+            <bal-button class="mb-2" expanded color="light">Français</bal-button>
           </bal-popover-content>
         </bal-popover>
         <bal-button square inverted icon="location"></bal-button>
@@ -305,5 +292,82 @@ MenuPanel.args = {}
 MenuPanel.parameters = {
   layout: 'fullscreen',
   ...component.sourceCode(MenuPanel),
+  controls: { exclude: excludedControls },
+}
+
+export const LoginPanel = args => ({
+  components: {
+    ...component.components,
+  },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<div class="columns">
+    <div class="column is-full is-6-desktop">
+      <bal-card class="m-4">
+        <bal-card-content>
+          <bal-tabs slot="account" border fullwidth interface="tabs" value="tab-a">
+            <bal-tab-item value="tab-a" label="myBaloise">
+              <bal-heading level="h4">Bei myBaloise anmelden</bal-heading>
+              <bal-field>
+                <bal-field-label>E-Mail Address</bal-field-label>
+                <bal-field-control :loading="args.loading">
+                    <bal-input placeholder="Enter your e-mail" type="email"></bal-input>
+                </bal-field-control>
+              </bal-field>
+              <bal-field>
+                <bal-field-label>Password</bal-field-label>
+                <bal-field-control :loading="args.loading">
+                    <bal-input placeholder="Enter your password" type="password"></bal-input>
+                </bal-field-control>
+              </bal-field>
+              <bal-button expanded>Login</bal-button>
+              <bal-button expanded flat color="link">Passwort vergessen?</bal-button>
+              <bal-button expanded flat color="link">Neuen Account erstellen</bal-button>
+            </bal-tab-item>
+            <bal-tab-item value="tab-b" label="E-Banking">
+
+            </bal-tab-item>
+          </bal-tabs>
+        </bal-card-content>
+      </bal-card>
+    </div>
+  </div>`,
+})
+LoginPanel.args = {}
+LoginPanel.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(LoginPanel),
+  controls: { exclude: excludedControls },
+}
+
+export const LanguagePanel = args => ({
+  components: {
+    ...component.components,
+  },
+  setup: () => {
+    return {
+      args,
+    }
+  },
+  template: `<div class="columns">
+    <div class="column is-full is-6-desktop">
+      <bal-card class="m-4">
+        <bal-card-content>
+          <bal-heading class="is-flex is-justify-content-center" level="h4">Sprache wählen</bal-heading>
+          <bal-button class="mb-2" expanded color="light">English</bal-button>
+          <bal-button class="mb-2" expanded color="light">Deutsch</bal-button>
+          <bal-button class="mb-2" expanded color="light">Français</bal-button>
+        </bal-card-content>
+      </bal-card>
+    </div>
+  </div>`,
+})
+LanguagePanel.args = {}
+LanguagePanel.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(LanguagePanel),
   controls: { exclude: excludedControls },
 }
