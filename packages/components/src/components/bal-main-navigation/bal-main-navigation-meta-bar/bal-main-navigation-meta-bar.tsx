@@ -12,11 +12,6 @@ export class MainNavigationMetaBar implements ComponentInterface {
    */
   @Prop() logoPath = '/'
 
-  /**
-   * TODO: describe
-   */
-  @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
-
   @State() isMenuActive = false
 
   /**
@@ -60,14 +55,7 @@ export class MainNavigationMetaBar implements ComponentInterface {
           ...metaBarEl.class(),
         }}
       >
-        <nav
-          role="navigation"
-          aria-label="main navigation"
-          class={{
-            container: true,
-            [`is-${this.container}`]: this.container !== '',
-          }}
-        >
+        <nav role="navigation" aria-label="main navigation">
           <a
             class={{ 'is-hidden-desktop': true }}
             href={this.logoPath}

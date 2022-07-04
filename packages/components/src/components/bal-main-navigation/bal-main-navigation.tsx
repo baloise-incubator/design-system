@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -6,16 +6,6 @@ import { BEM } from '../../utils/bem'
 })
 export class MainNavigation implements ComponentInterface {
   @Element() el!: HTMLElement
-
-  /**
-   * Link of the logo
-   */
-  @Prop() logoPath = '/'
-
-  /**
-   * TODO: describe
-   */
-  @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
 
   render() {
     const mainNavigationEl = BEM.block('mainnav')

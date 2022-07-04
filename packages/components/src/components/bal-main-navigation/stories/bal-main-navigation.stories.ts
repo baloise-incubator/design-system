@@ -45,6 +45,15 @@ export const Basic = args => ({
   setup: () => {
     const isActive = ref(true)
     const myActiveTab = ref('tab-a')
+    const modal = ref()
+
+    function openModal() {
+      modal.value?.open()
+    }
+
+    // function closeModal() {
+    //   modal.value?.$el.close()
+    // }
 
     const toggle = () => {
       isActive.value = !isActive.value
@@ -57,15 +66,18 @@ export const Basic = args => ({
     return {
       args,
       isActive,
-      toggle,
       myActiveTab,
+      modal,
+      toggle,
+      openModal,
+      // closeModal,
     }
   },
   template: `<bal-main-navigation v-bind="args">
   <bal-main-navigation-meta-bar>
     <bal-main-navigation-actions slot="actions">
       <bal-button square size="small" color="light" inverted icon="search"></bal-button>
-      <bal-popover>
+      <bal-popover v-model="isActive">
         <bal-button class="is-hidden-touch" bal-popover-trigger color="light" inverted size="small" icon="account" @click="toggle()">
           <span>Login</span>
         </bal-button>
@@ -87,18 +99,18 @@ export const Basic = args => ({
     </bal-main-navigation-links>
     <bal-main-navigation-menu slot="menu">
       <bal-main-navigation-menu-content>
-        <bal-list class="px-4" border meta-nav-accordion size="large">
+        <bal-list border meta-nav-accordion size="large">
           <bal-list-item accordion>
             <bal-list-item-accordion-head>
               <bal-list-item-content>
-                  <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                  <bal-list-item-title>Privatkunden</bal-list-item-title>
               </bal-list-item-content>
             </bal-list-item-accordion-head>
             <bal-list-item-accordion-body>
               <bal-list-item accordion sub-accordion-item>
                 <bal-list-item-accordion-head>
                   <bal-list-item-content>
-                      <bal-list-item-title>Accordion List Item</bal-list-item-title>
+                      <bal-list-item-title>Versichern</bal-list-item-title>
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
                 <bal-list-item-accordion-body>
@@ -153,13 +165,64 @@ export const Basic = args => ({
                   </bal-main-navigation-menu-panel>
                 </bal-list-item-accordion-body>
               </bal-list-item>
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                      <bal-list-item-title>Sparen, Zahlen & Finanzieren</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+              </bal-list-item>
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                      <bal-list-item-title>Anlegen & Vorsorgen</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+              </bal-list-item>
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                      <bal-list-item-title>Kontakt & Services</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+              </bal-list-item>
+              <bal-list-item accordion sub-accordion-item>
+                <bal-list-item-accordion-head>
+                  <bal-list-item-content>
+                      <bal-list-item-title>Magazin</bal-list-item-title>
+                  </bal-list-item-content>
+                </bal-list-item-accordion-head>
+              </bal-list-item>
             </bal-list-item-accordion-body>
           </bal-list-item>
           <bal-list-item accordion>
             <bal-list-item-accordion-head>
               <bal-list-item-content>
-                <bal-list-item-title>Accordion List Item</bal-list-item-title>
-                <bal-list-item-subtitle>With subtitle</bal-list-item-subtitle>
+                <bal-list-item-title>Unternehmen</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item-accordion-head>
+            <bal-list-item-accordion-body>
+              <p class="pb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </bal-list-item-accordion-body>
+          </bal-list-item>
+          <bal-list-item accordion>
+            <bal-list-item-accordion-head>
+              <bal-list-item-content>
+                <bal-list-item-title>Institutionelle Anleger</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item-accordion-head>
+            <bal-list-item-accordion-body>
+              <p class="pb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </bal-list-item-accordion-body>
+          </bal-list-item>
+          <bal-list-item accordion>
+            <bal-list-item-accordion-head>
+              <bal-list-item-content>
+                <bal-list-item-title>Über uns</bal-list-item-title>
               </bal-list-item-content>
             </bal-list-item-accordion-head>
             <bal-list-item-accordion-body>
@@ -172,15 +235,25 @@ export const Basic = args => ({
       </bal-main-navigation-menu-content>
       <bal-main-navigation-menu-buttons>
         <bal-button href="tel://00800 24 800 800" square inverted icon="call"></bal-button>
-        <bal-popover v-model="isActive">
-          <bal-button bal-popover-trigger square inverted size="small" icon="web" @click="toggle()"></bal-button>
-          <bal-popover-content style="inset: 8px auto auto 0!important;" class="p-2">
+<!--        <bal-popover>-->
+<!--          <bal-button bal-popover-trigger square inverted size="small" icon="web" @click="toggle()"></bal-button>-->
+<!--          <bal-popover-content style="inset: 8px auto auto 0!important;" class="p-2">-->
+<!--            <bal-heading class="is-flex is-justify-content-center" level="h4">Sprache wählen</bal-heading>-->
+<!--            <bal-button class="mb-2" expanded color="light">English</bal-button>-->
+<!--            <bal-button class="mb-2" expanded color="light">Deutsch</bal-button>-->
+<!--            <bal-button class="mb-2" expanded color="light">Français</bal-button>-->
+<!--          </bal-popover-content>-->
+<!--        </bal-popover>-->
+        <bal-button square inverted size="small" icon="web" @click="openModal()"></bal-button>
+        <bal-modal ref="modal">
+          <bal-modal-header>Modal Title</bal-modal-header>
+          <bal-modal-body>
             <bal-heading class="is-flex is-justify-content-center" level="h4">Sprache wählen</bal-heading>
             <bal-button class="mb-2" expanded color="light">English</bal-button>
             <bal-button class="mb-2" expanded color="light">Deutsch</bal-button>
             <bal-button class="mb-2" expanded color="light">Français</bal-button>
-          </bal-popover-content>
-        </bal-popover>
+          </bal-modal-body>
+        </bal-modal>
         <bal-button square inverted icon="location"></bal-button>
       </bal-main-navigation-menu-buttons>
     </bal-main-navigation-menu>

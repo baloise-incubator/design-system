@@ -1141,14 +1141,6 @@ export namespace Components {
         "size": Props.BalLogoSize;
     }
     interface BalMainNavigation {
-        /**
-          * TODO: describe
-         */
-        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        /**
-          * Link of the logo
-         */
-        "logoPath": string;
     }
     interface BalMainNavigationActions {
     }
@@ -1174,10 +1166,6 @@ export namespace Components {
         "href"?: string;
     }
     interface BalMainNavigationMetaBar {
-        /**
-          * TODO: describe
-         */
-        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
           * Link of the logo
          */
@@ -4243,14 +4231,6 @@ declare namespace LocalJSX {
         "size"?: Props.BalLogoSize;
     }
     interface BalMainNavigation {
-        /**
-          * TODO: describe
-         */
-        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
-        /**
-          * Link of the logo
-         */
-        "logoPath"?: string;
     }
     interface BalMainNavigationActions {
     }
@@ -4275,10 +4255,6 @@ declare namespace LocalJSX {
         "href"?: string;
     }
     interface BalMainNavigationMetaBar {
-        /**
-          * TODO: describe
-         */
-        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
           * Link of the logo
          */

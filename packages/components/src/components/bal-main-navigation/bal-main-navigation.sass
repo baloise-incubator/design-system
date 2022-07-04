@@ -17,6 +17,15 @@
       height: 100%
       gap: .5rem
       align-items: center
+      margin: 0 auto
+      padding: 0 1rem
+
+      +tablet
+        padding: 0 48px
+      +desktop
+        padding: 0 48.5px
+      +widescreen
+        padding: 0 120px
 
     +element(actions)
       display: flex
@@ -51,7 +60,11 @@
         gap: 1rem
 
       +element(content)
+        display: block
         padding: 0 1rem
+
+        +tablet
+          padding: 0 3rem
 
         +element(panel)
           > a
@@ -107,6 +120,16 @@
           +desktop
             flex-shrink: 0
             align-items: center
+
+        > bal-modal > div.bal-modal__container > div.bal-modal__content
+          position: absolute
+
+          +desktop
+            right: 48.5px
+
+          +widescreen
+            right: 120px
+
   +element(mainbar)
     +unselectable
     display: block
