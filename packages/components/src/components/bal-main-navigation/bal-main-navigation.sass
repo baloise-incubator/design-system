@@ -1,4 +1,12 @@
 +block(mainnav)
+  +desktop
+    position: fixed
+    top: 0
+    left: 0
+    transition: transform .8s ease-in-out
+    width: 100vw
+  +modifier(translated)
+    transform: translateY(-48px)
   +element(metabar)
     +unselectable
     position: relative
@@ -31,10 +39,13 @@
       +tablet
         padding: 0 48px
       +desktop
-        padding: 0 48.5px
+        //padding: 0 48.5px
+        width: calc(100vw - (96px - 2rem))
+        padding: 0
       +widescreen
-        padding: 0 120px
-
+        //padding: 0 120px
+        padding: 0
+        width: calc(100vw - (208px + 2rem))
     +element(actions)
       display: flex
       flex-shrink: 0
@@ -42,7 +53,8 @@
       align-items: center
       margin-left: auto
       gap: .5rem
-
+      +desktop
+        padding-right: 1rem
     +element(menu)
       position: static
       display: none
@@ -52,7 +64,6 @@
           position: fixed
           display: block
           background: var(--bal-color-white)
-
       +touch
         overflow-y: auto
         flex-direction: column-reverse
@@ -168,6 +179,9 @@
         &.active-navbar
           border-bottom-left-radius: 0
           border-bottom-right-radius: 0
+        a
+          padding-left: .5rem
+          padding-right: .5rem
     +fullhd
       margin: 1.5rem auto 0
       width: calc(100vw - 240px)

@@ -15,64 +15,27 @@ export class MainNavigation implements ComponentInterface {
   private previousY = 0
   private scrolling = false
 
-  @Listen('scroll', { target: 'window' })
+  @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
     this.scrolling = true
   }
 
   connectedCallback() {
-    const metaNav = this.el.querySelector('bal-main-navigation-meta-bar') as HTMLBalMainNavigationMetaBarElement
-    const mainNav = this.el.querySelector('bal-main-navigation-second-bar') as HTMLBalMainNavigationSecondBarElement
-    if (!!metaNav && !!mainNav) {
-      setInterval(() => {
-        if (this.scrolling) {
-          this.scrolling = false
-          this.toggleNavPosition(metaNav, mainNav)
-        }
-      }, 300)
-    }
+    setInterval(() => {
+      if (this.scrolling) {
+        this.scrolling = false
+        this.translateMainNav()
+      }
+    }, 300)
   }
 
-  toggleNavPosition(metaNav: HTMLBalMainNavigationMetaBarElement, mainNav: HTMLBalMainNavigationSecondBarElement) {
-    const bottomOfMetaNav = metaNav.clientHeight
-    const leftOfMainNav = mainNav.offsetLeft
-    const isAtTop = window.scrollY < bottomOfMetaNav
+  translateMainNav() {
     const scrollingDown = window.scrollY > this.previousY
-    scrollingDown && this.scrollDown(metaNav, mainNav, isAtTop, leftOfMainNav)
-    !scrollingDown && this.scrollUp(metaNav, mainNav, bottomOfMetaNav)
+    scrollingDown
+      ? this.el.classList.add('bal-mainnav--translated')
+      : this.el.classList.remove('bal-mainnav--translated')
+
     this.previousY = window.scrollY
-  }
-
-  scrollDown(
-    metaNav: HTMLBalMainNavigationMetaBarElement,
-    mainNav: HTMLBalMainNavigationSecondBarElement,
-    onTop: boolean,
-    leftOfMainNav: number,
-  ) {
-    metaNav.classList.add('bal-mainnav__metabar--translated')
-    if (onTop) {
-      setTimeout(() => {
-        this.addScrollDownStyles(mainNav, leftOfMainNav)
-      }, 600)
-    } else {
-      this.addScrollDownStyles(mainNav, leftOfMainNav)
-    }
-  }
-
-  addScrollDownStyles(mainNav: HTMLBalMainNavigationSecondBarElement, leftOfMainNav: number) {
-    mainNav.classList.add('bal-mainnav__mainbar--fixed')
-    mainNav.style.left = `${leftOfMainNav}px`
-    mainNav.style.top = '0px'
-  }
-
-  scrollUp(
-    metaNav: HTMLBalMainNavigationMetaBarElement,
-    mainNav: HTMLBalMainNavigationSecondBarElement,
-    bottomOfMetaNav: number,
-  ) {
-    metaNav.classList.remove('bal-mainnav__metabar--translated')
-    metaNav.classList.add('bal-mainnav__metabar--fixed')
-    mainNav.style.top = `${bottomOfMetaNav}px`
   }
 
   render() {
