@@ -6,12 +6,20 @@
     background: var(--bal-color-primary-inverted)
     height: 64px
     max-height: 64px
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+    transition: transform .8s ease-in-out
     +desktop
       background: var(--bal-color-primary)
       height: 48px
       max-height: 48px
       box-shadow: none
+    +modifier(translated)
+      transform: translateY(-100%)
+    +modifier(fixed)
+      position: fixed
+      left: 0
+      top: 0
+      width: 100vw
     nav
       display: flex
       height: 100%
@@ -135,6 +143,7 @@
     display: block
     height: auto
     z-index: 1000
+    transition: top .8s ease-in-out
     +until-widescreen
       width: 100vw
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
@@ -151,6 +160,7 @@
         max-width: none
     +widescreen
       margin: 1rem auto 0
+      width: calc(100vw - 160px)
       nav
         border-radius: 12px
         transition: border-radius .8s ease-in-out
@@ -158,6 +168,13 @@
         &.active-navbar
           border-bottom-left-radius: 0
           border-bottom-right-radius: 0
+    +fullhd
+      margin: 1.5rem auto 0
+      width: calc(100vw - 240px)
+      max-width: 1920px
+    +modifier(fixed)
+      position: fixed
+      top: 0
     +block(tabs)
       +modifier(context-header)
         .bal-tabs__tabs
@@ -176,7 +193,7 @@
           width: 100%
           pointer-events: none
           height: 0
-          transition: height .8s ease-in-out, border-radius .8s ease-in-out
+          transition: border-radius .8s ease-in-out
           background-color: var(--bal-color-white)
           transform-origin: top center
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
@@ -208,6 +225,7 @@
             pointer-events: auto
             border-top-left-radius: 0
             border-top-right-radius: 0
+            transition: border-radius .8s ease-in-out
             +widescreen
               &::before
                 opacity: 1

@@ -1141,6 +1141,10 @@ export namespace Components {
         "size": Props.BalLogoSize;
     }
     interface BalMainNavigation {
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
     }
     interface BalMainNavigationActions {
     }
@@ -1172,10 +1176,6 @@ export namespace Components {
         "logoPath": string;
     }
     interface BalMainNavigationSecondBar {
-        /**
-          * TODO: describe
-         */
-        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
           * Link of the logo
          */
@@ -4231,6 +4231,10 @@ declare namespace LocalJSX {
         "size"?: Props.BalLogoSize;
     }
     interface BalMainNavigation {
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
     }
     interface BalMainNavigationActions {
     }
@@ -4265,10 +4269,6 @@ declare namespace LocalJSX {
         "onBalNavigate"?: (event: BalMainNavigationMetaBarCustomEvent<MouseEvent>) => void;
     }
     interface BalMainNavigationSecondBar {
-        /**
-          * TODO: describe
-         */
-        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
           * Link of the logo
          */
