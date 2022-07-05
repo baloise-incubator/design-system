@@ -69,7 +69,7 @@ export const Basic = args => ({
     }
   },
   template: `<bal-main-navigation v-bind="args">
-  <bal-main-navigation-meta-bar aria-label="Meta Navigation">
+  <bal-main-navigation-meta-bar>
     <bal-main-navigation-actions slot="actions">
       <bal-button square size="small" color="light" inverted icon="search"></bal-button>
       <bal-popover v-model="isActive">
@@ -284,7 +284,7 @@ export const Basic = args => ({
       </bal-main-navigation-menu-buttons>
     </bal-main-navigation-menu>
   </bal-main-navigation-meta-bar>
-  <bal-main-navigation-second-bar aria-label="Main Navigation">
+  <bal-main-navigation-second-bar>
     <div slot="second-tabs">
         <bal-tabs interface="header">
           <bal-tab-item value="tab-g" label="LONG LONG LONG very long Tab G" icon="nav-go-down" inMainNavigation>

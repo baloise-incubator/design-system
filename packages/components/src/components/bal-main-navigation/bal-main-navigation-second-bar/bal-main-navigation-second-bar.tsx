@@ -12,7 +12,7 @@ export class MainNavigationSecondBar implements ComponentInterface {
    */
   @Prop() logoPath = '/'
 
-  @Prop() ariaLabel!: string
+  // @Prop() ariaLabel!: string
 
   /**
    * Emitted when the link element has clicked
@@ -29,7 +29,7 @@ export class MainNavigationSecondBar implements ComponentInterface {
           'is-hidden-touch': true,
         }}
       >
-        <nav role="navigation" aria-label={this.ariaLabel}>
+        <nav role="navigation" aria-label="TODO i18n main nav">
           <a class="py-4" href={this.logoPath} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
             <bal-logo size="normal" color="blue" />
           </a>

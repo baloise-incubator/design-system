@@ -12,7 +12,7 @@ export class MainNavigationMetaBar implements ComponentInterface {
    */
   @Prop() logoPath = '/'
 
-  @Prop() ariaLabel!: string
+  // @Prop() ariaLabel!: string
 
   @State() isMenuActive = false
 
@@ -57,7 +57,7 @@ export class MainNavigationMetaBar implements ComponentInterface {
           ...metaBarEl.class(),
         }}
       >
-        <nav role="navigation" aria-label={this.ariaLabel}>
+        <nav role="navigation" aria-label="TODO i18n meta nav">
           <a
             class={{ 'is-hidden-desktop': true }}
             href={this.logoPath}
