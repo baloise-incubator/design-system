@@ -116,7 +116,7 @@ export class TabItem {
   render() {
     return (
       <Host class={this.isActive && this.inMainNavigation ? 'bal-tab-item--active-tab' : ''}>
-        {this.inMainNavigation && (
+        {this.inMainNavigation && !this.href && (
           <div>
             <slot />
           </div>
