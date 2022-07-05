@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
+import { isPlatform } from '../../../utils/platform'
 
 @Component({
   tag: 'bal-main-navigation',
@@ -17,16 +18,20 @@ export class MainNavigation implements ComponentInterface {
 
   @Listen('scroll', { target: 'window', passive: true })
   handleScroll() {
-    this.scrolling = true
+    if (!isPlatform('touch')) {
+      this.scrolling = true
+    }
   }
 
   connectedCallback() {
-    setInterval(() => {
-      if (this.scrolling) {
-        this.scrolling = false
-        this.translateMainNav()
-      }
-    }, 300)
+    if (!isPlatform('touch')) {
+      setInterval(() => {
+        if (this.scrolling) {
+          this.scrolling = false
+          this.translateMainNav()
+        }
+      }, 300)
+    }
   }
 
   translateMainNav() {
