@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -6,6 +6,37 @@ import { BEM } from '../../utils/bem'
 })
 export class MainNavigation implements ComponentInterface {
   @Element() el!: HTMLElement
+
+  /**
+   * Link of the logo
+   */
+  @Prop() logoPath = '/'
+
+  private previousY = 0
+  private scrolling = false
+
+  @Listen('scroll', { target: 'window', passive: true })
+  handleScroll() {
+    this.scrolling = true
+  }
+
+  connectedCallback() {
+    setInterval(() => {
+      if (this.scrolling) {
+        this.scrolling = false
+        this.translateMainNav()
+      }
+    }, 300)
+  }
+
+  translateMainNav() {
+    const scrollingDown = window.scrollY > this.previousY
+    scrollingDown
+      ? this.el.classList.add('bal-mainnav--translated')
+      : this.el.classList.remove('bal-mainnav--translated')
+
+    this.previousY = window.scrollY
+  }
 
   render() {
     const mainNavigationEl = BEM.block('mainnav')
