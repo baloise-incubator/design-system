@@ -1,6 +1,6 @@
 import { byTestId } from '../../../../testing/src'
 
-describe.skip('Visual Regression Tests', () => {
+describe('Visual Regression Tests', () => {
   describe('Tag', () => {
     before(() => cy.pageVisual('/components/bal-tag/test/bal-tag.visual.html'))
 

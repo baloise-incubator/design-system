@@ -46,7 +46,7 @@
     "build:vite": "baloiseStencilViteFix",
     "================= DEVELOPMENT =================": "================================",
     "generate": "node ./.build/stencil/generate",
-    "dev": "npm run build:meta && npm run dev:build && concurrently --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:watch\" \"npm:dev:docs\"",
+    "dev": "npm run build:meta && npm run dev:build && concurrently -k --names \"🧩_STENCIL__,📕_STORYBOOK\" -c \"blue,magenta\" \"npm:dev:watch\" \"npm:dev:docs\"",
     "dev:build": "stencil build --config stencil.dev.config.ts",
     "dev:watch": "stencil build --config stencil.dev.config.ts --watch",
     "dev:docs": "start-storybook -p 6006 --quiet",

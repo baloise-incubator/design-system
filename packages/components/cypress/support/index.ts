@@ -32,7 +32,7 @@ declare global {
       /**
        * Opens the page on the given url, waits until the component has loaded
        */
-      visualPage(url: string): Chainable<Element>
+      pageVisual(url: string): Chainable<Element>
       /**
        * Runs the accessibility checking on the given state/page.
        */

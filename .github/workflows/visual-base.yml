@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  BuildAndTest:
+  VisualBase:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -28,6 +28,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Pre-Build
+        run: npm run visual:build:pre
 
       - uses: cypress-io/github-action@v2
         with:
