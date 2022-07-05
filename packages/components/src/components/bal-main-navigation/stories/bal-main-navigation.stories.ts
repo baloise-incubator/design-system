@@ -166,6 +166,37 @@ export const Basic = args => ({
                       <bal-list-item-title>Sparen, Zahlen & Finanzieren</bal-list-item-title>
                   </bal-list-item-content>
                 </bal-list-item-accordion-head>
+                <bal-list-item-accordion-body>
+                  <bal-main-navigation-menu-panel link-href="/" link-name="Test2">
+                    <div slot="left">
+                      <bal-main-navigation-menu-panel-list headline="Test" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Haushaltsversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Haftpflicht</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Einzel Gegenstände vom Handy bis zum e-Bike</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Rechtsschutz</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                      <bal-main-navigation-menu-panel-list headline="ReTest" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                    </div>
+                    <div slot="right">
+                      <bal-main-navigation-menu-panel-list is-service headline="Lorem" href="https://google.com">
+                        <div slot="links">
+                          <bal-main-navigation-menu-panel-list-item href="/">Gebäudeversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Erdbebenversicherung</bal-main-navigation-menu-panel-list-item>
+                          <bal-main-navigation-menu-panel-list-item href="/">Bauversicherung</bal-main-navigation-menu-panel-list-item>
+                        </div>
+                      </bal-main-navigation-menu-panel-list>
+                    </div>
+                  </bal-main-navigation-menu-panel>
+                </bal-list-item-accordion-body>
               </bal-list-item>
               <bal-list-item accordion sub-accordion-item>
                 <bal-list-item-accordion-head>
