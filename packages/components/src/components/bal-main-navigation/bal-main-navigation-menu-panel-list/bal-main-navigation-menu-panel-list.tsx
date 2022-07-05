@@ -38,7 +38,7 @@ export class BalMainNavigationMenuPanelList {
         <bal-card class="m-0" flat color={`${this.isService ? 'grey' : ''}`}>
           <bal-card-content class={{ 'py-0': !this.isService, 'px-0': !this.isMobile && !this.isService }}>
             <a href={this.href}>
-              <bal-heading class="mb-4" level="h5" visual-level="h4" space="none">
+              <bal-heading class="mb-4" level="h5" space="none">
                 {this.headline}
               </bal-heading>
             </a>

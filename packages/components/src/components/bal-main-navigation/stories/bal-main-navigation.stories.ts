@@ -51,10 +51,6 @@ export const Basic = args => ({
       modal.value?.open()
     }
 
-    // function closeModal() {
-    //   modal.value?.$el.close()
-    // }
-
     const toggle = () => {
       isActive.value = !isActive.value
     }
@@ -70,7 +66,6 @@ export const Basic = args => ({
       modal,
       toggle,
       openModal,
-      // closeModal,
     }
   },
   template: `<bal-main-navigation v-bind="args">
@@ -262,7 +257,7 @@ export const Basic = args => ({
     <div slot="second-tabs">
         <bal-tabs interface="header">
           <bal-tab-item value="tab-g" label="LONG LONG LONG very long Tab G" icon="nav-go-down" inMainNavigation>
-            <bal-main-navigation-menu-panel class="p-4" link-href="/" link-name="Alle Versicherungslösungen">
+            <bal-main-navigation-menu-panel link-href="/" link-name="Alle Versicherungslösungen">
               <div slot="left">
                 <bal-main-navigation-menu-panel-list headline="Wohnen & Recht" href="https://google.com">
                   <div slot="links">

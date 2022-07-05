@@ -88,10 +88,14 @@
 }
 
 .bal-list.has-size-large {
+  .bal-list-item:not(.is-in-meta-nav) > a,
+  .bal-list-item:not(.is-in-meta-nav) > div,
+  .bal-list-item:not(.is-in-meta-nav) > button {
+    min-height: 72px;
+  }
   .bal-list-item > a,
   .bal-list-item > div,
   .bal-list-item > button {
-    min-height: 72px;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }

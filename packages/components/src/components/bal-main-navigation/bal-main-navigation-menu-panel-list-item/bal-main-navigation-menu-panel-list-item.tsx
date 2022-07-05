@@ -26,7 +26,7 @@ export class BalMainNavigationMenuPanelListItem {
           ...navMenuPanelListItemEl.class(),
         }}
       >
-        <a class="is-block mb-4" href={this.href}>
+        <a class="is-block mt-2" href={this.href}>
           <slot></slot>
         </a>
       </Host>

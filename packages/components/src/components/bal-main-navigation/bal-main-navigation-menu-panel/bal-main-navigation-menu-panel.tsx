@@ -29,7 +29,7 @@ export class BalMainNavigationMenuPanel {
         }}
       >
         {this.linkHref && (
-          <a class="is-block is-small" href={this.linkHref}>
+          <a class="is-block is-small mt-4" href={this.linkHref}>
             {this.linkName}
           </a>
         )}

@@ -47,6 +47,8 @@ export class ListItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  private isInMetaNav = false
+
   connectedCallback() {
     const accordionHead = this.findAccordionHead()
     if (accordionHead) {
@@ -54,6 +56,7 @@ export class ListItem {
         this.updateState(event.detail),
       )
     }
+    this.isInMetaNav = this.el.closest('bal-list')?.metaNavAccordion ?? false
   }
 
   disconnectedCallback() {
@@ -134,11 +137,10 @@ export class ListItem {
         <Host
           role="listitem"
           class={{
-            'bal-list-item': true,
-            'is-accordion': this.accordion,
+            'bal-list-item is-accordion is-list-item-clickable': true,
             'is-disabled': this.disabled,
-            'is-list-item-clickable': this.accordion,
             'is-sub-accordion-item': this.subAccordionItem,
+            'is-in-meta-nav': this.isInMetaNav,
           }}
         >
           <div>
