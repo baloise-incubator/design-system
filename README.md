@@ -35,4 +35,3 @@ The [documentation](https://design.baloise.dev) is published on now.sh, and is b
 | [Icons](https://design.baloise.dev/design/icons.html#all-icons)                      | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                         |
 | [Fonts](https://design.baloise.dev/design/typography.html)                           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                          |
 | [Testing](https://design.baloise.dev/components/tooling/testing.html)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overridden commands for each component. |
-
