@@ -1170,12 +1170,14 @@ export namespace Components {
         "href"?: string;
     }
     interface BalMainNavigationMetaBar {
+        "ariaLabel": string;
         /**
           * Link of the logo
          */
         "logoPath": string;
     }
     interface BalMainNavigationSecondBar {
+        "ariaLabel": string;
         /**
           * Link of the logo
          */
@@ -4263,6 +4265,7 @@ declare namespace LocalJSX {
         "href"?: string;
     }
     interface BalMainNavigationMetaBar {
+        "ariaLabel": string;
         /**
           * Link of the logo
          */
@@ -4273,6 +4276,7 @@ declare namespace LocalJSX {
         "onBalNavigate"?: (event: BalMainNavigationMetaBarCustomEvent<MouseEvent>) => void;
     }
     interface BalMainNavigationSecondBar {
+        "ariaLabel": string;
         /**
           * Link of the logo
          */

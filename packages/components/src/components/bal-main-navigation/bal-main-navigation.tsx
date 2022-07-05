@@ -1,6 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
-import { isPlatform } from '../../../utils/platform'
+import { isPlatform } from '../../utils/platform'
 
 @Component({
   tag: 'bal-main-navigation',
