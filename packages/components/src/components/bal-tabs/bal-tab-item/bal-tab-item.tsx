@@ -62,7 +62,7 @@ export class TabItem {
   /**
    * Tab icon not available for the steps.
    */
-  @Prop() inMainNavigation?: boolean = false
+  @Prop() inMainNavigation = false
 
   /**
    * Emitted when the link element has clicked
@@ -115,17 +115,18 @@ export class TabItem {
 
   render() {
     return (
-      <Host class={this.isActive && this.inMainNavigation ? 'bal-tab-item--active-tab' : ''}>
-        {this.inMainNavigation && (
+      <Host
+        class={{
+          'bal-tabs-item': !this.inMainNavigation,
+          'bal-tabs-item--active': this.isActive && !this.inMainNavigation,
+          'bal-tab-item--active-tab': this.isActive && this.inMainNavigation,
+        }}
+      >
+        {(this.inMainNavigation && (
           <div>
             <slot />
           </div>
-        )}
-        {!this.inMainNavigation && (
-          <div style={{ display: this.isActive ? 'block' : 'none' }}>
-            <slot />
-          </div>
-        )}
+        )) || <slot />}
       </Host>
     )
   }

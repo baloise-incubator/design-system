@@ -3,6 +3,8 @@
 +block(tabs)
   display: inline-block
   position: static
+  & > .columns
+    width: 100%
   +modifiers(context-meta, context-navbar)
     +desktop
       margin-left: -1rem
@@ -10,64 +12,23 @@
     display: block
     flex: 1
     width: 100%
-  //+modifier(context-header)
-  //MOVE TO MAIN NAVIGATION CSS
-  //  .bal-tabs__tabs
-  //    > ul
-  //      width: 100%
-  //  .bal-tabs__tabs__item
-  //    margin-right: 2rem
-  //    &:last-child
-  //      margin-right: 0
-  //  bal-tab-item
-  //    position: absolute
-  //    top: 100%
-  //    left: 0
-  //    right: 0
-  //    bottom: auto
-  //    width: 100%
-  //    pointer-events: none
-  //    height: 0
-  //    transition: height .8s ease-in-out, border-radius .8s ease-in-out
-  //    background-color: var(--bal-color-white)
-  //    transform-origin: top center
-  //    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
-  //    z-index: -1000
-  //    +widescreen
-  //      z-index: 1000
-  //      border-radius: 12px
-  //
-  //      &::before
-  //        content: ''
-  //        display: block
-  //        opacity: 0
-  //        box-shadow: none
-  //        height: 1px
-  //        background-color: var(--bal-color-grey-3)
-  //        top: 0
-  //        left: 12px
-  //        width: calc(100% - 24px)
-  //        transition: height .4s .4s ease-in-out, opacity .4s .4s ease-in-out, width .8s ease-in-out, left .8s ease-in-out
-  //    > *
-  //      width: 100%
-  //      padding: 1rem 3rem
-  //      opacity: 0
-  //      transition: opacity .4s ease-in-out
-  //    //TODO add large-desktop viewport
-  //    &.bal-tab-item--active-tab
-  //      pointer-events: auto
-  //      border-top-left-radius: 0
-  //      border-top-right-radius: 0
-  //      +widescreen
-  //        &::before
-  //          opacity: 1
-  //          height: 1px
-  //          width: 100%
-  //          left: 0
-  //          transition: opacity .4s ease-in-out, height .4s .2s ease-in-out, width .4s ease-in-out, left .4s ease-in-out
-  //      > *
-  //        opacity: 1
-  //        transition: opacity .6s .4s ease-in-out
+
+  +element(col-items)
+    padding-bottom: 0 !important
+    +modifier(vertical)
+      +tablet
+        padding-bottom: var(--bal-column-gap) !important
+  +element(col-content)
+    padding-top: 0 !important
+    padding-bottom: 0 !important
+    +modifier(vertical)
+      +tablet
+        padding-top: var(--bal-column-gap) !important
+        padding-bottom: var(--bal-column-gap) !important
+    +modifier(full)
+      padding-top: 0 !important
+      padding-bottom: 0 !important
+
   +element(tabs)
     +overflow-touch
     +unselectable
@@ -175,9 +136,8 @@
         +modifier(context-header)
           flex-direction: row-reverse
           gap: 7px
-          padding-left: 0
-          padding-right: 0
           line-height: 2rem
+          padding: .5rem 0
           +widescreen
             gap: 11px
             padding-top: 1.75rem
@@ -241,7 +201,7 @@
         +modifier(context-mainnav)
           +desktop
             height: 100%
-            padding: .75rem 1rem
+            padding: .5rem 1rem
         +modifier(context-meta)
           height: 48px
           font-size: 14px
@@ -309,318 +269,8 @@
           top: 0
           left: 0
 
-// bal-tabs.bal-tabs {
-//   .tabs {
-//     margin: 0 !important;
-//     position: relative;
-
-//     & > ul {
-//       margin: 0;
-//       padding: 0;
-//     }
-
-//     .selected-tab-line {
-//       height: 3px;
-//       bottom: 0;
-//       background: $blue;
-//       position: absolute;
-//       z-index: 1;
-//       border-radius: 10px;
-//     }
-
-//     .line {
-//       width: 100%;
-//       height: 2px;
-//       background: $grey-2;
-//       position: absolute;
-//       bottom: 0;
-//     }
-
-//     & > ul > li {
-//       position: relative;
-//       padding-top: 8px;
-//       padding-bottom: 8px;
-
-//       @include tablet() {
-//         &.is-right {
-//           position: absolute;
-//           right: 40px;
-//         }
-//       }
-
-//       span.bubble {
-//         background: $danger;
-//         height: 8px;
-//         width: 8px;
-//         border-radius: 50%;
-//         position: absolute;
-//         display: block;
-//         top: 12px;
-//         right: 4px;
-//       }
-
-//       & > a {
-//         min-height: 48px !important;
-//         padding: 16px;
-//         line-height: 1.2;
-//         text-decoration: none;
-
-//         color: $text-light;
-//         font-family: $title-family;
-//         font-weight: bold;
-//         font-size: 16px;
-//         line-height: 1.125;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//       }
-
-//       &.is-active > a {
-//         color: $blue;
-//       }
-
-//       & > a:hover {
-//         color: $blue;
-//       }
-
-//       &.is-disabled > a,
-//       &.is-disabled > a:hover {
-//         color: $blue;
-//         cursor: default;
-//         opacity: 0.5;
-//       }
-//     }
-//   }
-//   &.is-ready {
-//     .selected-tab-line {
-//       transition: 0.4s;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation {
-//   .tabs {
-//     & > ul > li {
-//       padding-top: 0;
-//       padding-bottom: 0;
-
-//       &.is-right {
-//         display: none !important;
-//       }
-
-//       span.bubble {
-//         height: 8px;
-//         width: 8px;
-//         top: 12px;
-//         right: 4px;
-//       }
-
-//       & > a {
-//         min-height: 48px;
-//         padding: 16px !important;
-//         font-size: 16px !important;
-//       }
-//     }
-
-//     .bottom-line {
-//       width: 100%;
-//       height: 3px;
-//       border-bottom: 2px solid $grey-2;
-//     }
-//   }
-// }
-
-// bal-tab-item {
-//   display: block;
-//   position: static;
-// }
-
-// @import './bal-o-steps';
-
-// bal-tabs.bal-tabs.is-vertical {
-//   .tabs {
-//     margin: 0 !important;
-//     position: relative;
-
-//     & > ul {
-//       margin: 0;
-//       padding: 0;
-
-//       align-items: center;
-//       border-bottom-color: #b3b6d4;
-//       border-bottom-style: solid;
-//       border-bottom-width: 0;
-//       display: flex;
-//       flex-grow: unset;
-//       flex-shrink: 0;
-//       justify-content: flex-start;
-//       flex-direction: column;
-
-//       li {
-//         padding-top: 0;
-//         padding-bottom: 0;
-
-//         & > a {
-//           min-height: 24px !important;
-//           height: 24px !important;
-//         }
-
-//         bal-badge {
-//           right: 4px !important;
-//           top: 4px !important;
-//         }
-//       }
-//     }
-
-//     .selected-tab-vertical-line {
-//       width: 3px;
-//       left: 0;
-//       background: $blue;
-//       position: absolute;
-//       z-index: 1;
-//       border-radius: 10px;
-//     }
-
-//     .line {
-//       width: 3px;
-//       height: 100%;
-//       background: $grey-2;
-//       position: absolute;
-//       bottom: 0;
-//     }
-//   }
-
-//   &.is-ready {
-//     .selected-tab-vertical-line {
-//       transition: 0.8s;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation.is-vertical {
-//   .tabs {
-//     & > ul > li {
-//       &.is-right {
-//         display: none !important;
-//       }
-
-//       & > a {
-//         min-height: 24px !important;
-//         height: 24px !important;
-//         padding: 16px !important;
-//         font-size: 16px !important;
-//       }
-
-//       bal-badge {
-//         right: 4px !important;
-//         top: 4px !important;
-//       }
-//     }
-
-//     .bottom-line {
-//       width: 100%;
-//       height: 3px;
-//       border-bottom: 2px solid $grey-2;
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-vertical-on-mobile {
-//   @include mobile() {
-//     .tabs {
-//       margin: 0 !important;
-//       position: relative;
-
-//       .selected-tab-line {
-//         display: none !important;
-//       }
-
-//       & > ul {
-//         margin: 0;
-//         padding: 0;
-
-//         align-items: center;
-//         border-bottom-color: #b3b6d4;
-//         border-bottom-style: solid;
-//         border-bottom-width: 0;
-//         display: flex;
-//         flex-grow: unset;
-//         flex-shrink: 0;
-//         justify-content: flex-start;
-//         flex-direction: column;
-
-//         li {
-//           padding-top: 0;
-//           padding-bottom: 0;
-
-//           & > a {
-//             min-height: 24px !important;
-//             height: 24px !important;
-//           }
-
-//           bal-badge {
-//             right: 4px !important;
-//             top: 4px !important;
-//           }
-//         }
-//       }
-
-//       .selected-tab-vertical-line {
-//         width: 3px;
-//         left: 0;
-//         background: $blue;
-//         position: absolute;
-//         z-index: 1;
-//         border-radius: 10px;
-//       }
-
-//       .line {
-//         width: 3px;
-//         height: 100%;
-//         background: $grey-2;
-//         position: absolute;
-//         bottom: 0;
-//       }
-//     }
-
-//     &.is-ready {
-//       .selected-tab-vertical-line {
-//         transition: 0.8s;
-//       }
-//     }
-//   }
-// }
-
-// bal-tabs.bal-tabs.is-sub-navigation.is-vertical-on-mobile {
-//   @include mobile() {
-//     .tabs {
-//       .selected-tab-line {
-//         display: none !important;
-//       }
-
-//       & > ul > li {
-//         &.is-right {
-//           display: none !important;
-//         }
-
-//         & > a {
-//           min-height: 24px !important;
-//           height: 24px !important;
-//           padding: 16px !important;
-//           font-size: 16px !important;
-//         }
-
-//         bal-badge {
-//           right: 4px !important;
-//           top: 4px !important;
-//         }
-//       }
-
-//       .bottom-line {
-//         width: 100%;
-//         height: 3px;
-//         border-bottom: 2px solid $grey-2;
-//       }
-//     }
-//   }
-// }
++block(tabs-item)
+  width: 100%
+  display: none
+  +modifier(active)
+    display: block

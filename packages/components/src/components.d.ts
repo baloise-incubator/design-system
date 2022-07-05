@@ -1829,7 +1829,7 @@ export namespace Components {
         /**
           * Tab icon not available for the steps.
          */
-        "inMainNavigation"?: boolean;
+        "inMainNavigation": boolean;
         /**
           * Label for the tab.
          */
@@ -1900,6 +1900,10 @@ export namespace Components {
           * If `true` tabs are align vertically.
          */
         "vertical": Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize": Props.BalTabsColSize;
     }
     interface BalTag {
         /**
@@ -5021,6 +5025,10 @@ declare namespace LocalJSX {
           * If `true` tabs are align vertically.
          */
         "vertical"?: Props.BalTabsVertical;
+        /**
+          * The col size of the tabs on vertical mode.
+         */
+        "verticalColSize"?: Props.BalTabsColSize;
     }
     interface BalTag {
         /**
