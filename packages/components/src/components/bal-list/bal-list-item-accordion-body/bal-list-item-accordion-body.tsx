@@ -9,7 +9,6 @@ export class ListItemAccordionBody {
   @Element() el!: HTMLElement
 
   @State() contentHeight = '0px'
-  @State() hasParent = false
 
   /**
    * If `true` the body will be open and visible
