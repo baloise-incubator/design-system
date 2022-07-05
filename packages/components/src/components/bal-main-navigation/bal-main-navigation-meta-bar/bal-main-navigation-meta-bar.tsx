@@ -12,6 +12,8 @@ export class MainNavigationMetaBar implements ComponentInterface {
    */
   @Prop() logoPath = '/'
 
+  @Prop() ariaLabel!: string
+
   @State() isMenuActive = false
 
   /**
@@ -55,7 +57,7 @@ export class MainNavigationMetaBar implements ComponentInterface {
           ...metaBarEl.class(),
         }}
       >
-        <nav role="navigation" aria-label="main navigation">
+        <nav role="navigation" aria-label={this.ariaLabel}>
           <a
             class={{ 'is-hidden-desktop': true }}
             href={this.logoPath}
