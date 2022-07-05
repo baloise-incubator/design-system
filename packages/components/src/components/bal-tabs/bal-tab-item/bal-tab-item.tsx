@@ -122,7 +122,7 @@ export class TabItem {
           'bal-tab-item--active-tab': this.isActive && this.inMainNavigation,
         }}
       >
-        {(this.inMainNavigation && (
+        {(this.inMainNavigation && !this.href && (
           <div>
             <slot />
           </div>

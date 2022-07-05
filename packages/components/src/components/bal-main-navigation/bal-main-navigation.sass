@@ -83,10 +83,10 @@
 
       +element(content)
         display: block
-        padding: 0 1rem
+        padding: 0 1rem 64px
 
         +tablet
-          padding: 0 3rem
+          padding: 0 3rem 64px
 
         +element(panel)
           > a
@@ -128,8 +128,10 @@
         gap: .5rem
 
         +touch
-          position: sticky
-          top: 100%
+          position: fixed
+          bottom: 0
+          left: 0
+          width: 100vw
           justify-content: center
           background: var(--bal-color-grey-2)
           padding: 0.5rem
@@ -182,7 +184,7 @@
         &.active-navbar
           border-bottom-left-radius: 0
           border-bottom-right-radius: 0
-        a
+        > a
           padding-left: .5rem
           padding-right: .5rem
     +fullhd
