@@ -37,11 +37,6 @@ export class Stage implements ComponentInterface {
    */
   @Prop() images?: string
 
-  /**
-   * class to set the container width
-   */
-  @Prop() containerClass = 'is-wide'
-
   setImageSrc() {
     const images = this.images?.split(',')
     let srcObj = {}
@@ -99,11 +94,7 @@ export class Stage implements ComponentInterface {
         >
           <slot></slot>
         </section>
-        {this.hasShape && (
-          <div class={`bal-stage-shape container ${this.containerClass}`}>
-            <slot name="shape"></slot>
-          </div>
-        )}
+        {this.hasShape && <slot name="shape"></slot>}
       </Host>
     )
   }

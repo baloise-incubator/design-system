@@ -18,7 +18,9 @@ export const Basic = args => ({
     <bal-heading class="mb-2" space="none">Title</bal-heading>
     <bal-heading space="none" subtitle level="h2" visual-level="h1">Subtitle</bal-heading>
   </bal-stage-body>
-  <bal-shape slot="shape" color="red" variation="1" />
+  <div slot="shape" class="container is-wide">
+    <bal-shape color="red" variation="1" />
+  </div>
 </bal-stage>`,
 })
 Basic.args = {
