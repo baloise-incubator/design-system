@@ -36,15 +36,6 @@
     +modifier(is-yellow)
       .bal-stage-body
         background: var(--bal-color-yellow-3)
-    +modifier(is-inverted)
-      .bal-stage-body
-        h1
-          color: var(--bal-color-white)
-        h2
-          color: var(--bal-color-white)
-        bal-stage-backlink a
-          color: var(--bal-color-white)
-          +fillSvg(var(--bal-color-white))
 
     .bal-stage-back-link a
       display: inline-flex
@@ -56,13 +47,23 @@
       &:hover
         opacity: .5
 
-  .bal-stage-shape
-    bal-shape
-      position: absolute
-      bottom: 0
-      right: 1rem
-      +desktop
-        right: 2rem
+    +modifier(is-inverted)
+      .bal-stage-body
+        h1
+          color: var(--bal-color-white)
+        h2
+          color: var(--bal-color-white)
+        .bal-stage-back-link a
+          color: var(--bal-color-white)
+          +fillSvg(var(--bal-color-white))
+
+  bal-shape
+    position: absolute
+    bottom: 0
+    right: 1rem
+    +desktop
+      right: 2rem
+      
   // Size Modifiers
   +modifier(is-large)
     .bal-stage-content
