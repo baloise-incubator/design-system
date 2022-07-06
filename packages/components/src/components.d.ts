@@ -1708,10 +1708,6 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
-          * class to set the container width
-         */
-        "containerClass": string;
-        /**
           * If true the Baloise Shape is set
          */
         "hasShape": boolean;
@@ -4692,10 +4688,6 @@ declare namespace LocalJSX {
           * Defines the background color of the stage section
          */
         "color"?: Props.BalStageColor;
-        /**
-          * class to set the container width
-         */
-        "containerClass"?: string;
         /**
           * If true the Baloise Shape is set
          */
