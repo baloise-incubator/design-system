@@ -2,9 +2,9 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Event, EventEmit
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation-second-bar',
+  tag: 'bal-navigation-main-bar',
 })
-export class MainNavigationSecondBar implements ComponentInterface {
+export class NavigationSecondBar implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
@@ -20,7 +20,7 @@ export class MainNavigationSecondBar implements ComponentInterface {
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
   render() {
-    const mainBarEl = BEM.block('mainnav').element('mainbar')
+    const mainBarEl = BEM.block('nav').element('mainbar')
 
     return (
       <Host

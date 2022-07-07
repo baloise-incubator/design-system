@@ -1140,47 +1140,6 @@ export namespace Components {
          */
         "size": Props.BalLogoSize;
     }
-    interface BalMainNavigation {
-        /**
-          * Link of the logo
-         */
-        "logoPath": string;
-    }
-    interface BalMainNavigationActions {
-    }
-    interface BalMainNavigationLinks {
-    }
-    interface BalMainNavigationMenu {
-        "toggle": (isMenuActive: boolean) => Promise<void>;
-    }
-    interface BalMainNavigationMenuButtons {
-    }
-    interface BalMainNavigationMenuContent {
-    }
-    interface BalMainNavigationMenuPanel {
-        "linkHref"?: string;
-        "linkName"?: string;
-    }
-    interface BalMainNavigationMenuPanelList {
-        "headline"?: string;
-        "href"?: string;
-        "isService": boolean;
-    }
-    interface BalMainNavigationMenuPanelListItem {
-        "href"?: string;
-    }
-    interface BalMainNavigationMetaBar {
-        /**
-          * Link of the logo
-         */
-        "logoPath": string;
-    }
-    interface BalMainNavigationSecondBar {
-        /**
-          * Link of the logo
-         */
-        "logoPath": string;
-    }
     interface BalModal {
         "close": () => Promise<void>;
         /**
@@ -1270,6 +1229,47 @@ export namespace Components {
     }
     interface BalNavbarMenuStart {
         "interface": Props.BalNavbarInterface;
+    }
+    interface BalNavigation {
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
+    }
+    interface BalNavigationActions {
+    }
+    interface BalNavigationLinks {
+    }
+    interface BalNavigationMainBar {
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
+    }
+    interface BalNavigationMenu {
+        "toggle": (isMenuActive: boolean) => Promise<void>;
+    }
+    interface BalNavigationMenuButtons {
+    }
+    interface BalNavigationMenuContent {
+    }
+    interface BalNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalNavigationMenuPanelList {
+        "headline"?: string;
+        "href"?: string;
+        "isService": boolean;
+    }
+    interface BalNavigationMenuPanelListItem {
+        "href"?: string;
+    }
+    interface BalNavigationMetaBar {
+        /**
+          * Link of the logo
+         */
+        "logoPath": string;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -2135,14 +2135,6 @@ export interface BalListItemAccordionHeadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalListItemAccordionHeadElement;
 }
-export interface BalMainNavigationMetaBarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalMainNavigationMetaBarElement;
-}
-export interface BalMainNavigationSecondBarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBalMainNavigationSecondBarElement;
-}
 export interface BalModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalModalElement;
@@ -2150,6 +2142,14 @@ export interface BalModalCustomEvent<T> extends CustomEvent<T> {
 export interface BalNavbarBrandCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalNavbarBrandElement;
+}
+export interface BalNavigationMainBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationMainBarElement;
+}
+export interface BalNavigationMetaBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalNavigationMetaBarElement;
 }
 export interface BalNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2634,72 +2634,6 @@ declare global {
         prototype: HTMLBalLogoElement;
         new (): HTMLBalLogoElement;
     };
-    interface HTMLBalMainNavigationElement extends Components.BalMainNavigation, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationElement: {
-        prototype: HTMLBalMainNavigationElement;
-        new (): HTMLBalMainNavigationElement;
-    };
-    interface HTMLBalMainNavigationActionsElement extends Components.BalMainNavigationActions, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationActionsElement: {
-        prototype: HTMLBalMainNavigationActionsElement;
-        new (): HTMLBalMainNavigationActionsElement;
-    };
-    interface HTMLBalMainNavigationLinksElement extends Components.BalMainNavigationLinks, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationLinksElement: {
-        prototype: HTMLBalMainNavigationLinksElement;
-        new (): HTMLBalMainNavigationLinksElement;
-    };
-    interface HTMLBalMainNavigationMenuElement extends Components.BalMainNavigationMenu, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuElement: {
-        prototype: HTMLBalMainNavigationMenuElement;
-        new (): HTMLBalMainNavigationMenuElement;
-    };
-    interface HTMLBalMainNavigationMenuButtonsElement extends Components.BalMainNavigationMenuButtons, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuButtonsElement: {
-        prototype: HTMLBalMainNavigationMenuButtonsElement;
-        new (): HTMLBalMainNavigationMenuButtonsElement;
-    };
-    interface HTMLBalMainNavigationMenuContentElement extends Components.BalMainNavigationMenuContent, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuContentElement: {
-        prototype: HTMLBalMainNavigationMenuContentElement;
-        new (): HTMLBalMainNavigationMenuContentElement;
-    };
-    interface HTMLBalMainNavigationMenuPanelElement extends Components.BalMainNavigationMenuPanel, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuPanelElement: {
-        prototype: HTMLBalMainNavigationMenuPanelElement;
-        new (): HTMLBalMainNavigationMenuPanelElement;
-    };
-    interface HTMLBalMainNavigationMenuPanelListElement extends Components.BalMainNavigationMenuPanelList, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuPanelListElement: {
-        prototype: HTMLBalMainNavigationMenuPanelListElement;
-        new (): HTMLBalMainNavigationMenuPanelListElement;
-    };
-    interface HTMLBalMainNavigationMenuPanelListItemElement extends Components.BalMainNavigationMenuPanelListItem, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMenuPanelListItemElement: {
-        prototype: HTMLBalMainNavigationMenuPanelListItemElement;
-        new (): HTMLBalMainNavigationMenuPanelListItemElement;
-    };
-    interface HTMLBalMainNavigationMetaBarElement extends Components.BalMainNavigationMetaBar, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationMetaBarElement: {
-        prototype: HTMLBalMainNavigationMetaBarElement;
-        new (): HTMLBalMainNavigationMetaBarElement;
-    };
-    interface HTMLBalMainNavigationSecondBarElement extends Components.BalMainNavigationSecondBar, HTMLStencilElement {
-    }
-    var HTMLBalMainNavigationSecondBarElement: {
-        prototype: HTMLBalMainNavigationSecondBarElement;
-        new (): HTMLBalMainNavigationSecondBarElement;
-    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -2747,6 +2681,72 @@ declare global {
     var HTMLBalNavbarMenuStartElement: {
         prototype: HTMLBalNavbarMenuStartElement;
         new (): HTMLBalNavbarMenuStartElement;
+    };
+    interface HTMLBalNavigationElement extends Components.BalNavigation, HTMLStencilElement {
+    }
+    var HTMLBalNavigationElement: {
+        prototype: HTMLBalNavigationElement;
+        new (): HTMLBalNavigationElement;
+    };
+    interface HTMLBalNavigationActionsElement extends Components.BalNavigationActions, HTMLStencilElement {
+    }
+    var HTMLBalNavigationActionsElement: {
+        prototype: HTMLBalNavigationActionsElement;
+        new (): HTMLBalNavigationActionsElement;
+    };
+    interface HTMLBalNavigationLinksElement extends Components.BalNavigationLinks, HTMLStencilElement {
+    }
+    var HTMLBalNavigationLinksElement: {
+        prototype: HTMLBalNavigationLinksElement;
+        new (): HTMLBalNavigationLinksElement;
+    };
+    interface HTMLBalNavigationMainBarElement extends Components.BalNavigationMainBar, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMainBarElement: {
+        prototype: HTMLBalNavigationMainBarElement;
+        new (): HTMLBalNavigationMainBarElement;
+    };
+    interface HTMLBalNavigationMenuElement extends Components.BalNavigationMenu, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuElement: {
+        prototype: HTMLBalNavigationMenuElement;
+        new (): HTMLBalNavigationMenuElement;
+    };
+    interface HTMLBalNavigationMenuButtonsElement extends Components.BalNavigationMenuButtons, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuButtonsElement: {
+        prototype: HTMLBalNavigationMenuButtonsElement;
+        new (): HTMLBalNavigationMenuButtonsElement;
+    };
+    interface HTMLBalNavigationMenuContentElement extends Components.BalNavigationMenuContent, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuContentElement: {
+        prototype: HTMLBalNavigationMenuContentElement;
+        new (): HTMLBalNavigationMenuContentElement;
+    };
+    interface HTMLBalNavigationMenuPanelElement extends Components.BalNavigationMenuPanel, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelElement: {
+        prototype: HTMLBalNavigationMenuPanelElement;
+        new (): HTMLBalNavigationMenuPanelElement;
+    };
+    interface HTMLBalNavigationMenuPanelListElement extends Components.BalNavigationMenuPanelList, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelListElement: {
+        prototype: HTMLBalNavigationMenuPanelListElement;
+        new (): HTMLBalNavigationMenuPanelListElement;
+    };
+    interface HTMLBalNavigationMenuPanelListItemElement extends Components.BalNavigationMenuPanelListItem, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMenuPanelListItemElement: {
+        prototype: HTMLBalNavigationMenuPanelListItemElement;
+        new (): HTMLBalNavigationMenuPanelListItemElement;
+    };
+    interface HTMLBalNavigationMetaBarElement extends Components.BalNavigationMetaBar, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaBarElement: {
+        prototype: HTMLBalNavigationMetaBarElement;
+        new (): HTMLBalNavigationMetaBarElement;
     };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
@@ -3000,17 +3000,6 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-logo": HTMLBalLogoElement;
-        "bal-main-navigation": HTMLBalMainNavigationElement;
-        "bal-main-navigation-actions": HTMLBalMainNavigationActionsElement;
-        "bal-main-navigation-links": HTMLBalMainNavigationLinksElement;
-        "bal-main-navigation-menu": HTMLBalMainNavigationMenuElement;
-        "bal-main-navigation-menu-buttons": HTMLBalMainNavigationMenuButtonsElement;
-        "bal-main-navigation-menu-content": HTMLBalMainNavigationMenuContentElement;
-        "bal-main-navigation-menu-panel": HTMLBalMainNavigationMenuPanelElement;
-        "bal-main-navigation-menu-panel-list": HTMLBalMainNavigationMenuPanelListElement;
-        "bal-main-navigation-menu-panel-list-item": HTMLBalMainNavigationMenuPanelListItemElement;
-        "bal-main-navigation-meta-bar": HTMLBalMainNavigationMetaBarElement;
-        "bal-main-navigation-second-bar": HTMLBalMainNavigationSecondBarElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -3019,6 +3008,17 @@ declare global {
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
         "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
+        "bal-navigation": HTMLBalNavigationElement;
+        "bal-navigation-actions": HTMLBalNavigationActionsElement;
+        "bal-navigation-links": HTMLBalNavigationLinksElement;
+        "bal-navigation-main-bar": HTMLBalNavigationMainBarElement;
+        "bal-navigation-menu": HTMLBalNavigationMenuElement;
+        "bal-navigation-menu-buttons": HTMLBalNavigationMenuButtonsElement;
+        "bal-navigation-menu-content": HTMLBalNavigationMenuContentElement;
+        "bal-navigation-menu-panel": HTMLBalNavigationMenuPanelElement;
+        "bal-navigation-menu-panel-list": HTMLBalNavigationMenuPanelListElement;
+        "bal-navigation-menu-panel-list-item": HTMLBalNavigationMenuPanelListItemElement;
+        "bal-navigation-meta-bar": HTMLBalNavigationMetaBarElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -4234,54 +4234,6 @@ declare namespace LocalJSX {
          */
         "size"?: Props.BalLogoSize;
     }
-    interface BalMainNavigation {
-        /**
-          * Link of the logo
-         */
-        "logoPath"?: string;
-    }
-    interface BalMainNavigationActions {
-    }
-    interface BalMainNavigationLinks {
-    }
-    interface BalMainNavigationMenu {
-    }
-    interface BalMainNavigationMenuButtons {
-    }
-    interface BalMainNavigationMenuContent {
-    }
-    interface BalMainNavigationMenuPanel {
-        "linkHref"?: string;
-        "linkName"?: string;
-    }
-    interface BalMainNavigationMenuPanelList {
-        "headline"?: string;
-        "href"?: string;
-        "isService"?: boolean;
-    }
-    interface BalMainNavigationMenuPanelListItem {
-        "href"?: string;
-    }
-    interface BalMainNavigationMetaBar {
-        /**
-          * Link of the logo
-         */
-        "logoPath"?: string;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalMainNavigationMetaBarCustomEvent<MouseEvent>) => void;
-    }
-    interface BalMainNavigationSecondBar {
-        /**
-          * Link of the logo
-         */
-        "logoPath"?: string;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: BalMainNavigationSecondBarCustomEvent<MouseEvent>) => void;
-    }
     interface BalModal {
         /**
           * The component to display inside of the modal.
@@ -4372,6 +4324,54 @@ declare namespace LocalJSX {
     }
     interface BalNavbarMenuStart {
         "interface"?: Props.BalNavbarInterface;
+    }
+    interface BalNavigation {
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
+    }
+    interface BalNavigationActions {
+    }
+    interface BalNavigationLinks {
+    }
+    interface BalNavigationMainBar {
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalNavigationMainBarCustomEvent<MouseEvent>) => void;
+    }
+    interface BalNavigationMenu {
+    }
+    interface BalNavigationMenuButtons {
+    }
+    interface BalNavigationMenuContent {
+    }
+    interface BalNavigationMenuPanel {
+        "linkHref"?: string;
+        "linkName"?: string;
+    }
+    interface BalNavigationMenuPanelList {
+        "headline"?: string;
+        "href"?: string;
+        "isService"?: boolean;
+    }
+    interface BalNavigationMenuPanelListItem {
+        "href"?: string;
+    }
+    interface BalNavigationMetaBar {
+        /**
+          * Link of the logo
+         */
+        "logoPath"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: BalNavigationMetaBarCustomEvent<MouseEvent>) => void;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -5307,17 +5307,6 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-logo": BalLogo;
-        "bal-main-navigation": BalMainNavigation;
-        "bal-main-navigation-actions": BalMainNavigationActions;
-        "bal-main-navigation-links": BalMainNavigationLinks;
-        "bal-main-navigation-menu": BalMainNavigationMenu;
-        "bal-main-navigation-menu-buttons": BalMainNavigationMenuButtons;
-        "bal-main-navigation-menu-content": BalMainNavigationMenuContent;
-        "bal-main-navigation-menu-panel": BalMainNavigationMenuPanel;
-        "bal-main-navigation-menu-panel-list": BalMainNavigationMenuPanelList;
-        "bal-main-navigation-menu-panel-list-item": BalMainNavigationMenuPanelListItem;
-        "bal-main-navigation-meta-bar": BalMainNavigationMetaBar;
-        "bal-main-navigation-second-bar": BalMainNavigationSecondBar;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -5326,6 +5315,17 @@ declare namespace LocalJSX {
         "bal-navbar-menu": BalNavbarMenu;
         "bal-navbar-menu-end": BalNavbarMenuEnd;
         "bal-navbar-menu-start": BalNavbarMenuStart;
+        "bal-navigation": BalNavigation;
+        "bal-navigation-actions": BalNavigationActions;
+        "bal-navigation-links": BalNavigationLinks;
+        "bal-navigation-main-bar": BalNavigationMainBar;
+        "bal-navigation-menu": BalNavigationMenu;
+        "bal-navigation-menu-buttons": BalNavigationMenuButtons;
+        "bal-navigation-menu-content": BalNavigationMenuContent;
+        "bal-navigation-menu-panel": BalNavigationMenuPanel;
+        "bal-navigation-menu-panel-list": BalNavigationMenuPanelList;
+        "bal-navigation-menu-panel-list-item": BalNavigationMenuPanelListItem;
+        "bal-navigation-meta-bar": BalNavigationMetaBar;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -5433,17 +5433,6 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
-            "bal-main-navigation": LocalJSX.BalMainNavigation & JSXBase.HTMLAttributes<HTMLBalMainNavigationElement>;
-            "bal-main-navigation-actions": LocalJSX.BalMainNavigationActions & JSXBase.HTMLAttributes<HTMLBalMainNavigationActionsElement>;
-            "bal-main-navigation-links": LocalJSX.BalMainNavigationLinks & JSXBase.HTMLAttributes<HTMLBalMainNavigationLinksElement>;
-            "bal-main-navigation-menu": LocalJSX.BalMainNavigationMenu & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuElement>;
-            "bal-main-navigation-menu-buttons": LocalJSX.BalMainNavigationMenuButtons & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuButtonsElement>;
-            "bal-main-navigation-menu-content": LocalJSX.BalMainNavigationMenuContent & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuContentElement>;
-            "bal-main-navigation-menu-panel": LocalJSX.BalMainNavigationMenuPanel & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelElement>;
-            "bal-main-navigation-menu-panel-list": LocalJSX.BalMainNavigationMenuPanelList & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelListElement>;
-            "bal-main-navigation-menu-panel-list-item": LocalJSX.BalMainNavigationMenuPanelListItem & JSXBase.HTMLAttributes<HTMLBalMainNavigationMenuPanelListItemElement>;
-            "bal-main-navigation-meta-bar": LocalJSX.BalMainNavigationMetaBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationMetaBarElement>;
-            "bal-main-navigation-second-bar": LocalJSX.BalMainNavigationSecondBar & JSXBase.HTMLAttributes<HTMLBalMainNavigationSecondBarElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
@@ -5452,6 +5441,17 @@ declare module "@stencil/core" {
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
             "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
+            "bal-navigation": LocalJSX.BalNavigation & JSXBase.HTMLAttributes<HTMLBalNavigationElement>;
+            "bal-navigation-actions": LocalJSX.BalNavigationActions & JSXBase.HTMLAttributes<HTMLBalNavigationActionsElement>;
+            "bal-navigation-links": LocalJSX.BalNavigationLinks & JSXBase.HTMLAttributes<HTMLBalNavigationLinksElement>;
+            "bal-navigation-main-bar": LocalJSX.BalNavigationMainBar & JSXBase.HTMLAttributes<HTMLBalNavigationMainBarElement>;
+            "bal-navigation-menu": LocalJSX.BalNavigationMenu & JSXBase.HTMLAttributes<HTMLBalNavigationMenuElement>;
+            "bal-navigation-menu-buttons": LocalJSX.BalNavigationMenuButtons & JSXBase.HTMLAttributes<HTMLBalNavigationMenuButtonsElement>;
+            "bal-navigation-menu-content": LocalJSX.BalNavigationMenuContent & JSXBase.HTMLAttributes<HTMLBalNavigationMenuContentElement>;
+            "bal-navigation-menu-panel": LocalJSX.BalNavigationMenuPanel & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelElement>;
+            "bal-navigation-menu-panel-list": LocalJSX.BalNavigationMenuPanelList & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelListElement>;
+            "bal-navigation-menu-panel-list-item": LocalJSX.BalNavigationMenuPanelListItem & JSXBase.HTMLAttributes<HTMLBalNavigationMenuPanelListItemElement>;
+            "bal-navigation-meta-bar": LocalJSX.BalNavigationMetaBar & JSXBase.HTMLAttributes<HTMLBalNavigationMetaBarElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;

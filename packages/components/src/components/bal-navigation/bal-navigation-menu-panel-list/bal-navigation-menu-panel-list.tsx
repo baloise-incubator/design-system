@@ -3,12 +3,12 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({
-  tag: 'bal-main-navigation-menu-panel-list',
+  tag: 'bal-navigation-menu-panel-list',
   scoped: false,
   shadow: false,
 })
-export class BalMainNavigationMenuPanelList {
-  @Element() el!: HTMLBalMainNavigationMenuPanelListElement
+export class NavigationMenuPanelList {
+  @Element() el!: HTMLBalNavigationMenuPanelListElement
   @Prop() isService = false
   @Prop() headline?: string
   @Prop() href?: string
@@ -20,7 +20,7 @@ export class BalMainNavigationMenuPanelList {
   }
 
   render() {
-    const navMenuPanelListEl = BEM.block('mainnav')
+    const navMenuPanelListEl = BEM.block('nav')
       .element('metabar')
       .element('menu')
       .element('content')

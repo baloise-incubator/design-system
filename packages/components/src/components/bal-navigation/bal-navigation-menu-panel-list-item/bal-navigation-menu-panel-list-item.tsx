@@ -2,16 +2,16 @@ import { Component, h, Host, Element, Prop } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation-menu-panel-list-item',
+  tag: 'bal-navigation-menu-panel-list-item',
   scoped: false,
   shadow: false,
 })
-export class BalMainNavigationMenuPanelListItem {
-  @Element() el!: HTMLBalMainNavigationMenuPanelListItemElement
+export class NavigationMenuPanelListItem {
+  @Element() el!: HTMLBalNavigationMenuPanelListItemElement
   @Prop() href?: string
 
   render() {
-    const navMenuPanelListItemEl = BEM.block('mainnav')
+    const navMenuPanelListItemEl = BEM.block('nav')
       .element('metabar')
       .element('menu')
       .element('content')

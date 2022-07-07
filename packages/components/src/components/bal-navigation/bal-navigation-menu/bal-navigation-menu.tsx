@@ -2,11 +2,11 @@ import { Component, h, Host, Method, State, Element } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation-menu',
+  tag: 'bal-navigation-menu',
   scoped: false,
   shadow: false,
 })
-export class NavbarMenu {
+export class NavigationMenu {
   @Element() element!: HTMLElement
   @State() isMenuActive = false
 
@@ -19,7 +19,7 @@ export class NavbarMenu {
   }
 
   render() {
-    const navMenuEl = BEM.block('mainnav').element('metabar').element('menu')
+    const navMenuEl = BEM.block('nav').element('metabar').element('menu')
 
     return (
       <Host

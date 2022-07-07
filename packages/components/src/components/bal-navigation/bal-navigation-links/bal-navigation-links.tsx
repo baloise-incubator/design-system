@@ -2,13 +2,13 @@ import { Component, h, Host } from '@stencil/core'
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation-links',
+  tag: 'bal-navigation-links',
   scoped: false,
   shadow: false,
 })
-export class MainNavigationLinks {
+export class NavigationLinks {
   render() {
-    const linksEl = BEM.block('mainnav').element('metabar').element('links')
+    const linksEl = BEM.block('nav').element('metabar').element('links')
 
     return (
       <Host

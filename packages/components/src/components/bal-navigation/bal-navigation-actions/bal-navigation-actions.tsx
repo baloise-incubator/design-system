@@ -3,12 +3,12 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({
-  tag: 'bal-main-navigation-actions',
+  tag: 'bal-navigation-actions',
   scoped: false,
   shadow: false,
 })
-export class MainNavigationActions {
-  @Element() el!: HTMLBalMainNavigationActionsElement
+export class NavigationActions {
+  @Element() el!: HTMLBalNavigationActionsElement
   private actionButtons!: HTMLBalButtonElement[]
 
   @Listen('resize', { target: 'window' })
@@ -20,7 +20,6 @@ export class MainNavigationActions {
       } else {
         button.setAttribute('size', '')
         button.setAttribute('inverted', 'false')
-        console.log('mobile button ', button)
       }
     })
   }
@@ -28,11 +27,10 @@ export class MainNavigationActions {
   connectedCallback() {
     this.actionButtons = Array.from(this.el.querySelectorAll('bal-button'))
     this.handleResize()
-    console.log('buttons', this.actionButtons)
   }
 
   render() {
-    const actionsEl = BEM.block('mainnav').element('metabar').element('actions')
+    const actionsEl = BEM.block('nav').element('metabar').element('actions')
 
     return (
       <Host

@@ -3,9 +3,9 @@ import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
 
 @Component({
-  tag: 'bal-main-navigation',
+  tag: 'bal-navigation',
 })
-export class MainNavigation implements ComponentInterface {
+export class Navigation implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
@@ -44,12 +44,12 @@ export class MainNavigation implements ComponentInterface {
   }
 
   render() {
-    const mainNavigationEl = BEM.block('mainnav')
+    const navigationEl = BEM.block('nav')
 
     return (
       <Host
         class={{
-          ...mainNavigationEl.class(),
+          ...navigationEl.class(),
         }}
       >
         <slot></slot>

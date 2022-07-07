@@ -3,12 +3,12 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 
 @Component({
-  tag: 'bal-main-navigation-menu-buttons',
+  tag: 'bal-navigation-menu-buttons',
   scoped: false,
   shadow: false,
 })
-export class BalMainNavigationMenuButtons {
-  @Element() el!: HTMLBalMainNavigationMenuButtonsElement
+export class NavigationMenuButtons {
+  @Element() el!: HTMLBalNavigationMenuButtonsElement
   private buttons!: HTMLBalButtonElement[]
 
   @Listen('resize', { target: 'window' })
@@ -30,7 +30,7 @@ export class BalMainNavigationMenuButtons {
   }
 
   render() {
-    const navMenuButtonsEl = BEM.block('mainnav').element('metabar').element('menu').element('buttons')
+    const navMenuButtonsEl = BEM.block('nav').element('metabar').element('menu').element('buttons')
 
     return (
       <Host class={{ ...navMenuButtonsEl.class() }}>

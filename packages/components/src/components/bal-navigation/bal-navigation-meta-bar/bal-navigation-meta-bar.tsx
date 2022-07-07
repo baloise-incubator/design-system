@@ -2,9 +2,9 @@ import { Component, h, ComponentInterface, Host, Element, Prop, Event, EventEmit
 import { BEM } from '../../../utils/bem'
 
 @Component({
-  tag: 'bal-main-navigation-meta-bar',
+  tag: 'bal-navigation-meta-bar',
 })
-export class MainNavigationMetaBar implements ComponentInterface {
+export class NavigationMetaBar implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
@@ -35,11 +35,11 @@ export class MainNavigationMetaBar implements ComponentInterface {
 
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
-    const metaNavbar = this.el.closest('bal-main-navigation-meta-bar')
+    const metaNavbar = this.el.closest('bal-navigation-meta-bar')
     if (metaNavbar) {
-      const mainNavbarMenuElement = metaNavbar.querySelector('bal-main-navigation-menu')
-      if (mainNavbarMenuElement) {
-        await mainNavbarMenuElement.toggle(this.isMenuActive)
+      const navbarMenuElement = metaNavbar.querySelector('bal-navigation-menu')
+      if (navbarMenuElement) {
+        await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
   }
@@ -49,7 +49,7 @@ export class MainNavigationMetaBar implements ComponentInterface {
   }
 
   render() {
-    const metaBarEl = BEM.block('mainnav').element('metabar')
+    const metaBarEl = BEM.block('nav').element('metabar')
 
     return (
       <Host
