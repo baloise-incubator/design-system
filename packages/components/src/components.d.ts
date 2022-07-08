@@ -1731,10 +1731,6 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass": string;
     }
     interface BalStageFoot {
     }
@@ -4712,10 +4708,6 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * class to set the container width
-         */
-        "containerClass"?: string;
     }
     interface BalStageFoot {
     }

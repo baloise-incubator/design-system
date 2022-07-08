@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
 
 @Component({
   tag: 'bal-stage-body',
@@ -6,19 +6,9 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 export class StageBody implements ComponentInterface {
   @Element() el!: HTMLElement
 
-  /**
-   * class to set the container width
-   */
-  @Prop() containerClass = 'is-wide'
-
   render() {
     return (
-      <Host
-        class={{
-          'bal-stage-body': true,
-          [`container ${this.containerClass}`]: true,
-        }}
-      >
+      <Host class="bal-stage-body">
         <slot></slot>
       </Host>
     )
