@@ -94,7 +94,6 @@ export class Stage implements ComponentInterface {
         >
           <slot></slot>
         </section>
-        {this.hasShape && <slot name="shape"></slot>}
       </Host>
     )
   }

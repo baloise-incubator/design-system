@@ -16,11 +16,10 @@ export class StageBody implements ComponentInterface {
       <Host
         class={{
           'bal-stage-body': true,
+          [`container ${this.containerClass}`]: true,
         }}
       >
-        <div class={`container ${this.containerClass}`}>
-          <slot></slot>
-        </div>
+        <slot></slot>
       </Host>
     )
   }

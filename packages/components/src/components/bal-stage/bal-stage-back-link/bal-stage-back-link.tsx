@@ -18,12 +18,7 @@ export class StageBackLink implements ComponentInterface {
           'bal-stage-back-link': true,
         }}
       >
-        <a
-          class={{
-            'mb-5': true,
-          }}
-          href={this.href}
-        >
+        <a href={this.href}>
           <bal-icon class="mr-2" name="caret-left" size="xsmall"></bal-icon>
           <slot></slot>
         </a>

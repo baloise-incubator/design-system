@@ -1,41 +1,30 @@
 .bal-stage
-  position: relative
   .bal-stage-content
-    position: relative
     display: block
-    overflow: hidden
 
     .bal-stage-body
       display: flex
-      align-items: center
-      padding: 4rem 0
+      flex-direction: column
+      justify-content: center
+      padding-top: 4rem
+      padding-bottom: 4rem
       +desktop
         min-height: 400px
-        align-items: flex-end
-        padding: 6rem 0
+        justify-content: flex-end
+        padding-top: 6rem
+        padding-bottom: 6rem
 
-      .container > *
-        max-width: calc(100% - 66px)
-        +tablet
-          max-width: calc(100% - 120px)
-        +desktop
-          max-width: calc(100% - 198px)
     // Color modifiers
     +modifier(is-blue)
-      .bal-stage-body
-        background: var(--bal-color-primary-5)
+      background: var(--bal-color-primary-5)
     +modifier(is-purple)
-      .bal-stage-body
-        background: var(--bal-color-purple-3)
+      background: var(--bal-color-purple-3)
     +modifier(is-green)
-      .bal-stage-body
-        background: var(--bal-color-green-3)
+      background: var(--bal-color-green-3)
     +modifier(is-red)
-      .bal-stage-body
-        background: var(--bal-color-red-3)
+      background: var(--bal-color-red-3)
     +modifier(is-yellow)
-      .bal-stage-body
-        background: var(--bal-color-yellow-3)
+      background: var(--bal-color-yellow-3)
 
     .bal-stage-back-link a
       display: inline-flex
@@ -56,13 +45,15 @@
         .bal-stage-back-link a
           color: var(--bal-color-white)
           +fillSvg(var(--bal-color-white))
-
-  bal-shape
-    position: absolute
-    bottom: 0
-    right: 1rem
-    +desktop
-      right: 2rem
+    bal-shape
+      position: absolute
+      bottom: -22px
+      right: 1rem
+      +tablet
+        bottom: -40px
+      +desktop
+        right: 2rem
+        bottom: -66px
       
   // Size Modifiers
   +modifier(is-large)
@@ -72,17 +63,25 @@
         +tablet
           min-height: 560px
         +desktop
-          padding: 12rem 0
+          justify-content: center
+          padding-top: 10rem
+          padding-bottom: 10rem
           min-height: 840px
 
 .has-background-image
-  .bal-stage-body
+  .bal-stage-content
     background: no-repeat center/cover var(--bal-background-image)
 
 .has-shape
-  section
+  .bal-stage-content
     margin-bottom: 22px
     +tablet
       margin-bottom: 40px
     +desktop
       margin-bottom: 66px
+    .bal-stage-body > *
+      max-width: calc(100% - 66px)
+      +tablet
+        max-width: calc(100% - 120px)
+      +desktop
+        max-width: calc(100% - 198px)
