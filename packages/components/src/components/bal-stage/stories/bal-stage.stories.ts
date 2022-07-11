@@ -14,7 +14,7 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
-  <bal-stage-body class="container is-wide">
+  <bal-stage-body>
     <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
     <bal-heading class="mb-2" space="none">Title</bal-heading>
     <bal-heading space="none" subtitle level="h2" visual-level="h1">Subtitle</bal-heading>
@@ -31,7 +31,7 @@ export const StageWithImage = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
-  <bal-stage-body class="container is-wide">
+  <bal-stage-body>
     <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
     <bal-heading class="mb-2" space="none">Title</bal-heading>
     <bal-heading space="none" subtitle level="h2" visual-level="h1">Additional Subheadline</bal-heading>
@@ -48,11 +48,10 @@ export const StageWithShape = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
-  <bal-stage-body class="container is-wide">
+  <bal-stage-body>
     <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
     <bal-heading class="mb-2" space="none">Title</bal-heading>
     <bal-heading space="none" subtitle level="h2" visual-level="h1">Subtitle</bal-heading>
-    <bal-shape color="green" variation="3"/>
     </bal-stage-body>
 </bal-stage>`,
 })
@@ -60,5 +59,7 @@ StageWithShape.args = {
   color: 'green',
   inverted: false,
   hasShape: true,
+  shapeVariation: '2',
+  shapeRotation: '90',
 }
 StageWithShape.parameters = { ...component.sourceCode(StageWithShape) }

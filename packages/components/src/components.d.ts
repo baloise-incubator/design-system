@@ -1708,6 +1708,10 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
+          * Defines content width of the stage
+         */
+        "containerSize": 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        /**
           * If true the Baloise Shape is set
          */
         "hasShape": boolean;
@@ -1718,7 +1722,15 @@ export namespace Components {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted": undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
         /**
           * Defines size of the stage
          */
@@ -4685,6 +4697,10 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
+          * Defines content width of the stage
+         */
+        "containerSize"?: 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        /**
           * If true the Baloise Shape is set
          */
         "hasShape"?: boolean;
@@ -4695,7 +4711,15 @@ declare namespace LocalJSX {
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: undefined | boolean;
+        "inverted"?: boolean;
+        /**
+          * Shape Rotation
+         */
+        "shapeRotation"?: Props.BalShapeRotation;
+        /**
+          * Shape Variation
+         */
+        "shapeVariation"?: Props.BalShapeVariation;
         /**
           * Defines size of the stage
          */

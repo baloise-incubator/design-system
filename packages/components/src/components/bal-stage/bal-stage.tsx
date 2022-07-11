@@ -13,6 +13,11 @@ export class Stage implements ComponentInterface {
   @State() imageSrc: PlatformSrcSet = {}
 
   /**
+   * Defines content width of the stage
+   */
+  @Prop() containerSize: 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide' = 'is-wide'
+
+  /**
    * Defines size of the stage
    */
   @Prop() size: Props.BalStageSize = ''
@@ -28,9 +33,19 @@ export class Stage implements ComponentInterface {
   @Prop() hasShape = false
 
   /**
+   * Shape Variation
+   */
+  @Prop() shapeVariation?: Props.BalShapeVariation
+
+  /**
+   * Shape Rotation
+   */
+  @Prop() shapeRotation?: Props.BalShapeRotation
+
+  /**
    * sets text color to white for images and dark backgrounds (optional)
    */
-  @Prop() inverted: undefined | boolean = undefined
+  @Prop() inverted?: boolean = false
 
   /**
    * src-set string for the css background-image
@@ -80,19 +95,28 @@ export class Stage implements ComponentInterface {
         class={{
           'bal-stage': true,
           [`bal-stage--is-${this.size}`]: this.size != '',
+          [`bal-stage--is-${this.color}`]: this.color && !this.images,
           'has-background-image': !!this.images,
           'has-shape': this.hasShape,
         }}
-        style={this.imageSrc ? { '--bal-background-image': `url('${this.imageSrc[this.viewPort]}')` } : {}}
+        style={this.imageSrc != undefined ? { '--bal-background-image': `url('${this.imageSrc[this.viewPort]}')` } : {}}
       >
         <section
           class={{
+            'container': true,
+            [`${this.containerSize}`]: true,
             'bal-stage-content': true,
-            [`bal-stage-content--is-${this.color}`]: this.color && !this.images,
             'bal-stage-content--is-inverted': this.inverted === true || this.color === 'blue',
           }}
         >
           <slot></slot>
+          {this.hasShape && (
+            <bal-shape
+              color={this.color as Props.BalShapeColor}
+              variation={this.shapeVariation}
+              rotation={this.shapeRotation}
+            />
+          )}
         </section>
       </Host>
     )

@@ -1,4 +1,17 @@
 .bal-stage
+  display: block
+  // Color modifiers
+  +modifier(is-blue)
+    background: var(--bal-color-primary-5)
+  +modifier(is-purple)
+    background: var(--bal-color-purple-3)
+  +modifier(is-green)
+    background: var(--bal-color-green-3)
+  +modifier(is-red)
+    background: var(--bal-color-red-3)
+  +modifier(is-yellow)
+    background: var(--bal-color-yellow-3)
+    
   .bal-stage-content
     display: block
 
@@ -13,18 +26,6 @@
         justify-content: flex-end
         padding-top: 6rem
         padding-bottom: 6rem
-
-    // Color modifiers
-    +modifier(is-blue)
-      background: var(--bal-color-primary-5)
-    +modifier(is-purple)
-      background: var(--bal-color-purple-3)
-    +modifier(is-green)
-      background: var(--bal-color-green-3)
-    +modifier(is-red)
-      background: var(--bal-color-red-3)
-    +modifier(is-yellow)
-      background: var(--bal-color-yellow-3)
 
     .bal-stage-back-link a
       display: inline-flex
@@ -45,15 +46,6 @@
         .bal-stage-back-link a
           color: var(--bal-color-white)
           +fillSvg(var(--bal-color-white))
-    bal-shape
-      position: absolute
-      bottom: -22px
-      right: 1rem
-      +tablet
-        bottom: -40px
-      +desktop
-        right: 2rem
-        bottom: -66px
       
   // Size Modifiers
   +modifier(is-large)
@@ -69,8 +61,7 @@
           min-height: 840px
 
 .has-background-image
-  .bal-stage-content
-    background: no-repeat center/cover var(--bal-background-image)
+  background: no-repeat center/cover var(--bal-background-image)
 
 .has-shape
   .bal-stage-content
@@ -85,3 +76,12 @@
         max-width: calc(100% - 120px)
       +desktop
         max-width: calc(100% - 198px)
+    bal-shape
+      position: absolute
+      bottom: -22px
+      right: 1rem
+      +tablet
+        bottom: -40px
+      +desktop
+        right: 2rem
+        bottom: -66px
