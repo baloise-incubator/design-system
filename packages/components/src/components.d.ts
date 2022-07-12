@@ -1710,7 +1710,7 @@ export namespace Components {
         /**
           * Defines content width of the stage
          */
-        "containerSize": 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        "containerSize": '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */
@@ -4699,7 +4699,7 @@ declare namespace LocalJSX {
         /**
           * Defines content width of the stage
          */
-        "containerSize"?: 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
+        "containerSize"?: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide';
         /**
           * If true the Baloise Shape is set
          */

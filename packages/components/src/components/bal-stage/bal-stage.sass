@@ -1,4 +1,4 @@
-.bal-stage
++block(stage)
   display: block
   // Color modifiers
   +modifier(is-blue)
@@ -12,10 +12,10 @@
   +modifier(is-yellow)
     background: var(--bal-color-yellow-3)
     
-  .bal-stage-content
+  +block(stage-content)
     display: block
 
-    .bal-stage-body
+    +block(stage-body)
       display: flex
       flex-direction: column
       justify-content: center
@@ -27,30 +27,38 @@
         padding-top: 6rem
         padding-bottom: 6rem
 
-    .bal-stage-back-link a
-      display: inline-flex
-      align-items: center
-      font-family: var(--bal-font-family-title)
-      font-weight: 700
-      opacity: 1
-      transition: opacity .2s ease-in
-      &:hover
-        opacity: .5
+    +block(stage-back-link)
+      a
+        display: inline-flex
+        align-items: center
+        font-family: var(--bal-font-family-title)
+        font-weight: 700
+        opacity: 1
+        transition: opacity .2s ease-in
+        &:hover
+          opacity: .5
+        &:focus-visible
+          outline: none
+          border: 2px solid transparent
+          border-radius: 5px
+          outline: 3px solid var(--bal-color-purple-dark)
 
     +modifier(is-inverted)
-      .bal-stage-body
+      +block(stage-body)
         h1
           color: var(--bal-color-white)
         h2
           color: var(--bal-color-white)
-        .bal-stage-back-link a
-          color: var(--bal-color-white)
-          +fillSvg(var(--bal-color-white))
+        +block(stage-back-link)
+          a
+            color: var(--bal-color-white)
+            +fillSvg(var(--bal-color-white))
+
       
   // Size Modifiers
   +modifier(is-large)
-    .bal-stage-content
-      .bal-stage-body
+    +block(stage-content)
+      +block(stage-body)
         min-height: 375px
         +tablet
           min-height: 560px
@@ -60,28 +68,29 @@
           padding-bottom: 10rem
           min-height: 840px
 
-.has-background-image
-  background: no-repeat center/cover var(--bal-background-image)
+  +modifier(has-background-image)
+    background: no-repeat center/cover var(--bal-background-image)
 
-.has-shape
-  .bal-stage-content
-    margin-bottom: 22px
-    +tablet
-      margin-bottom: 40px
-    +desktop
-      margin-bottom: 66px
-    .bal-stage-body > *
-      max-width: calc(100% - 66px)
+  +modifier(has-shape)
+    +block(stage-content)
+      margin-bottom: 22px
       +tablet
-        max-width: calc(100% - 120px)
+        margin-bottom: 40px
       +desktop
-        max-width: calc(100% - 198px)
-    bal-shape
-      position: absolute
-      bottom: -22px
-      right: 1rem
-      +tablet
-        bottom: -40px
-      +desktop
-        right: 2rem
-        bottom: -66px
+        margin-bottom: 66px
+      +block(stage-body) 
+        & > *
+          max-width: calc(100% - 66px)
+          +tablet
+            max-width: calc(100% - 120px)
+          +desktop
+            max-width: calc(100% - 198px)
+      +block(shape)
+        position: absolute
+        bottom: -22px
+        right: 1rem
+        +tablet
+          bottom: -40px
+        +desktop
+          right: 2rem
+          bottom: -66px

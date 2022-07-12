@@ -2,6 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } 
 import { Props } from '../../types'
 import { isPlatform } from '../../'
 import { Platforms, PlatformSrcSet } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-stage',
@@ -15,7 +16,7 @@ export class Stage implements ComponentInterface {
   /**
    * Defines content width of the stage
    */
-  @Prop() containerSize: 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide' = 'is-wide'
+  @Prop() containerSize: '' | 'is-fluid' | 'is-detail-page' | 'is-compact' | 'is-blog-page' | 'is-wide' = 'is-wide'
 
   /**
    * Defines size of the stage
@@ -90,23 +91,27 @@ export class Stage implements ComponentInterface {
   }
 
   render() {
+    const block = BEM.block('stage')
+    const element = BEM.block('stage-content')
     return (
       <Host
         class={{
-          'bal-stage': true,
-          [`bal-stage--is-${this.size}`]: this.size != '',
-          [`bal-stage--is-${this.color}`]: this.color && !this.images,
-          'has-background-image': !!this.images,
-          'has-shape': this.hasShape,
+          ...block.class(),
+          ...block.modifier(`is-${this.size}`).class(!!this.size),
+          ...block.modifier(`is-${this.color}`).class(!!this.color && !this.images),
+          ...block.modifier('has-background-image').class(!!this.images),
+          ...block.modifier('has-shape').class(!!this.hasShape),
         }}
-        style={this.imageSrc != undefined ? { '--bal-background-image': `url('${this.imageSrc[this.viewPort]}')` } : {}}
+        style={{
+          '--bal-background-image':
+            Object.keys(this.imageSrc).length > 0 ? `url('${this.imageSrc[this.viewPort]}')` : '',
+        }}
       >
         <section
           class={{
-            'container': true,
-            [`${this.containerSize}`]: true,
-            'bal-stage-content': true,
-            'bal-stage-content--is-inverted': this.inverted === true || this.color === 'blue',
+            ...element.class(),
+            ...element.modifier('is-inverted').class(this.inverted === true || this.color === 'blue'),
+            [`container ${this.containerSize}`]: this.containerSize !== '',
           }}
         >
           <slot></slot>
