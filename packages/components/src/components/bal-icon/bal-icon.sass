@@ -1,14 +1,12 @@
-=iconSize($size: 1rem)
-  width: $size
-  max-height: $size
-
 +block(icon)
   display: flex
   justify-content: center
   align-items: center
   position: static
   pointer-events: visible
-  +iconSize(1rem)
+  width: 1rem
+  max-height: 1rem
+  padding: 1px
   +fillSvg(var(--bal-color-blue))
   //
   // modifiers
@@ -19,24 +17,12 @@
   +element(inner)
     display: block
     position: static
-    +iconSize(1rem)
+    width: calc(1rem - 2px)
+    max-height: calc(1rem - 2px)
     +modifier(is-turn)
       transform: rotate(180deg)
     & > svg
       vertical-align: top
-  //
-  // sizes
-  +modifier(is-xsmall)
-    +iconSize(0.625rem)
-  +modifier(is-small)
-    +iconSize(0.75rem)
-  +modifier(is-medium)
-    +iconSize(1.5rem)
-  +modifier(is-large)
-    +iconSize(3rem)
-  +modifier(is-xlarge)
-    +iconSize(4rem)
-  //
   // colors
   +modifier(is-grey)
     +fillSvg(var(--bal-color-grey-dark))
@@ -57,14 +43,7 @@
   flex-wrap: nowrap
   word-break: break-word
   line-height: 1.5rem
-  &.is-small
-    line-height: 1.75rem
-  &.is-medium
-    line-height: 1.5rem
-  &.is-large
-    line-height: 3rem
-  &.is-xlarge
-    line-height: 4rem
+
   .icon
     flex-grow: 0
     flex-shrink: 0

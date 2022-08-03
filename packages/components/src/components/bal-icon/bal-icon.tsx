@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Prop, Watch } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-next-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
@@ -20,11 +20,6 @@ export class Icon {
   @Prop() svg = ''
 
   /**
-   * Defines the size of the icon.
-   */
-  @Prop() size: Props.BalIconSize = ''
-
-  /**
    * The theme type of the button. Given by bulma our css framework.
    */
   @Prop() color: Props.BalIconColor = ''
@@ -44,8 +39,28 @@ export class Icon {
    */
   @Prop() turn = false
 
+  /**
+   * @deprecated
+   * Defines the size of the icon.
+   */
+  @Prop() size: Props.BalIconSize = ''
+
+  @Watch('size')
+  sizeHandler() {
+    if (this.size) {
+      console.warn('[DEPRECATED] - The Design System only support one size of 16px = 1rem')
+    }
+  }
+
   private get svgContent() {
     if (balIcons && this.name && this.name.length > 0) {
+      // We are doing this to avoid breaking change.
+      if (this.name.startsWith('alert')) {
+        this.name = 'alert-triangle'
+      }
+      if (this.name.startsWith('info')) {
+        this.name = 'info-circle'
+      }
       const icon: string | undefined = (balIcons as { [key: string]: string })[
         `balIcon${upperFirst(camelCase(this.name))}`
       ]
@@ -55,6 +70,10 @@ export class Icon {
     }
 
     return this.svg || ''
+  }
+
+  connectedCallback() {
+    this.sizeHandler()
   }
 
   render() {
@@ -68,7 +87,6 @@ export class Icon {
           ...block.class(),
           ...block.modifier('is-inverted').class(this.inverted),
           ...block.modifier('is-inline').class(this.inline),
-          ...block.modifier(`is-${this.size}`).class(!!this.size),
           ...block.modifier(`is-${color}`).class(),
         }}
       >
@@ -76,7 +94,6 @@ export class Icon {
           class={{
             ...block.element('inner').class(),
             ...block.element('inner').modifier('turn').class(this.turn),
-            ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
           innerHTML={this.svgContent}
         ></div>

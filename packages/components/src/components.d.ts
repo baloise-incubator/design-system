@@ -849,7 +849,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Defines the size of the icon.
+          * @deprecated Defines the size of the icon.
          */
         "size": Props.BalIconSize;
         /**
@@ -3843,7 +3843,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Defines the size of the icon.
+          * @deprecated Defines the size of the icon.
          */
         "size"?: Props.BalIconSize;
         /**

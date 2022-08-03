@@ -12,7 +12,7 @@ export class DocUsageItem implements ComponentInterface {
 
   render() {
     const color = this.theme === 'do' ? 'success' : 'danger'
-    const icon = this.theme === 'do' ? 'check-circle' : 'alert-circle'
+    const icon = this.theme === 'do' ? 'check-triangle' : 'alert-triangle'
     const title = this.subject ? this.subject : this.theme === 'do' ? 'When to use' : 'When not to use'
 
     return (
