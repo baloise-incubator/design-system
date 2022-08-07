@@ -1793,7 +1793,13 @@ export namespace Components {
     interface BalStageHead {
     }
     interface BalStageImage {
+        /**
+          * optional fallback image in case the srcSet fails
+         */
         "fallback"?: string;
+        /**
+          * set of images to be used as background image
+         */
         "srcSet": string;
     }
     interface BalTabItem {
@@ -4867,7 +4873,13 @@ declare namespace LocalJSX {
     interface BalStageHead {
     }
     interface BalStageImage {
+        /**
+          * optional fallback image in case the srcSet fails
+         */
         "fallback"?: string;
+        /**
+          * set of images to be used as background image
+         */
         "srcSet": string;
     }
     interface BalTabItem {

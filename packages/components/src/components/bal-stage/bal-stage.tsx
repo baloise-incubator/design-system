@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Prop } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
@@ -6,7 +6,6 @@ import { BEM } from '../../utils/bem'
   tag: 'bal-stage',
 })
 export class Stage implements ComponentInterface {
-  @Element() el!: HTMLElement
   /**
    * Defines content width of the stage
    */
