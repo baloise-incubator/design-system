@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, State, Listen, Prop } from '@stencil/core'
 import { isNil } from 'lodash'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
@@ -14,6 +14,11 @@ export class ImageSlider implements ComponentInterface {
 
   @State() slideIndex = 0
   @State() images!: HTMLBalImageSliderItemElement[]
+
+  /**
+   * value to set the images aspect ratio
+   */
+  @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
 
   connectedCallback() {
     this.mutationO = observeItems(this.el, 'bal-image-slider-item', () => this.updateImages())
@@ -126,7 +131,12 @@ export class ImageSlider implements ComponentInterface {
 
     return (
       <Host class={{ ...block.class() }}>
-        <div class={{ ...container.class() }}>
+        <div
+          class={{
+            ...container.class(),
+            ...container.modifier(`is-${this.aspectRatio}`).class(),
+          }}
+        >
           <div class={{ ...containerImages.class() }}>
             <slot></slot>
           </div>
@@ -139,6 +149,7 @@ export class ImageSlider implements ComponentInterface {
               color="link"
               size="small"
               icon="caret-left"
+              square
               flat={true}
               disabled={this.slideIndex < 1}
             />
@@ -152,6 +163,7 @@ export class ImageSlider implements ComponentInterface {
               color="link"
               size="small"
               icon="caret-right"
+              square
               flat={true}
               disabled={this.slideIndex + 1 === this.images.length}
             />
