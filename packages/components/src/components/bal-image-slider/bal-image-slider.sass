@@ -27,10 +27,14 @@
     align-items: center
     width: 200px
     margin: auto
-    margin-top: 48px
 
     +element(navigation)
       margin-top: 1rem
+      &[disabled]
+        button,
+        button:hover
+          background-color: transparent
+          +fillSvg(var(--bal-color-primary-3))
 
     +element(dots)
       display: flex

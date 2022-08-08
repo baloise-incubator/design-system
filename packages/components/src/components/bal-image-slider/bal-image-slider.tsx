@@ -108,7 +108,8 @@ export class ImageSlider implements ComponentInterface {
       } else {
         return (
           <bal-text space="none" class="is-size-5" color="blue">
-            {this.slideIndex + 1 + '/' + this.images.length}
+            <span class="has-text-weight-bold">{this.slideIndex + 1}</span>
+            {' / ' + this.images.length}
           </bal-text>
         )
       }
@@ -139,6 +140,7 @@ export class ImageSlider implements ComponentInterface {
               size="small"
               icon="caret-left"
               flat={true}
+              disabled={this.slideIndex < 1}
             />
           }
 
@@ -151,6 +153,7 @@ export class ImageSlider implements ComponentInterface {
               size="small"
               icon="caret-right"
               flat={true}
+              disabled={this.slideIndex + 1 === this.images.length}
             />
           }
         </div>
