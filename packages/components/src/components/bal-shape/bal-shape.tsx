@@ -1,6 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
+import { BaloiseDesignToken } from '@baloise/design-system-next-tokens'
 
 @Component({
   tag: 'bal-shape',
@@ -24,31 +25,31 @@ export class Shape implements ComponentInterface {
   @Prop() rotation?: Props.BalShapeRotation = '0'
 
   getHex = () => {
-    let color = '#000000'
+    let color: string
     switch (this.color) {
       case 'green':
-        color = '#1B5951'
+        color = BaloiseDesignToken.color['green-6'].hex
         break
       case 'green-light':
-        color = '#94E3D4'
+        color = BaloiseDesignToken.color['green-3'].hex
         break
       case 'red':
-        color = '#D9304C'
+        color = BaloiseDesignToken.color['red-5'].hex
         break
       case 'red-light':
-        color = '#FFACA6'
+        color = BaloiseDesignToken.color['red-3'].hex
         break
       case 'purple':
-        color = '#6C2273'
+        color = BaloiseDesignToken.color['purple-6'].hex
         break
       case 'purple-light':
-        color = '#B8B2FF'
+        color = BaloiseDesignToken.color['purple-3'].hex
         break
       case 'yellow':
-        color = '#FA9319'
+        color = BaloiseDesignToken.color['yellow-5'].hex
         break
       case 'yellow-light':
-        color = '#FAE052'
+        color = BaloiseDesignToken.color['yellow-3'].hex
         break
       default:
         color = '#000000'
