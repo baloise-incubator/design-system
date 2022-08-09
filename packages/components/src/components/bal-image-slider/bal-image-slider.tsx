@@ -20,6 +20,11 @@ export class ImageSlider implements ComponentInterface {
    */
   @Prop() aspectRatio?: '1by1' | '3by2' | '4by3' | '16by9' = '16by9'
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.setSlide(this.slideIndex)
+  }
+
   connectedCallback() {
     this.mutationO = observeItems(this.el, 'bal-image-slider-item', () => this.updateImages())
     this.updateImages()
