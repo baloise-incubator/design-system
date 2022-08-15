@@ -1201,7 +1201,7 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
-          * TODO: describe
+          * Sets the content content width with the regular container classes
          */
         "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
@@ -1219,6 +1219,10 @@ export namespace Components {
          */
         "href": string;
         "interface": Props1.BalNavbarInterface;
+        /**
+          * Src to display a partner logo -> replaces the Baloise Logo
+         */
+        "partnerLogo"?: string;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -4463,7 +4467,7 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
-          * TODO: describe
+          * Sets the content content width with the regular container classes
          */
         "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
@@ -4485,6 +4489,10 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
+        /**
+          * Src to display a partner logo -> replaces the Baloise Logo
+         */
+        "partnerLogo"?: string;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */

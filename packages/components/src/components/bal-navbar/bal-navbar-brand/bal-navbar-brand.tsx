@@ -25,6 +25,11 @@ export class NavbarBrand {
   @Prop() simple = false
 
   /**
+   * Src to display a partner logo -> replaces the Baloise Logo
+   */
+  @Prop() partnerLogo?: string = ''
+
+  /**
    * @internal
    * Defines the type of navbar. App is used for almost every web applications
    * like the portal app. For our sales funnel we recommend to use the simple navbar.
@@ -81,7 +86,11 @@ export class NavbarBrand {
         }}
       >
         <a href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
+          {this.partnerLogo ? (
+            <img src={this.partnerLogo} alt="" />
+          ) : (
+            <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
+          )}
         </a>
         <span class={{ ...navbarBrandEl.element('title').class() }}>
           <slot></slot>
