@@ -25,9 +25,9 @@ export class NavbarBrand {
   @Prop() simple = false
 
   /**
-   * Src to display a partner logo -> replaces the Baloise Logo
+   * Src to display a logo -> replaces the default Baloise Logo
    */
-  @Prop() partnerLogo?: string = ''
+  @Prop() logo?: string
 
   /**
    * @internal
@@ -86,8 +86,8 @@ export class NavbarBrand {
         }}
       >
         <a href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          {this.partnerLogo ? (
-            <img src={this.partnerLogo} alt="" />
+          {this.logo ? (
+            <img class={{ ...navbarBrandEl.element('logo').class() }} src={this.logo} alt="" />
           ) : (
             <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'white'}></bal-logo>
           )}

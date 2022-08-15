@@ -1220,9 +1220,9 @@ export namespace Components {
         "href": string;
         "interface": Props1.BalNavbarInterface;
         /**
-          * Src to display a partner logo -> replaces the Baloise Logo
+          * Src to display a logo -> replaces the default Baloise Logo
          */
-        "partnerLogo"?: string;
+        "logo"?: string;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -4486,13 +4486,13 @@ declare namespace LocalJSX {
         "href"?: string;
         "interface"?: Props1.BalNavbarInterface;
         /**
+          * Src to display a logo -> replaces the default Baloise Logo
+         */
+        "logo"?: string;
+        /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
-        /**
-          * Src to display a partner logo -> replaces the Baloise Logo
-         */
-        "partnerLogo"?: string;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */

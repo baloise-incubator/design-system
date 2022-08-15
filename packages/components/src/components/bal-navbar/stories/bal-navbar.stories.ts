@@ -252,7 +252,7 @@ export const Light = args => ({
     }
   },
   template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand partner-logo='https://via.placeholder.com/120x25'>Partner Page</bal-navbar-brand>
+  <bal-navbar-brand logo='https://via.placeholder.com/120x25'>Partner Page</bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
