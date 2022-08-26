@@ -171,9 +171,11 @@
 }
 
 .bal-list.is-on-background-dark {
-  .bal-list-item-title h5,
-  .bal-list-item-subtitle p {
-    color: $white;
+  .bal-list-item {
+    .bal-list-item-title .title,
+    .bal-list-item-subtitle p {
+      color: $white;
+    }
   }
 
   .bal-list-item-icon {
@@ -191,7 +193,7 @@
   a:not(.is-link),
   button:not(.button) {
     &:hover {
-      .bal-list-item-title h5,
+      .bal-list-item-title .title,
       .bal-list-item-subtitle p {
         color: $light-blue-2 !important;
       }
