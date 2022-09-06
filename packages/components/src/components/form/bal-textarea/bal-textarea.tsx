@@ -303,6 +303,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           onBlur={this.onBlur}
           onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          required={this.required}
           {...this.inheritedAttributes}
         >
           {value}
