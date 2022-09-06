@@ -37,3 +37,4 @@ The [documentation](https://design.baloise.dev) is published on now.sh, and is b
 | [Icons](https://design.baloise.dev)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-icons)              | SVG icons of the design system.                                         |
 | [Fonts](https://design.baloise.dev)              | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-fonts)              | Web-Font of the design system.                                          |
 | [Testing](https://design.baloise.dev)            | ![npm](https://img.shields.io/npm/v/@baloise/design-system-next-testing)            | Testing package with custom and overridden commands for each component. |
+
