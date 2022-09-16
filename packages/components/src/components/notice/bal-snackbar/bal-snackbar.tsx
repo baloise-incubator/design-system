@@ -64,6 +64,11 @@ export class Snackbar {
   @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
+   * If 'true', the message of the snackbar will be a rich text
+   */
+  @Prop() richText = false
+
+  /**
    * Emitted when snackbar is closed
    */
   @Event() balClose!: EventEmitter<string>
@@ -131,9 +136,17 @@ export class Snackbar {
               </bal-heading>
             </span>
           </div>
-          <bal-text class="bal-snackbar__label" space={this.action === '' ? 'bottom' : 'none'} innerHTML={this.message}>
-            <slot />
-          </bal-text>
+          {this.richText ? (
+            <slot name="richText" />
+          ) : (
+            <bal-text
+              class="bal-snackbar__label"
+              space={this.action === '' ? 'bottom' : 'none'}
+              innerHTML={this.message}
+            >
+              <slot />
+            </bal-text>
+          )}
           <bal-close class="bal-snackbar__close" size="medium" onClick={() => this.close()}></bal-close>
           <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
             <bal-button color="info" href={this.href} target={this.target} onClick={() => this.onActionHandler()}>
