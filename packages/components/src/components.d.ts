@@ -2019,6 +2019,10 @@ export namespace Components {
          */
         "color": Props.BalSnackbarColor;
         /**
+          * If 'true', the message of the snackbar will be a rich text
+         */
+        "customMessage": boolean;
+        /**
           * The duration of the snackbar
          */
         "duration": number;
@@ -5511,6 +5515,10 @@ declare namespace LocalJSX {
           * The theme type of the snackbar. Given by bulma our css framework.
          */
         "color"?: Props.BalSnackbarColor;
+        /**
+          * If 'true', the message of the snackbar will be a rich text
+         */
+        "customMessage"?: boolean;
         /**
           * The duration of the snackbar
          */
