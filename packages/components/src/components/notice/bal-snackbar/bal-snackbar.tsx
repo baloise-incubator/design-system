@@ -66,7 +66,7 @@ export class Snackbar {
   /**
    * If 'true', the message of the snackbar will be a rich text
    */
-  @Prop() richText = false
+  @Prop() customMessage = false
 
   /**
    * Emitted when snackbar is closed
@@ -136,8 +136,8 @@ export class Snackbar {
               </bal-heading>
             </span>
           </div>
-          {this.richText ? (
-            <slot name="richText" />
+          {this.customMessage ? (
+            <slot name="customMessage" />
           ) : (
             <bal-text
               class="bal-snackbar__label"
