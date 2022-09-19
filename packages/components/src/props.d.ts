@@ -51,7 +51,7 @@ export namespace Props {
     | 'green-light'
     | 'grey-light'
 
-  export type BalCloseSize = 'small' | 'large' | 'medium' | ''
+  export type BalCloseSize = 'small' | 'medium' | ''
 
   export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
@@ -71,6 +71,8 @@ export namespace Props {
   export type BalLogoColor = 'blue' | 'white'
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
+
+  export type BalPaginationInterface = '' | 'small'
 
   export type BalPopoverContentRadius =
     | 'normal'
