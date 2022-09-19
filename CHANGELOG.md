@@ -8,9 +8,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package root
 
 
-
-
-
 ## [10.21.1](https://github.com/baloise/design-system/compare/v10.21.0...v10.21.1) (2022-09-15)
 
 
