@@ -17,6 +17,38 @@
     flex: 1
     width: 100%
 
+  .columns
+    position: relative
+    display: block
+    width: 100%
+    .bal-tabs__controls
+      position: absolute
+      height: 16px
+      width: 100%
+      z-index: 1
+      +mobile
+        top: 172px
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 2rem
+      +tablet
+        top: 0
+        height: 0
+        display: block
+        +element(button)
+          position: absolute
+          height: 87px
+          display: flex
+          justify-content: center
+          align-items: center
+          +modifier(left)
+            left: 0
+            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+          +modifier(right)
+            right: 0
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+
   +element(col-items)
     padding-bottom: 0 !important
     +modifier(vertical)

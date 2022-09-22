@@ -152,3 +152,34 @@ MetaNavigation.parameters = {
   controls: { exclude: ['clickable'] },
   backgrounds: { default: 'blue' },
 }
+
+export const BasicLong = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+  <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+  <bal-tab-item value="tab-f" label="Tab D" disabled>Content of Tab D</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab G" disabled>Content of Tab G</bal-tab-item>
+  <bal-tab-item value="tab-g" label="Tab TEST" disabled>Content of Tab G</bal-tab-item>
+</bal-tabs>`,
+})
+BasicLong.args = {
+  interface: 'tabs',
+  value: 'tab-b',
+  border: true,
+  fullwidth: true,
+  expanded: false,
+  vertical: false,
+  selectOnMobile: false,
+}
+BasicLong.parameters = {
+  ...component.sourceCode(BasicLong),
+  controls: { exclude: ['clickable'] },
+}

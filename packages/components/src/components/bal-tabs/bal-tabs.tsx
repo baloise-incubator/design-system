@@ -18,6 +18,9 @@ export class Tabs {
   private didInit = false
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
+  private steps = 2
+  private whereIAm = 0
+  private tabWidth = 176
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -26,6 +29,9 @@ export class Tabs {
   @State() lineOffsetTop = 0
   @State() isReady = false
   @State() platform: Platforms[] = ['mobile']
+  @State() slideIndex = 0
+  @State() lastSlide = 0
+  @State() sliderLength = 0
 
   /**
    * Defines the layout of the tabs.
@@ -118,6 +124,8 @@ export class Tabs {
   async resizeHandler() {
     this.platform = getPlatforms()
     this.moveLine(this.getTargetElement(this.value))
+    this.calculateLastSlide()
+    //this.setSlide(0)
   }
 
   @Listen('balPopoverPrepare', { target: 'window' })
@@ -291,6 +299,77 @@ export class Tabs {
     return tab.value === this.value
   }
 
+  private getParentWidth(element: any): number {
+    const parentWidth = (element.parentNode as any).offsetWidth
+    if (parentWidth === 0) {
+      return this.getParentWidth(element.parentNode.parentNode)
+    }
+    return parentWidth
+  }
+
+  private getOffsetWidth() {
+    const elementOffsetWidth = this.el.offsetWidth
+    console.log('this.el.offsetWidth')
+    if (elementOffsetWidth === 0) {
+      return this.getParentWidth(this.el.parentNode)
+    }
+    return elementOffsetWidth
+  }
+
+  private calculateLastSlide() {
+    console.log('calculateLastSlide')
+    // this.lastSlide = Math.ceil(this.sliderLength || this.items.length - this.getOffsetWidth() / this.productWidth)
+    this.lastSlide = 4
+  }
+
+  /**
+   * Set the slide to switch to
+   * @param {number} slide :Set to switch to.
+   */
+  private setSlide = (slide: number) => {
+    const productContainer = this.getProductContainer()
+    if (productContainer && slide >= 0 && slide <= this.lastSlide + 1) {
+      const currentSlide = this.slideIndex
+      this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
+      productContainer.style.transitionDuration = '1.2s'
+      productContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
+      // productContainer.style.transform = `translate(-${this.slideIndex * this.tabWidth}px)`
+
+      const tabItemsFullWidth = this.getTabItemsFullWidth()
+      const offsetWidth = this.getOffsetWidth()
+      const width = tabItemsFullWidth - offsetWidth > offsetWidth ? offsetWidth : tabItemsFullWidth - offsetWidth
+
+      if (this.slideIndex === 0) {
+        productContainer.style.transform = `translate(-${0}px)`
+      } else {
+        if (currentSlide < this.slideIndex) {
+          if (Math.abs(this.whereIAm) + offsetWidth < tabItemsFullWidth) {
+            this.whereIAm += width
+          }
+        } else {
+          this.whereIAm -= width
+        }
+        productContainer.style.transform = `translate(-${this.whereIAm}px)`
+      }
+    }
+  }
+
+  private getProductContainer() {
+    return this.el.querySelector<HTMLDivElement>('.bal-tabs__tabs')
+  }
+
+  private getTabItemsFullWidth() {
+    const el = this.el.querySelector<HTMLDivElement>('.bal-tabs__tabs')
+    const items = el?.querySelectorAll<HTMLDivElement>('.bal-tabs__tabs__item')
+    let width = 0
+
+    items?.forEach(item => {
+      width += item.offsetWidth
+    })
+
+    return width
+  }
+
   render() {
     const block = BEM.block('tabs')
     const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
@@ -301,6 +380,17 @@ export class Tabs {
     const isPropVertical = this.parseVertical() === true
     const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
     const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+    const controls = block.element('controls')
+    const controlButton = controls.element('button')
+
+    this.steps = isPlatform('mobile') ? 1 : 2
+    this.calculateLastSlide()
+
+    const hasSlider = this.getTabItemsFullWidth() > this.getOffsetWidth()
+
+    const leftControlIsDisabled = !hasSlider //this.slideIndex <= 0 && !hasSlider
+    const rightControlIsDisabled = !hasSlider //this.slideIndex >= this.lastSlide && !hasSlider
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
 
@@ -366,6 +456,30 @@ export class Tabs {
             }}
           >
             <slot></slot>
+          </div>
+          <div class={{ ...controls.class(), 'is-hidden': leftControlIsDisabled && rightControlIsDisabled }}>
+            <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
+              <bal-button
+                disabled={leftControlIsDisabled}
+                onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 1 : 0)}
+                color="primary"
+                square
+                rounded
+                icon="caret-left"
+                size="small"
+              />
+            </div>
+            <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
+              <bal-button
+                disabled={rightControlIsDisabled}
+                onClick={() => this.setSlide(this.slideIndex + 1)}
+                color="primary"
+                square
+                rounded
+                icon="caret-right"
+                size="small"
+              />
+            </div>
           </div>
         </div>
       </Host>
