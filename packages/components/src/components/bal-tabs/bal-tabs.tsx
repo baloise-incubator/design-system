@@ -19,8 +19,8 @@ export class Tabs {
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
   private steps = 2
-  private whereIAm = 0
-  private tabWidth = 176
+  private listEl?: HTMLUListElement
+  private transformLeft = 0
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -30,8 +30,9 @@ export class Tabs {
   @State() isReady = false
   @State() platform: Platforms[] = ['mobile']
   @State() slideIndex = 0
-  @State() lastSlide = 0
+  @State() isLastSlide = false
   @State() sliderLength = 0
+  @State() isSliderActive = false
 
   /**
    * Defines the layout of the tabs.
@@ -112,6 +113,7 @@ export class Tabs {
 
     if (this.didInit && newValue !== oldValue) {
       this.isReady = true
+      this.syncSlider()
     }
   }
 
@@ -123,9 +125,14 @@ export class Tabs {
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
     this.platform = getPlatforms()
+    this.syncIsSliderActive()
+    this.syncSlider()
     this.moveLine(this.getTargetElement(this.value))
-    this.calculateLastSlide()
-    //this.setSlide(0)
+  }
+
+  @Listen('load', { target: 'window' })
+  async loadHandler() {
+    this.moveLine(this.getTargetElement(this.value))
   }
 
   @Listen('balPopoverPrepare', { target: 'window' })
@@ -162,9 +169,11 @@ export class Tabs {
     }
     this.value = value
     this.valueChanged(value, this.value)
+    this.syncSlider()
   }
 
   componentDidRender() {
+    this.syncIsSliderActive()
     this.moveLine(this.getTargetElement(this.value))
   }
 
@@ -316,44 +325,6 @@ export class Tabs {
     return elementOffsetWidth
   }
 
-  private calculateLastSlide() {
-    console.log('calculateLastSlide')
-    // this.lastSlide = Math.ceil(this.sliderLength || this.items.length - this.getOffsetWidth() / this.productWidth)
-    this.lastSlide = 4
-  }
-
-  /**
-   * Set the slide to switch to
-   * @param {number} slide :Set to switch to.
-   */
-  private setSlide = (slide: number) => {
-    const productContainer = this.getProductContainer()
-    if (productContainer && slide >= 0 && slide <= this.lastSlide + 1) {
-      const currentSlide = this.slideIndex
-      this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
-      productContainer.style.transitionDuration = '1.2s'
-      productContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
-      // productContainer.style.transform = `translate(-${this.slideIndex * this.tabWidth}px)`
-
-      const tabItemsFullWidth = this.getTabItemsFullWidth()
-      const offsetWidth = this.getOffsetWidth()
-      const width = tabItemsFullWidth - offsetWidth > offsetWidth ? offsetWidth : tabItemsFullWidth - offsetWidth
-
-      if (this.slideIndex === 0) {
-        productContainer.style.transform = `translate(-${0}px)`
-      } else {
-        if (currentSlide < this.slideIndex) {
-          if (Math.abs(this.whereIAm) + offsetWidth < tabItemsFullWidth) {
-            this.whereIAm += width
-          }
-        } else {
-          this.whereIAm -= width
-        }
-        productContainer.style.transform = `translate(-${this.whereIAm}px)`
-      }
-    }
-  }
-
   private getProductContainer() {
     return this.el.querySelector<HTMLDivElement>('.bal-tabs__tabs')
   }
@@ -368,6 +339,99 @@ export class Tabs {
     })
 
     return width
+  }
+
+  private nextPage(animated = true) {
+    const reversedList = this.tabItems.reverse()
+    const lastVisible = reversedList.findIndex(item => item.isVisible)
+    const nextItemToShow = reversedList[lastVisible - 1]
+
+    this.transformLeft = nextItemToShow.el.offsetLeft
+    const isPageBigEnough = this.listWidth - this.transformLeft >= this.containerWidth
+    if (!isPageBigEnough) {
+      this.transformLeft = this.listWidth - this.containerWidth
+    }
+    this.setTransition(animated)
+  }
+
+  private previousPage(animated = true) {
+    const list = this.tabItems
+
+    const firstVisibleIndex = list.findIndex(item => item.isVisible)
+    const firstVisibleElement = list[firstVisibleIndex <= 0 ? 0 : firstVisibleIndex]
+    const offsetLeft = firstVisibleElement.el.offsetLeft - this.containerWidth
+    this.transformLeft = offsetLeft < 0 ? 0 : offsetLeft
+
+    this.setTransition(animated)
+  }
+
+  private setTransition(animated = true) {
+    const container = this.getProductContainer()
+    if (container) {
+      if (animated) {
+        container.style.transitionDuration = '1.2s'
+      } else {
+        container.style.transitionDuration = '0'
+      }
+      container.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
+      container.style.transform = `translate(-${this.transformLeft}px)`
+    }
+  }
+
+  private get listWidth(): number {
+    return this.listEl?.clientWidth || 0
+  }
+
+  private get containerWidth(): number {
+    return this.getProductContainer()?.clientWidth || 0
+  }
+
+  private get tabItems(): any[] {
+    const list = Array.from(this.el?.querySelectorAll<HTMLDivElement>('.bal-tabs__tabs__item'))
+    const newList = list
+      .filter(item => item.dataset.hidden !== '')
+      .map((item, index) => {
+        const pointer = item.clientWidth + item.offsetLeft
+        const isVisible = pointer < this.containerWidth + this.transformLeft && pointer > this.transformLeft
+        return { el: item, pointer, isVisible, index, value: item.dataset.value }
+      })
+    return [...newList]
+  }
+
+  private syncSlider(animated = false) {
+    if (this.isSliderActive) {
+      const list = this.tabItems
+      const isValueVisible = list.filter(item => item.isVisible && item.value === this.value).length > 0
+
+      if (!isValueVisible) {
+        let isOnPreviousPage = false
+
+        for (let index = 0; index < list.length; index++) {
+          const item = list[index]
+          if (item.isVisible) {
+            break
+          }
+          if (item.value === this.value) {
+            isOnPreviousPage = true
+            break
+          }
+        }
+
+        if (isOnPreviousPage) {
+          this.previousPage(animated)
+        } else {
+          this.nextPage(animated)
+        }
+
+        this.syncSlider(animated)
+        this.renderLine()
+      }
+    }
+  }
+
+  private syncIsSliderActive() {
+    console.log(this.tabItems)
+    this.isSliderActive = this.tabItems.some(item => !item.isVisible)
   }
 
   render() {
@@ -385,12 +449,10 @@ export class Tabs {
     const controlButton = controls.element('button')
 
     this.steps = isPlatform('mobile') ? 1 : 2
-    this.calculateLastSlide()
 
     const hasSlider = this.getTabItemsFullWidth() > this.getOffsetWidth()
-
-    const leftControlIsDisabled = !hasSlider //this.slideIndex <= 0 && !hasSlider
-    const rightControlIsDisabled = !hasSlider //this.slideIndex >= this.lastSlide && !hasSlider
+    const leftControlIsDisabled = this.slideIndex <= 0 || !hasSlider // TODO: change this
+    const rightControlIsDisabled = this.isLastSlide || !hasSlider // TODO: change this
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
 
@@ -444,6 +506,7 @@ export class Tabs {
               lineOffsetTop={this.lineOffsetTop}
               vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
               selectOnMobile={this.selectOnMobile}
+              refListEl={el => (this.listEl = el)}
             ></Tabs>
           </div>
           <div
@@ -458,8 +521,8 @@ export class Tabs {
             <slot></slot>
           </div>
           <div class={{ ...controls.class(), 'is-hidden': leftControlIsDisabled && rightControlIsDisabled }}>
-            <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
-              <bal-button
+            {/* <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}> */}
+            {/* <bal-button
                 disabled={leftControlIsDisabled}
                 onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 1 : 0)}
                 color="primary"
@@ -467,10 +530,22 @@ export class Tabs {
                 rounded
                 icon="caret-left"
                 size="small"
-              />
-            </div>
-            <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
-              <bal-button
+              /> */}
+            <button
+              type="button"
+              aria-label="left"
+              class={{
+                ...controlButton.class(),
+                ...controlButton.modifier('left').class(),
+              }}
+              // onClick={() => this.setSlide(this.slideIndex + 1)}
+              onClick={() => this.previousPage()}
+            >
+              <bal-icon name="caret-left" inverted={!this.inverted} size="xsmall"></bal-icon>
+            </button>
+            {/* </div> */}
+            {/* <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}> */}
+            {/* <bal-button
                 disabled={rightControlIsDisabled}
                 onClick={() => this.setSlide(this.slideIndex + 1)}
                 color="primary"
@@ -478,8 +553,20 @@ export class Tabs {
                 rounded
                 icon="caret-right"
                 size="small"
-              />
-            </div>
+              /> */}
+            <button
+              type="button"
+              aria-label="right"
+              class={{
+                ...controlButton.class(),
+                ...controlButton.modifier('right').class(),
+              }}
+              // onClick={() => this.setSlide(this.slideIndex + 1)}
+              onClick={() => this.nextPage()}
+            >
+              <bal-icon name="caret-right" inverted={!this.inverted} size="xsmall"></bal-icon>
+            </button>
+            {/* </div> */}
           </div>
         </div>
       </Host>

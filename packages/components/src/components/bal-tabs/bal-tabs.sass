@@ -21,9 +21,10 @@
     position: relative
     display: block
     width: 100%
+    margin-left: 0
+    margin-left: 0
     .bal-tabs__controls
       position: absolute
-      height: 16px
       width: 100%
       z-index: 1
       +mobile
@@ -33,24 +34,36 @@
         justify-content: center
         gap: 2rem
       +tablet
-        top: 0
-        height: 0
+        top: 36px
         display: block
         +element(button)
           position: absolute
-          height: 87px
-          display: flex
-          justify-content: center
-          align-items: center
+          -moz-appearance: none
+          -webkit-appearance: none
+          background-color: var(--bal-color-primary)
+          border: none
+          border-radius: var(--bal-radius-rounded)
+          cursor: pointer
+          pointer-events: auto
+          display: inline-block
+          border: none
+          flex-grow: 0
+          flex-shrink: 0
+          font-size: 0
+          outline: none
+          vertical-align: top
+          padding: 2px
           +modifier(left)
             left: 0
-            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+            // background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
           +modifier(right)
             right: 0
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+            // background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
 
   +element(col-items)
     padding-bottom: 0 !important
+    overflow: hidden
+    // width: fit-content !important
     +modifier(vertical)
       +tablet
         padding-bottom: var(--bal-column-gap) !important

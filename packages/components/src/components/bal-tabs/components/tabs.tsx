@@ -25,6 +25,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
   selectOnMobile,
   context,
   inverted,
+  refListEl,
 }) => {
   if (isPlatform('mobile') && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
@@ -55,7 +56,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
         ...tabsEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
       }}
     >
-      <ul>
+      <ul ref={el => refListEl(el as HTMLUListElement)}>
         {tabs.map((tab, index) => (
           <li
             class={{
@@ -72,6 +73,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
             }}
             data-label={tab.label}
             data-value={tab.value}
+            data-hidden={tab.hidden}
             data-index={index}
           >
             <TabItem

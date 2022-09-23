@@ -48,6 +48,7 @@ export interface TabProps {
   lineOffsetTop?: number
   vertical: boolean | 'mobile' | 'tablet'
   selectOnMobile: boolean
+  refListEl: (el: HTMLUListElement) => void
 }
 
 export interface TabItemProps {
