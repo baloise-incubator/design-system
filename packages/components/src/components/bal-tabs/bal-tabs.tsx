@@ -21,6 +21,7 @@ export class Tabs {
   private steps = 2
   private listEl?: HTMLUListElement
   private transformLeft = 0
+  private xPosition = 0
 
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
@@ -129,6 +130,26 @@ export class Tabs {
     this.syncIsSliderActive()
     this.syncSlider()
     this.moveLine(this.getTargetElement(this.value))
+  }
+
+  @Listen('touchstart')
+  touchStart(event: TouchEvent) {
+    const productContainer = this.getProductContainer()
+    if (productContainer?.contains(event.target as HTMLElement)) {
+      this.xPosition = event.touches[0].pageX
+    }
+  }
+
+  @Listen('touchend')
+  touchEnd(event: TouchEvent) {
+    const productContainer = this.getProductContainer()
+    if (productContainer?.contains(event.target as HTMLElement)) {
+      if (event.changedTouches[0].pageX < this.xPosition) {
+        this.nextPage()
+      } else {
+        this.previousPage()
+      }
+    }
   }
 
   @Listen('load', { target: 'window' })
