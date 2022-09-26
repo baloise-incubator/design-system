@@ -453,7 +453,7 @@ export const French = args => ({
   </bal-navigation-levels>
 </bal-navigation>
 <bal-stage color="purple" shape size="small">
-    <bal-stage-body>
+    <bal-stage-body shape>
         <bal-stage-back-link href="#" class="mb-5">Back</bal-stage-back-link>
         <bal-heading class="mb-2" space="none">French</bal-heading>
     </bal-stage-body>

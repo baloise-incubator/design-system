@@ -153,7 +153,7 @@ MetaNavigation.parameters = {
   backgrounds: { default: 'blue' },
 }
 
-export const BasicLong = args => ({
+export const BasicWithSlider = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-tabs v-bind="args" v-model="args.value">
@@ -187,7 +187,7 @@ export const BasicLong = args => ({
   <bal-tab-item value="tab-27" label="Tab 27">Content of Tab 27</bal-tab-item>
 </bal-tabs>`,
 })
-BasicLong.args = {
+BasicWithSlider.args = {
   interface: 'tabs',
   value: 'tab-1',
   border: true,
@@ -196,7 +196,7 @@ BasicLong.args = {
   vertical: false,
   selectOnMobile: false,
 }
-BasicLong.parameters = {
-  ...component.sourceCode(BasicLong),
+BasicWithSlider.parameters = {
+  ...component.sourceCode(BasicWithSlider),
   controls: { exclude: ['clickable'] },
 }

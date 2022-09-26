@@ -16,7 +16,112 @@
     display: block
     flex: 1
     width: 100%
-
+  .has-slider
+    position: relative
+    display: block
+    width: 100%
+    margin-left: 0
+    margin-left: 0
+    .bal-tabs__col-items
+      padding-left: 16px
+      padding-right: 16px
+    .bal-tabs__controls
+      position: absolute
+      width: 100%
+      z-index: 1
+      +mobile
+        top: 172px
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: 2rem
+      +tablet
+        top: 0
+        display: block
+        +element(button)
+          position: absolute
+          height: 80px
+          width: 48px
+          display: flex
+          align-items: center
+          +desktop
+            height: 48px
+          +widescreen
+            height: 80px
+          button
+            position: absolute
+            -moz-appearance: none
+            -webkit-appearance: none
+            background-color: var(--bal-color-primary)
+            border: none
+            border-radius: var(--bal-radius-rounded)
+            cursor: pointer
+            pointer-events: auto
+            display: inline-block
+            border: none
+            flex-grow: 0
+            flex-shrink: 0
+            font-size: 0
+            outline: none
+            vertical-align: top
+            padding: 2px
+            +hover
+              &:hover,
+              &.is-hovered
+                background: var(--bal-color-light-blue-dark)
+                border-color: var(--bal-color-light-blue-dark)
+            &:active,
+            &.is-active
+              background: var(--bal-color-blue-dark)
+              border-color: var(--bal-color-blue-dark)
+            &.is-disabled.is-inverted,
+            &.is-disabled,
+            &.is-disabled:hover,
+            &.is-disabled:active,
+            &.is-disabled:focus,
+            &.is-inverted:disabled,
+            &:disabled
+              // @extend %disabled
+              background: var(--bal-color-grey)
+              border-color: var(--bal-color-grey)
+              color: var(--bal-color-grey-dark)
+              +fillSvg(var(--bal-color-grey-dark))
+              cursor: default
+              opacity: 1
+              & > span::after
+                display: none
+                content: none
+            &.is-inverted
+              background: transparent
+              border-color: var(--bal-color-white)
+              color: var(--bal-color-white)
+              +fillSvg(var(--bal-color-white))
+              // States
+              +hover
+                &:hover,
+                &.is-hovered
+                  background: var(--bal-color-blue-3)
+                  border-color: var(--bal-color-light-blue-3)
+                  color: var(--bal-color-white)
+                  +fillSvg(var(--bal-color-white))
+              &:focus-visible,
+              &.is-focused
+                &:not(:active)
+                  // @extend %focus-inverted-shadow
+              &:active,
+              &.is-active
+                background: var(--bal-color-blue-3)
+                border-color: var(--bal-color-light-blue-5)
+                color: var(--bal-color-white)
+                +fillSvg(var(--bal-color-white))
+          +modifier(left)
+            left: 0
+            justify-content: flex-start
+            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+          +modifier(right)
+            right: 0
+            justify-content: flex-end
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
   .columns
     position: relative
     display: block
@@ -34,36 +139,93 @@
         justify-content: center
         gap: 2rem
       +tablet
-        top: 36px
+        top: 0
         display: block
         +element(button)
           position: absolute
-          -moz-appearance: none
-          -webkit-appearance: none
-          background-color: var(--bal-color-primary)
-          border: none
-          border-radius: var(--bal-radius-rounded)
-          cursor: pointer
-          pointer-events: auto
-          display: inline-block
-          border: none
-          flex-grow: 0
-          flex-shrink: 0
-          font-size: 0
-          outline: none
-          vertical-align: top
-          padding: 2px
+          height: 70px
+          width: 48px
+          display: flex
+          align-items: center
+          button
+            position: absolute
+            -moz-appearance: none
+            -webkit-appearance: none
+            background-color: var(--bal-color-primary)
+            border: none
+            border-radius: var(--bal-radius-rounded)
+            cursor: pointer
+            pointer-events: auto
+            display: inline-block
+            border: none
+            flex-grow: 0
+            flex-shrink: 0
+            font-size: 0
+            outline: none
+            vertical-align: top
+            padding: 2px
+            margin-top: 16px
+            +hover
+              &:hover,
+              &.is-hovered
+                background: var(--bal-color-light-blue-dark)
+                border-color: var(--bal-color-light-blue-dark)
+            &:active,
+            &.is-active
+              background: var(--bal-color-blue-dark)
+              border-color: var(--bal-color-blue-dark)
+            &.is-disabled.is-inverted,
+            &.is-disabled,
+            &.is-disabled:hover,
+            &.is-disabled:active,
+            &.is-disabled:focus,
+            &.is-inverted:disabled,
+            &:disabled
+              // @extend %disabled
+              background: var(--bal-color-grey)
+              border-color: var(--bal-color-grey)
+              color: var(--bal-color-grey-dark)
+              +fillSvg(var(--bal-color-grey-dark))
+              cursor: default
+              opacity: 1
+              & > span::after
+                display: none
+                content: none
+            &.is-inverted
+              background: transparent
+              border-color: var(--bal-color-white)
+              color: var(--bal-color-white)
+              +fillSvg(var(--bal-color-white))
+              // States
+              +hover
+                &:hover,
+                &.is-hovered
+                  background: var(--bal-color-blue-3)
+                  border-color: var(--bal-color-light-blue-3)
+                  color: var(--bal-color-white)
+                  +fillSvg(var(--bal-color-white))
+              &:focus-visible,
+              &.is-focused
+                &:not(:active)
+                  // @extend %focus-inverted-shadow
+              &:active,
+              &.is-active
+                background: var(--bal-color-blue-3)
+                border-color: var(--bal-color-light-blue-5)
+                color: var(--bal-color-white)
+                +fillSvg(var(--bal-color-white))
           +modifier(left)
             left: 0
-            // background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+            justify-content: flex-start
+            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
           +modifier(right)
             right: 0
-            // background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+            justify-content: flex-end
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
 
   +element(col-items)
     padding-bottom: 0 !important
     overflow: hidden
-    // width: fit-content !important
     +modifier(vertical)
       +tablet
         padding-bottom: var(--bal-column-gap) !important
@@ -79,7 +241,6 @@
     +modifier(full)
       padding-top: 0 !important
       padding-bottom: 0 !important
-
   +element(tabs)
     +overflow-touch
     +unselectable
@@ -89,6 +250,7 @@
     font-size: $size-normal
     justify-content: space-between
     white-space: nowrap
+    //  width: fit-content
     ul
       align-items: center
       display: flex

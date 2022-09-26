@@ -10,6 +10,7 @@ const tabItemEl = tabsEl.element('item')
 export const TabList: FunctionalComponent<TabProps> = ({
   value,
   expanded,
+  borderWidth,
   border,
   float,
   tabs,
@@ -109,7 +110,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
             .modifier('vertical-on-tablet')
             .class(vertical === 'tablet'),
         }}
-        style={{ display: border ? 'block' : 'none' }}
+        style={{ display: border ? 'block' : 'none', width: `${borderWidth || 0}px` }}
       ></div>
       <TabLine
         context={context}
@@ -144,7 +145,7 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
   const isVertical = vertical === true
   const isVerticalMobile = isMobile && (vertical === 'mobile' || vertical === 'tablet')
   const isVerticalTablet = (isMobile || isTablet) && vertical === 'tablet'
-
+  console.log('lineWidth ', lineWidth)
   if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
     style = {
       top: `${lineOffsetTop || 0}px`,

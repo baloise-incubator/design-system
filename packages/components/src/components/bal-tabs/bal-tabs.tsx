@@ -31,6 +31,7 @@ export class Tabs {
   @State() platform: Platforms[] = ['mobile']
   @State() slideIndex = 0
   @State() isLastSlide = false
+  @State() isFirstSlide = true
   @State() sliderLength = 0
   @State() isSliderActive = false
 
@@ -308,37 +309,8 @@ export class Tabs {
     return tab.value === this.value
   }
 
-  private getParentWidth(element: any): number {
-    const parentWidth = (element.parentNode as any).offsetWidth
-    if (parentWidth === 0) {
-      return this.getParentWidth(element.parentNode.parentNode)
-    }
-    return parentWidth
-  }
-
-  private getOffsetWidth() {
-    const elementOffsetWidth = this.el.offsetWidth
-    console.log('this.el.offsetWidth')
-    if (elementOffsetWidth === 0) {
-      return this.getParentWidth(this.el.parentNode)
-    }
-    return elementOffsetWidth
-  }
-
   private getProductContainer() {
     return this.el.querySelector<HTMLDivElement>('.bal-tabs__tabs')
-  }
-
-  private getTabItemsFullWidth() {
-    const el = this.el.querySelector<HTMLDivElement>('.bal-tabs__tabs')
-    const items = el?.querySelectorAll<HTMLDivElement>('.bal-tabs__tabs__item')
-    let width = 0
-
-    items?.forEach(item => {
-      width += item.offsetWidth
-    })
-
-    return width
   }
 
   private nextPage(animated = true) {
@@ -348,8 +320,11 @@ export class Tabs {
 
     this.transformLeft = nextItemToShow.el.offsetLeft
     const isPageBigEnough = this.listWidth - this.transformLeft >= this.containerWidth
+    this.isLastSlide = false
+    this.isFirstSlide = false
     if (!isPageBigEnough) {
       this.transformLeft = this.listWidth - this.containerWidth
+      this.isLastSlide = true
     }
     this.setTransition(animated)
   }
@@ -361,6 +336,9 @@ export class Tabs {
     const firstVisibleElement = list[firstVisibleIndex <= 0 ? 0 : firstVisibleIndex]
     const offsetLeft = firstVisibleElement.el.offsetLeft - this.containerWidth
     this.transformLeft = offsetLeft < 0 ? 0 : offsetLeft
+    this.isFirstSlide = this.transformLeft === 0
+    this.isLastSlide = false
+    console.log('previousPage ', this.transformLeft)
 
     this.setTransition(animated)
   }
@@ -391,17 +369,24 @@ export class Tabs {
     const newList = list
       .filter(item => item.dataset.hidden !== '')
       .map((item, index) => {
-        const pointer = item.clientWidth + item.offsetLeft
+        let pointer = item.clientWidth + item.offsetLeft
+        pointer = this.interface === 'navigation' ? pointer - 30 : pointer
         const isVisible = pointer < this.containerWidth + this.transformLeft && pointer > this.transformLeft
+
         return { el: item, pointer, isVisible, index, value: item.dataset.value }
       })
     return [...newList]
   }
 
   private syncSlider(animated = false) {
+    if (this.value === '') {
+      return
+    }
+
     if (this.isSliderActive) {
       const list = this.tabItems
       const isValueVisible = list.filter(item => item.isVisible && item.value === this.value).length > 0
+      this.isFirstSlide = true
 
       if (!isValueVisible) {
         let isOnPreviousPage = false
@@ -416,7 +401,7 @@ export class Tabs {
             break
           }
         }
-
+        console.log('isOnPreviousPage ', isOnPreviousPage)
         if (isOnPreviousPage) {
           this.previousPage(animated)
         } else {
@@ -430,8 +415,14 @@ export class Tabs {
   }
 
   private syncIsSliderActive() {
-    console.log(this.tabItems)
-    this.isSliderActive = this.tabItems.some(item => !item.isVisible)
+    this.isSliderActive =
+      this.tabItems.some(item => !item.isVisible) &&
+      this.interface !== 'steps' &&
+      this.interface !== 'meta' &&
+      !this.vertical &&
+      !isPlatform('mobile')
+    console.log('this.isSliderActive ', this.isSliderActive)
+    console.log('this.tabItems ', this.tabItems)
   }
 
   render() {
@@ -449,10 +440,8 @@ export class Tabs {
     const controlButton = controls.element('button')
 
     this.steps = isPlatform('mobile') ? 1 : 2
-
-    const hasSlider = this.getTabItemsFullWidth() > this.getOffsetWidth()
-    const leftControlIsDisabled = this.slideIndex <= 0 || !hasSlider // TODO: change this
-    const rightControlIsDisabled = this.isLastSlide || !hasSlider // TODO: change this
+    const leftControlIsDisabled = this.isSliderActive && this.isFirstSlide
+    const rightControlIsDisabled = this.isSliderActive && this.isLastSlide
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
 
@@ -476,6 +465,7 @@ export class Tabs {
         <div
           class={{
             'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navigation',
+            'has-slider': this.interface === 'navigation' && this.isSliderActive,
           }}
         >
           <div
@@ -494,6 +484,7 @@ export class Tabs {
               spaceless={this.spaceless}
               tabs={this.tabsOptions}
               border={this.border}
+              borderWidth={this.listEl?.offsetWidth === undefined ? 0 : this.listEl?.offsetWidth}
               float={this.float}
               expanded={this.expanded}
               clickable={this.clickable}
@@ -520,53 +511,27 @@ export class Tabs {
           >
             <slot></slot>
           </div>
-          <div class={{ ...controls.class(), 'is-hidden': leftControlIsDisabled && rightControlIsDisabled }}>
-            {/* <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}> */}
-            {/* <bal-button
+          <div class={{ ...controls.class(), 'is-hidden': !this.isSliderActive }}>
+            <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
+              <button
+                type="button"
+                aria-label="left"
+                onClick={() => this.previousPage()}
                 disabled={leftControlIsDisabled}
-                onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 1 : 0)}
-                color="primary"
-                square
-                rounded
-                icon="caret-left"
-                size="small"
-              /> */}
-            <button
-              type="button"
-              aria-label="left"
-              class={{
-                ...controlButton.class(),
-                ...controlButton.modifier('left').class(),
-              }}
-              // onClick={() => this.setSlide(this.slideIndex + 1)}
-              onClick={() => this.previousPage()}
-            >
-              <bal-icon name="caret-left" inverted={!this.inverted} size="xsmall"></bal-icon>
-            </button>
-            {/* </div> */}
-            {/* <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}> */}
-            {/* <bal-button
+              >
+                <bal-icon name="caret-left" inverted={!this.inverted} size="xsmall"></bal-icon>
+              </button>
+            </div>
+            <div class={{ ...controlButton.class(), ...controlButton.modifier('right').class() }}>
+              <button
+                type="button"
+                aria-label="right"
+                onClick={() => this.nextPage()}
                 disabled={rightControlIsDisabled}
-                onClick={() => this.setSlide(this.slideIndex + 1)}
-                color="primary"
-                square
-                rounded
-                icon="caret-right"
-                size="small"
-              /> */}
-            <button
-              type="button"
-              aria-label="right"
-              class={{
-                ...controlButton.class(),
-                ...controlButton.modifier('right').class(),
-              }}
-              // onClick={() => this.setSlide(this.slideIndex + 1)}
-              onClick={() => this.nextPage()}
-            >
-              <bal-icon name="caret-right" inverted={!this.inverted} size="xsmall"></bal-icon>
-            </button>
-            {/* </div> */}
+              >
+                <bal-icon name="caret-right" inverted={!this.inverted} size="xsmall"></bal-icon>
+              </button>
+            </div>
           </div>
         </div>
       </Host>

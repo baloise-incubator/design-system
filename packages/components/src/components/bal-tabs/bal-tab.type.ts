@@ -33,6 +33,7 @@ export interface TabProps {
   value: string | undefined
   expanded: boolean
   border: boolean
+  borderWidth: number
   float: Props.BalTabsFloat
   spaceless: boolean
   clickable: boolean
