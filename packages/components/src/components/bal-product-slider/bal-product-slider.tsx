@@ -22,7 +22,6 @@ export class ProductSlider implements ComponentInterface {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    console.log('resizeHandler')
     this.calculateLastSlide()
     this.setSlide(0)
   }
@@ -84,18 +83,12 @@ export class ProductSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
-    console.log('setSlide ', slide)
     const productContainer = this.getProductContainer()
     if (productContainer && slide >= 0 && slide <= this.lastSlide + 1) {
       this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
       productContainer.style.transitionDuration = '1.2s'
       productContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
       productContainer.style.transform = `translate(-${this.slideIndex * this.productWidth}px)`
-      console.log('this.slideIndex ', this.slideIndex)
-      console.log(
-        '`translate(-${this.slideIndex * this.productWidth}px)` ',
-        `translate(-${this.slideIndex * this.productWidth}px)`,
-      )
     }
   }
 
@@ -116,9 +109,7 @@ export class ProductSlider implements ComponentInterface {
   }
 
   private calculateLastSlide() {
-    console.log('calculateLastSlide')
     this.lastSlide = Math.ceil(this.sliderLength || this.items.length - this.getOffsetWidth() / this.productWidth)
-    console.log('this.lastSlide ', this.lastSlide)
   }
 
   render() {
