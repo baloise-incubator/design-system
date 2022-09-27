@@ -359,7 +359,6 @@ export class Tabs {
     this.transformLeft = offsetLeft < 0 ? 0 : offsetLeft
     this.isFirstSlide = this.transformLeft === 0
     this.isLastSlide = false
-    console.log('previousPage ', this.transformLeft)
 
     this.setTransition(animated)
   }
@@ -422,7 +421,6 @@ export class Tabs {
             break
           }
         }
-        console.log('isOnPreviousPage ', isOnPreviousPage)
         if (isOnPreviousPage) {
           this.previousPage(animated)
         } else {
@@ -442,8 +440,6 @@ export class Tabs {
       this.interface !== 'meta' &&
       !this.vertical &&
       !isPlatform('mobile')
-    console.log('this.isSliderActive ', this.isSliderActive)
-    console.log('this.tabItems ', this.tabItems)
   }
 
   render() {
