@@ -389,7 +389,6 @@ export class Tabs {
         let pointer = item.clientWidth + item.offsetLeft
         pointer = this.interface === 'navigation' ? pointer - 30 : pointer
         const isVisible = pointer < this.containerWidth + this.transformLeft && pointer > this.transformLeft
-
         return { el: item, pointer, isVisible, index, value: item.dataset.value }
       })
     return [...newList]
@@ -435,8 +434,7 @@ export class Tabs {
       this.tabItems.some(item => !item.isVisible) &&
       this.interface !== 'steps' &&
       this.interface !== 'meta' &&
-      !this.vertical &&
-      !isPlatform('mobile')
+      !this.vertical
   }
 
   render() {

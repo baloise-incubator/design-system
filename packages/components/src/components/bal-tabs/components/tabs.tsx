@@ -110,7 +110,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
             .modifier('vertical-on-tablet')
             .class(vertical === 'tablet'),
         }}
-        style={{ display: border ? 'block' : 'none', width: `${borderWidth || 0}px` }}
+        style={{ display: border ? 'block' : 'none', width: !vertical ? `${borderWidth || 0}px` : '2px' }}
       ></div>
       <TabLine
         context={context}

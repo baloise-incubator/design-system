@@ -13,13 +13,14 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args" v-model="args.value">
+  template: `<div class="container"><bal-tabs v-bind="args" v-model="args.value">
   <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
   <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
   <bal-tab-item value="tab-d" label="Tab D" hidden>Hidden Content of Tab D</bal-tab-item>
   <bal-tab-item value="tab-e" label="Tab E" disabled>Content of Tab E</bal-tab-item>
-</bal-tabs>`,
+  <bal-tab-item value="tab-f" label="Tab F">Content of Tab F</bal-tab-item>
+</bal-tabs></div>`,
 })
 Basic.args = {
   interface: 'tabs',
@@ -31,6 +32,7 @@ Basic.args = {
   selectOnMobile: false,
 }
 Basic.parameters = {
+  layout: 'fullscreen',
   ...component.sourceCode(Basic),
   controls: { exclude: ['clickable'] },
 }
