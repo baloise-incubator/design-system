@@ -145,7 +145,6 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
   const isVertical = vertical === true
   const isVerticalMobile = isMobile && (vertical === 'mobile' || vertical === 'tablet')
   const isVerticalTablet = (isMobile || isTablet) && vertical === 'tablet'
-  console.log('lineWidth ', lineWidth)
   if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
     style = {
       top: `${lineOffsetTop || 0}px`,

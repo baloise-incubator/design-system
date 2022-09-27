@@ -18,7 +18,6 @@ export class Tabs {
   private didInit = false
   private mutationO?: MutationObserver
   private timeoutTimer?: NodeJS.Timer
-  private steps = 2
   private listEl?: HTMLUListElement
   private transformLeft = 0
   private xPosition = 0
@@ -30,10 +29,8 @@ export class Tabs {
   @State() lineOffsetTop = 0
   @State() isReady = false
   @State() platform: Platforms[] = ['mobile']
-  @State() slideIndex = 0
   @State() isLastSlide = false
   @State() isFirstSlide = true
-  @State() sliderLength = 0
   @State() isSliderActive = false
 
   /**
@@ -456,7 +453,6 @@ export class Tabs {
     const controls = block.element('controls')
     const controlButton = controls.element('button')
 
-    this.steps = isPlatform('mobile') ? 1 : 2
     const leftControlIsDisabled = this.isSliderActive && this.isFirstSlide
     const rightControlIsDisabled = this.isSliderActive && this.isLastSlide
 
