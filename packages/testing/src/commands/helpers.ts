@@ -26,7 +26,7 @@ export const isRadio: isElementType = el => isElement(el, 'BAL-RADIO')
 export const isSelect: isElementType = el => isElement(el, 'BAL-SELECT')
 export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
-export const isSlider: isElementType = el => isElement(el, 'BAL-SLIDER')
+export const isSlider: isElementType = el => isElement(el, 'BAL-INPUT-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
 export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
 export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
@@ -46,7 +46,7 @@ export const selectors = {
   },
   button: {
     main: 'button',
-    label: 'span.data-test-button-label',
+    label: '.data-test-button-label',
   },
   checkbox: {
     input: 'input.data-test-checkbox-input',
@@ -134,10 +134,7 @@ export const wrapCommand = (
           displayName,
           message,
         })
-        if (displayName !== 'contains') {
-          return fn($el)
-        }
-        fn($el)
+        return fn($el)
       })
       .wrapComponent(element as any, { log: false })
   }

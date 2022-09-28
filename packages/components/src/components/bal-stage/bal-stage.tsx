@@ -33,6 +33,10 @@ export class Stage implements ComponentInterface {
   @Watch('hasShape')
   hasShapeHandler() {
     console.warn('[DEPRECATED] - Please use the property shape instead')
+    this.migrateHasShape
+  }
+
+  private migrateHasShape() {
     if (this.hasShape === true) {
       this.shape = this.hasShape
     }
@@ -75,7 +79,7 @@ export class Stage implements ComponentInterface {
   }
 
   connectedCallback() {
-    this.hasShapeHandler()
+    this.migrateHasShape()
   }
 
   private get containerClass(): string {
@@ -113,11 +117,13 @@ export class Stage implements ComponentInterface {
         >
           <slot></slot>
           {this.shape && (
-            <bal-shape
-              color={this.color as Props.BalShapeColor}
-              variation={this.shapeVariation}
-              rotation={this.shapeRotation}
-            />
+            <div class={{ container: true, [`${this.containerClass}`]: this.containerSize !== '' }}>
+              <bal-shape
+                color={this.color as Props.BalShapeColor}
+                variation={this.shapeVariation}
+                rotation={this.shapeRotation}
+              />
+            </div>
           )}
         </section>
       </Host>

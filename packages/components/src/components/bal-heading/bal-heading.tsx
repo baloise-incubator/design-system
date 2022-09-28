@@ -33,13 +33,18 @@ export class Heading {
   @Prop() color: Props.BalHeadingColor = ''
 
   /**
-   * If `true` the button is inverted
+   * If `true` the color gets inverted for dark backgrounds
    */
   @Prop() inverted = false
 
+  /**
+   * If `true` adds a text shadow to improve readability on image background
+   * */
+  @Prop() shadow = false
+
   get fontSize(): string {
     const isHeading = (size: string) => size.startsWith('h')
-    const parseDisplay = (size: string) => (size === 'display' ? 'display' : size)
+    const parseDisplay = (size: string) => (size.startsWith('display') ? size : size)
     const parseSize = (size: string) => (isHeading(size) ? size.replace('h', '') : parseDisplay(size))
     const formatSize = (size: string) => `is-size-${parseSize(size)}`
 
@@ -69,6 +74,7 @@ export class Heading {
   get spacing(): string {
     switch (this.level) {
       case 'display':
+      case 'display-2':
         return this.margins(4)
       case 'h1':
         return this.margins(3)
@@ -77,8 +83,6 @@ export class Heading {
       case 'h4':
       case 'h5':
         return this.margins(2)
-      case 'h6':
-        return this.margins(1)
       default:
         return ''
     }
@@ -94,6 +98,7 @@ export class Heading {
             'data-test-heading': true,
             'title': this.subtitle === false,
             'subtitle': this.subtitle === true,
+            'has-blur-shadow': this.shadow,
             [this.fontSize]: true,
             [this.fontColor]: true,
           }}

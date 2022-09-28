@@ -3,34 +3,144 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [10.22.0](https://github.com/baloise/design-system/compare/v10.21.2...v10.22.0) (2022-09-19)
+## [10.23.2](https://github.com/baloise-incubator/design-system/compare/v10.23.1...v10.23.2) (2022-09-27)
 
+
+### Bug Fixes
+
+* **stage:** fix position on large screens ([5f927a7](https://github.com/baloise-incubator/design-system/commit/5f927a7f11b98fad5d3701c4b54ad3956bf9c49a))
+* **stage:** fix position on large screens ([31eb597](https://github.com/baloise-incubator/design-system/commit/31eb59740dcdae96c51eebac19743ccb692b9f40))
+
+
+
+## [10.23.1](https://github.com/baloise-incubator/design-system/compare/v10.23.0...v10.23.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* **angular:** provide missing component modules ([774696f](https://github.com/baloise-incubator/design-system/commit/774696f7accc842abc13b0f379cf6641664b92c5))
+* **angular:** provide missing component modules ([8c30599](https://github.com/baloise-incubator/design-system/commit/8c305992b2227d777c0e66cdf6e09b405f7c10b5))
+* **bal-navbar-logo:** fix squeezed logo for mobile and tablet ([850d899](https://github.com/baloise-incubator/design-system/commit/850d899928b5d0e2186671c81415924b1af274ee))
+* **bal-shape:** set border radius only for mobile and tablet ([907b762](https://github.com/baloise-incubator/design-system/commit/907b76272a282effef88ea854bb531ab2690b51c))
+* **navigation:** resize issue from mobile to desktop ([294ab7e](https://github.com/baloise-incubator/design-system/commit/294ab7e5555891a4d6a9c673ebf9b8399181b478))
+* **stage:** stage position ([2839688](https://github.com/baloise-incubator/design-system/commit/28396884d9dab96aa2a459a4d4bb5fe28b97d173))
+* **tabs:** add scroll overflow ([4b0024c](https://github.com/baloise-incubator/design-system/commit/4b0024cbae08d08b30b2afd296601ae990c5e004))
+
+
+
+## [10.23.0](https://github.com/baloise-incubator/design-system/compare/v10.22.2...v10.23.0) (2022-09-26)
+
+
+### Features
+
+* **bal-input-slider:** rename adjustments ([d8a5dea](https://github.com/baloise-incubator/design-system/commit/d8a5dea2dd4477efc6bb33b5caf1f333017853ff))
+* **bal-input-slider:** rename some missed imports and classes ([0509a80](https://github.com/baloise-incubator/design-system/commit/0509a8031733c4de903f867bb4865a723b1b8c85))
+* **bal-input-slider:** updated e2e tests ([3cb53c2](https://github.com/baloise-incubator/design-system/commit/3cb53c23cc5ac74ccdfaa8ab7a549f55c6d34db2))
+* **bal-input-slider:** updated helpers.ts ([d7bfc50](https://github.com/baloise-incubator/design-system/commit/d7bfc5094829978a1459a1c797e28256c0082e9f))
+* **bal-pagination:** added a watcher for top prop ([1519ac3](https://github.com/baloise-incubator/design-system/commit/1519ac3ce4e54f85244a65ce1568b4bd3d8cb1e2))
+* **bal-pagination:** added the sticky option for the pagination and updated the bal slider ([8d65626](https://github.com/baloise-incubator/design-system/commit/8d6562641a312e70a3ae36b42ca7e5e5c127a589))
+* **bal-pagination:** assigned the top value only if the pagination is sticky ([e35fcac](https://github.com/baloise-incubator/design-system/commit/e35fcacb7818936824e0013cc000ee709e0f34f7))
+* **bal-pagination:** set dynamic top value for sticky pagination ([7b6a2a1](https://github.com/baloise-incubator/design-system/commit/7b6a2a1203d9e0dfb0716b2956f1efb374d15213))
+* **bal-slider:** added an example with navigation and stage ([7006731](https://github.com/baloise-incubator/design-system/commit/7006731335195e957840c5bdcc48d68805e1aaa6))
+* **bal-slider:** corrected the imports ([52b4127](https://github.com/baloise-incubator/design-system/commit/52b41272a06c2375436a1d94633c33f1040de985))
+* **bal-slider:** renamed the slider component into input slider and tab slider into slider ([9fba4f9](https://github.com/baloise-incubator/design-system/commit/9fba4f93c145308d92422b52086bbdfbbb58f09e))
+* **bal-tab-slider:** implemented new interface for pagination, created the tabs slider ([2742202](https://github.com/baloise-incubator/design-system/commit/27422021f4133072f2f0595efeee1e8f5c93fb88))
+* **css:** add close, check and forbidden list item style ([fdf3643](https://github.com/baloise-incubator/design-system/commit/fdf36433ad2b53dbda596017babfae7959f59621))
+* hide glitches during page load ([44069d9](https://github.com/baloise-incubator/design-system/commit/44069d905aa54657851adfcb4c7909fcc2664ed1))
+* show version of the DS in the window object ([eb16543](https://github.com/baloise-incubator/design-system/commit/eb16543b6dca1e59dee9aed9b3f23f2cb302aef6))
+
+
+### Bug Fixes
+
+* add missing comma and adjust version path ([d78f214](https://github.com/baloise-incubator/design-system/commit/d78f214c81df0949d07666956ffb0009473bbbc8))
+* add missing comma and adjust version path ([3cc85b4](https://github.com/baloise-incubator/design-system/commit/3cc85b43c7441ef81a24840d1b4164c8f431dcaf))
+* **button:** mobile view ([d6d26c0](https://github.com/baloise-incubator/design-system/commit/d6d26c089c5a8ec5688533ccbb062658bad49172))
+* **file-upload:** add missing setFocus. Closes [#605](https://github.com/baloise-incubator/design-system/issues/605) ([d36e773](https://github.com/baloise-incubator/design-system/commit/d36e7731a934015406b62f74a07936d947057dc8))
+* **list:** add inverted style ([a354f08](https://github.com/baloise-incubator/design-system/commit/a354f084fcaf5a69eb6b2a1ee7b6fef7c15a6b4f))
+* **list:** remove double line. Closes [#575](https://github.com/baloise-incubator/design-system/issues/575) ([6d8386b](https://github.com/baloise-incubator/design-system/commit/6d8386b215845032dd2915b968a719cee56669c5))
+* **list:** remove forbidden ([0716c0a](https://github.com/baloise-incubator/design-system/commit/0716c0a57360e6ae06454dc7d7ba9c1ae00e90b2))
+* **pagination:** small interfaces shows all dots instead of ellipsis ([2051407](https://github.com/baloise-incubator/design-system/commit/20514071a88e45e0266b8b391beb020dfc92a19d))
+* **popover:** safari issue with growing width ([5cb04fa](https://github.com/baloise-incubator/design-system/commit/5cb04faf29a8db95471d5b0ded46f98220a9c9c3))
+* **product-slider:** move control down on mobile ([2423ff9](https://github.com/baloise-incubator/design-system/commit/2423ff98153f17e2f95321bf036fdca89cba0c3a))
+* set version to dist ([54ea1b5](https://github.com/baloise-incubator/design-system/commit/54ea1b502b73196796ead6d6cfdb000195e124f5))
+* **sheet:** adjust layout. Closes [#554](https://github.com/baloise-incubator/design-system/issues/554) ([e757594](https://github.com/baloise-incubator/design-system/commit/e75759422ecb7f553bb5e9ae0e57843240278817))
+* show version with BaloiseDesignSystem.version ([1010803](https://github.com/baloise-incubator/design-system/commit/101080304deb66863f93a3b3e0da212f4bb90f46))
+* split css vars from sass base file ([db2fa89](https://github.com/baloise-incubator/design-system/commit/db2fa898870d1b36a97b61ccbaab07f50f242e0c))
+* **testing:** adjust contains override ([683f600](https://github.com/baloise-incubator/design-system/commit/683f600b957bbb2fd8e7df04621075b4be603e0d))
+* use .bal-body instead of body element ([5c8fdb5](https://github.com/baloise-incubator/design-system/commit/5c8fdb539bc345b63ff6030da5b5783da6c1d4e6))
+
+## [10.22.1](https://github.com/baloise-incubator/design-system/compare/v10.22.0...v10.22.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise-incubator/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise-incubator/design-system/issues/571) ([6482637](https://github.com/baloise-incubator/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise-incubator/design-system/issues/472) ([d64edba](https://github.com/baloise-incubator/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+
+## 10.22.0 (2022-09-19)
+
+
+
+## [10.22.2](https://github.com/baloise-incubator/design-system/compare/v10.22.1...v10.22.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* **button-group:** column alignment. Closes [#562](https://github.com/baloise-incubator/design-system/issues/562) ([77dbc07](https://github.com/baloise-incubator/design-system/commit/77dbc07f3936ecd58c9db1ae40bbdee5aedca55c))
+* **card:** add color levels 1-3 of purple, green, red and yellow ([c217584](https://github.com/baloise-incubator/design-system/commit/c217584e3107161e410340fe098f051137d94f33))
+* **container:** add tokens for container space and max-width ([b139bf6](https://github.com/baloise-incubator/design-system/commit/b139bf67d34db99ed337492070c98aff01531ab3))
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise-incubator/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise-incubator/design-system/issues/571) ([6482637](https://github.com/baloise-incubator/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **list:** adjust the default link size ([e5c8c48](https://github.com/baloise-incubator/design-system/commit/e5c8c48a3875ef81c3ed28f8ef88c3d79ac7158c))
+* **product-slider:** adjust size for 3 lines. Closes [#315](https://github.com/baloise-incubator/design-system/issues/315) ([7a09498](https://github.com/baloise-incubator/design-system/commit/7a09498b9c7e81a998a605313229a6c1a16c448c))
+* **snackbar:** fix max-width. Closes [#574](https://github.com/baloise-incubator/design-system/issues/574) ([ebd50d4](https://github.com/baloise-incubator/design-system/commit/ebd50d4068c81cb6aad77274e0c0d57f6796f6b6))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise-incubator/design-system/issues/472) ([d64edba](https://github.com/baloise-incubator/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+* **testing:** adjust contains override ([683f600](https://github.com/baloise-incubator/design-system/commit/683f600b957bbb2fd8e7df04621075b4be603e0d))
+* **typography:** decrease font sizes ([ff22473](https://github.com/baloise-incubator/design-system/commit/ff224733c2957f874dd781702c921c66130674cd))
+
+## 10.22.0 (2022-09-19)
+
+
+
+## [10.22.1](https://github.com/baloise/design-system/compare/v10.22.0...v10.22.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **datepicker:** make initialize global and migrate local prop with message ([d85899e](https://github.com/baloise/design-system/commit/d85899e6d60c480cb4a3c6f27d7834267d5e231b))
+* **list:** adjust height. Closes [#571](https://github.com/baloise-incubator/design-system/issues/571) ([6482637](https://github.com/baloise/design-system/commit/6482637a82538b5732b94962493d3e63d159994c))
+* **list:** passing click event of items content. Closes [#582](https://github.com/baloise-incubator/design-system/issues/582) ([9c346fc](https://github.com/baloise/design-system/commit/9c346fcfe0e983a79353811524e93838d1398828))
+* move css vars out of utilities ([83627b9](https://github.com/baloise/design-system/commit/83627b9e6699409301af90f37521a00734889cf1))
+* **stage:** add shadow to text, title, back-link, button and icon. Closes [#472](https://github.com/baloise-incubator/design-system/issues/472) ([d64edba](https://github.com/baloise/design-system/commit/d64edba5142ba41a333243a15e504796a705df0a))
+* **toast:** adjust width for tablet and desktop ([d04f3a5](https://github.com/baloise/design-system/commit/d04f3a557c43a2e2d17f5a5c2a2a14a67d530612))
+
+
+## [10.22.0](https://github.com/baloise/design-system/compare/v10.21.2...v10.22.0) (2022-09-19)
 
 ### Features
 
 * **bal-pagination:** added a padding top for small interface nav element ([47d09a9](https://github.com/baloise/design-system/commit/47d09a936b651b458bd03985643cbe03fab464d3))
 * **bal-pagination:** integrated the pagination component in image slider ([d4e5842](https://github.com/baloise/design-system/commit/d4e58421a828ba172ac6934dc3274f86d6a9c782))
 
-
 ### Bug Fixes
 
-* add maxlength on bal-select typeahead, closes [#416](https://github.com/baloise/design-system/issues/416) ([37778bf](https://github.com/baloise/design-system/commit/37778bf579f53f7f6cb8a8eb2b2379580b5f46cf))
-* **button:** center button label. Closes [#477](https://github.com/baloise/design-system/issues/477) ([8c6597e](https://github.com/baloise/design-system/commit/8c6597e0bd249014da11a67f46be497d9d3e875f))
-* fix autocomplete, closes [#415](https://github.com/baloise/design-system/issues/415) ([42f76ad](https://github.com/baloise/design-system/commit/42f76ad75f8d7c2e8fa6953e93a46b544e20310d))
+* add maxlength on bal-select typeahead, closes [#416](https://github.com/baloise-incubator/design-system/issues/416) ([37778bf](https://github.com/baloise/design-system/commit/37778bf579f53f7f6cb8a8eb2b2379580b5f46cf))
+* **button:** center button label. Closes [#477](https://github.com/baloise-incubator/design-system/issues/477) ([8c6597e](https://github.com/baloise/design-system/commit/8c6597e0bd249014da11a67f46be497d9d3e875f))
+* fix autocomplete, closes [#415](https://github.com/baloise-incubator/design-system/issues/415) ([42f76ad](https://github.com/baloise/design-system/commit/42f76ad75f8d7c2e8fa6953e93a46b544e20310d))
 * fix autocorrect on input ([da6a40d](https://github.com/baloise/design-system/commit/da6a40d587e00cf57df7be8f68754e3103931f83))
 * **form:** fix reset for checkbox, radio, textarea, input, select and datepicker ([2242689](https://github.com/baloise/design-system/commit/224268922cfbbecfe6d42142c5ef1ed4adb52700))
 * **list:** use BEM ([360fc47](https://github.com/baloise/design-system/commit/360fc47e7865dfce0b7dab37d11d541c42cd4d46))
 * **list:** use BEM ([190c8fd](https://github.com/baloise/design-system/commit/190c8fd8b3d3fdfaa7e73a03e794ad16718d5ef9))
 * **list:** use css vars ([dbf0f52](https://github.com/baloise/design-system/commit/dbf0f52ee7bf77c333dc68ef4ff0bec38b5a5e7b))
 * **list:** use sass ([d3a52e8](https://github.com/baloise/design-system/commit/d3a52e87b28409e1dd1a341d2ccfbc09e7ade4cc))
-* **select:** auto-select and auto-filter fixed. Closes [#520](https://github.com/baloise/design-system/issues/520) ([8d9650c](https://github.com/baloise/design-system/commit/8d9650c580c96a02bd09708e8a060ea4e6f34c54))
+* **select:** auto-select and auto-filter fixed. Closes [#520](https://github.com/baloise-incubator/design-system/issues/520) ([8d9650c](https://github.com/baloise/design-system/commit/8d9650c580c96a02bd09708e8a060ea4e6f34c54))
 * **select:** send change event once ([94af088](https://github.com/baloise/design-system/commit/94af088d55f3b2bdad0d855217eb564791922bad))
-* **select:** show default value. Closes [#329](https://github.com/baloise/design-system/issues/329) ([db00ca5](https://github.com/baloise/design-system/commit/db00ca5f946e18e99fd42160a3ad523321429d93))
+* **select:** show default value. Closes [#329](https://github.com/baloise-incubator/design-system/issues/329) ([db00ca5](https://github.com/baloise/design-system/commit/db00ca5f946e18e99fd42160a3ad523321429d93))
 * **slider:** rebrand slider ([f569e9f](https://github.com/baloise/design-system/commit/f569e9fbe3948b1f8b70e89f84d871920bd2a336))
-* **stage:** shape position. Closes [#560](https://github.com/baloise/design-system/issues/560) ([8bda1cb](https://github.com/baloise/design-system/commit/8bda1cb6d570881863a0b6b7a1fc92ff77481b4b))
+* **stage:** shape position. Closes [#560](https://github.com/baloise-incubator/design-system/issues/560) ([8bda1cb](https://github.com/baloise/design-system/commit/8bda1cb6d570881863a0b6b7a1fc92ff77481b4b))
 
 ## [10.21.1](https://github.com/baloise/design-system/compare/v10.21.0...v10.21.1) (2022-09-15)
-
 
 ### Features
 
@@ -53,12 +163,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **icons:** add new icons. Closes [#494](https://github.com/baloise/design-system/issues/494), [#495](https://github.com/baloise/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
+* **icons:** add new icons. Closes [#494](https://github.com/baloise-incubator/design-system/issues/494), [#495](https://github.com/baloise-incubator/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
 
 
 ### Bug Fixes
 
-* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
+* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise-incubator/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
 * **font:** adjust download order ([ab7ae3e](https://github.com/baloise/design-system/commit/ab7ae3e17fe0a9aad3e2e0194468ad3ef1f62664))
 * **stage:** adjust colors, spacing and sizes ([9229d12](https://github.com/baloise/design-system/commit/9229d12abe51dd458abbc4bdf36eeffd2d01c3ef))
 * **stage:** adjust colors, spacing and sizes ([ceb5338](https://github.com/baloise/design-system/commit/ceb533821c77c8befd40c62d33b0b87864caf2fd))
@@ -71,15 +181,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add animated logo, [#359](https://github.com/baloise/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
+* add animated logo, [#359](https://github.com/baloise-incubator/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
 
 
 ### Bug Fixes
 
-* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
+* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise-incubator/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
 * **bal-shape:** fixed shape rotation in safari ([5fb031a](https://github.com/baloise/design-system/commit/5fb031a441ce1cbedff8da8a40a7c7ce8c64a5a5))
 * **bal-shape:** remove license and readme files from pr ([e3939e2](https://github.com/baloise/design-system/commit/e3939e28e592e7491bf56c83960e4e34eb1d4976))
-* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
+* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise-incubator/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
 * **file-upload:** adjust icon size and clickable ([4f1db8c](https://github.com/baloise/design-system/commit/4f1db8c6b4dfd60d1ff13047db43b1e4d79b5c84))
 * **font:** remove truetype update fontfiles and change to swap ([c4b622a](https://github.com/baloise/design-system/commit/c4b622acb24d34d14a3e42c874f70cdb3393edad))
 * **fonts:** adjust fonts path with string ([c730ed0](https://github.com/baloise/design-system/commit/c730ed00011b75b1a383ab08b8f0826863638dea))
@@ -116,7 +226,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#359](https://github.com/baloise/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
+* [#359](https://github.com/baloise-incubator/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
 * **icon:** add new container ([073b2e5](https://github.com/baloise/design-system/commit/073b2e55eb4342c96ac1b50b5b67e80eada872d7))
 * **nav overlay:** added the headline and closing button for the popover ([e0f95eb](https://github.com/baloise/design-system/commit/e0f95eb27707f9779c486814c32add83dd54f5af))
 * **nav overlay:** renamed hasClosingBtn with isClosable ([ecb12d4](https://github.com/baloise/design-system/commit/ecb12d4d29b34c4cbec972ad4ca7fd77218b1673))
@@ -150,7 +260,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -169,14 +279,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -228,8 +338,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -244,7 +354,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -295,11 +405,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -314,7 +424,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -392,13 +502,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **icons:** add new icons. Closes [#494](https://github.com/baloise/design-system/issues/494), [#495](https://github.com/baloise/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
+* **icons:** add new icons. Closes [#494](https://github.com/baloise-incubator/design-system/issues/494), [#495](https://github.com/baloise-incubator/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
 
 
 ### Bug Fixes
 
 * adjust container size and navigation alignment ([a208d69](https://github.com/baloise/design-system/commit/a208d6919b08f69182b7735eea723d989ef7cb62))
-* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
+* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise-incubator/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
 * fix native inverted link text-decoration-thickness ([abe6223](https://github.com/baloise/design-system/commit/abe6223e3751f2fb5e70e092605c92ed1e5a1482))
 * **font:** adjust download order ([ab7ae3e](https://github.com/baloise/design-system/commit/ab7ae3e17fe0a9aad3e2e0194468ad3ef1f62664))
 * **fonts:** extract font import from base file to a single file ([81592a0](https://github.com/baloise/design-system/commit/81592a0040e433fc2ad612abe6dfc596d1bbf847))
@@ -424,15 +534,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add animated logo, [#359](https://github.com/baloise/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
+* add animated logo, [#359](https://github.com/baloise-incubator/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
 
 
 ### Bug Fixes
 
-* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
+* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise-incubator/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
 * **bal-shape:** fixed shape rotation in safari ([5fb031a](https://github.com/baloise/design-system/commit/5fb031a441ce1cbedff8da8a40a7c7ce8c64a5a5))
 * **bal-shape:** remove license and readme files from pr ([e3939e2](https://github.com/baloise/design-system/commit/e3939e28e592e7491bf56c83960e4e34eb1d4976))
-* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
+* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise-incubator/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
 * **file-upload:** adjust icon size and clickable ([4f1db8c](https://github.com/baloise/design-system/commit/4f1db8c6b4dfd60d1ff13047db43b1e4d79b5c84))
 * **font:** remove truetype update fontfiles and change to swap ([c4b622a](https://github.com/baloise/design-system/commit/c4b622acb24d34d14a3e42c874f70cdb3393edad))
 * **fonts:** adjust fonts path with string ([c730ed0](https://github.com/baloise/design-system/commit/c730ed00011b75b1a383ab08b8f0826863638dea))
@@ -476,7 +586,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#359](https://github.com/baloise/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
+* [#359](https://github.com/baloise-incubator/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
 * **icon:** add new container ([073b2e5](https://github.com/baloise/design-system/commit/073b2e55eb4342c96ac1b50b5b67e80eada872d7))
 * **nav overlay:** added the headline and closing button for the popover ([e0f95eb](https://github.com/baloise/design-system/commit/e0f95eb27707f9779c486814c32add83dd54f5af))
 * **nav overlay:** renamed hasClosingBtn with isClosable ([ecb12d4](https://github.com/baloise/design-system/commit/ecb12d4d29b34c4cbec972ad4ca7fd77218b1673))
@@ -510,7 +620,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -529,14 +639,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -588,8 +698,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -604,7 +714,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -655,11 +765,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -674,7 +784,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -744,17 +854,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add animated logo, [#359](https://github.com/baloise/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
-* **icons:** add new icons. Closes [#494](https://github.com/baloise/design-system/issues/494), [#495](https://github.com/baloise/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
+* add animated logo, [#359](https://github.com/baloise-incubator/design-system/issues/359) ([a5af419](https://github.com/baloise/design-system/commit/a5af41968659c23c623d9cc5876ef7bbafe8a130))
+* **icons:** add new icons. Closes [#494](https://github.com/baloise-incubator/design-system/issues/494), [#495](https://github.com/baloise-incubator/design-system/issues/495) ([5ed47af](https://github.com/baloise/design-system/commit/5ed47af9962ccb79d643d7518ad20e4ae3c47bc6))
 
 
 ### Bug Fixes
 
-* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
+* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise-incubator/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
 * **bal-shape:** fixed shape rotation in safari ([5fb031a](https://github.com/baloise/design-system/commit/5fb031a441ce1cbedff8da8a40a7c7ce8c64a5a5))
 * **bal-shape:** remove license and readme files from pr ([e3939e2](https://github.com/baloise/design-system/commit/e3939e28e592e7491bf56c83960e4e34eb1d4976))
-* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
-* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
+* **checkbox:** group control fixed. Closes [#502](https://github.com/baloise-incubator/design-system/issues/502) ([3a13505](https://github.com/baloise/design-system/commit/3a13505f3dee256f95f8d34b99bce7bb5806ac7d))
+* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise-incubator/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
 * **file-upload:** adjust icon size and clickable ([4f1db8c](https://github.com/baloise/design-system/commit/4f1db8c6b4dfd60d1ff13047db43b1e4d79b5c84))
 * **font:** adjust download order ([ab7ae3e](https://github.com/baloise/design-system/commit/ab7ae3e17fe0a9aad3e2e0194468ad3ef1f62664))
 * **font:** remove truetype update fontfiles and change to swap ([c4b622a](https://github.com/baloise/design-system/commit/c4b622acb24d34d14a3e42c874f70cdb3393edad))
@@ -797,7 +907,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#359](https://github.com/baloise/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
+* [#359](https://github.com/baloise-incubator/design-system/issues/359) add animated logo ([039145f](https://github.com/baloise/design-system/commit/039145fc98dc6555fc5407b389aa23b076b89787))
 * **icon:** add new container ([073b2e5](https://github.com/baloise/design-system/commit/073b2e55eb4342c96ac1b50b5b67e80eada872d7))
 * **nav overlay:** added the headline and closing button for the popover ([e0f95eb](https://github.com/baloise/design-system/commit/e0f95eb27707f9779c486814c32add83dd54f5af))
 * **nav overlay:** renamed hasClosingBtn with isClosable ([ecb12d4](https://github.com/baloise/design-system/commit/ecb12d4d29b34c4cbec972ad4ca7fd77218b1673))
@@ -831,7 +941,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -850,14 +960,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -909,8 +1019,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -925,7 +1035,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -976,11 +1086,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -995,7 +1105,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -1065,10 +1175,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
+* **bal-navbar-logo:** fixed custom logo overflowing header ([#445](https://github.com/baloise-incubator/design-system/issues/445)) ([2e650e7](https://github.com/baloise/design-system/commit/2e650e78cc79d2095f079c58b7710d71b951c30e))
 * **bal-shape:** fixed shape rotation in safari ([5fb031a](https://github.com/baloise/design-system/commit/5fb031a441ce1cbedff8da8a40a7c7ce8c64a5a5))
 * **bal-shape:** remove license and readme files from pr ([e3939e2](https://github.com/baloise/design-system/commit/e3939e28e592e7491bf56c83960e4e34eb1d4976))
-* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
+* **datepicker:** add type button to day buttons. Closes [#454](https://github.com/baloise-incubator/design-system/issues/454) ([1f0334f](https://github.com/baloise/design-system/commit/1f0334fe6b0a9cf2af48f68d0b0aef150733a3f6))
 * **file-upload:** adjust icon size and clickable ([4f1db8c](https://github.com/baloise/design-system/commit/4f1db8c6b4dfd60d1ff13047db43b1e4d79b5c84))
 * **font:** remove truetype update fontfiles and change to swap ([c4b622a](https://github.com/baloise/design-system/commit/c4b622acb24d34d14a3e42c874f70cdb3393edad))
 * **fonts:** adjust fonts path with string ([c730ed0](https://github.com/baloise/design-system/commit/c730ed00011b75b1a383ab08b8f0826863638dea))
@@ -1119,7 +1229,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -1138,14 +1248,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -1196,8 +1306,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -1212,7 +1322,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -1263,11 +1373,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -1282,7 +1392,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -1361,7 +1471,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* [#337](https://github.com/baloise/design-system/issues/337) add reflect to the prop option to the state props in bal-tab-item ([01d8cae](https://github.com/baloise/design-system/commit/01d8caefcdea172e0d23b4b2fb817b84c148b258))
+* [#337](https://github.com/baloise-incubator/design-system/issues/337) add reflect to the prop option to the state props in bal-tab-item ([01d8cae](https://github.com/baloise/design-system/commit/01d8caefcdea172e0d23b4b2fb817b84c148b258))
 * fix bal-input mask when deleting last character error popped up ([db14042](https://github.com/baloise/design-system/commit/db14042311dc516a2b752b41593ae4dcdb5fba09))
 
 ## [10.19.0](https://github.com/baloise/design-system/compare/v10.18.0...v10.19.0) (2022-08-24)
@@ -1390,7 +1500,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -1409,14 +1519,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -1467,8 +1577,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -1483,7 +1593,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -1534,11 +1644,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -1553,7 +1663,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -1661,7 +1771,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -1680,14 +1790,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -1738,8 +1848,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -1754,7 +1864,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -1805,11 +1915,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -1824,7 +1934,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -1972,7 +2082,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -1991,14 +2101,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -2049,8 +2159,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -2065,7 +2175,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -2116,11 +2226,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -2135,7 +2245,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -2232,7 +2342,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -2252,14 +2362,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.18.0](https://github.com/baloise/design-system/compare/v10.17.2...v10.18.0) (2022-08-15)
 
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add props documentation and fix varations with links and on stage ([d345cad](https://github.com/baloise/design-system/commit/d345cade8a7eac4ef7be650e9d4e33fdaf96e870))
 * **nav-mobile:** delete comments of old bal list accordion inside accordion fix ([d0865a9](https://github.com/baloise/design-system/commit/d0865a9d3f48905a7e1ef8888373e6b3531e6d0c))
@@ -2310,8 +2420,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -2326,7 +2436,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -2377,11 +2487,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -2396,7 +2506,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -2467,7 +2577,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **form:** add new form component with scroll to first invalid field ([5330361](https://github.com/baloise/design-system/commit/53303611462dcf67a769a54fea5940b1be9b711a))
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 * **nav-mobile:** add bal list item title optional heading level as prop ([d71f812](https://github.com/baloise/design-system/commit/d71f812c3baf3b2ad92f45370f4cf21d64f59d3e))
 * **nav-mobile:** add css variable ([3e54ada](https://github.com/baloise/design-system/commit/3e54ada9720780fa23d2ecc213811795d9bf33bc))
 * **nav-mobile:** add desktop mixin instead of using desktop + 1px ([88cdeeb](https://github.com/baloise/design-system/commit/88cdeeb0251af5134587031bdc729f2c79b6e702))
@@ -2495,7 +2605,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **navigation:** add popover button ([d9aeb6b](https://github.com/baloise/design-system/commit/d9aeb6b23c517ad35928ae000c1b62c347c2bcb3))
 * **navigation:** add size to popover ([e1a7d5c](https://github.com/baloise/design-system/commit/e1a7d5c38b3d57c8c2f2cedb62953a0453b5b9a8))
 * **popover:** add tooltip, arrow and backdrop ([35a72a2](https://github.com/baloise/design-system/commit/35a72a265e3ffe6884d0c36436ab7c74a6ee01d1))
-* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
+* remove depricated bal-timeinput component, closes [#202](https://github.com/baloise-incubator/design-system/issues/202) ([6175fed](https://github.com/baloise/design-system/commit/6175fed2b2937b283a2fb1746735a4f1dd25bf42))
 * **select:** move to sass ([db61937](https://github.com/baloise/design-system/commit/db6193750a2c473daf0204996c8828db63a4a19c))
 * **tabs:** add hidden, spaceless and float ([c1f6930](https://github.com/baloise/design-system/commit/c1f69301e46ae42373abfcde49edfdfa5be5bcc2))
 * **tabs:** add hidden, spaceless and float ([bed5b37](https://github.com/baloise/design-system/commit/bed5b37cd398f6fe842d3756ab2b23243daa462b))
@@ -2514,7 +2624,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **nav-desktop-alignments:** fix alignments considering tabs padding and and apply values in rem ([089a57b](https://github.com/baloise/design-system/commit/089a57ba17d64c7ac81a9cbd6fcd8b3e9d752000))
 * **nav-desktop-grey-space:** fix spacing of grey cards in desktop nav ([d4d68d1](https://github.com/baloise/design-system/commit/d4d68d1511e4420e1f28845870a7d7fb38eae2fc))
 * **nav-desktop-spacings:** fix widescreen and fullhd spacings ([c2bb404](https://github.com/baloise/design-system/commit/c2bb404a9fb43a16fec73c8c52e63e1902b53987))
-* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
+* **navbar:** logo link optional and link target added ([#361](https://github.com/baloise-incubator/design-system/issues/361)) ([29b9c43](https://github.com/baloise/design-system/commit/29b9c43b12ac059e820fcd362784356c89206df8))
 
 ## [10.17.2](https://github.com/baloise/design-system/compare/v10.17.1...v10.17.2) (2022-08-11)
 
@@ -2558,8 +2668,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -2574,7 +2684,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -2625,11 +2735,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -2644,7 +2754,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -2714,7 +2824,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
+* **nav-bar:** light version and partner logo added ([#355](https://github.com/baloise-incubator/design-system/issues/355)) ([e2ddaf5](https://github.com/baloise/design-system/commit/e2ddaf5c319505098a69555fc7c5834c4546f433))
 
 
 ### Bug Fixes
@@ -2740,8 +2850,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 * **nav-desktop:** add hover native underlines ([ecf5019](https://github.com/baloise/design-system/commit/ecf50194525fceff5e4f30dd3279e3bd65da9479))
 * **nav-desktop:** adjust transform on scroll and delete it for docs ([cb04d6a](https://github.com/baloise/design-system/commit/cb04d6a18e27e694f72e9a3933e511dcb401cba7))
 * **nav-desktop:** apply hover mixin and bal-radius-large variable ([5c163a8](https://github.com/baloise/design-system/commit/5c163a86060b0547594a6343166ac1caaabaeed8))
@@ -2756,7 +2866,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* [#268](https://github.com/baloise/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
+* [#268](https://github.com/baloise-incubator/design-system/issues/268) rise angular version to 12 and build with ivy ([ebcc22e](https://github.com/baloise/design-system/commit/ebcc22ef3666d2fa35d10c4a713ddc26345ba201))
 * **main-nav-desktop:** delete commets and fix overflow on small panels ([31cba89](https://github.com/baloise/design-system/commit/31cba89795989866d7d2f88191b964047d1ae0e4))
 * **main-nav-desktop:** fix main nav position and main nav body overflow ([9d45da1](https://github.com/baloise/design-system/commit/9d45da1e04ef689843d5abe2f9f6fe1019ac03cd))
 * **main-nav-desktop:** fix style in storybook docs ([9836819](https://github.com/baloise/design-system/commit/98368195a9cf09444eeadedd562857e9b2296901))
@@ -2806,11 +2916,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -2825,7 +2935,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -2919,8 +3029,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **bal-data:** fix font-weight in hint ([4016117](https://github.com/baloise/design-system/commit/40161178710f807edadcf09bcb09381118ca43c1))
 * **bal-hint:** remove margin-bottom from text, add 24px top padding on buttons ([01b1117](https://github.com/baloise/design-system/commit/01b11174ebd6f7cede8d7b4fe75f613221fc608a))
-* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
-* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
+* **bal-shape:** shape changed to SVG ([#305](https://github.com/baloise-incubator/design-system/issues/305)) ([3b8f381](https://github.com/baloise/design-system/commit/3b8f381def84b377442ca86e020e7606d9973a27))
+* **image-slider:** spacing adjusted and disabled arrows styled ([#310](https://github.com/baloise-incubator/design-system/issues/310)) ([798b2a5](https://github.com/baloise/design-system/commit/798b2a567411424e4f8114589f4ae52a207080d6))
 
 ## 10.15.8 (2022-08-03)
 
@@ -2974,12 +3084,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
 * removed lodash trim and lowerCase from bal-select utils ([c2005d4](https://github.com/baloise/design-system/commit/c2005d4b4101b9b9138dea9dda3f0042b7018b8c))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 ## [10.15.7](https://github.com/baloise/design-system/compare/v10.15.6...v10.15.7) (2022-07-27)
 
@@ -2994,7 +3104,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
+* **input:** format according to the pattern and enable Home/End key. Closes [#243](https://github.com/baloise-incubator/design-system/issues/243) ([bb1e5a3](https://github.com/baloise/design-system/commit/bb1e5a31b00a9df3010e05d32bef74209b619dda))
 
 ## [10.15.6](https://github.com/baloise/design-system/compare/v10.15.5...v10.15.6) (2022-07-20)
 
@@ -3070,11 +3180,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **angular:** enable ivy ([e3bc1ce](https://github.com/baloise/design-system/commit/e3bc1ce1e1e5c9da947efce8db3748c88723526e))
 * **angular:** reset npm ([a23d59e](https://github.com/baloise/design-system/commit/a23d59edca64893792f6d12b7f28bf5021f7b48b))
 * **angular:** reset npm ([23e12ec](https://github.com/baloise/design-system/commit/23e12ec21fdcc32d412aa67aea4b40fd8cef0155))
-* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
-* **select:** change and blur handling. Closes [#262](https://github.com/baloise/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
+* **product-slider:** controls overlapping fixed ([#283](https://github.com/baloise-incubator/design-system/issues/283)) ([e42ff32](https://github.com/baloise/design-system/commit/e42ff321b04085af43780556012d72b1cc4dba0f))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([9a16bba](https://github.com/baloise/design-system/commit/9a16bbac1033cfbd85fd7b139c8c7ae309a508f0))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([3d1baee](https://github.com/baloise/design-system/commit/3d1baeed321e4477308a3a362b3722905fefce68))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([a28dc75](https://github.com/baloise/design-system/commit/a28dc75b58ff650c734ed54604608210d54dbf67))
+* **select:** change and blur handling. Closes [#262](https://github.com/baloise-incubator/design-system/issues/262) ([62bd010](https://github.com/baloise/design-system/commit/62bd0106c2da4927fac47827066e8f9862ecc60e))
 
 
 
@@ -6878,7 +6988,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **i18n:** onBalConfigChange ([87af016](https://github.com/baloise/design-system/commit/87af0165b49352befbc26b68cd29239ac4f5c514))
 - **input-stepper:** add new component ([5b053c2](https://github.com/baloise/design-system/commit/5b053c299b5ba177d75d7b82221e295ea33d89c1))
 - **list:** add native ul & ol styles ([3f3f375](https://github.com/baloise/design-system/commit/3f3f375f11baa0cb431504657baa2df041f851a4))
-- **logo:** add new component ([525aef6](https://github.com/baloise/design-system/commit/525aef6fd260fa7200b258b253ac64b277821225)), closes [#484](https://github.com/baloise/design-system/issues/484)
+- **logo:** add new component ([525aef6](https://github.com/baloise/design-system/commit/525aef6fd260fa7200b258b253ac64b277821225)), closes [#484](https://github.com/baloise-incubator/design-system/issues/484)
 - **navbar:** support tabs and popover ([924db93](https://github.com/baloise/design-system/commit/924db93b6af64a83c31e823d7e771d9901408f6b))
 - **stage:** add new component ([7f07b50](https://github.com/baloise/design-system/commit/7f07b501bf1262d65daf53284b941a3fc7973282))
 - **tag:** add light variant and combination with the card component ([c0811df](https://github.com/baloise/design-system/commit/c0811dfe831c276af7578b47e2c203add73822cd))
@@ -6888,7 +6998,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **button:** adjust spacing for mobile ([ec73ebd](https://github.com/baloise/design-system/commit/ec73ebd97910470788dae08497ebc5c32dd71bad))
 - **button:** adjust styles for info ([3a95df1](https://github.com/baloise/design-system/commit/3a95df1eeda6bf0856e050e8eb57d32bd8e92aa7))
 - **button:** remove 100% width use flexbox instead ([653a2b6](https://github.com/baloise/design-system/commit/653a2b60e0a641809a3ab37908723c76ac6a49ff))
-- **checkbox:** enable grouped checkboxes ([b004c35](https://github.com/baloise/design-system/commit/b004c350587872c08e8619a1bc2dc5f7ebf58e8b)), closes [#497](https://github.com/baloise/design-system/issues/497)
+- **checkbox:** enable grouped checkboxes ([b004c35](https://github.com/baloise/design-system/commit/b004c350587872c08e8619a1bc2dc5f7ebf58e8b)), closes [#497](https://github.com/baloise-incubator/design-system/issues/497)
 - **datepicker:** improve mobile layout ([16d4e1f](https://github.com/baloise/design-system/commit/16d4e1f4b0a8f11dce56e7c17e95e408250aef2d))
 - **field:** add more space for error message ([e09d751](https://github.com/baloise/design-system/commit/e09d751120751cf8e9deca319ad3eaa247f75271))
 - **heading:** enable visual headings ([cc27093](https://github.com/baloise/design-system/commit/cc270937f90917226d6adc1ea3a6ca247cb4a03d))
@@ -6943,7 +7053,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **button:** adjust spacing for mobile ([ec73ebd](https://github.com/baloise/design-system/commit/ec73ebd97910470788dae08497ebc5c32dd71bad))
-- **checkbox:** enable grouped checkboxes ([b004c35](https://github.com/baloise/design-system/commit/b004c350587872c08e8619a1bc2dc5f7ebf58e8b)), closes [#497](https://github.com/baloise/design-system/issues/497)
+- **checkbox:** enable grouped checkboxes ([b004c35](https://github.com/baloise/design-system/commit/b004c350587872c08e8619a1bc2dc5f7ebf58e8b)), closes [#497](https://github.com/baloise-incubator/design-system/issues/497)
 - **heading:** enable visual headings ([cc27093](https://github.com/baloise/design-system/commit/cc270937f90917226d6adc1ea3a6ca247cb4a03d))
 - **i18n:** fix typo in updateBalLanguage ([e3612de](https://github.com/baloise/design-system/commit/e3612deaa30ade446dd278e42ccdacd2f940a6bc))
 - **input:** always return the raw value ([50294d2](https://github.com/baloise/design-system/commit/50294d2b8d9280b1b6b2ff8425f5d6d5f875e364))
@@ -6977,14 +7087,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise/design-system/issues/475)
-- **data:** adjust mobile view ([9e3921f](https://github.com/baloise/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise/design-system/issues/461) [#477](https://github.com/baloise/design-system/issues/477)
-- **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise/design-system/issues/445)
+- **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise-incubator/design-system/issues/475)
+- **data:** adjust mobile view ([9e3921f](https://github.com/baloise/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise-incubator/design-system/issues/461) [#477](https://github.com/baloise-incubator/design-system/issues/477)
+- **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise-incubator/design-system/issues/445)
 - **form:** improve invalid style ([cf9902f](https://github.com/baloise/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
 - **form:** improve sync of props ([98db4a1](https://github.com/baloise/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
 - **navbar:** remove margin bottom ([a22a072](https://github.com/baloise/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
-- **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise/design-system/issues/476)
-- **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise/design-system/issues/386)
+- **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise-incubator/design-system/issues/476)
+- **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise-incubator/design-system/issues/386)
 - **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
 
 ### [9.0.7](https://github.com/baloise/design-system/compare/v9.0.6...v9.0.7) (2022-01-27)
@@ -7045,7 +7155,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 
-Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/story/migration-migration-from-8-x-to-9-x--page)
+Follow the migration guide [Migration from 8.x to 9.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-8-x-to-9-x--page)
 
 ### ⚠ BREAKING CHANGES
 
@@ -7098,7 +7208,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### ⚠ BREAKING CHANGES
 
 - **tabs:** `rounded` prop is removed use `interface` `tabs-sub`
-  - Follow the migration guide [Migration from 7.x to 8.x](https://design.baloise.dev/?path=/story/migration-migration-from-7-x-to-8-x--page)
+  - Follow the migration guide [Migration from 7.x to 8.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-7-x-to-8-x--page)
 
 ### Features
 
@@ -7119,14 +7229,14 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The unsupported browsers has been moved to [@baloise/web-app-unsupported-browsers](https://github.com/baloise/web-app-utils/tree/master/packages/unsupported-browsers).
-  - Follow the migration guide [Migration from 6.x to 7.x](https://design.baloise.dev/?path=/story/migration-migration-from-6-x-to-7-x--page)
+  - Follow the migration guide [Migration from 6.x to 7.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-6-x-to-7-x--page)
 
 # [6.0.0](https://github.com/baloise/design-system/compare/v5.0.0...v6.0.0) (2021-12-28)
 
 ### BREAKING CHANGES
 
 - Added and improved the css helper classes.
-  - Follow the migration guide [Migration from 5.x to 6.x](https://design.baloise.dev/?path=/story/migration-migration-from-5-x-to-6-x--page)
+  - Follow the migration guide [Migration from 5.x to 6.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-5-x-to-6-x--page)
 
 ### Features
 
@@ -7143,7 +7253,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The component `bal-app` lost his props, due better integration for our proxy libraries.
-  - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/story/migration-migration-from-4-x-to-5-x--page)
+  - Follow the migration guide [Migration from 4.x to 5.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-4-x-to-5-x--page)
 
 ### Features
 
@@ -7230,7 +7340,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - The breakpoints and spacing helpers are adjusted to new guidlines and duplicated/old css class are removed.
-  - Follow the migration guide [Migration from 3.x to 4.x](https://design.baloise.dev/?path=/story/migration-migration-from-3-x-to-4-x--page)
+  - Follow the migration guide [Migration from 3.x to 4.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-3-x-to-4-x--page)
 
 ### Features
 
@@ -7250,7 +7360,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - `has-sticky-footer` has to be set explicit to the `ba-app` component.
-  - Follow the migration guide [Migration from 2.x to 3.x](https://design.baloise.dev/?path=/story/migration-migration-from-2-x-to-3-x--page)
+  - Follow the migration guide [Migration from 2.x to 3.x](https://design-system-next.vercel.app/?path=/story/migration-migration-from-2-x-to-3-x--page)
 
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 
@@ -7269,7 +7379,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### BREAKING CHANGES
 
 - Moved utils, filters/pipes and validators to [web-app-utils](https://github.com/baloise/web-app-utils) packages.
-  - Follow the migration guide [Migration from 1.x to 2.x](https://design.baloise.dev/components/migration/migration-from-1.x.html)
+  - Follow the migration guide [Migration from 1.x to 2.x](https://design-system-next.vercel.app/components/migration/migration-from-1.x.html)
 
 ### Bug Fixes
 

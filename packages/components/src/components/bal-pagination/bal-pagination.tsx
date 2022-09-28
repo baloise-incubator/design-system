@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter, Element } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { Props } from '../../types'
 
@@ -6,6 +6,7 @@ import { Props } from '../../types'
   tag: 'bal-pagination',
 })
 export class Pagination {
+  @Element() el!: HTMLBalPaginationElement
   @State() _value = 1
 
   /**
@@ -39,6 +40,28 @@ export class Pagination {
   @Prop() pageRange = 2
 
   /**
+   * List of tabs names for 'tabs' interface
+   */
+  @Prop() tabsNames: string[] = []
+
+  /**
+   * If 'true, the pagination will be sticky to the top
+   */
+  @Prop() sticky = false
+
+  /**
+   * If sticky, the top position will be determined by this value
+   */
+  @Prop() top = 0
+
+  @Watch('top')
+  topValueChanged(newValue: number) {
+    if (this.sticky) {
+      this.el.style.top = `${newValue}px`
+    }
+  }
+
+  /**
    * Triggers when a page change happens
    */
   @Event({ eventName: 'balChange' })
@@ -46,6 +69,7 @@ export class Pagination {
 
   componentWillLoad() {
     this._value = this.value
+    this.topValueChanged(this.top)
   }
 
   /**
@@ -90,18 +114,38 @@ export class Pagination {
   renderPageElement(pageNumber: number) {
     const isActive = this._value === pageNumber
     const dot = BEM.block('pagination').element('nav').element('pagination-list').element('dot')
-    return this.interface === 'small' ? (
-      <li>
-        <span
+    const tab = BEM.block('pagination').element('nav').element('pagination-list').element('tab')
+
+    if (this.interface === 'small') {
+      return (
+        <li>
+          <span
+            class={{
+              ...dot.class(),
+              ...dot.modifier('active').class(isActive),
+              ...dot.modifier('inactive').class(!isActive),
+            }}
+            onClick={() => this.selectPage(pageNumber)}
+          />
+        </li>
+      )
+    }
+    if (this.interface === 'tabs') {
+      return (
+        <bal-button
+          expanded
           class={{
-            ...dot.class(),
-            ...dot.modifier('active').class(isActive),
-            ...dot.modifier('inactive').class(!isActive),
+            ...tab.class(),
           }}
+          color="light"
+          inverted={isActive}
           onClick={() => this.selectPage(pageNumber)}
-        />
-      </li>
-    ) : (
+        >
+          {this.tabsNames[pageNumber - 1] ?? pageNumber}
+        </bal-button>
+      )
+    }
+    return (
       <li>
         <bal-button square color={isActive ? 'primary' : 'text'} onClick={() => this.selectPage(pageNumber)}>
           {pageNumber}
@@ -115,20 +159,27 @@ export class Pagination {
     let rangeStart = this._value - pageRange
     let rangeEnd = this._value + pageRange
 
-    if (rangeEnd > this.totalPages) {
-      rangeEnd = this.totalPages
-      rangeStart = this.totalPages - pageRange * 2
-      rangeStart = rangeStart < 1 ? 1 : rangeStart
-    }
-
-    if (rangeStart <= 1) {
+    if (this.interface === 'small') {
       rangeStart = 1
-      rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
+      rangeEnd = this.totalPages - 1
+    } else {
+      if (rangeEnd > this.totalPages) {
+        rangeEnd = this.totalPages
+        rangeStart = this.totalPages - pageRange * 2
+        rangeStart = rangeStart < 1 ? 1 : rangeStart
+      }
+
+      if (rangeStart <= 1) {
+        rangeStart = 1
+        rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
+      }
     }
 
     if (rangeStart > 1) {
       items.push(this.renderPageElement(1))
-      items.push(this.renderEllipsisElement())
+      if (this.interface !== 'small') {
+        items.push(this.renderEllipsisElement())
+      }
     }
 
     for (let i = rangeStart; i <= rangeEnd; i++) {
@@ -136,7 +187,9 @@ export class Pagination {
     }
 
     if (rangeEnd < this.totalPages) {
-      items.push(this.renderEllipsisElement())
+      if (this.interface !== 'small') {
+        items.push(this.renderEllipsisElement())
+      }
       items.push(this.renderPageElement(this.totalPages))
     }
 
@@ -153,6 +206,7 @@ export class Pagination {
     const elNext = elNav.element('pagination-next')
     const elList = elNav.element('pagination-list')
     const isSmall = this.interface === 'small'
+    const hasTabs = this.interface === 'tabs'
     const buttonColor = isSmall ? 'link' : 'text'
     const buttonSize = isSmall ? 'small' : ''
     const flat = isSmall
@@ -161,6 +215,7 @@ export class Pagination {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier('is-sticky').class(this.sticky),
         }}
       >
         <nav
@@ -171,35 +226,37 @@ export class Pagination {
           role="navigation"
           aria-label="pagination"
         >
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elPrevious.class(),
-              ...elPrevious.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value < 2}
-            onClick={() => this.previous()}
-          >
-            <bal-icon name="nav-go-left" size="small" />
-          </bal-button>
-          <bal-button
-            square
-            color={buttonColor}
-            size={buttonSize}
-            flat={flat}
-            class={{
-              ...elNext.class(),
-              ...elNext.modifier(`context-${this.interface}`).class(),
-            }}
-            disabled={this._value === this.totalPages}
-            onClick={() => this.next()}
-          >
-            <bal-icon name="nav-go-right" size="small" />
-          </bal-button>
-          {this.interface === '' || (isSmall && this.totalPages <= 5) ? (
+          {!hasTabs && [
+            <bal-button
+              square
+              color={buttonColor}
+              size={buttonSize}
+              flat={flat}
+              class={{
+                ...elPrevious.class(),
+                ...elPrevious.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value < 2}
+              onClick={() => this.previous()}
+            >
+              <bal-icon name="nav-go-left" size="small" />
+            </bal-button>,
+            <bal-button
+              square
+              color={buttonColor}
+              size={buttonSize}
+              flat={flat}
+              class={{
+                ...elNext.class(),
+                ...elNext.modifier(`context-${this.interface}`).class(),
+              }}
+              disabled={this._value === this.totalPages}
+              onClick={() => this.next()}
+            >
+              <bal-icon name="nav-go-right" size="small" />
+            </bal-button>,
+          ]}
+          {this.interface === '' || (isSmall && this.totalPages <= 5) || hasTabs ? (
             [
               <ul
                 class={{

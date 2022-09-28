@@ -26,7 +26,6 @@ const component = BalComponentStory({
     inverted: false,
     disabled: false,
     border: true,
-    size: 'large',
   },
 })
 
@@ -79,6 +78,90 @@ Basic.args = {
 }
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
+export const AdvisorList = args => ({
+  components: { ...component.components, BalIcon },
+  setup: () => ({ args }),
+  template: `
+  <bal-list v-bind="args">
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head>
+      <bal-list-item-content>
+        <bal-list-item-title>Berlin</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body>
+      <bal-list border>
+    <bal-list-item clickable href="www.baloise.com" target="_blank">
+        <bal-list-item-content>
+            <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+        </bal-list-item-content>
+        <bal-list-item-icon right>
+            <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+        </bal-list-item-icon>
+    </bal-list-item>
+    <bal-list-item clickable href="www.baloise.com" target="_blank">
+    <bal-list-item-content>
+        <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+        <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+    </bal-list-item-icon>
+</bal-list-item>
+<bal-list-item clickable href="www.baloise.com" target="_blank">
+<bal-list-item-content>
+    <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+</bal-list-item-content>
+<bal-list-item-icon right>
+    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+</bal-list-item-icon>
+</bal-list-item>
+</bal-list>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+  <bal-list-item accordion>
+  <bal-list-item-accordion-head>
+    <bal-list-item-content>
+      <bal-list-item-title>München</bal-list-item-title>
+    </bal-list-item-content>
+  </bal-list-item-accordion-head>
+  <bal-list-item-accordion-body>
+    <bal-list border>
+  <bal-list-item clickable href="www.baloise.com" target="_blank">
+      <bal-list-item-content>
+          <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+          <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+      </bal-list-item-icon>
+  </bal-list-item>
+  <bal-list-item clickable href="www.baloise.com" target="_blank">
+  <bal-list-item-content>
+      <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+  </bal-list-item-content>
+  <bal-list-item-icon right>
+      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+  </bal-list-item-icon>
+</bal-list-item>
+<bal-list-item clickable href="www.baloise.com" target="_blank">
+<bal-list-item-content>
+  <bal-list-item-title>Firstname Lastname</bal-list-item-title>
+</bal-list-item-content>
+<bal-list-item-icon right>
+  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+</bal-list-item-icon>
+</bal-list-item>
+</bal-list>
+  </bal-list-item-accordion-body>
+</bal-list-item>
+</bal-list>
+  `,
+})
+AdvisorList.args = {
+  border: true,
+  size: '',
+}
+AdvisorList.parameters = { ...component.sourceCode(AdvisorList), controls: { exclude: excludedControls } }
+
 export const NativeList = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
@@ -86,23 +169,45 @@ export const NativeList = args => ({
   <ul class="is-list">
     <li>List Item 1</li>
     <li>List Item 2</li>
-    <li>List Item 3</li>
   </ul>
   <ul class="is-list has-bullet-circle">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+    <li>Green Circle List Item 1</li>
+    <li>Green Circle List Item 3</li>
   </ul>
-  <ul class="is-list has-bullet-check">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+  <ul class="is-list has-bullet-circle has-bullet-purple">
+    <li>Purple Circle List Item 1</li>
+    <li>Purple Circle List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-circle has-bullet-red">
+    <li>Red Circle List Item 1</li>
+    <li>Red Circle List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-circle has-bullet-yellow">
+    <li>Yellow Circle List Item 1</li>
+    <li>Yellow Circle List Item 3</li>
   </ul>
   <ol class="is-list">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
+    <li>Numbered List Item 1</li>
+    <li>Numbered List Item 2</li>
   </ol>
+  <ul class="is-list has-bullet-check">
+    <li>Checked List Item 1</li>
+    <li>Checked List Item 2</li>
+  </ul>
+  <ul class="is-list has-bullet-close">
+    <li class="has-opacity-50">Close List Item 1</li>
+    <li class="has-opacity-50">Close List Item 2</li>
+  </ul>
+  <ul class="is-list has-bullets">
+    <li class="has-bullet-check">Checked List Item 1</li>
+    <li class="has-bullet-close has-opacity-50">Close List Item 2</li>
+  </ul>
+  <div class="has-background-blue p-2">
+    <ul class="is-list has-bullets is-inverted">
+      <li class="has-bullet-check">Inverted checked List Item 1</li>
+      <li class="has-bullet-close has-opacity-50">Inverted close List Item 2</li>
+    </ul>
+  </div>
 </div>`,
 })
 NativeList.args = {
@@ -115,12 +220,20 @@ export const LinkedList = args => ({
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item clickable href="www.baloise.com" target="_blank">
+  <bal-list-item-content>
+    <bal-list-item-title>Internal Link</bal-list-item-title>
+  </bal-list-item-content>
+  <bal-list-item-icon right>
+    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+  </bal-list-item-icon>
+  </bal-list-item>
+  <bal-list-item clickable href="www.baloise.com" target="_blank">
     <bal-list-item-content>
       <bal-list-item-title>External Link</bal-list-item-title>
       <bal-list-item-subtitle>Description</bal-list-item-subtitle>
     </bal-list-item-content>
     <bal-list-item-icon right>
-      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+      <bal-icon name="link" size="xsmall"></bal-icon>
     </bal-list-item-icon>
   </bal-list-item>
   <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
@@ -136,7 +249,6 @@ export const LinkedList = args => ({
 })
 LinkedList.args = {
   border: true,
-  size: 'large',
 }
 LinkedList.parameters = { ...component.sourceCode(LinkedList), controls: { exclude: excludedControls } }
 

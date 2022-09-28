@@ -50,10 +50,22 @@ export namespace Props {
     | 'purple-light'
     | 'green-light'
     | 'grey-light'
+    | 'purple-1'
+    | 'purple-2'
+    | 'purple-3'
+    | 'green-1'
+    | 'green-2'
+    | 'green-3'
+    | 'red-1'
+    | 'red-2'
+    | 'red-3'
+    | 'yellow-1'
+    | 'yellow-2'
+    | 'yellow-3'
 
   export type BalCloseSize = 'small' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  export type BalHeadingLevel = 'display' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalSelectFilter = 'includes' | 'starts-with'
@@ -72,7 +84,7 @@ export namespace Props {
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
-  export type BalPaginationInterface = '' | 'small'
+  export type BalPaginationInterface = '' | 'small' | 'tabs'
 
   export type BalPopoverContentRadius =
     | 'normal'
@@ -103,6 +115,8 @@ export namespace Props {
   export type BalStageColor = 'blue' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'large'
   export type BalStageContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | string
+
+  export type BalSheetContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'blog-page'
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta' | 'navigation'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
