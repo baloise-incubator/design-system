@@ -56,7 +56,7 @@
           font-size: 0
           outline: none
           vertical-align: top
-          padding: 2px
+          padding: 1px
           +hover
             &:hover,
             &.is-hovered
@@ -127,7 +127,7 @@
       +element(button)
         position: absolute
         height: 70px
-        width: 48px
+        width: 24px
         display: flex
         align-items: center
         button
@@ -146,8 +146,8 @@
           font-size: 0
           outline: none
           vertical-align: top
-          padding: 2px
-          margin-top: 16px
+          padding: 1px
+          margin-top: 17px
           +hover
             &:hover,
             &.is-hovered
@@ -200,15 +200,55 @@
         +modifier(left)
           left: 0
           justify-content: flex-start
-          background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
         +modifier(right)
           right: 0
           justify-content: flex-end
-          background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
 
   +element(col-items)
     padding-bottom: 0 !important
     overflow: hidden
+    +element(border-wrapper)
+      position: relative
+      &::before
+        content: ''
+        background: var(--bal-color-border-normal)
+        border-radius: var(--bal-radius-small)
+        height: 2px
+        width: 100%
+        position: absolute
+        bottom: 0
+      +modifier(vertical)
+        &::before
+          content: ''
+          background: var(--bal-color-border-normal)
+          border-radius: var(--bal-radius-small)
+          height: auto
+          width: 2px
+          top: 4px
+          bottom: 4px
+          left: 0
+      +modifier(vertical-on-mobile)
+        &::before
+          content: ''
+          background: var(--bal-color-border-normal)
+          border-radius: var(--bal-radius-small)
+          +mobile
+            height: auto
+            width: 2px
+            top: 4px
+            bottom: 4px
+            left: 0
+      +modifier(vertical-on-tablet)
+        &::before
+          content: ''
+          background: var(--bal-color-border-normal)
+          border-radius: var(--bal-radius-small)
+          +touch
+            height: auto
+            width: 2px
+            top: 4px
+            bottom: 4px
+            left: 0
     +modifier(vertical)
       +tablet
         padding-bottom: var(--bal-column-gap) !important
@@ -412,34 +452,6 @@
           font-weight: var(--bal-weight-regular)
           &.bal-tabs__tabs__item__button--active
             font-weight: var(--bal-weight-bold)
-
-    +element(border)
-      position: absolute
-      background: var(--bal-color-border-normal)
-      border-radius: var(--bal-radius-small)
-      height: 2px
-      width: 100%
-      bottom: 0
-      +modifier(vertical)
-        height: auto
-        width: 2px
-        top: 4px
-        bottom: 4px
-        left: 0
-      +modifier(vertical-on-mobile)
-        +mobile
-          height: auto
-          width: 2px
-          top: 4px
-          bottom: 4px
-          left: 0
-      +modifier(vertical-on-tablet)
-        +touch
-          height: auto
-          width: 2px
-          top: 4px
-          bottom: 4px
-          left: 0
 
     +element(line)
       position: absolute

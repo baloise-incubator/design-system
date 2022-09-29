@@ -10,8 +10,6 @@ const tabItemEl = tabsEl.element('item')
 export const TabList: FunctionalComponent<TabProps> = ({
   value,
   expanded,
-  borderWidth,
-  border,
   float,
   tabs,
   spaceless,
@@ -94,24 +92,6 @@ export const TabList: FunctionalComponent<TabProps> = ({
           </li>
         ))}
       </ul>
-      <div
-        class={{
-          ...tabsEl.element('border').class(),
-          ...tabsEl
-            .element('border')
-            .modifier('vertical')
-            .class(vertical === true),
-          ...tabsEl
-            .element('border')
-            .modifier('vertical-on-mobile')
-            .class(vertical === 'mobile'),
-          ...tabsEl
-            .element('border')
-            .modifier('vertical-on-tablet')
-            .class(vertical === 'tablet'),
-        }}
-        style={{ display: border ? 'block' : 'none', width: !vertical ? `${borderWidth || 0}px` : '2px' }}
-      ></div>
       <TabLine
         context={context}
         vertical={vertical}

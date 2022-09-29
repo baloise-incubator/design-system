@@ -488,28 +488,50 @@ export class Tabs {
               'bal-tabs__col-items--vertical': isVertical,
             }}
           >
-            <Tabs
-              value={this.value}
-              context={this.interface}
-              inverted={this.inverted}
-              spaceless={this.spaceless}
-              tabs={this.tabsOptions}
-              border={this.border}
-              borderWidth={this.listEl?.offsetWidth === undefined ? 0 : this.listEl?.offsetWidth}
-              float={this.float}
-              expanded={this.expanded}
-              clickable={this.clickable}
-              isReady={this.isReady}
-              iconPosition={this.iconPosition}
-              onSelectTab={(e, t) => this.onSelectTab(e, t)}
-              lineWidth={this.lineWidth}
-              lineOffsetLeft={this.lineOffsetLeft}
-              lineHeight={this.lineHeight}
-              lineOffsetTop={this.lineOffsetTop}
-              vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
-              selectOnMobile={this.selectOnMobile}
-              refListEl={el => (this.listEl = el)}
-            ></Tabs>
+            <div
+              class={{
+                'bal-tabs__col-items__border-wrapper': this.border && this.interface !== 'steps',
+                'bal-tabs__col-items__border-wrapper--vertical':
+                  this.border && this.interface !== 'steps' && this.vertical === true,
+                'bal-tabs__col-items__border-wrapper--vertical-on-mobile':
+                  this.border && this.interface !== 'steps' && this.vertical === 'mobile',
+                'bal-tabs__col-items__border-wrapper--vertical-on-tablet':
+                  this.border && this.interface !== 'steps' && this.vertical === 'tablet',
+              }}
+            >
+              <div
+                class="column-content-inner-test"
+                style={{
+                  '-webkit-mask-image': this.isSliderActive
+                    ? 'linear-gradient(to right, transparent 0%, black 6rem), linear-gradient(to left, transparent 0%, black 6rem)'
+                    : 'none',
+                  '-webkit-mask-composite': this.isSliderActive ? 'source-in' : 'none',
+                }}
+              >
+                <Tabs
+                  value={this.value}
+                  context={this.interface}
+                  inverted={this.inverted}
+                  spaceless={this.spaceless}
+                  tabs={this.tabsOptions}
+                  border={this.border}
+                  borderWidth={this.listEl?.offsetWidth === undefined ? 0 : this.listEl?.offsetWidth}
+                  float={this.float}
+                  expanded={this.expanded}
+                  clickable={this.clickable}
+                  isReady={this.isReady}
+                  iconPosition={this.iconPosition}
+                  onSelectTab={(e, t) => this.onSelectTab(e, t)}
+                  lineWidth={this.lineWidth}
+                  lineOffsetLeft={this.lineOffsetLeft}
+                  lineHeight={this.lineHeight}
+                  lineOffsetTop={this.lineOffsetTop}
+                  vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
+                  selectOnMobile={this.selectOnMobile}
+                  refListEl={el => (this.listEl = el)}
+                ></Tabs>
+              </div>
+            </div>
           </div>
           <div
             class={{
