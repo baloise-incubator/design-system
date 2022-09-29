@@ -456,6 +456,8 @@ export class Tabs {
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
 
+    const isBorderVisible = this.border && this.interface !== 'steps'
+
     return (
       <Host
         class={{
@@ -490,13 +492,12 @@ export class Tabs {
           >
             <div
               class={{
-                'bal-tabs__col-items__border-wrapper': this.border && this.interface !== 'steps',
-                'bal-tabs__col-items__border-wrapper--vertical':
-                  this.border && this.interface !== 'steps' && this.vertical === true,
+                'bal-tabs__col-items__border-wrapper': isBorderVisible,
+                'bal-tabs__col-items__border-wrapper--vertical': isBorderVisible && this.vertical === true,
                 'bal-tabs__col-items__border-wrapper--vertical-on-mobile':
-                  this.border && this.interface !== 'steps' && this.vertical === 'mobile',
+                  isBorderVisible && this.vertical === 'mobile',
                 'bal-tabs__col-items__border-wrapper--vertical-on-tablet':
-                  this.border && this.interface !== 'steps' && this.vertical === 'tablet',
+                  isBorderVisible && this.vertical === 'tablet',
               }}
             >
               <div
