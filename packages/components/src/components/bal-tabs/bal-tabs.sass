@@ -20,7 +20,6 @@
     position: relative
     display: block
     .bal-tabs__col-items
-      padding-left: 16px
       padding-right: 16px
     .bal-tabs__controls
       position: absolute
@@ -109,11 +108,29 @@
         +modifier(left)
           left: 0
           justify-content: flex-start
-          background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+          &::before
+            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+            pointer-events: none
+            content: ""
+            position: absolute
+            top: 0
+            display: inline-block
+            width: 72px
+            height: 70px
+            opacity: 1
         +modifier(right)
           right: 0
           justify-content: flex-end
-          background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+          &::before
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+            pointer-events: none
+            content: ""
+            position: absolute
+            top: 0
+            display: inline-block
+            width: 72px
+            height: 70px
+            opacity: 1
 
   .columns
     position: relative
@@ -200,9 +217,29 @@
         +modifier(left)
           left: 0
           justify-content: flex-start
+          &::before
+            background: linear-gradient(90deg, var(--bal-color-white) 16%, rgba(255, 255, 255, 0) 100%)
+            pointer-events: none
+            content: ""
+            position: absolute
+            top: 0
+            display: inline-block
+            width: 72px
+            height: 70px
+            opacity: 1
         +modifier(right)
           right: 0
           justify-content: flex-end
+          &::before
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 84%)
+            pointer-events: none
+            content: ""
+            position: absolute
+            top: 0
+            display: inline-block
+            width: 72px
+            height: 70px
+            opacity: 1
 
   +element(col-items)
     padding-bottom: 0 !important

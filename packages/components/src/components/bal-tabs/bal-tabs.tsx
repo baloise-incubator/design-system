@@ -402,7 +402,6 @@ export class Tabs {
     if (this.isSliderActive) {
       const list = this.tabItems
       const isValueVisible = list.filter(item => item.isVisible && item.value === this.value).length > 0
-      this.isFirstSlide = true
 
       if (!isValueVisible) {
         let isOnPreviousPage = false
@@ -489,6 +488,7 @@ export class Tabs {
               'bal-tabs__col-items': true,
               'bal-tabs__col-items--vertical': isVertical,
             }}
+            style={{ 'padding-left': leftControlIsDisabled ? '0' : '16px' }}
           >
             <div
               class={{
@@ -500,15 +500,7 @@ export class Tabs {
                   isBorderVisible && this.vertical === 'tablet',
               }}
             >
-              <div
-                class="column-content-inner-test"
-                style={{
-                  '-webkit-mask-image': this.isSliderActive
-                    ? 'linear-gradient(to right, transparent 0%, black 6rem), linear-gradient(to left, transparent 0%, black 6rem)'
-                    : 'none',
-                  '-webkit-mask-composite': this.isSliderActive ? 'source-in' : 'none',
-                }}
-              >
+              <div class="column-content-inner-test">
                 <Tabs
                   value={this.value}
                   context={this.interface}
@@ -546,7 +538,13 @@ export class Tabs {
             <slot></slot>
           </div>
           <div class={{ ...controls.class(), 'is-hidden': !this.isSliderActive }}>
-            <div class={{ ...controlButton.class(), ...controlButton.modifier('left').class() }}>
+            <div
+              class={{
+                ...controlButton.class(),
+                ...controlButton.modifier('left').class(),
+                'is-hidden': leftControlIsDisabled,
+              }}
+            >
               <button
                 type="button"
                 aria-label="left"
