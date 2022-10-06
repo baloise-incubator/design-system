@@ -7,12 +7,9 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
-import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
-import { Props as Props2 } from "./props";
-import { Events as Events1 } from "./events";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -689,7 +686,7 @@ export namespace Components {
         /**
           * If `true` the component gets a invalid style.
          */
-        "weight": Props1.BalFieldLabelWeight;
+        "weight": Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -1229,6 +1226,15 @@ export namespace Components {
     }
     interface BalListItemAccordionBody {
         /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment": Props.BalListContentSpacing;
+        "getContentHeight": () => Promise<number>;
+        /**
           * If `true` the body will be open and visible
          */
         "open": boolean;
@@ -1244,6 +1250,7 @@ export namespace Components {
         "icon": string;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -1343,7 +1350,7 @@ export namespace Components {
           * Link of the logo / title.
          */
         "href"?: string;
-        "interface": Props1.BalNavbarInterface;
+        "interface": Props.BalNavbarInterface;
         /**
           * Link target
          */
@@ -1445,7 +1452,7 @@ export namespace Components {
         "elements": LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
-        "target": Props2.BalButtonTarget;
+        "target": Props.BalButtonTarget;
     }
     interface BalNavigationMenuList {
         /**
@@ -1463,11 +1470,11 @@ export namespace Components {
         /**
           * Target of the menu list card headline target as link
          */
-        "target": Props2.BalButtonTarget;
+        "target": Props.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
-        "target": Props2.BalButtonTarget;
+        "target": Props.BalButtonTarget;
     }
     interface BalNavigationMeta {
         /**
@@ -1728,7 +1735,7 @@ export namespace Components {
         /**
           * Defines background color of the content.
          */
-        "color": Props2.BalPopoverContentColor;
+        "color": Props.BalPopoverContentColor;
         /**
           * Define the min width of the popover content.
          */
@@ -1752,7 +1759,7 @@ export namespace Components {
         /**
           * Defines border-radius of popover content.
          */
-        "radius": Props2.BalPopoverContentRadius;
+        "radius": Props.BalPopoverContentRadius;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
@@ -2055,6 +2062,10 @@ export namespace Components {
     interface BalSlider {
     }
     interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
     }
     interface BalSnackbar {
         /**
@@ -4223,7 +4234,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the component gets a invalid style.
          */
-        "weight"?: Props1.BalFieldLabelWeight;
+        "weight"?: Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -4803,6 +4814,14 @@ declare namespace LocalJSX {
     }
     interface BalListItemAccordionBody {
         /**
+          * Synchronizes the height of the accordion to max of all the other grouped accordion bodies
+         */
+        "accordionGroup"?: string;
+        /**
+          * Sets justify-content of the items to start, center, end, or space-between. Default is start.
+         */
+        "contentAlignment"?: Props.BalListContentSpacing;
+        /**
           * If `true` the body will be open and visible
          */
         "open"?: boolean;
@@ -4822,6 +4841,7 @@ declare namespace LocalJSX {
         "onBalAccordionChange"?: (event: BalListItemAccordionHeadCustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
+        "contentAlignment"?: string;
     }
     interface BalListItemIcon {
         /**
@@ -4919,7 +4939,7 @@ declare namespace LocalJSX {
           * Link of the logo / title.
          */
         "href"?: string;
-        "interface"?: Props1.BalNavbarInterface;
+        "interface"?: Props.BalNavbarInterface;
         /**
           * Link target
          */
@@ -5023,7 +5043,7 @@ declare namespace LocalJSX {
         "elements"?: LevelInfo[];
         "linkHref"?: string;
         "linkName"?: string;
-        "target"?: Props2.BalButtonTarget;
+        "target"?: Props.BalButtonTarget;
     }
     interface BalNavigationMenuList {
         /**
@@ -5041,11 +5061,11 @@ declare namespace LocalJSX {
         /**
           * Target of the menu list card headline target as link
          */
-        "target"?: Props2.BalButtonTarget;
+        "target"?: Props.BalButtonTarget;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
-        "target"?: Props2.BalButtonTarget;
+        "target"?: Props.BalButtonTarget;
     }
     interface BalNavigationMeta {
         /**
@@ -5176,7 +5196,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberChangeDetail>) => void;
+        "onBalChange"?: (event: BalNumberInputCustomEvent<Events.BalInputNumberChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -5188,7 +5208,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalNumberInputCustomEvent<Events1.BalInputNumberInputDetail>) => void;
+        "onBalInput"?: (event: BalNumberInputCustomEvent<Events.BalInputNumberInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -5284,7 +5304,7 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: BalPopoverCustomEvent<Events1.BalPopoverChangeDetail>) => void;
+        "onBalChange"?: (event: BalPopoverCustomEvent<Events.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
         /**
           * Define padding of the overflow
@@ -5307,7 +5327,7 @@ declare namespace LocalJSX {
         /**
           * Defines background color of the content.
          */
-        "color"?: Props2.BalPopoverContentColor;
+        "color"?: Props.BalPopoverContentColor;
         /**
           * Define the min width of the popover content.
          */
@@ -5331,7 +5351,7 @@ declare namespace LocalJSX {
         /**
           * Defines border-radius of popover content.
          */
-        "radius"?: Props2.BalPopoverContentRadius;
+        "radius"?: Props.BalPopoverContentRadius;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
@@ -5653,6 +5673,10 @@ declare namespace LocalJSX {
     interface BalSlider {
     }
     interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
     }
     interface BalSnackbar {
         /**
@@ -5872,7 +5896,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the changes has finished.
          */
-        "onBalChange"?: (event: BalTabsCustomEvent<string>) => void;
+        "onBalChange"?: (event: BalTabsCustomEvent<Events.BalTabsChangeDetail>) => void;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */
