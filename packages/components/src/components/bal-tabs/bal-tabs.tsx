@@ -8,7 +8,6 @@ import { Props, Platforms } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../'
 import { getPlatforms } from '../../'
-
 @Component({
   tag: 'bal-tabs',
 })
@@ -32,6 +31,7 @@ export class Tabs {
   @State() isLastSlide = false
   @State() isFirstSlide = true
   @State() isSliderActive = false
+  @State() slideIndex = 0
 
   /**
    * Defines the layout of the tabs.
@@ -143,7 +143,8 @@ export class Tabs {
     if (productContainer?.contains(event.target as HTMLElement)) {
       if (event.changedTouches[0].pageX < this.xPosition) {
         this.nextPage()
-      } else {
+      }
+      if (event.changedTouches[0].pageX > this.xPosition) {
         this.previousPage()
       }
     }
@@ -335,11 +336,11 @@ export class Tabs {
     const reversedList = this.tabItems.reverse()
     const lastVisible = reversedList.findIndex(item => item.isVisible)
     const nextItemToShow = reversedList[lastVisible - 1]
-
     this.transformLeft = nextItemToShow.el.offsetLeft
     const isPageBigEnough = this.listWidth - this.transformLeft >= this.containerWidth
     this.isLastSlide = false
     this.isFirstSlide = false
+    this.slideIndex++
     if (!isPageBigEnough) {
       this.transformLeft = this.listWidth - this.containerWidth
       this.isLastSlide = true
@@ -356,6 +357,7 @@ export class Tabs {
     this.transformLeft = offsetLeft < 0 ? 0 : offsetLeft
     this.isFirstSlide = this.transformLeft === 0
     this.isLastSlide = false
+    this.slideIndex--
 
     this.setTransition(animated)
   }
@@ -388,7 +390,8 @@ export class Tabs {
       .map((item, index) => {
         let pointer = item.clientWidth + item.offsetLeft
         pointer = this.interface === 'navigation' ? pointer - 30 : pointer
-        const isVisible = pointer < this.containerWidth + this.transformLeft && pointer > this.transformLeft
+        const isVisible =
+          pointer <= this.containerWidth + this.transformLeft && pointer - item.clientWidth >= this.transformLeft // ask if starts outside
         return { el: item, pointer, isVisible, index, value: item.dataset.value }
       })
     return [...newList]
@@ -402,7 +405,6 @@ export class Tabs {
     if (this.isSliderActive) {
       const list = this.tabItems
       const isValueVisible = list.filter(item => item.isVisible && item.value === this.value).length > 0
-
       if (!isValueVisible) {
         let isOnPreviousPage = false
 
