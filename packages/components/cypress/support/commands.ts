@@ -36,8 +36,8 @@ Cypress.Commands.add('pageA11y', (url: string) => {
 Cypress.Commands.add('performance', () => {
   cy.lighthouse({
     'pwa': 0,
-    'seo': 90,
-    'accessibility': 90,
+    'accessibility': 0,
+    'seo': 0,
     'performance': 90,
     'best-practices': 50,
   })
