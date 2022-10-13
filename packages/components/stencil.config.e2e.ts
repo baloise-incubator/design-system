@@ -9,6 +9,7 @@ export const config: Config = {
     {
       type: 'www',
       dir: 'www',
+      baseUrl: 'http://localhost:3333/',
       serviceWorker: false,
       empty: true,
       copy: [

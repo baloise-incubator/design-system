@@ -162,6 +162,7 @@ jobs:
           working-directory: packages/components
           install: false
           browser: chrome
+          headed: true
           spec: |
             cypress/e2e/perf/*.cy.ts
         env:
