@@ -79,24 +79,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload snapshots
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-snapshots
-          path: packages/components/cypress/snapshots
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload videos
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/components/cypress/videos
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   Visual:
     runs-on: ubuntu-latest
     steps:
@@ -146,12 +128,42 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload videos
-        uses: actions/upload-artifact@v3
-        if: failure()
+  Performance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
-          name: cypress-videos
-          path: packages/components/cypress/videos
+          node-version: '16'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update NPM registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:e2e
+
+      - name: Install Cypress
+        run: npm run test:cy:install
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run cy:build
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          install: false
+          browser: chrome
+          spec: |
+            cypress/e2e/perf/*.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -193,24 +205,6 @@ jobs:
           spec: |
             cypress/e2e/base/*.cy.ts
             cypress/e2e/legacy/*.cy.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload snapshots
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-snapshots
-          path: packages/components/cypress/snapshots
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload videos
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-videos
-          path: packages/components/cypress/videos
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

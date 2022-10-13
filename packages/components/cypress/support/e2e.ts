@@ -35,6 +35,10 @@ declare global {
        */
       pageA11y(url: string): Chainable<Element>
       /**
+       * Executes lighthouse performance test
+       */
+      performance(): Chainable<Element>
+      /**
        * Opens the page on the given url, waits until the component has loaded
        */
       visualPage(url: string): Chainable<Element>

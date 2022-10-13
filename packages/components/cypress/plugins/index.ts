@@ -13,7 +13,16 @@
 // the project's config changing)
 
 import getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
+import { lighthouse, prepareAudit } from 'cypress-audit'
 
 export default function configurePlugins(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
   getCompareSnapshotsPlugin(on, config)
+
+  on('before:browser:launch', (_, launchOptions) => {
+    prepareAudit(launchOptions)
+  })
+
+  on('task', {
+    lighthouse: lighthouse(),
+  })
 }

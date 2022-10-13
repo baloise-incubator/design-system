@@ -8,6 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import 'cypress-audit/commands'
+
 Cypress.Commands.add('page', (url: string) => {
   Cypress.log({
     type: 'parent',
@@ -29,6 +31,16 @@ Cypress.Commands.add('page', (url: string) => {
 Cypress.Commands.add('pageA11y', (url: string) => {
   cy.page(url)
   cy.injectAxe()
+})
+
+Cypress.Commands.add('performance', () => {
+  cy.lighthouse({
+    'pwa': 0,
+    'seo': 90,
+    'accessibility': 90,
+    'performance': 90,
+    'best-practices': 50,
+  })
 })
 
 Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options = null) => {
