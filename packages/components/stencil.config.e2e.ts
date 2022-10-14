@@ -11,6 +11,7 @@ export const config: Config = {
       dir: 'www',
       baseUrl: 'http://localhost:3333/',
       serviceWorker: false,
+      polyfills: false,
       empty: true,
       copy: [
         {

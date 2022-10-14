@@ -8,14 +8,6 @@ import { ReactGenerator } from './config/stencil.bindings.react'
 
 export const config: Config = {
   ...StencilBaseConfig,
-  buildEs5: 'prod',
-  extras: {
-    dynamicImportShim: true,
-    safari10: false,
-    scriptDataOpts: true,
-    appendChildSlotFix: true,
-    cloneNodeFix: true,
-  },
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
     /**
