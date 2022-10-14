@@ -8,8 +8,6 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import 'cypress-audit/commands'
-
 Cypress.Commands.add('page', (url: string) => {
   Cypress.log({
     type: 'parent',
@@ -31,16 +29,6 @@ Cypress.Commands.add('page', (url: string) => {
 Cypress.Commands.add('pageA11y', (url: string) => {
   cy.page(url)
   cy.injectAxe()
-})
-
-Cypress.Commands.add('performance', () => {
-  cy.lighthouse({
-    'pwa': 0,
-    'accessibility': 50,
-    'seo': 50,
-    'performance': 60, // mobile performance TODO: icon should not load all icons and each component loads his own stylesheet
-    'best-practices': 90,
-  })
 })
 
 Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options = null) => {
