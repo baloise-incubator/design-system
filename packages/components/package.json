@@ -65,6 +65,7 @@
     "serve": "stencil build --config stencil.config.e2e.ts --prod --serve --watch",
     "cy:build": "stencil build --config stencil.config.e2e.ts --prod",
     "cy:start": "node ./web-server.js",
+    "cy:serve": "npm run cy:build && npm run cy:start",
     "cy:install": "cypress install",
     "cy:run": "cypress run --browser chrome --headless --config excludeSpecPattern=\"cypress/e2e/visual/*cy.ts\"",
     "cy:perf": "cypress run --browser chrome --headless --spec \"cypress/e2e/perf/*cy.ts\"",
