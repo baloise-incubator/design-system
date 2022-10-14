@@ -246,200 +246,218 @@ export class Navigation implements ComponentInterface {
           'bal-nav--transformed': this.isMetaHidden,
         }}
       >
-        <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
-          <bal-navigation-meta-start>
-            {hasLevels && (
-              <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
-                {this.levels.map((meta, index) => {
-                  return meta.isTabLink ? (
-                    <bal-tab-item label={meta.label} value={meta.value} href={meta.link} target={meta.target} />
-                  ) : (
-                    <bal-tab-item
-                      label={meta.label}
-                      value={meta.value}
-                      onBalNavigate={ev => {
-                        meta.onClick(ev.detail)
-                        this.selectedMetaValue = meta.value
-                        this.selectedMetaIndex = index
-                        this.isMainBodyOpen = false
-                        this.selectedMainValue = ''
-                      }}
-                    />
-                  )
-                })}
-              </bal-tabs>
-            )}
-          </bal-navigation-meta-start>
-          <bal-navigation-meta-end>{this.levels && <slot name="meta-actions" />}</bal-navigation-meta-end>
-        </bal-navigation-meta>
-
-        <bal-navigation-main
-          class={{
-            'is-hidden-touch': true,
-            'container': true,
-            'bal-nav__main--expanded': this.isMainBodyOpen,
-          }}
-          ref={el => {
-            this.mainNavElement = el
-          }}
-          aria-label-main={this.ariaLabelMain}
-        >
-          <bal-navigation-main-head
-            slot="main-head"
-            class={{
-              'is-hidden-mobile': true,
-              'bal-nav__main__head--active': this.isMainBodyOpen,
-            }}
-          >
-            <div>
-              <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
-                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
-              </a>
-              <bal-tabs
-                interface="navigation"
-                float="right"
-                fullwidth
-                spaceless
-                value={this.selectedMainValue}
-                onBalChange={this.onMainTabChange}
-              >
-                {hasLevels &&
-                  this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
-                    return main.isTabLink ? (
-                      <bal-tab-item
-                        label={main.label}
-                        value={main.value}
-                        href={main.link}
-                        target={main.target}
-                        onBalNavigate={ev => {
-                          main.onClick(ev.detail)
-                          this.selectedMainIndex = index
-                          this.isMainBodyOpen = false
-                          this.selectedMainValue = main.value
-                        }}
-                      />
+        {!this.isTouch ? (
+          <bal-navigation-meta class="is-hidden-touch" aria-label-meta={this.ariaLabelMeta}>
+            <bal-navigation-meta-start>
+              {hasLevels && (
+                <bal-tabs interface="meta" spaceless inverted={true} value={this.selectedMetaValue}>
+                  {this.levels.map((meta, index) => {
+                    return meta.isTabLink ? (
+                      <bal-tab-item label={meta.label} value={meta.value} href={meta.link} target={meta.target} />
                     ) : (
                       <bal-tab-item
-                        label={main.label}
-                        value={main.value}
-                        icon="nav-go-down"
+                        label={meta.label}
+                        value={meta.value}
                         onBalNavigate={ev => {
-                          main.onClick(ev.detail)
-                          this.selectedMainIndex = index
-                          this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
-                          this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
+                          meta.onClick(ev.detail)
+                          this.selectedMetaValue = meta.value
+                          this.selectedMetaIndex = index
+                          this.isMainBodyOpen = false
+                          this.selectedMainValue = ''
                         }}
                       />
                     )
                   })}
-              </bal-tabs>
-            </div>
-          </bal-navigation-main-head>
-          {this.isMainBodyOpen && (
-            <bal-navigation-main-body slot="main-body">
-              {this.levels
-                .filter((_, index) => index === this.selectedMetaIndex)
-                .map(meta =>
-                  meta.subLevels
-                    ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
-                    .map(main => (
-                      <bal-navigation-menu
-                        link-href={main.link}
-                        link-name={main.linkLabel}
-                        target={main.target}
-                        elements={main.subLevels}
-                      />
-                    )),
-                )}
-            </bal-navigation-main-body>
-          )}
-        </bal-navigation-main>
-
-        <div class="bal-nav__metamobile container">
-          <nav role="navigation" aria-label={this.ariaLabelMeta}>
-            <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
-              <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
-            </a>
-            <div class="bal-nav__metamobile__actions">
-              <slot name="meta-actions-mobile" />
-            </div>
-            <bal-button
-              slot="burger"
-              data-testid="navigation-burger"
-              color={this.isMainBodyOpen ? 'primary' : 'light'}
-              square={true}
-              icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
-              onClick={() => this.onBurgerButtonClick()}
-            />
-          </nav>
-        </div>
-        <div
-          class="bal-nav__main-mobile container"
-          style={{
-            '--bal-nav-main-mobile-height': this.mainMobileHeight,
-            'display': this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
-          }}
-        >
-          <bal-list border in-main-nav={true} size="small">
-            {this.levels.map(meta => (
-              <bal-list-item
-                accordion
-                onBalNavigate={this.onAccordionClick}
-                class="bal-nav__main-mobile__main-accordion"
-              >
-                <bal-list-item-accordion-head icon="nav-go-down">
-                  <bal-list-item-content>
-                    <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>
-                  </bal-list-item-content>
-                </bal-list-item-accordion-head>
-                <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
-                  <div>
-                    {meta.link && (
-                      <div class="bal-nav__main-mobile__link">
-                        <a href={meta.link}>{meta.linkLabel}</a>
-                      </div>
-                    )}
-                    <bal-list border in-main-nav={true} class="pt-4" size="small">
-                      {meta.subLevels?.map(main => {
-                        return main.isTabLink ? (
-                          <bal-list-item sub-accordion-item href={main.link} target={main.target}>
-                            <bal-list-item-content>
-                              <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
-                            </bal-list-item-content>
-                          </bal-list-item>
-                        ) : (
-                          <bal-list-item accordion sub-accordion-item>
-                            <bal-list-item-accordion-head icon="nav-go-down">
+                </bal-tabs>
+              )}
+            </bal-navigation-meta-start>
+            <bal-navigation-meta-end>{this.levels && <slot name="meta-actions" />}</bal-navigation-meta-end>
+          </bal-navigation-meta>
+        ) : (
+          ''
+        )}
+        {!this.isTouch ? (
+          <bal-navigation-main
+            class={{
+              'is-hidden-touch': true,
+              'container': true,
+              'bal-nav__main--expanded': this.isMainBodyOpen,
+            }}
+            ref={el => {
+              this.mainNavElement = el
+            }}
+            aria-label-main={this.ariaLabelMain}
+          >
+            <bal-navigation-main-head
+              slot="main-head"
+              class={{
+                'is-hidden-mobile': true,
+                'bal-nav__main__head--active': this.isMainBodyOpen,
+              }}
+            >
+              <div>
+                <a href={this.logoPath} class="bal-nav__main-head-logo" tabindex={-1}>
+                  <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
+                </a>
+                <bal-tabs
+                  interface="navigation"
+                  float="right"
+                  fullwidth
+                  spaceless
+                  value={this.selectedMainValue}
+                  onBalChange={this.onMainTabChange}
+                >
+                  {hasLevels &&
+                    this.levels[this.selectedMetaIndex].subLevels?.map((main, index) => {
+                      return main.isTabLink ? (
+                        <bal-tab-item
+                          label={main.label}
+                          value={main.value}
+                          href={main.link}
+                          target={main.target}
+                          onBalNavigate={ev => {
+                            main.onClick(ev.detail)
+                            this.selectedMainIndex = index
+                            this.isMainBodyOpen = false
+                            this.selectedMainValue = main.value
+                          }}
+                        />
+                      ) : (
+                        <bal-tab-item
+                          label={main.label}
+                          value={main.value}
+                          icon="nav-go-down"
+                          onBalNavigate={ev => {
+                            main.onClick(ev.detail)
+                            this.selectedMainIndex = index
+                            this.isMainBodyOpen = !(ev.target.value === this.selectedMainValue)
+                            this.selectedMainValue = ev.target.value === this.selectedMainValue ? '' : main.value
+                          }}
+                        />
+                      )
+                    })}
+                </bal-tabs>
+              </div>
+            </bal-navigation-main-head>
+            {this.isMainBodyOpen && (
+              <bal-navigation-main-body slot="main-body">
+                {this.levels
+                  .filter((_, index) => index === this.selectedMetaIndex)
+                  .map(meta =>
+                    meta.subLevels
+                      ?.filter((_, mainIndex) => this.selectedMainIndex === mainIndex)
+                      .map(main => (
+                        <bal-navigation-menu
+                          link-href={main.link}
+                          link-name={main.linkLabel}
+                          target={main.target}
+                          elements={main.subLevels}
+                        />
+                      )),
+                  )}
+              </bal-navigation-main-body>
+            )}
+          </bal-navigation-main>
+        ) : (
+          ''
+        )}
+        {this.isTouch ? (
+          <div class="bal-nav__metamobile container">
+            <nav role="navigation" aria-label={this.ariaLabelMeta}>
+              <a href={this.logoPath} class="bal-nav__main-mobile__logo" tabindex={-1}>
+                <bal-logo color="blue" animated={this.logoAnimated}></bal-logo>
+              </a>
+              <div class="bal-nav__metamobile__actions">
+                <slot name="meta-actions-mobile" />
+              </div>
+              <bal-button
+                slot="burger"
+                data-testid="navigation-burger"
+                color={this.isMainBodyOpen ? 'primary' : 'light'}
+                square={true}
+                icon={this.isMainBodyOpen ? 'close' : 'menu-bars'}
+                onClick={() => this.onBurgerButtonClick()}
+              />
+            </nav>
+          </div>
+        ) : (
+          ''
+        )}
+        {this.isTouch ? (
+          <div
+            class="bal-nav__main-mobile container"
+            style={{
+              '--bal-nav-main-mobile-height': this.mainMobileHeight,
+              'display': this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
+            }}
+          >
+            <bal-list border in-main-nav={true} size="small">
+              {this.levels.map(meta => (
+                <bal-list-item
+                  accordion
+                  onBalNavigate={this.onAccordionClick}
+                  class="bal-nav__main-mobile__main-accordion"
+                >
+                  <bal-list-item-accordion-head icon="nav-go-down">
+                    <bal-list-item-content>
+                      <bal-list-item-title level="h4">{meta.label}</bal-list-item-title>
+                    </bal-list-item-content>
+                  </bal-list-item-accordion-head>
+                  <bal-list-item-accordion-body class="bal-list__item__accordion-body__parent">
+                    <div>
+                      {meta.link && (
+                        <div class="bal-nav__main-mobile__link">
+                          <a href={meta.link}>{meta.linkLabel}</a>
+                        </div>
+                      )}
+                      <bal-list border in-main-nav={true} class="pt-4" size="small">
+                        {meta.subLevels?.map(main => {
+                          return main.isTabLink ? (
+                            <bal-list-item sub-accordion-item href={main.link} target={main.target}>
                               <bal-list-item-content>
                                 <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
                               </bal-list-item-content>
-                            </bal-list-item-accordion-head>
-                            <bal-list-item-accordion-body>
-                              <bal-navigation-menu
-                                link-href={main.link}
-                                link-name={main.linkLabel}
-                                target={main.target}
-                                elements={main.subLevels}
-                              />
-                            </bal-list-item-accordion-body>
-                          </bal-list-item>
-                        )
-                      })}
-                    </bal-list>
-                  </div>
-                </bal-list-item-accordion-body>
-              </bal-list-item>
-            ))}
-          </bal-list>
-        </div>
-        <div
-          class="bal-nav__foot-mobile"
-          style={{
-            display: this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
-          }}
-        >
-          <slot name="meta-mobile-foot" />
-        </div>
+                            </bal-list-item>
+                          ) : (
+                            <bal-list-item accordion sub-accordion-item>
+                              <bal-list-item-accordion-head icon="nav-go-down">
+                                <bal-list-item-content>
+                                  <bal-list-item-title level="h5">{main.label}</bal-list-item-title>
+                                </bal-list-item-content>
+                              </bal-list-item-accordion-head>
+                              <bal-list-item-accordion-body>
+                                <bal-navigation-menu
+                                  link-href={main.link}
+                                  link-name={main.linkLabel}
+                                  target={main.target}
+                                  elements={main.subLevels}
+                                />
+                              </bal-list-item-accordion-body>
+                            </bal-list-item>
+                          )
+                        })}
+                      </bal-list>
+                    </div>
+                  </bal-list-item-accordion-body>
+                </bal-list-item>
+              ))}
+            </bal-list>
+          </div>
+        ) : (
+          ''
+        )}
+        {this.isTouch ? (
+          <div
+            class="bal-nav__foot-mobile"
+            style={{
+              display: this.isMainBodyOpen && this.isTouch ? 'block' : 'none',
+            }}
+          >
+            <slot name="meta-mobile-foot" />
+          </div>
+        ) : (
+          ''
+        )}
         <slot></slot>
       </Host>
     )
