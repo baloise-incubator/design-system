@@ -36,10 +36,10 @@ Cypress.Commands.add('pageA11y', (url: string) => {
 Cypress.Commands.add('performance', () => {
   cy.lighthouse({
     'pwa': 0,
-    'accessibility': 0,
-    'seo': 0,
-    'performance': 90,
-    'best-practices': 50,
+    'accessibility': 50,
+    'seo': 50,
+    'performance': 60, // mobile performance TODO: icon should not load all icons and each component loads his own stylesheet
+    'best-practices': 90,
   })
 })
 
