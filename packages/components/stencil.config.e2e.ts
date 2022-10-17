@@ -9,7 +9,9 @@ export const config: Config = {
     {
       type: 'www',
       dir: 'www',
+      baseUrl: 'http://localhost:3333/',
       serviceWorker: false,
+      polyfills: false,
       empty: true,
       copy: [
         {
