@@ -1,5 +1,7 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
+import { postcss } from '@stencil/postcss'
+import autoprefixer from 'autoprefixer'
 import fg from 'fast-glob'
 import { resolve } from 'path'
 
@@ -12,15 +14,22 @@ export const StencilBaseConfig: Config = {
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   sourceMap: true,
-  autoprefixCss: true,
+  autoprefixCss: false,
   buildEs5: 'prod',
   extras: {
     dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
     safari10: false,
+    appendChildSlotFix: true,
+    cloneNodeFix: true,
   },
-  plugins: [sass()],
+  plugins: [
+    postcss({
+      plugins: [autoprefixer()],
+    }),
+    sass(),
+  ],
   outputTargets: [
     {
       type: 'dist-custom-elements',
