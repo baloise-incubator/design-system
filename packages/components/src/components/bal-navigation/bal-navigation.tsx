@@ -100,7 +100,8 @@ export class Navigation implements ComponentInterface {
   @Listen('scroll', { target: 'window', passive: false })
   handleScroll(_event: Event) {
     if (isPlatform('desktop') && !this.bodyScrollBlocker.isBlocked()) {
-      const maxScrollHeight = document.body.scrollHeight - document.body.clientHeight
+      const clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+      const maxScrollHeight = document.body.scrollHeight - clientHeight
       const isOnTop = 0 >= window.scrollY
       const isOverViewportTop = 0 > window.scrollY
       const isOverViewportBottom = maxScrollHeight <= window.scrollY
