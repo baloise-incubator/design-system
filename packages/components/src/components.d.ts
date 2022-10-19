@@ -10,6 +10,7 @@ import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1352,9 +1353,9 @@ export namespace Components {
         "href"?: string;
         "interface": Props.BalNavbarInterface;
         /**
-          * Link target
+          * @deprecated Link target
          */
-        "linkTarget": string;
+        "linkTarget": Props.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -1363,6 +1364,10 @@ export namespace Components {
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
     }
     interface BalNavbarMenu {
         "interface": Props.BalNavbarInterface;
@@ -1457,6 +1462,7 @@ export namespace Components {
         "linkHref"?: string;
         "linkName"?: string;
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMenuList {
         /**
@@ -1475,10 +1481,12 @@ export namespace Components {
           * Target of the menu list card headline target as link
          */
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
         "target": Props.BalButtonTarget;
+        "tracking": Attributes;
     }
     interface BalNavigationMeta {
         /**
@@ -4957,9 +4965,9 @@ declare namespace LocalJSX {
         "href"?: string;
         "interface"?: Props.BalNavbarInterface;
         /**
-          * Link target
+          * @deprecated Link target
          */
-        "linkTarget"?: string;
+        "linkTarget"?: Props.BalButtonTarget | '';
         /**
           * Src to display a logo -> replaces the default Baloise Logo
          */
@@ -4972,6 +4980,10 @@ declare namespace LocalJSX {
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
     }
     interface BalNavbarMenu {
         "interface"?: Props.BalNavbarInterface;
@@ -5064,6 +5076,7 @@ declare namespace LocalJSX {
         "linkHref"?: string;
         "linkName"?: string;
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMenuList {
         /**
@@ -5082,10 +5095,12 @@ declare namespace LocalJSX {
           * Target of the menu list card headline target as link
          */
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMenuListItem {
         "href"?: string;
         "target"?: Props.BalButtonTarget;
+        "tracking"?: Attributes;
     }
     interface BalNavigationMeta {
         /**
