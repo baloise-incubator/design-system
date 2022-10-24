@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
+import { BalMode } from "./config";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -56,6 +57,10 @@ export namespace Components {
         "value": boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode": BalMode;
     }
     interface BalBadge {
         /**
@@ -529,6 +534,10 @@ export namespace Components {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode": BalMode;
     }
     interface BalDocBanner {
         "status": string;
@@ -3579,6 +3588,13 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode"?: BalMode;
+        /**
+          * Event fires when the Design System has loaded.
+         */
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
     }
     interface BalBadge {
@@ -4084,6 +4100,13 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+        /**
+          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+         */
+        "mode"?: BalMode;
+        /**
+          * Event fires when the Design System has loaded.
+         */
         "onBalAppLoad"?: (event: BalDocAppCustomEvent<boolean>) => void;
     }
     interface BalDocBanner {

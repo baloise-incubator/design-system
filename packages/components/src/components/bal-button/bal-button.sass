@@ -1,11 +1,12 @@
-bal-button,
+@import '~@baloise/design-system-next-css/scss/baloise-design-system.utilities'
+
 .bal-button
   display: inline-block
   position: static
   &.is-fullwidth
     width: 100%
   &[disabled]
-    bal-icon
+    .bal-icon
       pointer-events: none
 
 +block(button-group)

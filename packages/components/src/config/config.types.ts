@@ -7,6 +7,8 @@ export type BalGermanLanguage = 'de'
 
 export type BalLanguage = BalSwissLanguage | BalLuxembourgLanguage | BalBelgiumLanguage | BalGermanLanguage
 
+export type BalMode = 'css' | 'sass'
+
 export interface BalConfig {
   region?: BalRegion
   language?: BalLanguage
