@@ -85,7 +85,7 @@ export const StencilBaseConfig: Config = {
     },
     { components: ['bal-pagination'] },
     { components: ['bal-popover', 'bal-popover-content'] },
-    // { components: ['bal-product-slider', 'bal-product-slider-item'] },
+    { components: ['bal-product-slider', 'bal-product-slider-item'] },
     { components: ['bal-shape'] },
     // { components: ['bal-slider', 'bal-slider-item'] },
     { components: ['bal-spinner'] },
