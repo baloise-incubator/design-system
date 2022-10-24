@@ -1,5 +1,6 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { addEventListener, removeEventListener } from './helpers'
+import { isDocumentDefined } from '../browser'
+import { addEventListener, removeEventListener } from '../helpers'
 
 type OverlayInterface = any
 
@@ -22,7 +23,7 @@ export interface HTMLBalOverlayElement extends HTMLStencilElement {
 
 export const prepareOverlay = (overlay: OverlayInterface) => {
   /* tslint:disable-next-line */
-  if (typeof document !== 'undefined') {
+  if (isDocumentDefined()) {
     connectListeners(document)
   }
   const overlayIndex = lastId++

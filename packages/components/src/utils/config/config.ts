@@ -1,3 +1,4 @@
+import { isWindowDefined } from '../browser'
 import { BALOISE_SESSION_KEY } from './config.const'
 import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.types'
 import { BalConfigObserver } from './observable/observer'
@@ -9,6 +10,7 @@ export class Config {
     region: 'CH',
     language: 'de',
     allowedLanguages: ['de', 'fr', 'it', 'en'],
+    fallbackLanguage: 'de',
   }
 
   get locale(): string {
@@ -32,7 +34,12 @@ export class Config {
 
   set language(language: BalLanguage) {
     if (language !== this._config.language) {
-      this._config.language = language
+      if (this._config.allowedLanguages.includes(language)) {
+        this._config.language = language
+      } else {
+        this._config.language = this._config.fallbackLanguage
+      }
+
       this._notify()
     }
   }
@@ -109,7 +116,9 @@ export class Config {
       }
     }
 
-    saveConfig(window, this._config)
+    if (isWindowDefined()) {
+      saveConfig(window, this._config)
+    }
   }
 }
 

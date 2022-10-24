@@ -1,3 +1,4 @@
+import { isWindowDefined } from '../browser'
 import { config, configFromSession } from './config'
 import { BalConfig, BalConfigState } from './config.types'
 
@@ -5,12 +6,13 @@ export const defaultConfig: BalConfigState = {
   region: 'CH',
   language: 'de',
   allowedLanguages: ['de', 'fr', 'it', 'en'],
+  fallbackLanguage: 'de',
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
 
 export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
-  if (typeof (window as any) === 'undefined') {
+  if (!isWindowDefined()) {
     return
   }
 
