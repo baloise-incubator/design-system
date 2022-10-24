@@ -1,6 +1,6 @@
 import { Component, Host, h, Event, EventEmitter } from '@stencil/core'
 import globalScript from '../../global'
-// import { isBrowser } from '../../utils/browser'
+import { isBrowser } from '../../utils/browser'
 
 @Component({
   tag: 'bal-app',
@@ -22,8 +22,8 @@ export class App {
         role="application"
         class={{
           'bal-app': true,
-          // 'bal-app--safari': isBrowser('Safari'),
-          // 'bal-app--touch': isBrowser('touch'),
+          'bal-app--safari': isBrowser('Safari'),
+          'bal-app--touch': isBrowser('touch'),
         }}
       >
         <slot></slot>
