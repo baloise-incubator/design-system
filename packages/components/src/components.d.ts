@@ -1998,6 +1998,14 @@ export namespace Components {
          */
         "containerSize": Props.BalSheetContainer;
     }
+    interface BalSlider {
+    }
+    interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label": string;
+    }
     interface BalSnackbar {
         /**
           * Label text for the action button
@@ -3089,6 +3097,18 @@ declare global {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
     };
+    interface HTMLBalSliderElement extends Components.BalSlider, HTMLStencilElement {
+    }
+    var HTMLBalSliderElement: {
+        prototype: HTMLBalSliderElement;
+        new (): HTMLBalSliderElement;
+    };
+    interface HTMLBalSliderItemElement extends Components.BalSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalSliderItemElement: {
+        prototype: HTMLBalSliderItemElement;
+        new (): HTMLBalSliderItemElement;
+    };
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
     }
     var HTMLBalSnackbarElement: {
@@ -3274,6 +3294,8 @@ declare global {
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-shape": HTMLBalShapeElement;
         "bal-sheet": HTMLBalSheetElement;
+        "bal-slider": HTMLBalSliderElement;
+        "bal-slider-item": HTMLBalSliderItemElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stage": HTMLBalStageElement;
@@ -5364,6 +5386,14 @@ declare namespace LocalJSX {
          */
         "containerSize"?: Props.BalSheetContainer;
     }
+    interface BalSlider {
+    }
+    interface BalSliderItem {
+        /**
+          * Label of the slide which will be used for pagination tabs
+         */
+        "label"?: string;
+    }
     interface BalSnackbar {
         /**
           * Label text for the action button
@@ -5889,6 +5919,8 @@ declare namespace LocalJSX {
         "bal-select-option": BalSelectOption;
         "bal-shape": BalShape;
         "bal-sheet": BalSheet;
+        "bal-slider": BalSlider;
+        "bal-slider-item": BalSliderItem;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stage": BalStage;
@@ -5999,6 +6031,8 @@ declare module "@stencil/core" {
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-shape": LocalJSX.BalShape & JSXBase.HTMLAttributes<HTMLBalShapeElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
+            "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
+            "bal-slider-item": LocalJSX.BalSliderItem & JSXBase.HTMLAttributes<HTMLBalSliderItemElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
