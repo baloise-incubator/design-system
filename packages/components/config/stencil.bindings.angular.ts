@@ -53,9 +53,6 @@ export const AngularGenerator = () =>
       'bal-hint': {
         components: ['bal-hint-title', 'bal-hint-text'],
       },
-      'bal-image-slider': {
-        components: ['bal-image-slider-item'],
-      },
       'bal-list': {
         components: [
           'bal-list-item',
@@ -91,12 +88,6 @@ export const AngularGenerator = () =>
       },
       'bal-popover': {
         components: ['bal-popover-content'],
-      },
-      'bal-product-slider': {
-        components: ['bal-product-slider-item'],
-      },
-      'bal-slider': {
-        components: ['bal-slider-item'],
       },
       'bal-stage': {
         components: ['bal-stage-back-link', 'bal-stage-body', 'bal-stage-foot', 'bal-stage-head', 'bal-stage-image'],
