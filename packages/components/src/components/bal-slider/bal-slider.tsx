@@ -1,7 +1,7 @@
 import { Component, h, ComponentInterface, Host, Element, State, Listen } from '@stencil/core'
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
-// import { ResizeHandler } from '../../utils/resize'
+import { ResizeHandler } from '../../utils/resize'
 // import { SwipeHandler } from '../../utils/swipe'
 
 @Component({
@@ -17,13 +17,13 @@ export class Slider implements ComponentInterface {
   @State() slidesLabels: string[] = []
 
   // private swipeHandler = SwipeHandler()
-  // private resizeWidthHandler = ResizeHandler()
+  private resizeWidthHandler = ResizeHandler()
 
   @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    // this.resizeWidthHandler(() => {
-    //   this.setSlide(this.slideIndex)
-    // })
+  async resizeListener() {
+    this.resizeWidthHandler(() => {
+      this.setSlide(this.slideIndex)
+    })
   }
 
   connectedCallback() {
