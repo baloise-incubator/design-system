@@ -839,6 +839,18 @@ export namespace Components {
          */
         "turn": boolean;
     }
+    interface BalImageSlider {
+        /**
+          * value to set the images aspect ratio
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+    }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
+    }
     interface BalInput {
         /**
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -2759,6 +2771,18 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
+    interface HTMLBalImageSliderElement extends Components.BalImageSlider, HTMLStencilElement {
+    }
+    var HTMLBalImageSliderElement: {
+        prototype: HTMLBalImageSliderElement;
+        new (): HTMLBalImageSliderElement;
+    };
+    interface HTMLBalImageSliderItemElement extends Components.BalImageSliderItem, HTMLStencilElement {
+    }
+    var HTMLBalImageSliderItemElement: {
+        prototype: HTMLBalImageSliderItemElement;
+        new (): HTMLBalImageSliderItemElement;
+    };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
     var HTMLBalInputElement: {
@@ -3197,6 +3221,8 @@ declare global {
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-image-slider": HTMLBalImageSliderElement;
+        "bal-image-slider-item": HTMLBalImageSliderItemElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-slider": HTMLBalInputSliderElement;
@@ -4111,6 +4137,18 @@ declare namespace LocalJSX {
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
+    }
+    interface BalImageSlider {
+        /**
+          * value to set the images aspect ratio
+         */
+        "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+    }
+    interface BalImageSliderItem {
+        /**
+          * Src path to the image
+         */
+        "src"?: string;
     }
     interface BalInput {
         /**
@@ -5798,6 +5836,8 @@ declare namespace LocalJSX {
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
+        "bal-image-slider": BalImageSlider;
+        "bal-image-slider-item": BalImageSliderItem;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
         "bal-input-slider": BalInputSlider;
@@ -5906,6 +5946,8 @@ declare module "@stencil/core" {
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-image-slider": LocalJSX.BalImageSlider & JSXBase.HTMLAttributes<HTMLBalImageSliderElement>;
+            "bal-image-slider-item": LocalJSX.BalImageSliderItem & JSXBase.HTMLAttributes<HTMLBalImageSliderItemElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
