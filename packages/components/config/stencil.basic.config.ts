@@ -46,7 +46,7 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-heading', 'bal-text'] },
     { components: ['bal-hint', 'bal-hint-text', 'bal-hint-title'] },
     { components: ['bal-icon'] },
-    // { components: ['bal-image-slider', 'bal-image-slider-item'] },
+    { components: ['bal-image-slider', 'bal-image-slider-item'] },
     {
       components: [
         'bal-list',
