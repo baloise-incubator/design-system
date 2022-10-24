@@ -16,8 +16,8 @@ export class Slider implements ComponentInterface {
   @State() slides!: HTMLBalSliderItemElement[]
   @State() slidesLabels: string[] = []
 
-  swipeHandler = SwipeHandler()
-  resizeWidthHandler = ResizeHandler()
+  private swipeHandler = SwipeHandler()
+  private resizeWidthHandler = ResizeHandler()
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {

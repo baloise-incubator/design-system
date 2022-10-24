@@ -3,7 +3,7 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 @Component({
   tag: 'bal-slider-item',
 })
-export class TabSliderItem implements ComponentInterface {
+export class SliderItem implements ComponentInterface {
   /**
    * Label of the slide which will be used for pagination tabs
    */
