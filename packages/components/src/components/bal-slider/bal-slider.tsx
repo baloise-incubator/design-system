@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Listen } from '
 import { BEM } from '../../utils/bem'
 import { observeItems } from '../../utils/observer'
 import { ResizeHandler } from '../../utils/resize'
-// import { SwipeHandler } from '../../utils/swipe'
+import { SwipeHandler } from '../../utils/swipe'
 
 @Component({
   tag: 'bal-slider',
@@ -16,7 +16,7 @@ export class Slider implements ComponentInterface {
   @State() slides!: HTMLBalSliderItemElement[]
   @State() slidesLabels: string[] = []
 
-  // private swipeHandler = SwipeHandler()
+  private swipeHandler = SwipeHandler()
   private resizeWidthHandler = ResizeHandler()
 
   @Listen('resize', { target: 'window' })
@@ -32,13 +32,13 @@ export class Slider implements ComponentInterface {
   }
 
   componentDidLoad(): void {
-    // this.swipeHandler.connect(this.el)
-    // this.swipeHandler.onSwipeLeft(() => this.nextPage())
-    // this.swipeHandler.onSwipeRight(() => this.previousPage())
+    this.swipeHandler.connect(this.el)
+    this.swipeHandler.onSwipeLeft(() => this.nextPage())
+    this.swipeHandler.onSwipeRight(() => this.previousPage())
   }
 
   disconnectedCallback() {
-    // this.swipeHandler.disconnect()
+    this.swipeHandler.disconnect()
 
     if (this.mutationO) {
       this.mutationO.disconnect()
@@ -46,15 +46,15 @@ export class Slider implements ComponentInterface {
     }
   }
 
-  // private nextPage() {
-  //   this.setSlide(this.slideIndex + 1)
-  // }
+  private nextPage() {
+    this.setSlide(this.slideIndex + 1)
+  }
 
-  // private previousPage() {
-  //   if (this.slideIndex > 0) {
-  //     this.setSlide(this.slideIndex - 1)
-  //   }
-  // }
+  private previousPage() {
+    if (this.slideIndex > 0) {
+      this.setSlide(this.slideIndex - 1)
+    }
+  }
 
   private getChildItems() {
     return Array.from(this.el.querySelectorAll<HTMLBalSliderItemElement>('bal-slider-item'))
