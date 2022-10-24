@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, State, Prop, Listen } 
 import { LevelInfo, observeLevels } from './utils/level.utils'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
-import { hasTouchSupport } from '../../utils/browser'
+// import { hasTouchSupport } from '../../utils/browser'
 import { Events } from '../../types'
 import { BodyScrollBlocker } from '../../utils/toggle-scrolling-body'
 import { stopEventBubbling } from '../../utils/form-input'
@@ -233,18 +233,18 @@ export class Navigation implements ComponentInterface {
     const option = await this.mainNavTabsEl?.getOptionByValue(event.detail)
     const isLink = option?.href !== '' && option?.href !== undefined
 
-    if (hasTouchSupport()) {
-      if (isMainNavOpen) {
-        this.isMetaHidden = false
-        if (!isLink) {
-          this.bodyScrollBlocker.block()
-        } else {
-          this.bodyScrollBlocker.allow()
-        }
+    // if (hasTouchSupport()) {
+    if (isMainNavOpen) {
+      this.isMetaHidden = false
+      if (!isLink) {
+        this.bodyScrollBlocker.block()
       } else {
         this.bodyScrollBlocker.allow()
       }
+    } else {
+      this.bodyScrollBlocker.allow()
     }
+    // }
   }
 
   render() {
