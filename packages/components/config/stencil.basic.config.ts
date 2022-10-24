@@ -12,7 +12,7 @@ export const StencilBaseConfig: Config = {
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   tsconfig: 'tsconfig.json',
-  sourceMap: true,
+  sourceMap: false,
   autoprefixCss: true,
   plugins: [sass()],
   outputTargets: [
