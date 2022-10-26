@@ -24,6 +24,5 @@ describe('bal-spinner', () => {
     // cy.getByTestId('colors-inverted').compareSnapshot('spinner-colors-inverted-mobile', 0.0)
     // cy.getByTestId('deactivated').compareSnapshot('spinner-deactivated-mobile', 0.0)
     // cy.getByTestId('inverted').compareSnapshot('spinner-inverted-mobile', 0.0)
-    // cy.getByTestId('small').compareSnapshot('spinner-small-mobile', 0.0)
   })
 })
