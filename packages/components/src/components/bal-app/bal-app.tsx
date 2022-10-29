@@ -1,5 +1,5 @@
 import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core'
-import { BalMode, initStyleMode } from '../../config'
+import { BalMode, initStyleMode } from '../../utils/config'
 import globalScript from '../../global'
 import { isBrowser } from '../../utils/browser'
 
