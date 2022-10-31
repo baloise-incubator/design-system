@@ -9,6 +9,7 @@ export class ValueAccessor implements ControlValueAccessor {
 
   @HostListener('focusout', ['$event'])
   private onTouched: () => void = () => {
+    console.trace('onTouched called')
     /**/
   }
   protected lastValue: any
