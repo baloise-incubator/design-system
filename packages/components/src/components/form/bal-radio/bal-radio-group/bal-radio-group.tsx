@@ -11,8 +11,8 @@ import {
   Method,
   Listen,
 } from '@stencil/core'
-import { stopEventBubbling } from '../../../../utils/form-input'
-import { findItemLabel, isDescendant } from '../../../../utils/helpers'
+import { inputHandleFocus, stopEventBubbling } from '../../../../utils/form-input'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
@@ -96,6 +96,11 @@ export class RadioGroup implements ComponentInterface {
    */
   @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
 
+  /**
+   * Emitted when the radio-group has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (isDescendant(this.el, ev.target as HTMLElement)) {
@@ -109,6 +114,13 @@ export class RadioGroup implements ComponentInterface {
     if (formElement?.contains(this.el)) {
       this.value = this.initialValue
       this.sync()
+    }
+  }
+
+  @Listen('balFocus', { capture: true, target: 'document' })
+  onInputFocus(ev: FocusEvent) {
+    if (ev.target && hasTagName(ev.target, 'BAL-RADIO') && isDescendant(this.el, ev.target as HTMLElement)) {
+      inputHandleFocus<any>(this, ev)
     }
   }
 

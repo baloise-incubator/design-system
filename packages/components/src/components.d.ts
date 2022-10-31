@@ -5221,6 +5221,10 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
+          * Emitted when the radio-group has focus.
+         */
+        "onBalFocus"?: (event: BalRadioGroupCustomEvent<FocusEvent>) => void;
+        /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;

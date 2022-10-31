@@ -44,6 +44,10 @@ export const isDescendant = (parent: HTMLElement, child: HTMLElement) => {
   return false
 }
 
+export const hasTagName = (element: any, tagName: string): boolean => {
+  return element?.tagName === tagName
+}
+
 export const getAppRoot = (doc: Document) => {
   return doc.querySelector('bal-app') || doc.body
 }
