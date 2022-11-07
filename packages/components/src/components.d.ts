@@ -1378,7 +1378,7 @@ export namespace Components {
         /**
           * Closes the presented modal with the modal controller
          */
-        "dismiss": (data?: any, role?: string) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
