@@ -28,7 +28,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "npm run build:archive && npm run build:copy",
+    "build": "npm run build:bundle && npm run build:archive && npm run build:copy",
+    "build:bundle": "rollup --config rollup.config.js",
     "build:archive": "node ../../.build/archive-favicons.js",
     "build:copy": "copyfiles --flat ./src/favicons.json ./dist && rimraf ./src/favicons.json",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
