@@ -31,7 +31,7 @@ const main = async () => {
 
   archive.pipe(output)
 
-  archive.directory('icons/green', true) // test
+  archive.directory('icons/green', true)
   archive.directory('icons/primary', true)
   archive.directory('icons/purple', true)
   archive.directory('icons/red', true)
