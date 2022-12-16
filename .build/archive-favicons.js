@@ -31,7 +31,13 @@ const main = async () => {
 
   archive.pipe(output)
 
-  archive.glob('*.svg', { cwd: path.join(PACKAGE, 'svg') })
+  archive.directory('icons/green', true)
+  archive.directory('icons/primary', true)
+  archive.directory('icons/purple', true)
+  archive.directory('icons/red', true)
+  archive.directory('icons/tangerine', true)
+  archive.directory('icons/white', true)
+
   archive.finalize()
 }
 
