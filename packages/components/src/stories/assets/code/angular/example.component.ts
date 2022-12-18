@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core'
+/** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */
 
 @Component({
   selector: 'app-example',

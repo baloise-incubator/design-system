@@ -667,6 +667,7 @@ export namespace Components {
     }
     interface BalDocStackblitz {
         "component": string;
+        "modules": string;
         "template": string;
     }
     interface BalDocSupportColor {
@@ -4241,6 +4242,7 @@ declare namespace LocalJSX {
     }
     interface BalDocStackblitz {
         "component": string;
+        "modules": string;
         "template": string;
     }
     interface BalDocSupportColor {

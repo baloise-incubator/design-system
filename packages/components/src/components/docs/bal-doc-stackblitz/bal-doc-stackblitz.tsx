@@ -2,12 +2,10 @@ import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/
 import sdk from '@stackblitz/sdk'
 import { logo } from './angular'
 
-// The default title to use for Stackblitz examples (when not overwritten)
 const DEFAULT_EDITOR_TITLE = 'Baloise Design System Example'
-// The default description to use for Stackblitz examples (when not overwritten)
 const DEFAULT_EDITOR_DESCRIPTION = ''
-// Default package version to use for all @ionic/* packages.
 const DEFAULT_BALOISE_VERSION = '^12.0.0'
+const PLACEHOLDER_IMPORT = '/** PLACEHOLDER FOR DESIGN SYSTEM IMPORTS */'
 
 @Component({
   tag: 'bal-doc-stackblitz',
@@ -16,6 +14,7 @@ const DEFAULT_BALOISE_VERSION = '^12.0.0'
 export class DocStackblitz implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @Prop() modules!: string
   @Prop() template!: string
   @Prop() component!: string
 
@@ -46,7 +45,9 @@ export class DocStackblitz implements ComponentInterface {
       ? this.parseMarkdown(this.template)
       : '<h1 class="title is-size-xxx-large">Hello World</h1>'
 
-    const new_example_component_ts = this.component ? this.parseMarkdown(this.component) : example_component_ts
+    const new_example_component_ts = this.component
+      ? this.parseMarkdown(this.component)
+      : this.updateModules(example_component_ts)
 
     sdk.openProject(
       {
@@ -80,10 +81,26 @@ export class DocStackblitz implements ComponentInterface {
     )
   }
 
+  updateModules = (content: string) => {
+    const toPascalCase = (text: string) => text.replace(/(^\w|-\w)/g, clearAndUpper)
+    const clearAndUpper = (text: string) => text.replace(/-/, '').toUpperCase()
+    const modules = this.modules.split(',').map(m => `Bal${toPascalCase(m.trim())}Module`)
+
+    let newContent = content.replace('imports: [CommonModule],', `imports: [CommonModule, ${modules.join(', ')}],`)
+    newContent = newContent.replace(
+      PLACEHOLDER_IMPORT,
+      `import { ${modules.join(', ')} } from '@baloise/design-system-components-angular'`,
+    )
+    return newContent
+  }
+
   parseMarkdown = (content: string) => {
-    const lines = content.split('\n')
-    lines.splice(0, 1)
-    return lines.join('\n').replace('```', '')
+    if (content.startsWith('```')) {
+      const lines = content.split('\n')
+      lines.splice(0, 1)
+      return lines.join('\n').replace('```', '')
+    }
+    return content
   }
 
   loadSourceFiles = async (files: string[]) => {
