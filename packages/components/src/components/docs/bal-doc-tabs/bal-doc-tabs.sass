@@ -1,4 +1,4 @@
-@import 'node_modules/@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
 
 .bal-doc-tabs
   display: block
@@ -30,6 +30,18 @@
     color: $text-light !important
     font-size: 1.2rem !important
     font-family: $family-primary !important
+    &.is-active
+      &:after
+        content: ''
+        height: 2px
+        background: $blue
+        width: 100%
+        border-radius: 2px
+        left: 0
+        right: 0
+        position: absolute
+        bottom: -2px
+
     &:hover
       color: $blue !important
       &.is-active

@@ -625,6 +625,7 @@ export namespace Components {
         "logRender": boolean;
     }
     interface BalDocBanner {
+        "color": string;
         "subtitle": string;
     }
     interface BalDocColor {
@@ -663,6 +664,10 @@ export namespace Components {
     }
     interface BalDocShades {
         "color": string;
+    }
+    interface BalDocStackblitz {
+        "component": string;
+        "template": string;
     }
     interface BalDocSupportColor {
         "color": string;
@@ -2857,6 +2862,12 @@ declare global {
         prototype: HTMLBalDocShadesElement;
         new (): HTMLBalDocShadesElement;
     };
+    interface HTMLBalDocStackblitzElement extends Components.BalDocStackblitz, HTMLStencilElement {
+    }
+    var HTMLBalDocStackblitzElement: {
+        prototype: HTMLBalDocStackblitzElement;
+        new (): HTMLBalDocStackblitzElement;
+    };
     interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
     }
     var HTMLBalDocSupportColorElement: {
@@ -3448,6 +3459,7 @@ declare global {
         "bal-doc-link-list": HTMLBalDocLinkListElement;
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
@@ -4187,6 +4199,7 @@ declare namespace LocalJSX {
         "logRender"?: boolean;
     }
     interface BalDocBanner {
+        "color"?: string;
         "subtitle"?: string;
     }
     interface BalDocColor {
@@ -4225,6 +4238,10 @@ declare namespace LocalJSX {
     }
     interface BalDocShades {
         "color"?: string;
+    }
+    interface BalDocStackblitz {
+        "component": string;
+        "template": string;
     }
     interface BalDocSupportColor {
         "color"?: string;
@@ -6198,6 +6215,7 @@ declare namespace LocalJSX {
         "bal-doc-link-list": BalDocLinkList;
         "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-shades": BalDocShades;
+        "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tabs": BalDocTabs;
         "bal-doc-tokens-border": BalDocTokensBorder;
@@ -6329,6 +6347,7 @@ declare module "@stencil/core" {
             "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;

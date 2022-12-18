@@ -11,6 +11,7 @@ export const config: Config = {
       type: 'www',
       dir: 'public',
       copy: [
+        { src: 'stories/assets/code', dest: 'assets/code', warn: true },
         { src: 'stories/assets/css', dest: 'assets/css', warn: true },
         { src: 'stories/assets/images', dest: 'assets/images', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },

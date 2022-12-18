@@ -3,11 +3,13 @@
   "language": "en",
   "ignorePaths": [
     "node_modules/**",
-    "contributors.md"
+    "contributors.md",
+    "example_component_html.md"
   ],
   "words": [
     "adipiscing",
     "adipisicing",
+    "stackblitz",
     "aliqua",
     "amet",
     "asterix",

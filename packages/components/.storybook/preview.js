@@ -1,4 +1,5 @@
 import { app } from '@storybook/vue3'
+import { withTableOfContents } from 'storybook-docs-toc';
 
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 
@@ -10,6 +11,7 @@ export const decorators = [
 ]
 
 export const parameters = {
+  ...withTableOfContents(),
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
   viewport: {

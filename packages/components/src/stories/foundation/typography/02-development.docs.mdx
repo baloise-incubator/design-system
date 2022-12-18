@@ -1,7 +1,7 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Canvas, Story } from '@storybook/addon-docs'
 
 <Meta
-  title="Foundation/Typography/Development"
+  title="Foundation/Typography/Code"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,21 +9,35 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-<bal-doc-banner subtitle="Foundation/Typography">Development</bal-doc-banner>
+<bal-doc-banner subtitle="Foundation/Typography" color="purple">Code</bal-doc-banner>
 
-<bal-doc-tabs>
-  <a href="#headings">Headings</a>
-  <a href="#texts">Texts</a>
-  <a href="#installation">Installation</a>
-</bal-doc-tabs>
+<bal-doc-lead>Typography can be used either with basic CSS classes from the CSS-Framework or directly with our web components.</bal-doc-lead>
 
-<bal-doc-lead>Lead</bal-doc-lead>
+## Heading & Display
 
-## Headings
+The classes `title` and `subtitle` defines the font weight. `is-size-xxx-large` defines the font-size.
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
 
-## Texts
+Go to the [Heading Component Documentation](?path=/docs/components-heading--basic) to find more details.
 
-## Installation
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--heading-and-display" />
+</Canvas>
+
+<span id="story--foundation-typography-code--text" style={{ opacity: 0 }}></span>
+
+## Text
+
+The classes `is-size-xxx` defines the font-size.
+For more size have a look a the [Font Sizes Tokens](?path=/docs/foundation-design-tokens--page#font-sizes).
+
+Go to the [Text Component Documentation](?path=/docs/components-text--basic) to find more details.
+
+<Canvas withSource="open">
+  <Story id="foundation-typography-code--text" />
+</Canvas>
+
+## Font Installation
 
 Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). With the font files also css and sass files are delivered.
 
@@ -97,3 +111,5 @@ Import the css directly into your main TypeScript or JavaScript file.
 ```typescript
 import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
 ```
+
+<bal-doc-github link="/stories/foundation/typography/02-development.docs.mdx"></bal-doc-github>
