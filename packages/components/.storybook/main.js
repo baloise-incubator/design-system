@@ -17,5 +17,6 @@ module.exports = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/font.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />`,
+    <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/table-of-content.css" />`,
 }

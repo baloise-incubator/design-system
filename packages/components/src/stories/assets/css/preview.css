@@ -72,6 +72,11 @@ h4.sbdocs.sbdocs-h4 {
   line-height: 1.5rem;
 }
 
+h5.sbdocs.sbdocs-h5 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 p.sbdocs-p {
   font-family: 'BaloiseCreateText';
   font-size: 1rem;
@@ -86,77 +91,6 @@ a.sbdocs-a {
   text-underline-offset: 4px;
   text-decoration-thickness: 2px;
   color: #000d6e;
-}
-
-.sbdocs.sbdocs-toc {
-  --toc-color: #000d6e;
-  --toc-background: #ffffff;
-  --toc-indicator-color: #e8e8e8;
-  --toc-indicator-color--active: #000d6e;
-}
-
-.sbdocs.sbdocs-top {
-  --toc-button-color: #000d6e;
-  --toc-button-color--hover: #0014aa;
-  --toc-button-color--active: #000739;
-  --toc-button-background: #ffffff;
-  --toc-button-background--hover: #e5f1fe;
-  --toc-button-background--active: #e5f1fe;
-}
-
-nav.sbdocs-toc {
-  padding: 0 1rem 1rem 1rem;
-  width: 320px;
-  top: 4rem;
-  left: calc(992px + 48px + 48px);
-  left: 1120px;
-  background: transparent !important;
-}
-
-button.sbdocs-top {
-  border: 2px solid #000d6e;
-  border-radius: 4px;
-  min-height: 48px;
-  bottom: 4rem;
-  /* left: calc(992px + 48px + 48px); */
-  left: calc(1120px + 1rem);
-}
-
-button.sbdocs-top span {
-  font-family: 'BaloiseCreateHeadline';
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-button.sbdocs-top:hover {
-  border-color: #0014aa;
-}
-
-button.sbdocs-top:active {
-  border-color: #000739;
-}
-
-.sbdocs-toc__header {
-  font-family: 'BaloiseCreateHeadline';
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 2rem;
-  color: #000d6e;
-}
-
-.toc-link {
-  font-family: 'BaloiseCreateText';
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #000d6e;
-}
-
-.toc-list-item:before {
-  border-radius: 4px;
-}
-
-.sbdocs-a.button {
-  text-decoration: none;
 }
 
 .features {
@@ -215,4 +149,19 @@ a.feature h2 img {
     flex-basis: 20% !important;
     max-width: 20% !important;
   }
+}
+
+code.sbdocs-code {
+  background: #f5f6ff !important;
+  border-color: #cccfe2 !important;
+  color: #000d6e !important;
+}
+
+table.sbdocs-table thead tr th,
+table.sbdocs-table tbody tr td {
+  color: #000d6e;
+}
+
+.sbdocs-a.button {
+  text-decoration: none;
 }

@@ -1,5 +1,5 @@
 import { app } from '@storybook/vue3'
-import { withTableOfContents } from 'storybook-docs-toc';
+import { withTableOfContents } from 'hirsch-storybook-docs-toc';
 
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 

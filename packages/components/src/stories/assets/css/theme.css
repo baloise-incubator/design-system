@@ -133,7 +133,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .sbdocs.sbdocs-h5,
 .sbdocs.sbdocs-h6 {
   font-family: BaloiseCreateHeadline, Arial, sans-serif;
-  color: #000d6e;
+  color: #000d6e !important;
   font-weight: 700;
 }
 
@@ -161,8 +161,8 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 
 .sbdocs.sbdocs-h5,
 .sbdocs.sbdocs-h5 > a.sbdocs.sbdocs-a {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 16px !important;
+  line-height: 24px !important;
 }
 
 .sbdocs-a:not(.button) {
