@@ -7,7 +7,8 @@
   max-width: 992px;
 }
 
-.sbdocs-content > h1.sbdocs-h1 {
+.sbdocs-content > h1.sbdocs-h1,
+.sbdocs-content > div > div > h1.sbdocs-h1 {
   margin-top: 4rem;
 }
 
@@ -27,52 +28,67 @@ h5.sbdocs {
 }
 
 h1.sbdocs.sbdocs-h1 {
-  font-size: 1.75rem;
-  line-height: 2rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-top: 3rem;
 }
 
 @media screen and (min-width: 769px) {
   h1.sbdocs.sbdocs-h1 {
-    font-size: 2.5rem;
-    line-height: 3rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-top: 4rem;
   }
 }
 
 h2.sbdocs.sbdocs-h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 2rem;
+  margin-top: 4rem;
 }
 
 @media screen and (min-width: 769px) {
   h2.sbdocs.sbdocs-h2 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-top: 6rem;
   }
 }
 
 h3.sbdocs.sbdocs-h3 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   line-height: 2rem;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 769px) {
   h3.sbdocs.sbdocs-h3 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-top: 4rem;
   }
 }
 
 h4.sbdocs.sbdocs-h4 {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 769px) {
+  h4.sbdocs.sbdocs-h4 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+h5.sbdocs.sbdocs-h5 {
   font-size: 1.125rem;
   line-height: 2rem;
 }
 
-h4.sbdocs.sbdocs-h4 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-h5.sbdocs.sbdocs-h5 {
+h6.sbdocs.sbdocs-h6 {
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -81,6 +97,11 @@ p.sbdocs-p {
   font-family: 'BaloiseCreateText';
   font-size: 1rem;
   color: #000d6e;
+}
+
+p.sbdocs-p.is-size-small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 a.sbdocs-a {
@@ -164,4 +185,15 @@ table.sbdocs-table tbody tr td {
 
 .sbdocs-a.button {
   text-decoration: none;
+}
+
+.welcome-stage {
+  margin-left: -64px;
+  margin-right: -64px;
+}
+
+.welcome-stage-body {
+  padding-top: 64px !important;
+  padding-left: 16px;
+  padding-right: 16px;
 }

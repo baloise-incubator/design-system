@@ -10,10 +10,29 @@ export const decorators = [
   }),
 ]
 
+export const globalTypes = {
+  framework: {
+    name: 'Framework',
+    description: 'Integration technology',
+    defaultValue: 'angular',
+    toolbar: {
+      icon: 'location',
+      dynamicTitle: true,
+      items: [
+        { value: 'angular', title: 'Angular' },
+        { value: 'html', title: 'HTML & JS' },
+        { value: 'react', title: 'React' },
+        { value: 'vue', title: 'Vue' },
+      ],
+    },
+  },
+};
+
 export const parameters = {
   ...withTableOfContents(),
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
+  viewMode: 'docs',
   viewport: {
     viewports: {
       'small': {

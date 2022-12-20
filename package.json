@@ -104,6 +104,7 @@
     "@storybook/addon-docs": "~6.5.13",
     "@storybook/addon-essentials": "~6.5.13",
     "@storybook/addon-links": "~6.5.13",
+    "@storybook/addon-toolbars": "^6.5.14",
     "@storybook/addons": "~6.5.13",
     "@storybook/theming": "~6.5.13",
     "@storybook/vue3": "~6.5.13",
