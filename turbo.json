@@ -7,13 +7,14 @@
         "dist/**",
         ".tmp/**",
         "**/generated/**",
-        "**/assets/data/**",
         "**/components/**/readme.md",
         "css/baloise-design-system.css",
         "css/design-system-table.css",
         "loader/**",
-        "public/**",
-        "wwww/**"
+        "wwww/**",
+        "**/assets/data/**",
+        "**/assets/download/**",
+        "**/assets/fonts/**"
       ]
     },
     "registry": {

@@ -1,31 +1,3 @@
-import { Config } from '@stencil/core'
+import { createStencilConfig } from './config/stencil.config'
 
-import { StencilBaseConfig } from './config/stencil.basic.config'
-
-export const config: Config = {
-  ...StencilBaseConfig,
-  tsconfig: 'tsconfig.docs.json',
-  outputTargets: [
-    ...(StencilBaseConfig.outputTargets as any),
-    {
-      type: 'www',
-      dir: 'www',
-      serviceWorker: false,
-      empty: true,
-      copy: [
-        {
-          src: '**/*.html',
-        },
-        {
-          src: 'components.d.ts',
-        },
-        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
-        { src: 'stories/assets/images', dest: 'assets/images', warn: true },
-      ],
-    },
-  ],
-  testing: {
-    rootDir: 'src',
-    modulePathIgnorePatterns: ['cypress'],
-  },
-}
+export const config = createStencilConfig('WWW')

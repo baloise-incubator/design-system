@@ -22,8 +22,8 @@ packages/components/www/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
-packages/components/src/stories/assets/components.json
-packages/components/src/stories/assets/components.d.ts
+packages/components/public/stories/assets/components.json
+packages/components/public/stories/assets/components.d.ts
 packages/components/src/stories/utils
 
 packages/components-table/css

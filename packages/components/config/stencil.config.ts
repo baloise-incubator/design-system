@@ -2,20 +2,32 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
 import { resolve } from 'path'
+import { CustomDocumentationGenerator } from './output-target-docs'
+import { AngularGenerator } from './stencil.bindings.angular'
+import { ReactGenerator } from './stencil.bindings.react'
 import { VueGenerator } from './stencil.bindings.vue'
 
-export const StencilBaseConfig: Config = {
+export const createStencilConfig = (mode: 'BUILD' | 'WWW' | 'DOCS'): Config => ({
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
   sourceMap: false,
-  globalStyle: 'src/styles/global.sass',
-  globalScript: 'src/global.ts',
-  watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
-  enableCache: true,
-  tsconfig: 'tsconfig.json',
-  hashedFileNameLength: 10,
-  invisiblePrehydration: true,
   autoprefixCss: true,
+  invisiblePrehydration: true,
+  enableCache: mode !== 'BUILD',
+  tsconfig: mode === 'BUILD' ? 'tsconfig.json' : 'tsconfig.docs.json',
+  globalScript: 'src/global.ts',
+  globalStyle: 'src/styles/global.sass',
+  watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
+  buildEs5: mode === 'BUILD',
+  extras:
+    mode === 'BUILD'
+      ? {
+          initializeNextTick: true,
+          scriptDataOpts: true,
+          appendChildSlotFix: true,
+          cloneNodeFix: true,
+        }
+      : {},
   plugins: [
     sass({
       outputStyle: 'compressed',
@@ -24,14 +36,42 @@ export const StencilBaseConfig: Config = {
   ],
   outputTargets: [
     {
-      type: 'dist-custom-elements',
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     {
-      type: 'docs-json',
-      file: './src/stories/assets/data/components.json',
+      type: 'dist-custom-elements',
     },
+    mode === 'BUILD'
+      ? {
+          type: 'docs-json',
+          file: './public/assets/data/components.json',
+        }
+      : undefined,
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
-  ],
+    mode === 'BUILD' ? VueGenerator() : undefined,
+    mode === 'BUILD' ? AngularGenerator() : undefined,
+    mode === 'BUILD' ? ReactGenerator() : undefined,
+    mode === 'BUILD' ? CustomDocumentationGenerator : undefined,
+    mode !== 'DOCS'
+      ? {
+          type: 'www',
+          dir: 'www',
+          serviceWorker: false,
+          empty: true,
+          copy: [
+            {
+              src: '**/*.html',
+            },
+            {
+              src: 'components.d.ts',
+            },
+            { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+            { src: '../public/assets/images', dest: 'assets/images', warn: true },
+          ],
+        }
+      : undefined,
+  ].filter(o => o),
   bundles: [
     { components: ['bal-accordion'] },
     { components: ['bal-app'] },
@@ -149,4 +189,4 @@ export const StencilBaseConfig: Config = {
     rootDir: 'src',
     modulePathIgnorePatterns: ['cypress'],
   },
-}
+})

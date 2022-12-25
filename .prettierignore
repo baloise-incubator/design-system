@@ -4,7 +4,6 @@ dist/
 dist-transpiled/
 temp/
 generated/
-public/
 storybook/
 storybook-static/
 
@@ -19,8 +18,8 @@ packages/components/www/
 packages/components/.storybook/vue/generated/
 packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
-packages/components/src/stories/assets/components.json
-packages/components/src/stories/assets/components.d.ts
+packages/components/public/stories/assets/components.json
+packages/components/public/stories/assets/components.d.ts
 
 packages/components-table/css
 packages/components-vue/src/proxies
@@ -36,6 +35,6 @@ packages/components-angular/src/directives/proxies.module.ts
 packages/components/src/utils/constants/icons.constant.ts
 packages/css/css
 packages/components-vue/src/proxies.ts
-packages/components/src/stories/assets/data
+packages/components/public/stories/assets/data
 packages/icons/src/index.ts
 packages/tokens/.tmp
