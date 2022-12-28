@@ -20,6 +20,10 @@ packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
 packages/components/public/stories/assets/components.json
 packages/components/public/stories/assets/components.d.ts
+packages/components/coverage
+
+packages/components/public/assets/css/design-system-table.css
+packages/components/public/assets/data
 
 packages/components-table/css
 packages/components-vue/src/proxies

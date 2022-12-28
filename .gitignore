@@ -104,6 +104,7 @@ packages/components/lib/
 packages/components/www/
 packages/components/.storybook/vue/
 packages/components/src/components/**/readme.md
+packages/components/coverage
 
 packages/components/public/assets/css/design-system-table.css
 packages/components/public/assets/data

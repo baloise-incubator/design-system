@@ -25,6 +25,7 @@ packages/components/src/components/**/readme.md
 packages/components/public/stories/assets/components.json
 packages/components/public/stories/assets/components.d.ts
 packages/components/src/stories/utils
+packages/components/coverage
 
 packages/components-table/css
 packages/components-vue/src/proxies
