@@ -40,6 +40,7 @@ describe('bal-navigation', () => {
       it('open menu', () => {
         cy.scrollTo('top')
         cy.contains('Versichern').click()
+        cy.wait(100)
         cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
       // TODO: Check why this fails
