@@ -13,7 +13,6 @@ export const StencilBaseConfig: Config = {
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   enableCache: true,
   tsconfig: 'tsconfig.json',
-  hashedFileNameLength: 10,
   invisiblePrehydration: true,
   autoprefixCss: true,
   plugins: [
@@ -28,7 +27,7 @@ export const StencilBaseConfig: Config = {
     },
     {
       type: 'docs-json',
-      file: './src/stories/assets/data/components.json',
+      file: './public/assets/data/components.json',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],

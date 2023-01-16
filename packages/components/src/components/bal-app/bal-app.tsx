@@ -1,6 +1,6 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Method } from '@stencil/core'
 import { isBrowser } from '../../utils/browser'
-import { BalMode, initStyleMode } from '../../utils/config'
+import { BalMode, initStyleMode, updateBalAnimated } from '../../utils/config'
 import { rIC } from '../../utils/helpers'
 import { Loggable, Logger, LogInstance } from '../../utils/log'
 
@@ -23,6 +23,16 @@ export class App implements Loggable {
   @Prop({ reflect: true }) mode: BalMode = 'css'
 
   /**
+   * Disables all animation inside the bal-app. Can be used for simplify e2e testing.
+   */
+  @Prop({ reflect: true }) animated = true
+
+  /**
+   * @internal Is `true` when DS components are ready to be shown.
+   */
+  @Prop({ reflect: true }) ready = true
+
+  /**
    * @internal
    * Tells if the components are ready
    */
@@ -30,10 +40,12 @@ export class App implements Loggable {
 
   connectedCallback() {
     initStyleMode(this.mode)
+    updateBalAnimated(this.animated)
   }
 
   componentDidLoad() {
     this.balAppLoad.emit(true)
+    this.ready = true
     rIC(async () => {
       import('../../utils/focus-visible').then(module => (this.focusVisible = module.startFocusVisible()))
     })

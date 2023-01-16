@@ -6,11 +6,15 @@ import {
   BalButton,
   BalModalBody,
   BalButtonGroup,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
 } from '../../../../../.storybook/vue/generated/components'
 import docs from './bal-modal.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Notice/Modal',
+  title: 'Components/Overlay/Modal',
   component: BalModal,
   subcomponents: { BalModalHeader, BalModalBody },
   docs,
@@ -59,7 +63,15 @@ Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
 export const WithInput = args => ({
-  components: { ...component.components, BalButton, BalButtonGroup },
+  components: {
+    ...component.components,
+    BalButton,
+    BalButtonGroup,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => {
     const modal = ref()
 

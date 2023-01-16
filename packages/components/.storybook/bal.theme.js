@@ -1,5 +1,5 @@
 import { create, themes } from '@storybook/theming'
-import Logo from '../src/stories/assets/images/storybook.svg'
+import Logo from '../public/assets/images/storybook.svg'
 
 export default create({
   ...themes.light,
@@ -14,7 +14,7 @@ export default create({
   colorPrimary: "#000d6e",
   colorSecondary: "#d9304c",
 
-  appBg: '#ffffff',
+  appBg: '#fafafa',
   appContentBg: '#ffffff',
   appBorderColor: "#e8e8e8",
   appBorderRadius: 12,

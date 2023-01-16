@@ -2,17 +2,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 import selectOption from '../bal-select-option/readme.md'
 
-<bal-doc-banner id="story--components-form-select--basic" status="rebranded,sass">Select</bal-doc-banner>
-
-<bal-doc-tabs>
-  <a href="#story--components-form-select--basic">Overview</a>
-  <a href="#examples">Examples</a>
-  <a href="#component-api">API</a>
-  {/* <a href="#usage">Usage</a> */}
-  <a href="#integration">Integration</a>
-  <a href="#tutorials-and-templates">Tutorials and Templates</a>
-  <a href="#testing">Testing</a>
-</bal-doc-tabs>
+<bal-doc-banner id="story--components-form-select--basic" >Select</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Select</b> allows the user to choose one or multiple option from a list.
@@ -22,11 +12,15 @@ import selectOption from '../bal-select-option/readme.md'
   <Story id="components-form-select--basic" />
 </Canvas>
 
+import exampleHtml from './usage/angular/example_component_html.md'
+import exampleTs from './usage/angular/example_component_ts.md'
+
 <bal-doc-app>
   <bal-button-group class="mb-large" position="center">
     <a class="button is-primary" href="?path=/story/components-form-select--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz template={exampleHtml} component={exampleTs}></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
@@ -50,6 +44,14 @@ Combine the component with the `bal-field` components to add a label, validation
   <Story id="components-form-select--typeahead" />
 </Canvas>
 
+<span id="story--components-form-select--typeahead-remote" style={{ opacity: 0 }}></span>
+
+### Typeahead Remote
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-form-select--typeahead-remote" />
+</Canvas>
+
 <span id="story--components-form-select--multi-select" style={{ opacity: 0 }}></span>
 
 ### Multi-Select
@@ -69,20 +71,9 @@ Combine the component with the `bal-field` components to add a label, validation
 
 This documentation explains how to implement and use Baloise Design System components across different technologies.
 
-<bal-doc-link-list>
-  <a href="?path=/docs/development-getting-started-html5-overview--page">
-    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-vue-overview--page">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-angular-overview--page">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-react-overview--page">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
 
 ## Tutorials and Templates
 
