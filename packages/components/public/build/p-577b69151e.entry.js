@@ -1,0 +1,1 @@
+import{r as l,h as s,H as a,g as e}from"./p-a880f6ce.js";const r=class{constructor(s){l(this,s)}render(){return s(a,null,s("bal-doc-app",null,s("p",{class:"is-lead has-text-blue my-x-large"},s("slot",null))))}get el(){return e(this)}};export{r as bal_doc_lead}

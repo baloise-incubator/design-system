@@ -1,0 +1,1 @@
+var n=function(n){return null==n};export{n as l}

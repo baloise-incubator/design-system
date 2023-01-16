@@ -1,0 +1,1 @@
+const e=e=>({class:($=!0)=>({[e]:$}),element:$(e),modifier:l(e)}),$=$=>l=>e(`${$}__${l}`),l=$=>l=>e(`${$}--${l}`),o={block:$=>e(`bal-${$}`)};export{o as B}

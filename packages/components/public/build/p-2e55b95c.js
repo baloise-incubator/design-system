@@ -1,0 +1,1 @@
+const a=()=>"undefined"!=typeof window,n=()=>"undefined"!=typeof navigator,o=()=>"undefined"!=typeof document,i=/^((?!chrome|android).)*safari/i.test(a()&&n()&&null!==(t=navigator.userAgent)&&void 0!==t?t:""),d=()=>!(!a()||!n()||!("ontouchstart"in window)&&!navigator.msMaxTouchPoints),e=a=>"Safari"===a&&i;var t;export{o as a,e as b,d as h,a as i}

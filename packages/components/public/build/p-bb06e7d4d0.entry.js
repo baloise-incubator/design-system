@@ -1,0 +1,1 @@
+import{r as s,h as t,H as r}from"./p-a880f6ce.js";const a=class{constructor(t){s(this,t),this.src="",this.text=""}render(){return t(r,{class:"bal-app"},t("p",{style:{textAlign:"center"}},t("img",{src:this.src,alt:this.text})))}};export{a as bal_doc_image}

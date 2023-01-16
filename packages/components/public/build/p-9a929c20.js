@@ -1,0 +1,1 @@
+const t=["data-tracking-style","data-tracking-topic","data-tracking-context","data-tracking-id"],a=(t,a=[])=>{const n={};return a.forEach((a=>{t.hasAttribute(a)&&(null!==t.getAttribute(a)&&(n[a]=t.getAttribute(a)),t.removeAttribute(a))})),n},n=(n,r)=>{let c=t;return r&&r.length>0&&(c=c.filter((t=>!r.includes(t)))),a(n,c)};export{n as a,a as i}

@@ -1,0 +1,1 @@
+import{r as s,h as t,H as a}from"./p-a880f6ce.js";const o=class{constructor(t){s(this,t),this.interface="toast"}render(){return t(a,{class:{"bal-app":!0,"bal-notices":!0,[`has-${this.interface}`]:!0}},t("slot",null))}};export{o as bal_notices}
