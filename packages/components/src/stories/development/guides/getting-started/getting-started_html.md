@@ -35,10 +35,7 @@ Add the `bal-app` to your root element. Within this component we are able to use
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baloise Design System</title>
-    <link
-      rel="stylesheet"
-      href="node_modules/@baloise/design-system-css/css/baloise-design-system.css"
-    />
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-css/css/baloise-design-system.css" />
 
     <script
       type="module"
@@ -88,10 +85,7 @@ An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
 Add the following 4 references to your `<head></head>`
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-css/css/baloise-design-system.css" />
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
