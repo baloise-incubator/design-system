@@ -18,24 +18,24 @@ Replace the import of the `global` SASS file with the CSS-Package.
 **After**
 
 ```scss
-@import "@baloise/design-system-css/css/baloise-design-system";
+@import "@baloise/design-system-css/sass/baloise-design-system";
 ```
 
 To be more flexible the new CSS exports can be used directly like that:
 
 ```scss
 // Resets CSS for all browser
-@import "./normalize";
-@import "./structure";
+@import "@baloise/design-system-css/css/normalize";
+@import "@baloise/design-system-css/css/structure";
 
 // Custom font faces
-@import "./font";
+@import "@baloise/design-system-css/sass/font";
 
 // Core CSS, always required
-@import "./core";
+@import "@baloise/design-system-css/css/core";
 
 // Deprecated styles will be removed with the next breaking version (optional)
-@import "./legacy";
+@import "@baloise/design-system-css/sass/legacy";
 
 // CSS utilities classes (optional)
 @import "@baloise/design-system-css/css/border";

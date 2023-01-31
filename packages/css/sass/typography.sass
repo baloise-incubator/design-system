@@ -1,7 +1,7 @@
-@import '../mixins/_all'
+@import '../src/mixins/_all'
 
-@import '../generated/color.text.helpers'
-@import '../generated/typography.helpers'
+@import '../src/generated/color.text.helpers'
+@import '../src/generated/typography.helpers'
 
 .has-no-wrap
   white-space: nowrap !important
@@ -56,3 +56,14 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 .has-text-shadow,
 .has-button-shadow
   text-shadow: var(--bal-text-shadow-normal) !important
+
+span.is-small,
+p.is-small,
+a.is-small
+  font-size: var(--bal-size-small)
+  line-height: var(--bal-line-height-small)
+
+span.is-bold,
+p.is-bold,
+a.is-bold
+  font-weight: var(--bal-weight-bold)

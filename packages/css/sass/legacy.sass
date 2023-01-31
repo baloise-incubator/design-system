@@ -1,8 +1,8 @@
 @import '@baloise/design-system-tokens/dist/tokens.sass'
 @import '@baloise/design-system-tokens/dist/tokens.legacy.sass'
 
-@import "../mixins/_all"
-@import '../generated/typography.legacy.helpers'
+@import "../src/mixins/_all"
+@import '../src/generated/typography.legacy.helpers'
 
 $black-bis: $grey-6
 $black-ter: $grey-6
@@ -191,9 +191,6 @@ a.is-regular,
   font-weight: var(--bal-weight-regular)
 
 .is-bold,
-span.is-bold,
-p.is-bold,
-a.is-bold,
 .is-text-bold,
 .is-text-bold span
   font-weight: var(--bal-weight-bold)
@@ -213,9 +210,6 @@ a.is-light,
 .has-font-title
   font-family: var(--bal-font-family-title)
 
-span.is-small,
-p.is-small,
-a.is-small,
 .is-text-small,
 .is-text-small span
   font-size: var(--bal-size-small)
