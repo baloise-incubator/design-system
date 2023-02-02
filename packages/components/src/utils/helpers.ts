@@ -152,14 +152,17 @@ export const shallowReady = (el: any | undefined): Promise<any> => {
   return Promise.resolve()
 }
 
-export const deepReady = async (el: any | undefined): Promise<void> => {
+export const deepReady = async (el: any | undefined, full = false): Promise<void> => {
   const element = el as any
   if (element) {
     if (element.componentOnReady !== null && element.componentOnReady !== undefined) {
-      await element.componentOnReady()
+      const stencilElement = await element.componentOnReady()
+      if (stencilElement && !full) {
+        return
+      }
     }
     if (element.children.length > 0) {
-      await Promise.all(Array.from(element.children).map(deepReady))
+      await Promise.all(Array.from(element.children).map(child => deepReady(child, full)))
     }
   }
 }
