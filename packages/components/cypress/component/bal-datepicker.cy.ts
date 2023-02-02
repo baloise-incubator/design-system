@@ -8,6 +8,7 @@ describe('bal-datepicker.cy.ts', () => {
 
     cy.mount(BalDatepicker, {
       props: {
+        disabled: false,
         onBalChange: onBalChangeSpy,
         onBalInput: onBalInputSpy,
       },
@@ -35,6 +36,7 @@ describe('bal-datepicker.cy.ts', () => {
 
     cy.mount(BalDatepicker, {
       props: {
+        disabled: false,
         onBalChange: onBalChangeSpy,
         onBalInput: onBalInputSpy,
       },
@@ -55,6 +57,7 @@ describe('bal-datepicker.cy.ts', () => {
     cy.mount(BalDatepicker, {
       props: {
         value: '',
+        disabled: false,
         onBalChange: onBalChangeSpy,
         onBalInput: onBalInputSpy,
       },
@@ -70,6 +73,7 @@ describe('bal-datepicker.cy.ts', () => {
 
     cy.mount(BalDatepicker, {
       props: {
+        disabled: false,
         onBalChange: onBalChangeSpy,
       },
     })
