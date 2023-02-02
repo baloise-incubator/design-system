@@ -20,6 +20,7 @@ describe('bal-number-input.cy.ts', () => {
   })
 
   it('should fire balChange & balInput, because the input gets blurred', () => {
+    cy.get('bal-number-input').waitForComponents()
     cy.get('bal-number-input').invoke('attr', 'decimal', 1)
     cy.get('bal-number-input').find('input').type('.8').blur()
 

@@ -24,8 +24,9 @@ Cypress.Commands.add('page', (url: string) => {
     // wait for all stencil components to be fully rendered
     .waitForComponents({ log: false })
     // wait that the Design System has fully initialized
-    .invoke('attr', 'ready')
-    .should('eq', '')
+    .invoke('attr', 'ready', { log: false })
+    .should('eq', '', { log: false })
+    .wait(100, { log: false })
 
   cy.disableAnimation()
 })
