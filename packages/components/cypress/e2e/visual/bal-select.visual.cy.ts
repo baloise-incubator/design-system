@@ -25,15 +25,15 @@ describe('bal-select', () => {
       })
 
       it('disabled component', () => {
-        cy.getByTestId('disabled').compareSnapshot(`select-disabled-${platform}`, 0.0)
+        cy.getByTestId('disabled').waitForComponents().compareSnapshot(`select-disabled-${platform}`, 0.0)
       })
 
       it('invalid component', () => {
-        cy.getByTestId('invalid').compareSnapshot(`select-invalid-${platform}`, 0.0)
+        cy.getByTestId('invalid').waitForComponents().compareSnapshot(`select-invalid-${platform}`, 0.0)
       })
 
       it('field component', () => {
-        cy.getByTestId('field').compareSnapshot(`select-field-${platform}`, 0.0)
+        cy.getByTestId('field').waitForComponents().compareSnapshot(`select-field-${platform}`, 0.0)
       })
     })
   }
@@ -59,15 +59,15 @@ describe('bal-select', () => {
       })
 
       it('disabled multiple component', () => {
-        cy.getByTestId('disabled').compareSnapshot(`select-multiple-disabled-${platform}`, 0.0)
+        cy.getByTestId('disabled').waitForComponents().compareSnapshot(`select-multiple-disabled-${platform}`, 0.0)
       })
 
       it('invalid multiple component', () => {
-        cy.getByTestId('invalid').compareSnapshot(`select-multiple-invalid-${platform}`, 0.0)
+        cy.getByTestId('invalid').waitForComponents().compareSnapshot(`select-multiple-invalid-${platform}`, 0.0)
       })
 
       it('field component', () => {
-        cy.getByTestId('field').compareSnapshot(`select-multiple-field-${platform}`, 0.0)
+        cy.getByTestId('field').waitForComponents().compareSnapshot(`select-multiple-field-${platform}`, 0.0)
       })
     })
   }
