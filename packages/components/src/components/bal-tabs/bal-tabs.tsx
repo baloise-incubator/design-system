@@ -1,15 +1,27 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
-import { debounceEvent } from '../../utils/helpers'
+import { areArraysEqual } from '@baloise/web-app-utils'
+import { debounceEvent, deepReady, raf } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
-import { TabList } from './components/tabs'
-import { StepList } from './components/steps'
-import { Props, Platforms, Events } from '../../types'
+import { Props, Events } from '../../types'
+import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
-import { getPlatforms, isPlatform } from '../../utils/platform'
-import { stopEventBubbling } from '../../utils/form-input'
+import { isPlatform } from '../../utils/platform'
 import { ResizeHandler } from '../../utils/resize'
-import { areArraysEqual } from '@baloise/web-app-utils'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
+import { newBalTabOption } from './bal-tab.util'
+import { stopEventBubbling } from '../../utils/form-input'
+import { TabSelect } from './components/tab-select'
+import { TabNav } from './components/tab-nav'
+import { getPadding, Padding } from '../../utils/style'
+
+/**
+ * TODO's
+ * ------------------------
+ * - add inverted style
+ * - add interfaces for meta navbar...
+ * - add carousel turn off switch
+ */
 
 @Component({
   tag: 'bal-tabs',
@@ -17,21 +29,63 @@ import { areArraysEqual } from '@baloise/web-app-utils'
     css: 'bal-tabs.sass',
   },
 })
-export class Tabs {
+export class Tabs implements Loggable, BalConfigObserver {
   @Element() el!: HTMLElement
 
-  private didInit = false
   private mutationO?: MutationObserver
-  private timeoutTimer?: NodeJS.Timer
+  private resizeWidthHandler = ResizeHandler()
   private tabsId = `bal-tabs-${TabsIds++}`
+  private currentRaf: number | undefined
 
-  @State() tabsOptions: BalTabOption[] = []
-  @State() lineWidth = 0
-  @State() lineOffsetLeft = 0
-  @State() lineHeight = 0
-  @State() lineOffsetTop = 0
-  @State() isReady = false
-  @State() platform: Platforms[] = ['mobile']
+  @State() isMobile = isPlatform('mobile')
+  @State() store: BalTabOption[] = []
+  @State() animated = true
+
+  log!: LogInstance
+
+  @Logger('bal-tabs')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  // private didInit = false
+  // private mutationO?: MutationObserver
+  // private timeoutTimer?: NodeJS.Timer
+  // private tabsId = `bal-tabs-${TabsIds++}`
+
+  // @State() tabsOptions: BalTabOption[] = []
+  // @State() lineWidth = 0
+  // @State() lineOffsetLeft = 0
+  // @State() lineHeight = 0
+  // @State() lineOffsetTop = 0
+  // @State() isReady = false
+  // @State() platform: Platforms[] = ['mobile']
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
+
+  /**
+   * @deprecated Defines the layout of the tabs. Right only works from the breakpoint
+   * high-definition and beyond.
+   */
+  @Prop() float: Props.BalTabsFloat = 'left'
+
+  /**
+   * @deprecated If `true` the tabs is a block element and uses 100% of the width
+   */
+  @Prop() fullwidth = false
+
+  /**
+   * Steps can be passed as a property or through HTML markup.
+   */
+  @Prop() options: BalTabOption[] = []
+
+  @Watch('options')
+  protected async optionChanged() {
+    this.onOptionChange()
+  }
 
   /**
    * Defines the layout of the tabs.
@@ -44,12 +98,6 @@ export class Tabs {
   @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
 
   /**
-   * Defines the layout of the tabs. Right only works from the breakpoint
-   * high-definition and beyond.
-   */
-  @Prop() float: Props.BalTabsFloat = 'left'
-
-  /**
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false
@@ -60,16 +108,6 @@ export class Tabs {
   @Prop() spaceless = false
 
   /**
-   * If `true` the field expands over the whole width.
-   */
-  @Prop() inverted = false
-
-  /**
-   * If `true` the tabs is a block element and uses 100% of the width
-   */
-  @Prop() fullwidth = false
-
-  /**
    * If `true` the tabs or steps can be clicked.
    */
   @Prop() clickable = true
@@ -78,6 +116,11 @@ export class Tabs {
    * If `true` a light border is shown for the tabs.
    */
   @Prop() border = false
+
+  /**
+   * If `true` the tabs can be uses on dark background
+   */
+  @Prop() inverted = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -108,10 +151,8 @@ export class Tabs {
 
   @Watch('value')
   protected async valueChanged(newValue?: string, oldValue?: string) {
-    this.tabs.forEach(t => t.setActive(t.value === this.value))
-
-    if (this.didInit && newValue !== oldValue) {
-      this.isReady = true
+    if (newValue !== oldValue) {
+      this.onOptionChange()
     }
   }
 
@@ -120,65 +161,108 @@ export class Tabs {
    */
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
 
-  resizeWidthHandler = ResizeHandler()
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
-  @Listen('resize', { target: 'window' })
-  async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      this.platform = getPlatforms()
-      this.moveLine(this.getTargetElement(this.value))
+  connectedCallback() {
+    this.debounceChanged()
+    attachComponentToConfig(this)
+  }
+
+  componentDidLoad() {
+    this.onOptionChange()
+    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+      this.onOptionChange()
     })
   }
 
-  @Listen('balPopoverPrepare', { target: 'window' })
-  async popoverHandler() {
-    this.platform = getPlatforms()
-    this.moveLine(this.getTargetElement(this.value))
-  }
-
-  @Listen('balChange', { target: 'window' })
-  async accordionChangeHandler(event: Events.BalAccordionChange) {
-    const accordion = this.el.closest('bal-accordion')
-    if (event.target === accordion) {
-      this.moveLine(this.getTargetElement(this.value))
-    }
-  }
-
-  connectedCallback() {
-    this.platform = getPlatforms()
-    this.debounceChanged()
-  }
-
   disconnectedCallback() {
+    detachComponentToConfig(this)
+
     if (this.mutationO) {
       this.mutationO.disconnect()
       this.mutationO = undefined
     }
   }
 
-  componentDidLoad() {
-    this.didInit = true
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
-    this.updateTabs().then(() => {
-      let value = this.value
-      if ((value === undefined || value === '') && this.interface !== 'navigation') {
-        const availableTabs = this.tabsOptions.filter(t => !t.disabled)
-        if (availableTabs.length > 0) {
-          value = availableTabs[0].value
-        }
-      }
-      this.value = value
-      this.valueChanged(value, this.value)
-    })
+  configChanged(state: BalConfigState): void {
+    this.animated = state.animated
+  }
 
-    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-      this.updateTabs()
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.resizeWidthHandler(() => {
+      this.isMobile = isPlatform('mobile')
+      this.animateLine()
+      // this.platform = getPlatforms()
+      // this.moveLine(this.getTargetElement(this.value))
     })
   }
 
-  componentDidRender() {
-    this.moveLine(this.getTargetElement(this.value))
+  @Listen('balPopoverPrepare', { target: 'window' })
+  async popoverHandler() {
+    // this.platform = getPlatforms()
+    // this.moveLine(this.getTargetElement(this.value))
   }
+
+  /**
+   * @Internal need this to animate the line when the accordion has opened
+   */
+  @Listen('balChange', { target: 'window' })
+  async accordionChangeHandler(event: Events.BalAccordionChange) {
+    const accordion = this.el.closest('bal-accordion')
+    if (event.target === accordion) {
+      // this.moveLine(this.getTargetElement(this.value))
+    }
+  }
+
+  // connectedCallback() {
+  //   this.platform = getPlatforms()
+  //   this.debounceChanged()
+  // }
+
+  // disconnectedCallback() {
+  //   if (this.mutationO) {
+  //     this.mutationO.disconnect()
+  //     this.mutationO = undefined
+  //   }
+  // }
+
+  // componentDidLoad() {
+  //   this.didInit = true
+
+  //   this.updateTabs().then(() => {
+  //     let value = this.value
+  //     if ((value === undefined || value === '') && this.interface !== 'navigation') {
+  //       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
+  //       if (availableTabs.length > 0) {
+  //         value = availableTabs[0].value
+  //       }
+  //     }
+  //     this.value = value
+  //     this.valueChanged(value, this.value)
+  //   })
+
+  //   this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+  //     this.updateTabs()
+  //   })
+  // }
+
+  // componentDidRender() {
+  //   this.moveLine(this.getTargetElement(this.value))
+  // }
+
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Go to tab with the given value
@@ -193,7 +277,7 @@ export class Tabs {
    */
   @Method()
   async getOptionByValue(value: string) {
-    const options = this.tabsOptions
+    const options = this.store
     return options.find(option => option.value === value)
   }
 
@@ -203,49 +287,159 @@ export class Tabs {
    */
   @Method()
   async renderLine() {
-    this.moveLine(this.getTargetElement(this.value), 100)
+    this.animateLine()
+    // this.moveLine(this.getTargetElement(this.value), 100)
   }
 
-  private get tabs(): HTMLBalTabItemElement[] {
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  // private get tabs(): HTMLBalTabItemElement[] {
+  //   return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
+  // }
+
+  // private async updateTabs() {
+  //   try {
+  //     await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
+  //       if (!areArraysEqual(this.tabsOptions, tabsOptions)) {
+  //         this.tabsOptions = tabsOptions
+  //       }
+  //     })
+  //     const activeTabs = this.tabsOptions.filter(t => t.active)
+  //     if (activeTabs.length > 0) {
+  //       const firstActiveTab = activeTabs[0]
+  //       this.value = firstActiveTab.value
+  //     }
+  //   } catch (e) {
+  //     console.warn('[WARN] - Could not read tab options')
+  //   }
+  // }
+
+  // private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
+  //   if (tab.prevent || tab.disabled || !this.clickable) {
+  //     stopEventBubbling(event)
+  //   }
+
+  //   if (!tab.disabled) {
+  //     tab.navigate.emit(event)
+  //     if (this.clickable) {
+  //       let value = tab.value
+  //       if (this.interface === 'navigation' && value === this.value && !tab.href) {
+  //         value = ''
+  //       }
+
+  //       if (value !== this.value) {
+  //         this.balChange.emit(value)
+  //         await this.select(tab)
+  //       }
+  //     }
+  //   }
+  // }
+
+  // private moveLine(element: HTMLElement, timeout = 0) {
+  //   if (this.timeoutTimer) {
+  //     clearTimeout(this.timeoutTimer)
+  //   }
+  //   this.timeoutTimer = setTimeout(() => {
+  //     if (this.interface !== 'steps' && this.interface !== 'o-steps') {
+  //       if (element) {
+  //         let paddingLeft = 0
+  //         let paddingRight = 0
+  //         const listElement = element.closest('li')
+  //         if (listElement) {
+  //           paddingLeft = parseInt(
+  //             window
+  //               .getComputedStyle(listElement.firstChild as Element)
+  //               .getPropertyValue('padding-left')
+  //               .slice(0, -2),
+  //             10,
+  //           )
+  //           paddingRight = parseInt(
+  //             window
+  //               .getComputedStyle(listElement.firstChild as Element)
+  //               .getPropertyValue('padding-right')
+  //               .slice(0, -2),
+  //             10,
+  //           )
+  //         }
+
+  //         const isMobile = isPlatform('mobile')
+  //         const isTablet = isPlatform('tablet')
+  //         const isVertical = this.parseVertical() === true
+  //         const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
+  //         const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
+  //         const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+  //         if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
+  //           if (listElement?.clientHeight !== undefined) {
+  //             this.lineHeight = listElement.clientHeight - 8
+  //           }
+
+  //           if (listElement?.offsetTop !== undefined) {
+  //             this.lineOffsetTop = listElement.offsetTop + 4
+  //           }
+  //         } else {
+  //           if (listElement?.clientWidth !== undefined) {
+  //             this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : paddingLeft + paddingRight)
+  //           }
+
+  //           if (listElement?.offsetLeft !== undefined) {
+  //             this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : paddingLeft)
+  //           }
+  //         }
+  //       } else {
+  //         this.lineWidth = 0
+  //       }
+  //     }
+  //   }, timeout)
+  // }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private get items(): HTMLBalTabItemElement[] {
     return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
   }
 
-  private async updateTabs() {
-    try {
-      await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-        if (!areArraysEqual(this.tabsOptions, tabsOptions)) {
-          this.tabsOptions = tabsOptions
-        }
-      })
-      const activeTabs = this.tabsOptions.filter(t => t.active)
-      if (activeTabs.length > 0) {
-        const firstActiveTab = activeTabs[0]
-        this.value = firstActiveTab.value
-      }
-    } catch (e) {
-      console.warn('[WARN] - Could not read tab options')
+  private getOptions = () => {
+    if (this.options.length > 0) {
+      return [...this.options.map(newBalTabOption)]
+    } else {
+      return Promise.all(this.items.map(value => value.getOptions()))
     }
   }
 
-  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
-    if (tab.prevent || tab.disabled || !this.clickable) {
-      stopEventBubbling(event)
+  private updateStore = (newStore: BalTabOption[]) => {
+    if (!areArraysEqual(this.store, newStore)) {
+      this.store = newStore
     }
+  }
 
-    if (!tab.disabled) {
-      tab.navigate.emit(event)
-      if (this.clickable) {
-        let value = tab.value
-        if (this.interface === 'navigation' && value === this.value && !tab.href) {
-          value = ''
-        }
-
-        if (value !== this.value) {
-          this.balChange.emit(value)
-          await this.select(tab)
-        }
+  private setActiveItem = () => {
+    const activeTabs = this.store.filter(t => t.active)
+    if (activeTabs.length > 0) {
+      const firstActiveTab = activeTabs[0]
+      this.value = firstActiveTab.value
+    } else {
+      if (this.value === undefined && this.store.length > 0) {
+        const firstStep = this.store[0]
+        this.value = firstStep.value
       }
     }
+  }
+
+  private setActiveContent = () => {
+    if (this.options.length === 0) {
+      this.items.forEach(item => item.setActive(this.isActive(item)))
+    }
+  }
+
+  private isActive(step: BalTabOption): boolean {
+    return step.value === this.value
   }
 
   private parseVertical(): Props.BalTabsVertical {
@@ -259,77 +453,151 @@ export class Tabs {
     return this.vertical
   }
 
-  private moveLine(element: HTMLElement, timeout = 0) {
-    if (this.timeoutTimer) {
-      clearTimeout(this.timeoutTimer)
-    }
-    this.timeoutTimer = setTimeout(() => {
-      if (this.interface !== 'steps' && this.interface !== 'o-steps') {
-        if (element) {
-          let paddingLeft = 0
-          let paddingRight = 0
-          const listElement = element.closest('li')
-          if (listElement) {
-            paddingLeft = parseInt(
-              window
-                .getComputedStyle(listElement.firstChild as Element)
-                .getPropertyValue('padding-left')
-                .slice(0, -2),
-              10,
-            )
-            paddingRight = parseInt(
-              window
-                .getComputedStyle(listElement.firstChild as Element)
-                .getPropertyValue('padding-right')
-                .slice(0, -2),
-              10,
-            )
-          }
-
-          const isMobile = isPlatform('mobile')
-          const isTablet = isPlatform('tablet')
-          const isVertical = this.parseVertical() === true
-          const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
-          const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
-          const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
-
-          if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
-            if (listElement?.clientHeight !== undefined) {
-              this.lineHeight = listElement.clientHeight - 8
-            }
-
-            if (listElement?.offsetTop !== undefined) {
-              this.lineOffsetTop = listElement.offsetTop + 4
-            }
-          } else {
-            if (listElement?.clientWidth !== undefined) {
-              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : paddingLeft + paddingRight)
-            }
-
-            if (listElement?.offsetLeft !== undefined) {
-              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : paddingLeft)
-            }
-          }
-        } else {
-          this.lineWidth = 0
-        }
-      }
-    }, timeout)
-  }
-
   private getTargetElement(value?: string) {
-    const elements = Array.from(this.el.querySelectorAll('.data-test-tab-item')) as HTMLElement[]
+    const selector = `#${this.tabsId}-button`
+    const elements = Array.from(this.el.querySelectorAll(selector)) as HTMLElement[]
     return elements.filter(element => element.getAttribute('data-value') == value)[0]
   }
 
-  private isTabActive(tab: BalTabOption): boolean {
-    return tab.value === this.value
+  private getLineElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-line`)
   }
+
+  private getBorderElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-border`)
+  }
+
+  private getCarouselElement(): HTMLElement | null {
+    return this.el.querySelector(`#${this.tabsId}-carousel`)
+  }
+
+  private getLineSize = (element: HTMLElement, padding: Padding) => {
+    const isVertical = this.parseVertical() === true
+
+    if (isVertical) {
+      return element.clientHeight
+    } else {
+      const clientWidth = element.clientWidth
+      const paddingX = padding.left + padding.right
+      return clientWidth - paddingX
+    }
+  }
+
+  private getOffset = (element: HTMLElement, padding: Padding) => {
+    const isVertical = this.parseVertical() === true
+
+    if (isVertical) {
+      console.log('getOffset', element, element.offsetTop)
+      if (element.offsetTop) {
+        return element.offsetTop
+      }
+    } else {
+      if (element.offsetLeft) {
+        return element.offsetLeft + padding.left
+      }
+
+      const carouselItem = element.closest('bal-carousel-item')
+      if (carouselItem) {
+        return carouselItem.offsetLeft + padding.left
+      }
+    }
+
+    return 0
+  }
+
+  private animateLine = async () => {
+    if (this.currentRaf !== undefined) {
+      cancelAnimationFrame(this.currentRaf)
+    }
+
+    raf(async () => {
+      await deepReady(this.el, true)
+
+      this.currentRaf = raf(() => {
+        const target = this.getTargetElement(this.value)
+        const padding = getPadding(target)
+        const size = this.getLineSize(target, padding)
+        const offset = this.getOffset(target, padding)
+
+        const lineElement = this.getLineElement()
+        if (lineElement) {
+          const isVertical = this.parseVertical() === true
+
+          if (isVertical) {
+            lineElement.style.setProperty('transform', `translateY(${offset}px)`)
+            lineElement.style.setProperty('min-height', `${size}px`)
+            lineElement.style.setProperty('height', `${size}px`)
+            lineElement.style.removeProperty('min-width')
+            lineElement.style.removeProperty('width')
+          } else {
+            lineElement.style.setProperty('transform', `translateX(${offset}px)`)
+            lineElement.style.setProperty('min-width', `${size}px`)
+            lineElement.style.setProperty('width', `${size}px`)
+            lineElement.style.removeProperty('min-height')
+            lineElement.style.removeProperty('height')
+
+            const borderElement = this.getBorderElement()
+            const carouselElement = this.getCarouselElement()
+            if (borderElement && carouselElement) {
+              const containerMaxWidth = carouselElement.clientWidth
+              borderElement.style.setProperty('width', `${containerMaxWidth}px`)
+            }
+          }
+        }
+      })
+    })
+  }
+
+  private shouldAnimate = () => {
+    if (typeof (window as any) === 'undefined') {
+      return false
+    }
+
+    return this.animated
+  }
+
+  /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
+
+  private onOptionChange = async () => {
+    try {
+      const options = await this.getOptions()
+      this.updateStore(options)
+      this.setActiveItem()
+      this.setActiveContent()
+      this.animateLine()
+    } catch (e) {
+      console.warn('[WARN] - Could not read tab options')
+    }
+  }
+
+  private onSelectTab = async (event: MouseEvent, step: BalTabOption) => {
+    if (step.prevent || step.disabled || !this.clickable) {
+      stopEventBubbling(event)
+    }
+
+    if (!step.disabled) {
+      if (step.navigate) {
+        step.navigate.emit(event)
+      }
+      if (this.clickable) {
+        if (step.value !== this.value) {
+          this.balChange.emit(step.value)
+          await this.select(step)
+        }
+      }
+    }
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const block = BEM.block('tabs')
-    const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
-    const Tabs = isSteps ? StepList : TabList
 
     const isMobile = isPlatform('mobile')
     const isTablet = isPlatform('tablet')
@@ -338,71 +606,54 @@ export class Tabs {
     const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
+    const hasCarousel = !isVertical
+
+    const isSelect = isMobile && this.selectOnMobile
+
+    const tabs = this.store.map(tab => ({ ...tab, active: tab.value === this.value }))
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`context-${this.interface}`).class(),
-          ...block.modifier('vertical').class(this.parseVertical() === true),
-          ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
+          ...block.modifier('vertical').class(isVertical),
+          ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
         }}
-        data-value={this.tabsOptions
-          .filter(t => this.isTabActive(t))
+        data-value={this.store
+          .filter(t => this.isActive(t))
           .map(t => t.value)
           .join(',')}
-        data-label={this.tabsOptions
-          .filter(t => this.isTabActive(t))
+        data-label={this.store
+          .filter(t => this.isActive(t))
           .map(t => t.label)
           .join(',')}
       >
+        {isSelect ? (
+          <TabSelect value={this.value} items={tabs} onSelectTab={this.onSelectTab}></TabSelect>
+        ) : (
+          <TabNav
+            items={tabs}
+            tabsId={this.tabsId}
+            onSelectTab={this.onSelectTab}
+            clickable={this.clickable}
+            animated={this.animated}
+            border={this.border}
+            spaceless={this.spaceless}
+            expanded={this.expanded}
+            isMobile={isMobile}
+            isVertical={isVertical}
+            hasCarousel={hasCarousel}
+            iconPosition={this.iconPosition}
+            verticalColSize={this.verticalColSize}
+          ></TabNav>
+        )}
         <div
+          id={this.tabsId}
           class={{
-            'columns is-multiline': this.interface !== 'meta' && this.interface !== 'navigation',
+            ...block.element('tabs__content').class(),
           }}
         >
-          <div
-            class={{
-              'column': this.interface !== 'meta' && this.interface !== 'navigation',
-              'is-full': !isVertical,
-              [`is-${this.verticalColSize}`]: isVertical,
-              'bal-tabs__col-items': true,
-              'bal-tabs__col-items--vertical': isVertical,
-            }}
-          >
-            <Tabs
-              value={this.value}
-              context={this.interface}
-              inverted={this.inverted}
-              spaceless={this.spaceless}
-              tabs={this.tabsOptions}
-              border={this.border}
-              float={this.float}
-              expanded={this.expanded}
-              clickable={this.clickable}
-              isReady={this.isReady}
-              iconPosition={this.iconPosition}
-              onSelectTab={(e, t) => this.onSelectTab(e, t)}
-              lineWidth={this.lineWidth}
-              lineOffsetLeft={this.lineOffsetLeft}
-              lineHeight={this.lineHeight}
-              lineOffsetTop={this.lineOffsetTop}
-              vertical={this.interface === 'navbar' ? 'tablet' : this.parseVertical()}
-              selectOnMobile={this.selectOnMobile}
-            ></Tabs>
-          </div>
-          <div
-            id={this.tabsId}
-            class={{
-              'column': this.interface !== 'meta' && this.interface !== 'navigation',
-              'is-full': !isVertical,
-              'bal-tabs__col-content': true,
-              'bal-tabs__col-content--vertical': isVertical,
-              'bal-tabs__col-content--full': this.verticalColSize === 'full',
-            }}
-          >
-            <slot></slot>
-          </div>
+          <slot></slot>
         </div>
       </Host>
     )

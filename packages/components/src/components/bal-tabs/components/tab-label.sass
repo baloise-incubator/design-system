@@ -1,0 +1,31 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Tab Label
+// --------------------------------------------------
+
+.bal-tabs__nav__item__label
+  display: block
+  position: relative
+  font-family: var(--bal-font-family-title)
+  font-weight: var(--bal-weight-bold)
+  font-size: var(--bal-size-normal)
+  text-align: center
+  hyphens: auto
+  white-space: nowrap
+  user-select: none
+  //
+  // Color status
+  color: var(--bal-color-text-primary)
+  &--disabled
+    color: var(--bal-color-text-grey)
+  //
+  // alert bubble
+  &__bubble
+    position: absolute
+    right: -8px
+    top: -8px
+  //
+  // Vertical layout
+  &--vertical
+    text-align: left
+    width: auto

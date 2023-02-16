@@ -303,6 +303,10 @@ export namespace Components {
          */
         "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
         /**
+          * If `true` a light border is shown at the bottom.
+         */
+        "border": boolean;
+        /**
           * Defines the layout of the navigation controls.
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
@@ -2365,14 +2369,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the step is marked as done.
-         */
-        "done": boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed": boolean;
-        /**
           * Options of the tab like label, value etc.
          */
         "getOptions": () => Promise<BalTabOption>;
@@ -2433,11 +2429,11 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float": Props.BalTabsFloat;
         /**
-          * If `true` the tabs is a block element and uses 100% of the width
+          * @deprecated If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth": boolean;
         /**
@@ -2453,9 +2449,13 @@ export namespace Components {
          */
         "interface": Props.BalTabsInterface;
         /**
-          * If `true` the field expands over the whole width.
+          * If `true` the tabs can be uses on dark background
          */
         "inverted": boolean;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options": BalTabOption[];
         "renderLine": () => Promise<void>;
         /**
           * Go to tab with the given value
@@ -4007,6 +4007,10 @@ declare namespace LocalJSX {
           * Defines the image aspect ratio. Should be combined with the interface `product`
          */
         "aspectRatio"?: '1by1' | '3by2' | '4by3' | '16by9';
+        /**
+          * If `true` a light border is shown at the bottom.
+         */
+        "border"?: boolean;
         /**
           * Defines the layout of the navigation controls.
          */
@@ -6149,14 +6153,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the step is marked as done.
-         */
-        "done"?: boolean;
-        /**
-          * If `true` the step is marked as failed.
-         */
-        "failed"?: boolean;
-        /**
           * If `true` the step is hidden.
          */
         "hidden"?: boolean;
@@ -6213,11 +6209,11 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
+          * @deprecated Defines the layout of the tabs. Right only works from the breakpoint high-definition and beyond.
          */
         "float"?: Props.BalTabsFloat;
         /**
-          * If `true` the tabs is a block element and uses 100% of the width
+          * @deprecated If `true` the tabs is a block element and uses 100% of the width
          */
         "fullwidth"?: boolean;
         /**
@@ -6229,13 +6225,17 @@ declare namespace LocalJSX {
          */
         "interface"?: Props.BalTabsInterface;
         /**
-          * If `true` the field expands over the whole width.
+          * If `true` the tabs can be uses on dark background
          */
         "inverted"?: boolean;
         /**
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalTabOption[];
         /**
           * If `true` the tabs are shown as a select component on mobile
          */

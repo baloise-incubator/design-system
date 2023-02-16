@@ -15,6 +15,7 @@ export { Events } from './events'
  */
 export * from './components/form/bal-select/utils/bal-option.type'
 export * from './components/bal-tabs/bal-tab.type'
+export * from './components/bal-steps/bal-step.type'
 export * from './components/form/bal-file-upload/bal-file-upload.type'
 export * from './components/notice/bal-modal/bal-modal.type'
 
@@ -29,6 +30,7 @@ export { isBrowser, hasTouchSupport } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'
 export { BodyScrollBlocker } from './utils/toggle-scrolling-body'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
+export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
 
 /**
  * Controllers

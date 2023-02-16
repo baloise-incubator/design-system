@@ -1,0 +1,63 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+// Tab Button
+// --------------------------------------------------
+
+.bal-tabs__nav__item
+  display: flex
+  position: relative
+  box-sizing: border-box
+  flex-direction: column
+  flex-basis: 1rem
+  flex-grow: 1
+  flex-shrink: 1
+  justify-content: center
+  align-items: center
+  text-decoration: none
+  cursor: default
+  gap: 0.25rem
+  padding: 0.5rem
+  min-width: 5rem
+  min-height: 3rem
+  +tablet
+    flex-direction: row
+    min-height: 3.5rem
+    padding: 0.5rem 1rem
+  &--hidden
+    +hide-element
+  //
+  // default icon position is horizontal
+  &--icon-position-vertical
+    flex-direction: column
+  //
+  // Cursor action on clickable
+  &--clickable
+    cursor: pointer
+    pointer-events: all
+  //
+  // Mouse gestures
+  &:not(&--disabled)
+    +hover()
+      &:hover
+        .bal-tabs__nav__item__label
+          color: var(--bal-color-light-blue-5)
+        .bal-tabs__nav__item__icon
+          +fillSvg(var(--bal-color-light-blue-5))
+    &:active
+      .bal-tabs__nav__item__label
+        color: var(--bal-color-primary-6)
+      .bal-tabs__nav__item__icon
+        +fillSvg(var(--bal-color-primary-6))
+  //
+  // Vertical layout
+  &--vertical
+    flex-direction: row
+    align-items: center
+    justify-content: flex-start
+    min-height: 2.5rem
+  //
+  // spaceless layout
+  &--spaceless#{&}--first
+    padding-left: 0
+  &--spaceless#{&}--last
+    padding-right: 0
