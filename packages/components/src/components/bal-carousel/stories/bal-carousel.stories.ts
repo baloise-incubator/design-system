@@ -46,13 +46,13 @@ export const ImageSlider = args => ({
   template: `<div class="container is-compact">
   <bal-carousel v-bind="args">
     <bal-carousel-item
-      src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI">
+      src="https://picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI">
     </bal-carousel-item>
     <bal-carousel-item
-      src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I">
+      src="https://picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I">
     </bal-carousel-item>
     <bal-carousel-item
-      src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw">
+      src="https://picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw">
     </bal-carousel-item>
   </bal-carousel>
 </div>`,

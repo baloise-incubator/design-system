@@ -36,8 +36,10 @@ export class Carousel implements ComponentInterface {
   private swipeHandler = SwipeHandler()
   private containerEl?: HTMLDivElement
   private innerEl?: HTMLDivElement
+  private borderEl?: HTMLDivElement
   private previousTransformValue = 0
   private currentRaf: number | undefined
+  private carouselId = `bal-carousel-${CarouselIds++}`
 
   @State() isLastSlideVisible = true
   @State() areControlsHidden = !isPlatform('mobile')
@@ -90,6 +92,11 @@ export class Carousel implements ComponentInterface {
    * If `true` vertical scrolling on mobile is enabled.
    */
   @Prop() scrollY = true
+
+  /**
+   * If `true` a light border is shown at the bottom.
+   */
+  @Prop() border = false
 
   /**
    * Emitted when a option got selected.
@@ -228,6 +235,11 @@ export class Carousel implements ComponentInterface {
             const didAnimate = transformValue !== this.previousTransformValue
             this.previousTransformValue = transformValue
             this.isLastSlideVisible = isLastSlideVisible
+
+            if (this.borderEl) {
+              this.borderEl.style.transitionDuration = animated ? '0.6s' : '0'
+              this.borderEl.style.transform = `translate3d(${transformValue}px, 0px, 0px)`
+            }
 
             if (!didAnimate) {
               return resolve(false)
@@ -377,6 +389,15 @@ export class Carousel implements ComponentInterface {
             ref={el => (this.containerEl = el)}
           >
             <slot></slot>
+            {this.border ? (
+              <div
+                id={`${this.carouselId}-border`}
+                class={{ ...container.element('border').class() }}
+                ref={el => (this.borderEl = el)}
+              ></div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
 
@@ -416,3 +437,5 @@ export class Carousel implements ComponentInterface {
     )
   }
 }
+
+let CarouselIds = 0

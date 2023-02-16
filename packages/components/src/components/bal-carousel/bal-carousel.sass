@@ -28,6 +28,16 @@
   transition-duration: 0ms
   transform: translate3d(0px,0px,0px)
 
+.bal-carousel__inner__container__border
+  position: absolute
+  background: var(--bal-color-border-grey)
+  border-radius: var(--bal-radius-rounded)
+  height: var(--bal-border-width-normal)
+  width: 100%
+  bottom: 0
+  z-index: 1
+  transform: translate3d(0px,0px,0px)
+
 .bal-carousel__item
   text-align: center
   font-size: var(--bal-size-large)
@@ -233,7 +243,6 @@
     line-height: 1.15rem
     word-break: break-word
 
-
 .bal-carousel__controls--large
   +mobile
     display: flex
@@ -268,4 +277,3 @@
   .bal-carousel__controls__button--hidden
     display: none !important
     visibility: hidden !important
-
