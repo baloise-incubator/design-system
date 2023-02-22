@@ -5,11 +5,9 @@ import { Basic } from './bal-time-input.stories'
 <bal-doc-banner id="story--components-form-time-input--basic" >Time Input</bal-doc-banner>
 
 <bal-doc-lead>
-  <b>Time Input</b> only allows to enter valid times. With decimal property you can set how many decimal places you want
-  and time will be formatted accordingly.
+  <b>Time Input</b> allows to enter valid numbers for their specific index. The time value will be formatted
+  accordingly.
 </bal-doc-lead>
-
-> **Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/development-internationalization--page).
 
 <Canvas withSource="open">
   <Story id="components-form-time-input--basic" />
@@ -31,6 +29,16 @@ import { Basic } from './bal-time-input.stories'
 ## Examples
 
 <span id="story--components-form-time-input--field-control" style={{ opacity: 0 }}></span>
+
+### Field Control
+
+Combine the component with the `bal-field` components to add a label, validation message and more.
+
+<Canvas>
+  <Story id="components-form-time-input--field-control" />
+</Canvas>
+
+<span id="story--components-form-time-input--currency" style={{ opacity: 0 }}></span>
 
 ## Component Api
 
