@@ -34,6 +34,7 @@ import isNil from 'lodash.isnil'
 import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { inheritAttributes } from '../../../utils/attributes'
 import { debounceEvent } from '../../../utils/helpers'
+import { formatTime } from '../bal-input/bal-input-util'
 
 @Component({
   tag: 'bal-time-input',
@@ -218,20 +219,6 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
 
   private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
-  private formatTime = (value: string): string => {
-    if (!value) {
-      return ''
-    }
-    const newValue = `${value}`.trim()
-    const parts = [newValue.substring(0, 2), newValue.substring(2, 4)].filter(val => val.length > 0)
-    switch (parts.length) {
-      case 1:
-        return `${newValue}`
-      default:
-        return `${parts[0]}:${parts[1]}`
-    }
-  }
-
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
     const cursorPositionStart = (ev as any).target?.selectionStart
@@ -243,7 +230,7 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
         if (this.inputValue.length > 4) {
           this.inputValue = this.inputValue.substring(0, 4)
         }
-        input.value = this.formatTime(this.inputValue)
+        input.value = formatTime(this.inputValue)
         if (cursorPositionStart < this.inputValue.length) {
           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
         }
@@ -298,7 +285,7 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
     const labelId = this.inputId + '-lbl'
     const MAX_LENGTH_TIME_INPUT = 5
 
-    const value = this.formatTime(this.getValue())
+    const value = formatTime(this.getValue())
 
     return (
       <Host
