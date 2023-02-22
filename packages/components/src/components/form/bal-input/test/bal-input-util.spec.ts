@@ -1,4 +1,11 @@
-import { formatClaim, formatOffer, formatPolicy, formatBeEnterpriseNumber, formatBeIBAN } from '../bal-input-util'
+import {
+  formatClaim,
+  formatOffer,
+  formatPolicy,
+  formatBeEnterpriseNumber,
+  formatBeIBAN,
+  formatTime,
+} from '../bal-input-util'
 
 describe('bal-input-util testing:', () => {
   describe('formatClaim', () => {
@@ -132,6 +139,32 @@ describe('bal-input-util testing:', () => {
       test('12 characters', () => {
         const result = formatBeIBAN('123456789012')
         expect(result).toStrictEqual('BE12 3456 7890 12')
+      })
+    })
+    describe('formatTime', () => {
+      test('full entry:', () => {
+        const result = formatTime('1945')
+        expect(result).toStrictEqual('19:45')
+      })
+      test('empty:', () => {
+        const result = formatTime('')
+        expect(result).toStrictEqual('')
+      })
+      test('full entry:', () => {
+        const result = formatTime('0336')
+        expect(result).toStrictEqual('03:36')
+      })
+      test('1 digit:', () => {
+        const result = formatTime('2')
+        expect(result).toStrictEqual('2')
+      })
+      test('2 digits:', () => {
+        const result = formatTime('23')
+        expect(result).toStrictEqual('23')
+      })
+      test('3 digits:', () => {
+        const result = formatTime('125')
+        expect(result).toStrictEqual('12:5')
       })
     })
   })
