@@ -3,31 +3,31 @@ describe('bal-time-input', () => {
     cy.platform('desktop').page('/components/form/bal-time-input/test/bal-time-input.cy.html')
   })
 
-  // it('should have value and typeable', () => {
-  //   cy.getByTestId('basic').should('have.value', '')
-  //   cy.getByTestId('basic').type('1945').should('have.value', '19:45')
-  //   cy.getByTestId('basic').clear().should('not.have.value', '19:45').should('have.value', '')
-  // })
+  it('should have value and typeable', () => {
+    cy.getByTestId('basic').should('have.value', '')
+    cy.getByTestId('basic').type('1945').should('have.value', '19:45')
+    cy.getByTestId('basic').clear().should('not.have.value', '19:45').should('have.value', '')
+  })
 
-  // it('should have placeholder', () => {
-  //   cy.getByTestId('basic').should('have.attr', 'placeholder', 'Enter a time')
-  //   cy.getByTestId('basic').should('not.have.attr', 'placeholder', 'Enter a date')
-  // })
+  it('should have placeholder', () => {
+    cy.getByTestId('basic').should('have.attr', 'placeholder', 'Enter a time')
+    cy.getByTestId('basic').should('not.have.attr', 'placeholder', 'Enter a date')
+  })
 
   it('should be disabled', () => {
     cy.getByTestId('basic').should('not.be.disabled')
     cy.getByTestId('disabled').should('be.disabled')
   })
 
-  // it('should be focusable', () => {
-  //   cy.getByTestId('basic').focus().should('be.focused')
-  //   cy.getByTestId('basic').blur().should('not.be.focused')
-  // })
+  it('should be focusable', () => {
+    cy.getByTestId('basic').focus().should('be.focused')
+    cy.getByTestId('basic').blur().should('not.be.focused')
+  })
 
-  // it('should be able to reset the form', () => {
-  //   cy.getByTestId('reset').clear().type('23')
-  //   cy.getByTestId('reset').should('have.value', '23')
-  //   cy.getByTestId('button-reset').click()
-  //   cy.getByTestId('reset').should('have.value', '19:45')
-  // })
+  it('should be able to reset the form', () => {
+    cy.getByTestId('reset').clear().type('23')
+    cy.getByTestId('reset').should('have.value', '23')
+    cy.getByTestId('button-reset').click()
+    cy.getByTestId('reset').should('have.value', '19:45')
+  })
 })
