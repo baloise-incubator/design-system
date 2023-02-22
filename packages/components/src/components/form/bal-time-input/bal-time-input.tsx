@@ -217,7 +217,9 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
 
   private onClick = (event: MouseEvent) => inputHandleClick(this, event)
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (event: FocusEvent) => {
+    inputHandleFocus(this, event)
+  }
 
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
@@ -230,12 +232,16 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
         if (this.inputValue.length > 4) {
           this.inputValue = this.inputValue.substring(0, 4)
         }
-        input.value = formatTime(this.inputValue)
+        const formatted = formatTime(this.inputValue)
+        input.value = formatted
         if (cursorPositionStart < this.inputValue.length) {
           input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
         }
+        this.inputValue = formatted
+        this.value = formatted
       } else {
         this.inputValue = input.value
+        this.value = this.inputValue
       }
     }
 
@@ -282,10 +288,11 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
 
   render() {
     const block = BEM.block('time-input')
+    const native = block.element('native')
     const labelId = this.inputId + '-lbl'
     const MAX_LENGTH_TIME_INPUT = 5
 
-    const value = formatTime(this.getValue())
+    const value = this.getValue()
 
     return (
       <Host
@@ -293,8 +300,10 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
+          ...block.modifier('disabled').class(this.disabled || this.readonly),
         }}
       >
+        <input type="string" class={{ ...native.class() }} name={this.name} value={this.value} tabindex={-1} />
         <bal-input-group disabled={this.disabled || this.readonly} invalid={this.invalid}>
           <input
             type="text"
@@ -312,7 +321,7 @@ export class TimeInput implements ComponentInterface, FormInput<string | undefin
             aria-labelledby={labelId}
             disabled={this.disabled}
             maxLength={MAX_LENGTH_TIME_INPUT}
-            name={this.name}
+            // name={this.name}
             placeholder={this.placeholder || ''}
             readonly={this.readonly}
             required={this.required}
