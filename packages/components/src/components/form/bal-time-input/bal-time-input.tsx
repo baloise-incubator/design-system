@@ -34,7 +34,7 @@ import isNil from 'lodash.isnil'
 import { isCtrlOrCommandKey, ACTION_KEYS, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { inheritAttributes } from '../../../utils/attributes'
 import { debounceEvent } from '../../../utils/helpers'
-import { formatTime } from '../bal-input/bal-input-util'
+import { formatTime } from './bal-time-input.util'
 
 @Component({
   tag: 'bal-time-input',
