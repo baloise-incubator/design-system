@@ -10,4 +10,16 @@
     padding: 0
     font-family: var(--bal-family-primary)
     +element(native)
-        +hidden-input
+        &::-webkit-datetime-edit-fields-wrapper
+            display: flex
+        &::-webkit-datetime-edit-text
+            color: var(--bal-color-primary)
+        &::-webkit-clear-button
+            display: none
+        &::-webkit-inner-spin-button
+            display: none
+        &::-webkit-calendar-picker-indicator
+            display: none
+            background: none
+        &::-webkit-datetime-edit-ampm-field
+            display: none
