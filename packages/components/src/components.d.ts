@@ -2576,17 +2576,13 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -2596,11 +2592,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Sets blur on the native `input` in `bal-time-input`. Use this method instead of the global `input.blur()`.
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
         /**
-          * Sets focus on the native `input` in `bal-time-input`. Use this method instead of the global `input.focus()`.
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -6334,7 +6330,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -6342,13 +6338,13 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when a keyboard input occurred.
+          * Emitted when the input loses focus.
          */
         "onBalBlur"?: (event: BalTimeInputCustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the input value has changed.
+          * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeInputDetail>) => void;
+        "onBalChange"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -6360,15 +6356,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeChangeDetail>) => void;
+        "onBalInput"?: (event: BalTimeInputCustomEvent<Events.BalInputTimeInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
         "onBalKeyPress"?: (event: BalTimeInputCustomEvent<KeyboardEvent>) => void;
-        /**
-          * Instructional text that shows before the input has a value.
-         */
-        "placeholder"?: string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
