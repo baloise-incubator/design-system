@@ -5,13 +5,8 @@ describe('bal-time-input', () => {
 
   it('should have value and typeable', () => {
     cy.getByTestId('basic').find('input').should('have.value', '')
-    cy.getByTestId('basic').find('input').type('1945').should('have.value', '1945')
-    cy.getByTestId('basic').find('input').clear().should('not.have.value', '1945').should('have.value', '')
-  })
-
-  it('should have placeholder', () => {
-    cy.getByTestId('basic').should('have.attr', 'placeholder', 'HH:MM')
-    cy.getByTestId('basic').should('not.have.attr', 'placeholder', 'Enter a time')
+    cy.getByTestId('basic').find('input').type('19:45').should('have.value', '19:45')
+    cy.getByTestId('basic').find('input').clear().should('not.have.value', '19:45').should('have.value', '')
   })
 
   it('should be disabled', () => {
@@ -25,9 +20,9 @@ describe('bal-time-input', () => {
   })
 
   it('should be able to reset the form', () => {
-    cy.getByTestId('reset').find('input').clear().type('23')
-    cy.getByTestId('reset').find('input').should('have.value', '23')
+    cy.getByTestId('reset').find('input').clear().type('23:33')
+    cy.getByTestId('reset').find('input').should('have.value', '23:33')
     cy.getByTestId('button-reset').click()
-    cy.getByTestId('reset').find('input').should('have.value', '1945')
+    cy.getByTestId('reset').find('input').should('have.value', '19:45')
   })
 })
