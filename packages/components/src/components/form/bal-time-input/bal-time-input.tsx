@@ -41,7 +41,6 @@ import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
-import { i18nTimeInputPlaceholder } from './bal-time-input.i18n'
 
 @Component({
   tag: 'bal-time-input',
@@ -230,7 +229,9 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     this.balInput.emit(this.inputValue)
   }
 
-  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+  private onFocus = (event: FocusEvent) => {
+    inputHandleFocus(this, event)
+  }
 
   private onBlur = (ev: FocusEvent) => {
     inputHandleBlur(this, ev)
@@ -264,6 +265,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     }
 
     const block = BEM.block('time-input')
+    const native = block.element('native')
 
     return (
       <Host
@@ -275,12 +277,13 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
       >
         <bal-input-group disabled={this.disabled || this.readonly} invalid={this.invalid}>
           <input
-            type="text"
+            type="time"
             class={{
               'input': true,
               'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
+              ...native.class(),
             }}
             ref={input => (this.nativeInput = input)}
             id={this.inputId}
@@ -289,9 +292,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
             disabled={this.disabled}
             readonly={this.readonly}
             required={this.required}
-            placeholder={`${i18nTimeInputPlaceholder[this.language].hours}:${
-              i18nTimeInputPlaceholder[this.language].minutes
-            }`}
             value={value}
             onInput={ev => this.onInput(ev as InputEvent)}
             onFocus={e => this.onFocus(e)}
