@@ -53,7 +53,6 @@ export const Basic = args => ({
   template: `<bal-time-input v-bind="args" v-model="args.value"></bal-time-input>`,
 })
 Basic.args = {
-  placeholder: 'Enter a time',
   inverted: false,
   disabled: false,
   invalid: false,
@@ -91,7 +90,6 @@ const Template = args => ({
 
 export const FieldControl = Template.bind({})
 FieldControl.args = {
-  placeholder: 'Enter a time',
   inverted: false,
   disabled: false,
   invalid: false,
