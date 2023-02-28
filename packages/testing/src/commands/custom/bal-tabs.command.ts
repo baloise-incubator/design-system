@@ -10,7 +10,7 @@ Cypress.Commands.add(
     const o = wrapOptions(options)
     return cy
       .wrapComponent(subject, o)
-      .find(selectors.tabs.tabItems, o)
+      .find(selectors.tabs.item, o)
       .then($el => {
         log('balTabsFindItems', '', $el, options)
         return $el
@@ -28,7 +28,7 @@ Cypress.Commands.add(
     const o = wrapOptions(options)
     return cy
       .wrapComponent(subject, o)
-      .find('.bal-tabs__steps__item__button__label', o)
+      .find(selectors.tabs.itemLabel, o)
       .then($el => {
         log('balTabsFindLabel', '', $el, options)
         return $el
@@ -50,17 +50,5 @@ Cypress.Commands.add(
         const dataItems = $o.map((_, el) => Cypress.$(el).attr(`data-${dataKey}`))
         expect(dataItems.get()).to.deep.eq(labels)
       })
-  },
-)
-
-Cypress.Commands.add(
-  'balTabItemShouldHaveState',
-  {
-    prevSubject: true,
-  },
-  (subject, state = 'done', options) => {
-    log('balTabItemShouldHaveState', '', subject, options)
-    const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).should('have.class', `bal-tabs__steps__item--${state}`)
   },
 )

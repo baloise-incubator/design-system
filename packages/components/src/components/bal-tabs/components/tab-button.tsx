@@ -63,7 +63,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
-      data-testid="bal-tabs-option"
+      data-testid="bal-tabs-item"
       aria-disabled={`${item.disabled}`}
       href={item.href === '' ? 'javascript:;' : item.href}
       target={item.target}

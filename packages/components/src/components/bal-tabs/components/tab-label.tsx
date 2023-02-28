@@ -20,7 +20,7 @@ export const TabLabel: FunctionalComponent<TabLabelProps> = ({ item, hasBubble, 
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('vertical').class(isVertical),
       }}
-      data-testid="bal-tabs-option-label"
+      data-testid="bal-tabs-item-label"
     >
       {item.label}
       {hasBubble ? (

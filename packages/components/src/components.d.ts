@@ -2431,9 +2431,6 @@ export namespace Components {
      * ------------------------
      * - add inverted style
      * - add interfaces for meta navbar...
-     * - add carousel turn off switch
-     * - check combi with popover and accordion
-     * - should animate integration
      */
     interface BalTabs {
         /**
@@ -3577,9 +3574,6 @@ declare global {
      * ------------------------
      * - add inverted style
      * - add interfaces for meta navbar...
-     * - add carousel turn off switch
-     * - check combi with popover and accordion
-     * - should animate integration
      */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
     }
@@ -6231,9 +6225,6 @@ declare namespace LocalJSX {
      * ------------------------
      * - add inverted style
      * - add interfaces for meta navbar...
-     * - add carousel turn off switch
-     * - check combi with popover and accordion
-     * - should animate integration
      */
     interface BalTabs {
         /**
@@ -6757,9 +6748,6 @@ declare module "@stencil/core" {
              * ------------------------
              * - add inverted style
              * - add interfaces for meta navbar...
-             * - add carousel turn off switch
-             * - check combi with popover and accordion
-             * - should animate integration
              */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
