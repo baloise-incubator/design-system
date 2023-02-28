@@ -18,6 +18,7 @@ import { getPadding, Padding } from '../../utils/style'
 /**
  * TODO's
  * ------------------------
+ * - fix component tests
  * - add inverted style
  * - add interfaces for meta navbar...
  */

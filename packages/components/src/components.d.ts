@@ -2429,6 +2429,7 @@ export namespace Components {
     /**
      * TODO's
      * ------------------------
+     * - fix component tests
      * - add inverted style
      * - add interfaces for meta navbar...
      */
@@ -3572,6 +3573,7 @@ declare global {
     /**
      * TODO's
      * ------------------------
+     * - fix component tests
      * - add inverted style
      * - add interfaces for meta navbar...
      */
@@ -6223,6 +6225,7 @@ declare namespace LocalJSX {
     /**
      * TODO's
      * ------------------------
+     * - fix component tests
      * - add inverted style
      * - add interfaces for meta navbar...
      */
@@ -6746,6 +6749,7 @@ declare module "@stencil/core" {
             /**
              * TODO's
              * ------------------------
+             * - fix component tests
              * - add inverted style
              * - add interfaces for meta navbar...
              */
