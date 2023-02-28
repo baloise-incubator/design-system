@@ -2426,6 +2426,13 @@ export namespace Components {
          */
         "expanded": boolean;
     }
+    /**
+     * TODO's
+     * ------------------------
+     * - add inverted style
+     * - add interfaces for meta navbar...
+     * - add carousel turn off switch
+     */
     interface BalTabs {
         /**
           * If `true` a light border is shown for the tabs.
@@ -3559,6 +3566,13 @@ declare global {
         prototype: HTMLBalTableElement;
         new (): HTMLBalTableElement;
     };
+    /**
+     * TODO's
+     * ------------------------
+     * - add inverted style
+     * - add interfaces for meta navbar...
+     * - add carousel turn off switch
+     */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
     }
     var HTMLBalTabsElement: {
@@ -6198,6 +6212,13 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
     }
+    /**
+     * TODO's
+     * ------------------------
+     * - add inverted style
+     * - add interfaces for meta navbar...
+     * - add carousel turn off switch
+     */
     interface BalTabs {
         /**
           * If `true` a light border is shown for the tabs.
@@ -6709,6 +6730,13 @@ declare module "@stencil/core" {
             "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
+            /**
+             * TODO's
+             * ------------------------
+             * - add inverted style
+             * - add interfaces for meta navbar...
+             * - add carousel turn off switch
+             */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;

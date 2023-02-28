@@ -21,6 +21,7 @@ import { getPadding, Padding } from '../../utils/style'
  * - add inverted style
  * - add interfaces for meta navbar...
  * - add carousel turn off switch
+ * - check combi with popover and accordion
  */
 
 @Component({
@@ -472,15 +473,18 @@ export class Tabs implements Loggable, BalConfigObserver {
   }
 
   private getLineSize = (element: HTMLElement, padding: Padding) => {
-    const isVertical = this.parseVertical() === true
+    if (element) {
+      const isVertical = this.parseVertical() === true
 
-    if (isVertical) {
-      return element.clientHeight
-    } else {
-      const clientWidth = element.clientWidth
-      const paddingX = padding.left + padding.right
-      return clientWidth - paddingX
+      if (isVertical) {
+        return element.clientHeight
+      } else {
+        const clientWidth = element.clientWidth
+        const paddingX = padding.left + padding.right
+        return clientWidth - paddingX
+      }
     }
+    return 0
   }
 
   private getOffset = (element: HTMLElement, padding: Padding) => {
