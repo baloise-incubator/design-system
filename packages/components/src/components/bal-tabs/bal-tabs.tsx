@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { debounceEvent, deepReady, isDescendant, parentDidAnimate, raf, transitionEndAsync } from '../../utils/helpers'
+import { debounceEvent, deepReady, parentDidAnimate, raf, transitionEndAsync } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { Props, Events } from '../../types'
