@@ -11,7 +11,7 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -136,11 +136,6 @@ export class Radio implements ComponentInterface, Loggable {
   @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
 
   /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
-
-  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -224,7 +219,6 @@ export class Radio implements ComponentInterface, Loggable {
     }
 
     this.checked = this.nativeInput.checked
-    this.balClick.emit()
     this.nativeInput.focus()
   }
 

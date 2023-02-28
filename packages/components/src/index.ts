@@ -23,8 +23,16 @@ export * from './components/notice/bal-modal/bal-modal.type'
  * Utils
  */
 export { initializeBaloiseDesignSystem } from './initialize'
-export * from './components/form/bal-select/utils/bal-option.util'
-export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './utils/helpers'
+export { NewBalOptionValue, NewBalSingleOptionValue } from './components/form/bal-select/utils/bal-option.util'
+export {
+  waitForComponent,
+  shallowReady,
+  deepReady,
+  wait,
+  getAppRoot,
+  componentOnReady,
+  isDescendant,
+} from './utils/helpers'
 export { isPlatform, getPlatforms, Platforms, PlatformSrcSet } from './utils/platform'
 export { isBrowser, hasTouchSupport } from './utils/browser'
 export { scrollToFirstInvalidField } from './utils/form'

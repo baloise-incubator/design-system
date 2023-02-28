@@ -16,6 +16,17 @@ import { Attributes } from "./utils/attributes";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
+export { Events, Props } from "./types";
+export { BalMode } from "./utils/config";
+export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+export { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
+export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+export { Attributes } from "./utils/attributes";
+export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
+export { BalStepOption } from "./components/bal-steps/bal-step.type";
+export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -65,7 +76,7 @@ export namespace Components {
          */
         "animated": boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode": BalMode;
         "ready": boolean;
@@ -311,6 +322,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -321,7 +336,7 @@ export namespace Components {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView": 'auto' | number;
+        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
         "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
@@ -1088,7 +1103,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -1522,7 +1537,7 @@ export namespace Components {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
         "label": string;
         "link"?: string;
@@ -1588,7 +1603,7 @@ export namespace Components {
         /**
           * Color of the menu list card background
          */
-        "color": 'white' | 'grey';
+        "color": Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -3754,7 +3769,7 @@ declare namespace LocalJSX {
          */
         "animated"?: boolean;
         /**
-          * Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `global.components.sass`.
+          * @deprecated Mode defines how the styles are loaded. With `css` each component loads his own styles and with `sass` the component styles needs to be imported with the file `components.sass`.
          */
         "mode"?: BalMode;
         "onBalAppLoad"?: (event: BalAppCustomEvent<boolean>) => void;
@@ -4016,6 +4031,10 @@ declare namespace LocalJSX {
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
@@ -4026,7 +4045,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView"?: 'auto' | number;
+        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
         /**
           * Emitted when a option got selected.
          */
@@ -4139,10 +4158,6 @@ declare namespace LocalJSX {
           * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: BalCheckboxCustomEvent<Events.BalCheckboxChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalCheckboxCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -4326,17 +4341,21 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalDatepickerCustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the icon has clicked.
+         */
+        "onBalIconClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when a keyboard input occurred.
          */
         "onBalInput"?: (event: BalDatepickerCustomEvent<Events.BalDatepickerInputDetail>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalDatepickerCustomEvent<MouseEvent>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -4616,10 +4635,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalFileUploadCustomEvent<File[]>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
-        /**
           * Triggers when a file is added.
          */
         "onBalFilesAdded"?: (event: BalFileUploadCustomEvent<File[]>) => void;
@@ -4631,6 +4646,10 @@ declare namespace LocalJSX {
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalFileUploadCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalInputClick"?: (event: BalFileUploadCustomEvent<MouseEvent>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
@@ -4810,7 +4829,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted with addition of Belgian enterprisenumber and IBAN. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321') Formatting for 'be-enterprise-number': ('1234.567.890') Formatting for 'be-iban': ('BE68 5390 0754 7034')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -4846,7 +4865,7 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalInputCustomEvent<Events.BalInputChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
+          * @deprecated Emitted when the input has clicked.
          */
         "onBalClick"?: (event: BalInputCustomEvent<MouseEvent>) => void;
         /**
@@ -4949,10 +4968,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: BalInputSliderCustomEvent<Events.BalInputSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalInputSliderCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -5289,7 +5304,7 @@ declare namespace LocalJSX {
         "metaValue"?: string;
     }
     interface BalNavigationLevelBlock {
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         "label"?: string;
         "link"?: string;
         "linkLabel"?: string;
@@ -5354,7 +5369,7 @@ declare namespace LocalJSX {
         /**
           * Color of the menu list card background
          */
-        "color"?: 'white' | 'grey';
+        "color"?: Props.BalNavigationLevelBlockColor;
         /**
           * Optional headline of the menu list card
          */
@@ -5512,10 +5527,6 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onBalChange"?: (event: BalNumberInputCustomEvent<Events.BalInputNumberChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalNumberInputCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -5718,10 +5729,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalRadioCustomEvent<Events.BalRadioChangeDetail>) => void;
         /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalRadioCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
@@ -5862,10 +5869,6 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: BalSelectCustomEvent<Events.BalSelectChangeDetail>) => void;
         /**
-          * Emitted when the input got clicked.
-         */
-        "onBalClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the input has focus.
          */
         "onBalFocus"?: (event: BalSelectCustomEvent<FocusEvent>) => void;
@@ -5873,6 +5876,10 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onBalInput"?: (event: BalSelectCustomEvent<string>) => void;
+        /**
+          * Emitted when the input got clicked.
+         */
+        "onBalInputClick"?: (event: BalSelectCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus and key from the keyboard go hit.
          */
@@ -6385,10 +6392,6 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed..
          */
         "onBalChange"?: (event: BalTextareaCustomEvent<Events.BalTextareaChangeDetail>) => void;
-        /**
-          * Emitted when the input has clicked.
-         */
-        "onBalClick"?: (event: BalTextareaCustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */

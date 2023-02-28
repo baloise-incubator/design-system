@@ -22,7 +22,7 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
@@ -114,11 +114,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * Emitted when the value property has changed.
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -222,8 +217,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
 
     if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
       this.checked = !this.checked
+      this.nativeInput?.focus()
       this.balChange.emit(this.checked)
-      this.balClick.emit(ev)
       ev.preventDefault()
     } else {
       stopEventBubbling(ev)

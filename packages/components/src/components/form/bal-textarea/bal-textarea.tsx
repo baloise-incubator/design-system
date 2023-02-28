@@ -28,7 +28,7 @@ import {
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Props, Events } from '../../../types'
+import { Events, Props } from '../../../types'
 
 @Component({
   tag: 'bal-textarea',
@@ -159,11 +159,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Emitted when a keyboard input occurred.
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when a keyboard key has pressed.
