@@ -174,3 +174,9 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   return el.removeEventListener(eventName, callback, opts)
 }
+
+export const parentDidAnimate = async (event: UIEvent | undefined, el: HTMLElement, callback: () => void) => {
+  if (event && event.target && el && el !== event.target && isDescendant(event.target as HTMLElement, el)) {
+    callback()
+  }
+}

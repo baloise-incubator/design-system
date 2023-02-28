@@ -2432,6 +2432,8 @@ export namespace Components {
      * - add inverted style
      * - add interfaces for meta navbar...
      * - add carousel turn off switch
+     * - check combi with popover and accordion
+     * - should animate integration
      */
     interface BalTabs {
         /**
@@ -2478,6 +2480,10 @@ export namespace Components {
           * Steps can be passed as a property or through HTML markup.
          */
         "options": BalTabOption[];
+        /**
+          * If `true` the tabs have a carousel if they need more space than provided.
+         */
+        "overflow": boolean;
         "renderLine": () => Promise<void>;
         /**
           * Go to tab with the given value
@@ -3572,6 +3578,8 @@ declare global {
      * - add inverted style
      * - add interfaces for meta navbar...
      * - add carousel turn off switch
+     * - check combi with popover and accordion
+     * - should animate integration
      */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
     }
@@ -3764,6 +3772,8 @@ declare namespace LocalJSX {
           * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: BalAccordionCustomEvent<Events.BalAccordionChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalAccordionCustomEvent<Events.BalAccordionWillAnimateDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -5108,6 +5118,7 @@ declare namespace LocalJSX {
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
+        "onBalDidAnimate"?: (event: BalListItemCustomEvent<Events.BaListItemDidAnimateDetail>) => void;
         /**
           * Emitted when the state of the group is changing
          */
@@ -5116,6 +5127,7 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalListItemCustomEvent<MouseEvent>) => void;
+        "onBalWillAnimate"?: (event: BalListItemCustomEvent<Events.BaListItemWillAnimateDetail>) => void;
         /**
           * If `true` the list item has a selected theme
          */
@@ -5641,7 +5653,9 @@ declare namespace LocalJSX {
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalPopoverCustomEvent<Events.BalPopoverChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
+        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
          */
@@ -6218,6 +6232,8 @@ declare namespace LocalJSX {
      * - add inverted style
      * - add interfaces for meta navbar...
      * - add carousel turn off switch
+     * - check combi with popover and accordion
+     * - should animate integration
      */
     interface BalTabs {
         /**
@@ -6260,10 +6276,16 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: BalTabsCustomEvent<Events.BalTabsChangeDetail>) => void;
+        "onBalDidAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsDidAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalTabsCustomEvent<Events.BalTabsWillAnimateDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */
         "options"?: BalTabOption[];
+        /**
+          * If `true` the tabs have a carousel if they need more space than provided.
+         */
+        "overflow"?: boolean;
         /**
           * If `true` the tabs are shown as a select component on mobile
          */
@@ -6736,6 +6758,8 @@ declare module "@stencil/core" {
              * - add inverted style
              * - add interfaces for meta navbar...
              * - add carousel turn off switch
+             * - check combi with popover and accordion
+             * - should animate integration
              */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;

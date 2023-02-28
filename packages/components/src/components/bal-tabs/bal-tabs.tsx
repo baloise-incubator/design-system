@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { debounceEvent, deepReady, raf } from '../../utils/helpers'
+import { debounceEvent, deepReady, isDescendant, parentDidAnimate, raf, transitionEndAsync } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { Props, Events } from '../../types'
@@ -20,8 +20,6 @@ import { getPadding, Padding } from '../../utils/style'
  * ------------------------
  * - add inverted style
  * - add interfaces for meta navbar...
- * - add carousel turn off switch
- * - check combi with popover and accordion
  */
 
 @Component({
@@ -39,6 +37,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   private currentRaf: number | undefined
 
   @State() isMobile = isPlatform('mobile')
+  @State() isTablet = isPlatform('tablet')
   @State() store: BalTabOption[] = []
   @State() animated = true
 
@@ -77,6 +76,11 @@ export class Tabs implements Loggable, BalConfigObserver {
    * @deprecated If `true` the tabs is a block element and uses 100% of the width
    */
   @Prop() fullwidth = false
+
+  /**
+   * If `true` the tabs have a carousel if they need more space than provided.
+   */
+  @Prop() overflow = true
 
   /**
    * Steps can be passed as a property or through HTML markup.
@@ -160,7 +164,17 @@ export class Tabs implements Loggable, BalConfigObserver {
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Events.BalTabsChangeDetail>
+  @Event() balChange!: EventEmitter<Events.BalTabsChangeDetail>
+
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalTabsWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalTabsDidAnimateDetail>
 
   /**
    * LIFECYCLE
@@ -201,28 +215,39 @@ export class Tabs implements Loggable, BalConfigObserver {
   async resizeHandler() {
     this.resizeWidthHandler(() => {
       this.isMobile = isPlatform('mobile')
+      this.isTablet = isPlatform('tablet')
       this.animateLine()
       // this.platform = getPlatforms()
       // this.moveLine(this.getTargetElement(this.value))
     })
   }
 
-  @Listen('balPopoverPrepare', { target: 'window' })
-  async popoverHandler() {
-    // this.platform = getPlatforms()
-    // this.moveLine(this.getTargetElement(this.value))
+  @Listen('balWillAnimate', { target: 'window' })
+  listenToWillAnimate(event: UIEvent) {
+    parentDidAnimate(event, this.el, () => this.animateLine())
   }
 
-  /**
-   * @Internal need this to animate the line when the accordion has opened
-   */
-  @Listen('balChange', { target: 'window' })
-  async accordionChangeHandler(event: Events.BalAccordionChange) {
-    const accordion = this.el.closest('bal-accordion')
-    if (event.target === accordion) {
-      // this.moveLine(this.getTargetElement(this.value))
-    }
+  @Listen('balDidAnimate', { target: 'window' })
+  listenToDidAnimate(event: UIEvent) {
+    parentDidAnimate(event, this.el, () => this.animateLine())
   }
+
+  // @Listen('balPopoverPrepare', { target: 'window' })
+  // async popoverHandler() {
+  //   // this.platform = getPlatforms()
+  //   // this.moveLine(this.getTargetElement(this.value))
+  // }
+
+  // /**
+  //  * @Internal need this to animate the line when the accordion has opened
+  //  */
+  // @Listen('balChange', { target: 'window' })
+  // async accordionChangeHandler(event: Events.BalAccordionChange) {
+  //   const accordion = this.el.closest('bal-accordion')
+  //   if (event.target === accordion) {
+  //     // this.moveLine(this.getTargetElement(this.value))
+  //   }
+  // }
 
   // connectedCallback() {
   //   this.platform = getPlatforms()
@@ -450,6 +475,13 @@ export class Tabs implements Loggable, BalConfigObserver {
     if ((this.vertical as any) === 'false' || (this.vertical as any) === undefined) {
       return false
     }
+    if (this.vertical === 'mobile') {
+      return this.isMobile
+    }
+
+    if (this.vertical === 'tablet') {
+      return this.isTablet || this.isMobile
+    }
 
     return this.vertical
   }
@@ -491,7 +523,6 @@ export class Tabs implements Loggable, BalConfigObserver {
     const isVertical = this.parseVertical() === true
 
     if (isVertical) {
-      console.log('getOffset', element, element.offsetTop)
       if (element.offsetTop) {
         return element.offsetTop
       }
@@ -510,6 +541,10 @@ export class Tabs implements Loggable, BalConfigObserver {
   }
 
   private animateLine = async () => {
+    if (!this.shouldAnimate()) {
+      return
+    }
+
     if (this.currentRaf !== undefined) {
       cancelAnimationFrame(this.currentRaf)
     }
@@ -517,8 +552,12 @@ export class Tabs implements Loggable, BalConfigObserver {
     raf(async () => {
       await deepReady(this.el, true)
 
-      this.currentRaf = raf(() => {
+      this.currentRaf = raf(async () => {
         const target = this.getTargetElement(this.value)
+        if (!target) {
+          return
+        }
+
         const padding = getPadding(target)
         const size = this.getLineSize(target, padding)
         const offset = this.getOffset(target, padding)
@@ -526,6 +565,8 @@ export class Tabs implements Loggable, BalConfigObserver {
         const lineElement = this.getLineElement()
         if (lineElement) {
           const isVertical = this.parseVertical() === true
+          this.balWillAnimate.emit()
+          const waitForTransition = transitionEndAsync(lineElement, 300)
 
           if (isVertical) {
             lineElement.style.setProperty('transform', `translateY(${offset}px)`)
@@ -546,6 +587,9 @@ export class Tabs implements Loggable, BalConfigObserver {
               const containerMaxWidth = carouselElement.clientWidth
               borderElement.style.setProperty('width', `${containerMaxWidth}px`)
             }
+
+            await waitForTransition
+            this.balDidAnimate.emit()
           }
         }
       })
@@ -610,7 +654,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
-    const hasCarousel = !isVertical
+    const hasCarousel = !isVertical && this.overflow
 
     const isSelect = isMobile && this.selectOnMobile
 

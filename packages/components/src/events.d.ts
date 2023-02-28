@@ -2,6 +2,12 @@ export namespace Events {
   export type BalAccordionChangeDetail = boolean
   export type BalAccordionChange = CustomEvent<BalAccordionChangeDetail>
 
+  export type BalAccordionWillAnimateDetail = void
+  export type BalAccordionWillAnimate = CustomEvent<BalAccordionWillAnimateDetail>
+
+  export type BalAccordionDidAnimateDetail = void
+  export type BalAccordionDidAnimate = CustomEvent<BalAccordionDidAnimateDetail>
+
   export type BalNavigationLevelClickDetail = MouseEvent
   export type BalNavigationLEvelCloseClick = CustomEvent<BalNavigationLevelClickDetail>
 
@@ -10,6 +16,12 @@ export namespace Events {
 
   export type BalPopoverChangeDetail = boolean
   export type BalPopoverChange = CustomEvent<BalPopoverChangeDetail>
+
+  export type BalPopoverWillAnimateDetail = void
+  export type BalPopoverWillAnimate = CustomEvent<BalPopoverWillAnimateDetail>
+
+  export type BalPopoverDidAnimateDetail = void
+  export type BalPopoverDidAnimate = CustomEvent<BalPopoverDidAnimateDetail>
 
   export type BalCheckboxChangeDetail = boolean
   export type BalCheckboxChange = CustomEvent<BalCheckboxChangeDetail>
@@ -57,9 +69,24 @@ export namespace Events {
   export type BalTabsChangeDetail = string
   export type BalTabsChange = CustomEvent<BalTabsChangeDetail>
 
+  export type BalTabsChangeDetail = boolean
+  export type BalTabsChange = CustomEvent<BalTabsChangeDetail>
+
+  export type BalTabsWillAnimateDetail = void
+  export type BalTabsWillAnimate = CustomEvent<BalTabsWillAnimateDetail>
+
+  export type BalTabsDidAnimateDetail = void
+  export type BalTabsDidAnimate = CustomEvent<BalTabsDidAnimateDetail>
+
   export type BalCarouselChangeDetail = number | undefined
   export type BalCarouselChange = CustomEvent<BalCarouselChangeDetail>
 
   export type BalPaginationChangeDetail = number
   export type BalPaginationChange = CustomEvent<BalPaginationChangeDetail>
+
+  export type BaListItemWillAnimateDetail = void
+  export type BaListItemWillAnimate = CustomEvent<BaListItemWillAnimateDetail>
+
+  export type BaListItemDidAnimateDetail = void
+  export type BaListItemDidAnimate = CustomEvent<BaListItemDidAnimateDetail>
 }
