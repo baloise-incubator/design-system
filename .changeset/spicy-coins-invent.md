@@ -43,6 +43,6 @@ export class ExampleComponent {
 Label can be also passed by function using attribute `html`, which is type string or a fuction.
 
 ```typescript
-  options = [ newBalCheckboxOption({ name:"checkbox-example", value:"1", html:  }) ]
+  options = [ newBalCheckboxOption({ name:"checkbox-example", value:"1", html: () => 'Label 1' }) ]
 }
 ```
