@@ -2,7 +2,7 @@
 '@baloise/design-system-components': minor
 ---
 
-We introduced a new way of adding a options to the bal-radio-group and bal-checkbox-group by introducing the options property in which options can be passed using a Javascript.
+We introduced a new way of adding a options to the bal-radio-group and bal-checkbox-group by introducing the `options` property in which options can be passed using a Javascript.
 
 **bal-radio-group**
 
