@@ -13,7 +13,11 @@
         &::-webkit-datetime-edit-fields-wrapper
             display: flex
         &::-webkit-datetime-edit-text
-            color: var(--bal-color-primary)
+            color: var(--bal-color-blue-3)
+        &::-webkit-datetime-edit-hour-field
+            color: var(--bal-color-blue-3)
+        &::-webkit-datetime-edit-minute-field
+            color: var(--bal-color-blue-3)
         &::-webkit-clear-button
             display: none
         &::-webkit-inner-spin-button
@@ -23,3 +27,24 @@
             background: none
         &::-webkit-datetime-edit-ampm-field
             display: none
+        &.has-focus, &.has-value
+            &::-webkit-datetime-edit-text
+                color: var(--bal-color-primary)
+            &::-webkit-datetime-edit-hour-field
+                color: var(--bal-color-primary)
+            &::-webkit-datetime-edit-minute-field
+                color: var(--bal-color-primary)
+        &.is-disabled
+            &::-webkit-datetime-edit-text
+                color: var(--bal-color-grey-5)
+            &::-webkit-datetime-edit-hour-field
+                color: var(--bal-color-grey-5)
+            &::-webkit-datetime-edit-minute-field
+                color: var(--bal-color-grey-5)
+            &.has-value
+                &::-webkit-datetime-edit-text
+                    color: var(--bal-color-grey-4)
+                &::-webkit-datetime-edit-hour-field
+                    color: var(--bal-color-grey-4)
+                &::-webkit-datetime-edit-minute-field
+                    color: var(--bal-color-grey-4)

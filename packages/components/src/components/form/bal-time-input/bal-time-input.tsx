@@ -283,6 +283,8 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
               'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
+              'has-focus': this.hasFocus,
+              'has-value': this.value !== '' && this.value !== undefined,
               ...native.class(),
             }}
             ref={input => (this.nativeInput = input)}
