@@ -36,6 +36,13 @@ import { newBalCheckboxOption } from "@baloise/design-system-components";
   templateUrl: './example-component.component.html',
 })
 export class ExampleComponent {
-  options = [ newBalCheckboxOption({ name:"checkbox-example", label:"Label 1",  value:"1" }), newBalCheckboxOption({ name:"checkbox-example", label:"Label 2",  value:"2" }) ]
+  options = [ newBalCheckboxOption({ name:"checkbox-example", value:"1", html: 'Label 1' }), newBalCheckboxOption({ name:"checkbox-example", value:"2", html: 'Label 2' }) ]
+}
+```
+
+Label can be also passed by function using attribute `html`, which is type string or a fuction.
+
+```typescript
+  options = [ newBalCheckboxOption({ name:"checkbox-example", value:"1", html:  }) ]
 }
 ```
