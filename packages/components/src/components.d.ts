@@ -6,8 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
-import { BalMode } from "./utils/config";
+import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalConfigState as BalConfigState1 } from "./utils/config/config.types";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -29,6 +30,7 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -306,6 +308,10 @@ export namespace Components {
          */
         "controls": 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow": boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky": boolean;
@@ -316,7 +322,7 @@ export namespace Components {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView": 'auto' | number;
+        "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
         "next": (steps?: number) => Promise<void>;
         /**
           * PUBLIC METHODS ------------------------------------------------------
@@ -538,6 +544,7 @@ export namespace Components {
           * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
+        "configChanged": (state: BalConfigState1) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -780,6 +787,7 @@ export namespace Components {
         "subject"?: string;
     }
     interface BalFieldLabel {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -906,6 +914,7 @@ export namespace Components {
         "value": File[];
     }
     interface BalFooter {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the language selection will be hidden.
          */
@@ -973,6 +982,7 @@ export namespace Components {
           * Text for the close button.
          */
         "closeLabel"?: string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Closes the hint box.
          */
@@ -999,6 +1009,7 @@ export namespace Components {
           * The theme type of the button.
          */
         "color": Props.BalIconColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the icon has display inline style
          */
@@ -1224,6 +1235,7 @@ export namespace Components {
         "value"?: string | number;
     }
     interface BalInputStepper {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1300,6 +1312,7 @@ export namespace Components {
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the list item can be hovered
          */
@@ -1701,6 +1714,7 @@ export namespace Components {
         "color": Props.BalNotificationColor;
     }
     interface BalNumberInput {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -3970,6 +3984,10 @@ declare namespace LocalJSX {
          */
         "controls"?: 'small' | 'large' | 'dots' | 'tabs' | 'none';
         /**
+          * If `true` items move under the controls, instead of having a gap
+         */
+        "controlsOverflow"?: boolean;
+        /**
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
@@ -3980,7 +3998,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
-        "itemsPerView"?: 'auto' | number;
+        "itemsPerView"?: 'auto' | 1 | 2 | 3 | 4;
         /**
           * Emitted when a option got selected.
          */
