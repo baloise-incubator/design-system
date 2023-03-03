@@ -6,8 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Events, Props } from "./types";
-import { BalMode } from "./utils/config";
+import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
+import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
@@ -41,6 +42,7 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -416,6 +418,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOption": () => Promise<BalCheckboxOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -427,6 +433,10 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * Label of the radio item.
+         */
+        "label": string;
         /**
           * If `true` the checkbox has no label
          */
@@ -470,6 +480,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalCheckboxOption | undefined>;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface"?: Props.BalCheckboxGroupInterface;
@@ -477,6 +491,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */
@@ -558,6 +576,7 @@ export namespace Components {
           * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -800,6 +819,7 @@ export namespace Components {
         "subject"?: string;
     }
     interface BalFieldLabel {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -926,6 +946,7 @@ export namespace Components {
         "value": File[];
     }
     interface BalFooter {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the language selection will be hidden.
          */
@@ -993,6 +1014,7 @@ export namespace Components {
           * Text for the close button.
          */
         "closeLabel"?: string;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Closes the hint box.
          */
@@ -1019,6 +1041,7 @@ export namespace Components {
           * The theme type of the button.
          */
         "color": Props.BalIconColor;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the icon has display inline style
          */
@@ -1244,6 +1267,7 @@ export namespace Components {
         "value"?: string | number;
     }
     interface BalInputStepper {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1320,6 +1344,7 @@ export namespace Components {
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true` the list item can be hovered
          */
@@ -1721,6 +1746,7 @@ export namespace Components {
         "color": Props.BalNotificationColor;
     }
     interface BalNumberInput {
+        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1934,6 +1960,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * Options of the tab like label, value etc.
+         */
+        "getOption": () => Promise<BalRadioOption>;
+        /**
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
@@ -1990,6 +2020,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Find the options properties by its value
+         */
+        "getOptionByValue": (value: string) => Promise<BalRadioOption | undefined>;
+        /**
           * Defines the layout of the radio button
          */
         "interface"?: Props.BalRadioGroupInterface;
@@ -2001,6 +2035,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -4163,6 +4201,10 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
+          * Label of the radio item.
+         */
+        "label"?: string;
+        /**
           * If `true` the checkbox has no label
          */
         "labelHidden"?: boolean;
@@ -4220,6 +4262,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalCheckboxOption[];
         /**
           * If `true`, the user cannot interact with the checkboxes.
          */
@@ -5810,6 +5856,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalInput"?: (event: BalRadioGroupCustomEvent<Events.BalRadioGroupChangeDetail>) => void;
+        /**
+          * Steps can be passed as a property or through HTML markup.
+         */
+        "options"?: BalRadioOption[];
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */

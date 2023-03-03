@@ -18,6 +18,8 @@ export * from './components/bal-tabs/bal-tab.type'
 export * from './components/bal-steps/bal-step.type'
 export * from './components/form/bal-file-upload/bal-file-upload.type'
 export * from './components/notice/bal-modal/bal-modal.type'
+export * from './components/form/bal-checkbox/bal-checkbox.type'
+export * from './components/form/bal-radio/bal-radio.type'
 
 /**
  * Utils
@@ -26,6 +28,7 @@ export { initializeBaloiseDesignSystem } from './initialize'
 export { NewBalOptionValue, NewBalSingleOptionValue } from './components/form/bal-select/utils/bal-option.util'
 export {
   waitForComponent,
+  waitForDesignSystem,
   shallowReady,
   deepReady,
   wait,
@@ -39,6 +42,8 @@ export { scrollToFirstInvalidField } from './utils/form'
 export { BodyScrollBlocker } from './utils/toggle-scrolling-body'
 export { newBalStepOption } from './components/bal-steps/bal-step.util'
 export { newBalTabOption } from './components/bal-tabs/bal-tab.util'
+export { newBalCheckboxOption } from './components/form/bal-checkbox/utils/bal-checkbox.util'
+export { newBalRadioOption } from './components/form/bal-radio/utils/bal-radio.util'
 
 /**
  * Controllers
