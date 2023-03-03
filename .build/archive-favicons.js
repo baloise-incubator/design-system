@@ -36,7 +36,7 @@ const main = async () => {
   archive.directory('icons/green', true)
   archive.directory('icons/purple', true)
   archive.directory('icons/red', true)
-  archive.directory('icons/tangerine', true)
+  archive.directory('icons/yellow', true)
 
   archive.finalize()
 }
