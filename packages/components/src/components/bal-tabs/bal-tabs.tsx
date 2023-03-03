@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { debounceEvent, deepReady, parentDidAnimate, raf, transitionEndAsync } from '../../utils/helpers'
+import { debounceEvent, deepReady, isChildOfEventTarget, raf, transitionEndAsync } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { Props, Events } from '../../types'
@@ -225,12 +225,12 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   @Listen('balWillAnimate', { target: 'window' })
   listenToWillAnimate(event: UIEvent) {
-    parentDidAnimate(event, this.el, () => this.animateLine())
+    isChildOfEventTarget(event, this.el, () => this.animateLine())
   }
 
   @Listen('balDidAnimate', { target: 'window' })
   listenToDidAnimate(event: UIEvent) {
-    parentDidAnimate(event, this.el, () => this.animateLine())
+    isChildOfEventTarget(event, this.el, () => this.animateLine())
   }
 
   // @Listen('balPopoverPrepare', { target: 'window' })
