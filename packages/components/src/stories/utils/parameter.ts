@@ -1,14 +1,25 @@
 import { paramCase } from 'param-case'
 import { pascalCase } from 'pascal-case'
 import { htmlBeautify } from './html'
-import ComponentJson from '../assets/data/components.json'
+import ComponentJson from '../../../public/assets/data/components.json'
 
 export interface SourceCodeOptions {
   vue?: string
 }
 
-export const withSourceCode = (code: string, argTypes = {}, args = {}, comps = [], options: SourceCodeOptions = {}) => {
-  const template = htmlBeautify(filterVueSpecific(code, argTypes, args))
+export const withSourceCode = (
+  code: string,
+  argTypes = {},
+  args = {},
+  comps = [],
+  options: SourceCodeOptions = {},
+  beautify = true,
+) => {
+  let template = filterVueSpecific(code, argTypes, args)
+  if (beautify) {
+    template = htmlBeautify(template)
+  }
+
   return {
     docs: {
       source: {
@@ -151,7 +162,11 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
       .replace(` :class="selectedB ? 'has-background-blue-light':''"`, '')
       .replace(' :expanded="args.expanded"', (args as any).expanded === true ? ' expanded' : '')
       .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
+      .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
+      .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
       .replace(' :inverted="args.inverted"', (args as any).inverted === true ? ' inverted' : '')
+      .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
+      .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
       .replace(
         ` :color="args.invalid ? 'danger' : 'hint'"`,

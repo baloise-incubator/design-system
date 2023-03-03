@@ -27,9 +27,19 @@
               <bal-form-col>
                 <bal-field required>
                   <bal-field-control>
-                    <bal-radio-group data-testid="reset" value="female">
+                    <bal-radio-group data-testid="reset-radio" value="female">
                       <bal-radio value="male">Male</bal-radio>
                       <bal-radio value="female">Female</bal-radio>
+                    </bal-radio-group>
+                  </bal-field-control>
+                </bal-field>
+              </bal-form-col>
+              <bal-form-col>
+                <bal-field required>
+                  <bal-field-control>
+                    <bal-radio-group data-testid="reset-radio-select-buttons" interface="select-button" value="no">
+                      <bal-radio value="yes">Yes</bal-radio>
+                      <bal-radio value="no">No</bal-radio>
                     </bal-radio-group>
                   </bal-field-control>
                 </bal-field>
@@ -49,6 +59,36 @@
             <bal-radio value="3">Label 3</bal-radio>
             <bal-radio value="4" disabled>Label Disabled</bal-radio>
           </bal-radio-group>
+        </section>
+        <bal-heading>Combi</bal-heading>
+        <section>
+          <bal-radio-group data-testid="combi" value="true" vertical>
+            <bal-radio value="true">Label TRUE</bal-radio>
+            <bal-input placeholder="Placeholder"></bal-input>
+            <bal-radio value="false">Label FALSE</bal-radio>
+            <bal-input placeholder="Placeholder"></bal-input>
+          </bal-radio-group>
+        </section>
+
+        <bal-heading>Options</bal-heading>
+        <section>
+          <bal-radio-group id="options-test" data-testid="options"></bal-radio-group>
+          <script>
+            const radioGroupElement = document.getElementById('options-test')
+            radioGroupElement.options = [
+              {
+                value: '1',
+                name: 'test',
+                label: 'Label 1',
+              },
+              {
+                value: '2',
+                name: 'test',
+                label: 'Label 2',
+              },
+            ]
+            radioGroupElement.value = '1'
+          </script>
         </section>
       </main>
     </bal-doc-app>

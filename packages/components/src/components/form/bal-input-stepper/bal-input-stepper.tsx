@@ -145,7 +145,11 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
     detachComponentToConfig(this)
   }
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
   }
@@ -246,6 +250,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           type="text"
           value={this.value}
           name={this.name}
+          tabindex="-1"
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
           aria-labelledby={labelId}

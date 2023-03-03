@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor'
   /* tslint:disable-next-line:directive-selector */
   selector: '<VALUE_ACCESSOR_SELECTORS>',
   host: {
-    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event.detail)',
+    '(<VALUE_ACCESSOR_EVENT>)': 'handleChangeEvent($event)',
   },
   providers: [
     {
@@ -22,7 +22,7 @@ export class CheckboxValueAccessor extends ValueAccessor {
     super(el)
   }
 
-  writeValue(value: any) {
+  override writeValue(value: any) {
     this.el.nativeElement.checked = this.lastValue = value == null ? false : value
   }
 }

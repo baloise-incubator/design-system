@@ -34,20 +34,20 @@ export class DocTokensBorderShadow implements ComponentInterface {
                   <td style={{ verticalAlign: 'top' }}>
                     <div
                       style={{ height: '48px', width: '80px' }}
-                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-red-1`}
+                      class={`has-shadow${`-${c.name}`} mt-x-small has-background-purple-2`}
                     ></div>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="is-bold is-size-large mt-none mb-x-small">{c.name}</p>
+                    <p class="has-text-weight-bold is-size-large mt-none mb-x-small">{c.name}</p>
                     <p class="m-none is-size-small">{c.value.description}</p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal is-bold">
+                    <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
                       var(--bal-shadow{`-${c.name}`})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
-                    <p class="mt-none mb-x-small is-size-small is-bold py-xx-small">{c.value.value}</p>
+                    <p class="mt-none mb-x-small is-size-small has-text-weight-bold py-xx-small">{c.value.value}</p>
                   </td>
                 </tr>
               ))}

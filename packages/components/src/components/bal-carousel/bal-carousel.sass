@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 @import './bal-carousel.vars'
 
 .bal-carousel
@@ -30,7 +30,7 @@
 
 .bal-carousel__item
   text-align: center
-  font-size: 18px
+  font-size: var(--bal-size-large)
   min-height: 2rem
   display: flex
   justify-content: center
@@ -66,6 +66,18 @@
   &--items-per-view-auto
     .bal-carousel__item
       width: auto
+  &--items-per-view-1
+    .bal-carousel__item
+      width: 100%
+  &--items-per-view-2
+    .bal-carousel__item
+      width: 50%
+  &--items-per-view-3
+    .bal-carousel__item
+      width: 33.3333%
+  &--items-per-view-4
+    .bal-carousel__item
+      width: 25%
 
 .bal-carousel--card
   .bal-carousel__inner--shadow-left::before,
@@ -225,14 +237,13 @@
     pointer-events: none
   .bal-carousel__item__button__label
     font-weight: var(--bal-weight-bold)
-    color: var(--bal-color-primary)
+    color: var(--bal-color-text-primary)
     font-size: var(--bal-size-normal)
     hyphens: auto
     height: 56px
     overflow: hidden
     line-height: 1.15rem
     word-break: break-word
-
 
 .bal-carousel__controls--large
   +mobile
@@ -268,4 +279,3 @@
   .bal-carousel__controls__button--hidden
     display: none !important
     visibility: hidden !important
-

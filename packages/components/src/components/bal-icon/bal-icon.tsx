@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State } from '@stencil/core'
+import { Component, h, Host, Method, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
 import { BalConfigObserver, Props } from '../../types'
@@ -68,7 +68,11 @@ export class Icon implements BalConfigObserver {
     detachComponentToConfig(this)
   }
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.icons = state.icons
   }
 
@@ -92,9 +96,19 @@ export class Icon implements BalConfigObserver {
   }
 
   render() {
-    const color = ['white', 'blue', 'grey', 'danger', 'warning', 'success', 'grey-light'].includes(this.color)
+    const color = [
+      'white',
+      'blue',
+      'grey',
+      'danger',
+      'warning',
+      'success',
+      'grey-light',
+      'primary',
+      'primary-light',
+    ].includes(this.color)
       ? this.color
-      : 'blue'
+      : 'primary'
 
     const block = BEM.block('icon')
 
@@ -112,7 +126,7 @@ export class Icon implements BalConfigObserver {
         <div
           class={{
             ...block.element('inner').class(),
-            ...block.element('inner').modifier('turn').class(this.turn),
+            ...block.element('inner').modifier(`turn-${this.name}`).class(this.turn),
             ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
           innerHTML={this.svgContent}

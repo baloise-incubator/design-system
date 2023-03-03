@@ -45,7 +45,6 @@ import {
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../utils/constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { BalLanguage, BalConfigState, BalRegion } from '../../../utils/config/config.types'
 import {
   detachComponentToConfig,
   defaultConfig,
@@ -53,6 +52,9 @@ import {
   attachComponentToConfig,
   useBalConfig,
   defaultLocale,
+  BalLanguage,
+  BalConfigState,
+  BalRegion,
 } from '../../../utils/config'
 import {
   FormInput,
@@ -69,6 +71,7 @@ import { preventDefault } from '../bal-select/utils/utils'
 import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
+import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
   tag: 'bal-datepicker',
@@ -76,7 +79,7 @@ import { ResizeHandler } from '../../../utils/resize'
     css: 'bal-datepicker.sass',
   },
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined>, Loggable {
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popoverElement!: HTMLBalPopoverElement
@@ -97,6 +100,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     year: getYear(now()),
     month: getMonth(now()),
     day: getDate(now()),
+  }
+
+  log!: LogInstance
+
+  @Logger('bal-datepicker')
+  createLogger(log: LogInstance) {
+    this.log = log
   }
 
   /**
@@ -310,9 +320,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     detachComponentToConfig(this)
   }
 
-  configChanged(config: BalConfigState): void {
-    this.language = config.language
-    this.region = config.region
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -419,7 +433,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      if (isHuman) {
+      if (isHuman && this.isDateInRange(parse(this.value as string) as Date)) {
         this.balChange.emit(this.value)
       }
     }
@@ -545,11 +559,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
-    this.isPopoverOpen = event.detail
-    preventDefault(event)
-
-    if (!this.isPopoverOpen) {
-      this.balBlur.emit()
+    stopEventBubbling(event)
+    if (this.isPopoverOpen !== event.detail) {
+      this.isPopoverOpen = event.detail
+      if (!this.isPopoverOpen) {
+        this.balBlur.emit()
+      }
     }
   }
 
@@ -625,6 +640,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     const inputValue = (event.target as HTMLInputElement).value
     this.pointerDate = {
       ...this.pointerDate,
+      day: 1,
       month: parseInt(inputValue, 10),
     }
   }
@@ -634,6 +650,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     const yearValue = parseInt(inputValue, 10)
     this.pointerDate = {
       ...this.pointerDate,
+      day: 1,
       year: yearValue,
     }
   }
@@ -820,7 +837,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           <div class={{ ...monthAndYearEl.class() }}>
             <div class={{ ...selectEl.class(), ...selectEl.modifier('month').class() }}>
               <div class="select">
-                <select class="" onInput={this.onMonthSelect}>
+                <select onInput={this.onMonthSelect}>
                   {this.months.map(month => (
                     <option value={month.index} selected={this.pointerDate.month === month.index}>
                       {month.name}
@@ -875,17 +892,17 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private calcPreviousMonth(): BalPointerDate {
     if (this.pointerDate.month === 0) {
-      return { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11 }
+      return { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11, day: 1 }
     } else {
-      return { ...this.pointerDate, month: this.pointerDate.month - 1 }
+      return { ...this.pointerDate, month: this.pointerDate.month - 1, day: 1 }
     }
   }
 
   private calcNextMonth(): BalPointerDate {
     if (this.pointerDate.month === 11) {
-      return { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0 }
+      return { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0, day: 1 }
     } else {
-      return { ...this.pointerDate, month: this.pointerDate.month + 1 }
+      return { ...this.pointerDate, month: this.pointerDate.month + 1, day: 1 }
     }
   }
 
@@ -922,10 +939,13 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       })
     }
     if (this.min) {
-      return isAfter(parsedCellDate, parse(this.min) as Date)
+      return isAfter(parsedCellDate, parse(this.min) as Date) || isSameDay(parsedCellDate, parse(this.min) as Date)
     }
     if (this.max) {
-      return isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1))
+      return (
+        isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1)) ||
+        isSameDay(parsedCellDate, parse(this.max) as Date)
+      )
     }
     return true
   }

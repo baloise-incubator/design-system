@@ -29,7 +29,7 @@ export class Heading {
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: 'none' | 'bottom' | 'top' | 'all' = 'bottom'
+  @Prop() space?: 'none' | 'bottom' | 'top' | 'all'
 
   /**
    * The theme type of the toast.
@@ -47,9 +47,8 @@ export class Heading {
   @Prop() shadow = false
 
   private getFontSize(): string {
-    const formatSize = (size: Props.BalHeadingLevel) => `is-size-${mapSize(size)}`
     const mapSize = (size: Props.BalHeadingLevel) => {
-      const sizes = {
+      const sizes: any = {
         'display': 'xxxxx-large',
         'display-2': 'xxxx-large',
         'h1': 'xxx-large',
@@ -57,38 +56,45 @@ export class Heading {
         'h3': 'x-large',
         'h4': 'large',
         'h5': 'normal',
+        'xxxxx-large': 'xxxxx-large',
+        'xxxx-large': 'xxxx-large',
+        'xxx-large': 'xxx-large',
+        'xx-large': 'xx-large',
+        'x-large': 'x-large',
+        'large': 'large',
+        'medium': 'medium',
+        'normal': 'normal',
       }
       return sizes[size] as string
     }
 
-    return formatSize(this.visualLevel ? this.visualLevel : this.level)
+    return mapSize(this.visualLevel ? this.visualLevel : this.level)
   }
 
   private getFontColor(): string {
-    const parseColor = (color: string) => (color !== '' ? `has-text-${color}` : '')
-
-    return parseColor(this.inverted ? 'white' : this.color === 'info' ? 'primary' : this.color)
+    return this.inverted ? 'white' : this.color === 'info' ? 'primary' : this.color
   }
 
   render() {
     const Heading = this.level.startsWith('display') ? 'h1' : this.level
     const block = BEM.block('heading')
+    const bemTextEl = block.element('text')
 
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier(`space-${this.space}`).class(),
+          ...block.modifier(`space-${this.space}`).class(this.space !== undefined),
           ...block.modifier(`level-${this.level}`).class(),
         }}
       >
         <Heading
           class={{
-            'title': this.subtitle === false,
-            'subtitle': this.subtitle === true,
-            'has-blur-shadow': this.shadow,
-            [this.getFontSize()]: true,
-            [this.getFontColor()]: true,
+            ...bemTextEl.class(),
+            ...bemTextEl.modifier('subtitle').class(this.subtitle),
+            ...bemTextEl.modifier('shadow').class(this.shadow),
+            ...bemTextEl.modifier(`color-${this.getFontColor()}`).class(this.getFontColor() !== ''),
+            [`is-size-${this.getFontSize()}`]: true,
             'data-test-heading': true,
           }}
         >

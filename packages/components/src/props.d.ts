@@ -27,6 +27,8 @@ export namespace Props {
 
   export type BalCarouselItemColor = 'white' | 'green' | 'yellow' | 'red' | 'purple'
 
+  export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
+
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
@@ -65,19 +67,47 @@ export namespace Props {
 
   export type BalCloseSize = 'small' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
+  export type BalHeadingLevel =
+    | 'display'
+    | 'display-2'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'xxxxx-large'
+    | 'xxxx-large'
+    | 'xxx-large'
+    | 'xx-large'
+    | 'x-large'
+    | 'large'
+    | 'medium'
+    | 'normal'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalSelectFilter = 'includes' | 'starts-with'
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | 'grey-light' | '' | string
+  export type BalIconColor =
+    | 'blue'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'white'
+    | 'grey'
+    | 'grey-light'
+    | 'primary'
+    | 'primary-light'
+    | ''
+    | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
+  export type BalListItemAccordionHeadIcon = 'plus' | 'nav-go-down'
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'small' | 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
-  export type BalListContentSpacing = 'start' | 'center' | 'end' | 'space-between'
+  export type BalListContentAlignment = 'start' | 'center' | 'end' | 'space-between'
+  export type BalListContentSpacing = 'none' | 'normal'
 
   export type BalNavbarInterface = 'app' | 'simple'
 
@@ -193,7 +223,7 @@ export namespace Props {
 
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
 
-  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number'
+  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number' | 'be-enterprise-number' | 'be-iban'
 
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
   export type BalInputInputType =

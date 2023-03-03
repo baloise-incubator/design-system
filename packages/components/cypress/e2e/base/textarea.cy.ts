@@ -1,5 +1,5 @@
 describe('bal-textarea', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-textarea/test/bal-textarea.cy.html')
   })
 
@@ -25,7 +25,8 @@ describe('bal-textarea', () => {
   })
 
   it('should be able to reset the form', () => {
-    cy.getByTestId('reset').type('bubu')
+    cy.getByTestId('reset').clear().type('bubu')
+    cy.getByTestId('reset').should('have.value', 'bubu')
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset').should('have.value', 'Tony Stark')
   })

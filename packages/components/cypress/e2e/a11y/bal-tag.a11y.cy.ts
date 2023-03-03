@@ -1,8 +1,8 @@
 import { Props } from '../../../src'
 
-describe.skip('Tag', () => {
+describe('bal-tag', () => {
   context('a11y', () => {
-    before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
+    beforeEach(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 
     describe('have the AA standard', () => {
       it('basic', () => {
@@ -10,11 +10,6 @@ describe.skip('Tag', () => {
       })
 
       testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
-
-      describe('light version', () => {
-        before(() => cy.getByTestId('tag').setProperty('light', true))
-        testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
-      })
     })
   })
 })

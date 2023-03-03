@@ -12,7 +12,7 @@ export class NavigationMenuList {
   /**
    * Color of the menu list card background
    */
-  @Prop() color: 'white' | 'grey' = 'white'
+  @Prop() color: Props.BalNavigationLevelBlockColor = 'white'
   /**
    * Optional headline of the menu list card
    */
@@ -27,7 +27,7 @@ export class NavigationMenuList {
   @Prop() target: Props.BalButtonTarget = '_self'
   @Prop() tracking: Attributes = {}
 
-  @State() headingLevel!: 'h3' | 'h4'
+  @State() headingLevel!: 'h3' | 'h4' | 'h5'
 
   resizeWidthHandler = ResizeHandler()
 
@@ -44,7 +44,7 @@ export class NavigationMenuList {
 
   setHeadingLevel = () => {
     if (isPlatform('touch')) {
-      this.headingLevel = 'h4'
+      this.headingLevel = 'h5'
       return
     }
     this.headingLevel = 'h3'
@@ -63,7 +63,15 @@ export class NavigationMenuList {
         <bal-card
           class={{ ...navMenuListEl.element('card').class() }}
           flat
-          color={this.color === 'grey' ? this.color : ''}
+          color={
+            this.color === 'grey' ||
+            this.color === 'yellow' ||
+            this.color === 'red' ||
+            this.color === 'purple' ||
+            this.color === 'green'
+              ? this.color
+              : ''
+          }
         >
           <bal-card-content>
             {this.href ? (

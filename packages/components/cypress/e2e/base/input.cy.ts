@@ -1,5 +1,5 @@
 describe('bal-input', () => {
-  before(() => {
+  beforeEach(() => {
     cy.platform('desktop').page('/components/form/bal-input/test/bal-input.cy.html')
   })
 
@@ -25,7 +25,8 @@ describe('bal-input', () => {
   })
 
   it('should be able to reset the form', () => {
-    cy.getByTestId('reset').type('bubu')
+    cy.getByTestId('reset').clear().type('bubu')
+    cy.getByTestId('reset').should('have.value', 'bubu')
     cy.getByTestId('button-reset').click()
     cy.getByTestId('reset').should('have.value', 'Tony Stark')
   })

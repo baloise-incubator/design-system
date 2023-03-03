@@ -1,6 +1,6 @@
 import docs from './bal-footer.docs.mdx'
 import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalFooter } from '../../../../.storybook/vue/components'
+import { BalFooter } from '../../../../.storybook/vue/generated/components'
 import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../stories/utils/config'
 
 const component = BalComponentStory({
@@ -39,3 +39,12 @@ Basic.args = {
   hideLinks: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const FooterOfGermany = Template.bind({})
+FooterOfGermany.args = {
+  hideLinks: false,
+  hideLanguageSelection: true,
+  region: 'DE',
+  language: 'de',
+}
+FooterOfGermany.parameters = { ...component.sourceCode(FooterOfGermany) }

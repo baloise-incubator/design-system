@@ -28,7 +28,7 @@ import {
   BalText,
   BalTag,
   BalTagGroup,
-} from '../../../../.storybook/vue/components'
+} from '../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   component: BalCard,
@@ -62,7 +62,7 @@ export const Basic = args => ({
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button color="info">Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
 </bal-card>`,
@@ -206,44 +206,6 @@ export const TeaserCards = args => ({
         </bal-card-content>
       </bal-card>
     </div>
-    <div class="column is-half">
-      <bal-card fullheight>
-        <bal-card-content>
-          <bal-data horizontal>
-            <bal-data-item>
-              <img class="is-2by3" src="https://unsplash.it/191/288">
-            </bal-data-item>
-            <bal-data-item>
-              <div class="is-flex is-flex-direction-column" style="height: 100%;">
-                <bal-heading level="h4" space="bottom">Contact Card</bal-heading>
-                <bal-text class="mt-auto" size="small">Contact role</bal-text>
-              </div>
-            </bal-data-item>
-          </bal-data>
-        </bal-card-content>
-      </bal-card>
-    </div>
-    <div class="column is-half">
-  <bal-card fullheight>
-    <bal-card-content>
-      <bal-data horizontal>
-        <bal-data-item>
-          <img class="is-2by3" src="https://unsplash.it/191/288">
-        </bal-data-item>
-        <bal-data-item>
-          <div class="is-flex is-flex-direction-column" style="height: 100%;">
-            <bal-heading level="h4" space="bottom">Contact Card</bal-heading>
-            <bal-text size="small">Contact role</bal-text>
-            <div class="mt-auto">
-              <bal-text size="small" space="none">Contact</bal-text>
-              <bal-button color="link" flat={true} iconPosition="left" icon="message" href="https://www.google.com" target="_blank">Very veeeeery veeeeeeeery long text</bal-button>
-            </div>
-          </div>
-        </bal-data-item>
-      </bal-data>
-    </bal-card-content>
-  </bal-card>
-</div>
   </div>
 </div>
 `,
@@ -284,7 +246,7 @@ export const SummaryCard = args => ({
   },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <bal-card-content class="is-bold has-text-blue">Insured vehicle</bal-card-content>
+  <bal-card-content class="has-text-weight-bold has-text-blue">Insured vehicle</bal-card-content>
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
   <bal-card-content>

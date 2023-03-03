@@ -10,7 +10,7 @@ import {
   BalInput,
   BalButtonGroup,
   BalButton,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { ref } from 'vue'
 import { element } from '../../../../../../components-vue/src/helpers'
 import { Components } from '../../../../../src'
@@ -152,18 +152,16 @@ export const FormAutocomplete = args => ({
             </bal-field-control>
           </bal-field>
         </bal-form-col>
+
         <bal-form-col size="half">
-          <bal-form-grid>
-            <bal-form-col>
-              <bal-field required>
-                <bal-field-label>City</bal-field-label>
-                <bal-field-control>
-                  <bal-input name="city" placeholder="Basel" autocomplete="on"></bal-input>
-                </bal-field-control>
-              </bal-field>
-            </bal-form-col>
-          </bal-form-grid>
+          <bal-field required>
+            <bal-field-label>City</bal-field-label>
+            <bal-field-control>
+              <bal-input name="city" placeholder="Basel" autocomplete="on"></bal-input>
+            </bal-field-control>
+          </bal-field>
         </bal-form-col>
+
       </bal-form-grid>
     </bal-card-content>
     <bal-card-actions position="left">

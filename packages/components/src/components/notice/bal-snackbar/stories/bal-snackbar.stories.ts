@@ -1,10 +1,10 @@
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalSnackbar, BalButton } from '../../../../../.storybook/vue/components'
+import { BalSnackbar, BalButton } from '../../../../../.storybook/vue/generated/components'
 import { balSnackbarController } from '../bal-snackbar.controller'
 import docs from './bal-snackbar.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Notice/Snackbar',
+  title: 'Components/Overlay/Snackbar',
   component: BalSnackbar,
   args: {
     message: 'Hello World',

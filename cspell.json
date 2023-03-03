@@ -1,11 +1,14 @@
 {
   "version": "0.2",
   "language": "en",
-  "ignorePaths": [
-    "node_modules/**",
-    "contributors.md"
-  ],
+  "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
   "words": [
+    "stackblitz",
+    "Jasmin",
+    "mladenplaninicic",
+    "nobilo",
+    "Gagne",
+    "clastzoo",
     "adipiscing",
     "adipisicing",
     "aliqua",
@@ -15,8 +18,11 @@
     "Baloise",
     "bday",
     "bubu",
+    "gapless",
+    "vcentered",
     "sbdocs",
     "Bulma",
+    "fullscreen",
     "camelcase",
     "Contentful",
     "Chainable",
@@ -105,6 +111,8 @@
     "verticaly",
     "splitted",
     "Rebranding",
-    "fakepath"
+    "fakepath",
+    "iban",
+    "enterprisenumber"
   ]
 }

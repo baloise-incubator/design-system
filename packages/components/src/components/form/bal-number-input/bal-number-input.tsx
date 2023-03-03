@@ -42,7 +42,13 @@ import {
 } from '../../../utils/form-input'
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
-import { getDecimalSeparator, getThousandSeparator } from '../../../utils/number'
+import {
+  getDecimalSeparator,
+  getThousandSeparator,
+  parseFloatString,
+  formatFloatString,
+  getNegativeSymbol,
+} from '../../../utils/number'
 import { formatInputValue } from './bal-input.utils'
 import { BEM } from '../../../utils/bem'
 
@@ -110,6 +116,16 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
    * If `true` the input value has 0 as default value
    */
   @Prop() exactNumber = false
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -189,7 +205,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     detachComponentToConfig(this)
   }
 
-  configChanged(state: BalConfigState): void {
+  /**
+   * @internal define config for the component
+   */
+  @Method()
+  async configChanged(state: BalConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
 
@@ -226,7 +246,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator()]
+    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol()]
   }
 
   private getRawValue(): string {
@@ -242,11 +262,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private onInput = (ev: Event) => {
     const input = getInputTarget(ev)
     if (input) {
-      const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
+      const parsedValue = parseFloat(parseFloat(parseFloatString(input.value)).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
         this.inputValue = parsedValue
       } else {
-        if (!this.decimal || input.value !== getDecimalSeparator()) {
+        if (!this.decimal && input.value !== getNegativeSymbol() && input.value !== getDecimalSeparator()) {
           this.inputValue = undefined
           input.value = ''
         }
@@ -260,7 +280,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
-    if (input && input.value === getDecimalSeparator()) {
+    if (input && (input.value === getDecimalSeparator() || input.value === getNegativeSymbol())) {
       this.inputValue = undefined
       input.value = ''
     }
@@ -287,7 +307,13 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         }
       }
 
-      if ([...NUMBER_KEYS, getDecimalSeparator()].indexOf(event.key) >= 0) {
+      if (event.key === getNegativeSymbol()) {
+        if (value.length !== 0) {
+          return stopEventBubbling(event)
+        }
+      }
+
+      if ([...NUMBER_KEYS, getDecimalSeparator(), getNegativeSymbol()].indexOf(event.key) >= 0) {
         const newValue = getUpcomingValue(this, event)
         const decimalValue = newValue.includes(getDecimalSeparator()) ? newValue?.split(getDecimalSeparator())[1] : ''
         if (decimalValue && decimalValue.length > this.decimal) {
@@ -308,11 +334,13 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     if (suffix !== '') {
       suffix = ` ${suffix}`
     }
-    return `[0-9${getThousandSeparator()}${this.decimal > 0 ? getDecimalSeparator() : ''}${suffix}]*`
+    return `[${getNegativeSymbol()}0-9${getThousandSeparator()}${
+      this.decimal > 0 ? getDecimalSeparator() : ''
+    }${suffix}]*`
   }
 
   render() {
-    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    const value = this.hasFocus ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
@@ -345,6 +373,8 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           readonly={this.readonly}
           required={this.required}
           pattern={this.pattern}
+          min={this.min}
+          max={this.max}
           value={value}
           onInput={e => this.onInput(e)}
           onFocus={e => this.onFocus(e)}

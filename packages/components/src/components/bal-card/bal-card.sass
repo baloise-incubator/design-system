@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 =card-spacing($spacing: 1rem)
   & > :not(bal-badge):not(bal-tag):first-child
@@ -35,17 +35,17 @@
   +modifier(is-white)
     background: var(--bal-color-white)
   +modifier(is-blue)
-    background: var(--bal-color-blue)
+    background: var(--bal-color-primary)
   +modifier(is-primary)
-    background: var(--bal-color-blue)
+    background: var(--bal-color-primary)
   +modifier(is-info)
-    background: var(--bal-color-blue)
+    background: var(--bal-color-primary)
   +modifier(is-success)
-    background: var(--bal-color-success)
+    background: var(--bal-color-success-2)
   +modifier(is-warning)
-    background: var(--bal-color-warning)
+    background: var(--bal-color-warning-2)
   +modifier(is-danger)
-    background: var(--bal-color-danger)
+    background: var(--bal-color-danger-2)
   +modifier(is-grey)
     background: var(--bal-color-grey)
   +modifier(is-red)
@@ -71,25 +71,25 @@
   +modifier(is-purple-2)
     background: var(--bal-color-purple-2)
   +modifier(is-purple-3)
-    background: var(--bal-color-purple-3)
+    background: var(--bal-color-purple)
   +modifier(is-green-1)
     background: var(--bal-color-green-1)
   +modifier(is-green-2)
     background: var(--bal-color-green-2)
   +modifier(is-green-3)
-    background: var(--bal-color-green-3)
+    background: var(--bal-color-green)
   +modifier(is-red-1)
     background: var(--bal-color-red-1)
   +modifier(is-red-2)
     background: var(--bal-color-red-2)
   +modifier(is-red-3)
-    background: var(--bal-color-red-3)
+    background: var(--bal-color-red)
   +modifier(is-yellow-1)
     background: var(--bal-color-yellow-1)
   +modifier(is-yellow-2)
     background: var(--bal-color-yellow-2)
   +modifier(is-yellow-3)
-    background: var(--bal-color-yellow-3)
+    background: var(--bal-color-yellow)
   //
   // Modifier
   +modifier(has-fullheight)
@@ -98,13 +98,13 @@
     .bal-card-content > .is-flex
       height: 100%
   +modifier(has-border)
-    border: 2px dashed var(--bal-color-grey)
+    border: var(--bal-border-width-normal) dashed var(--bal-color-grey)
   +modifier(is-flat)
-    box-shadow: none
+    box-shadow: var(--bal-shadow-none)
   +modifier(is-square)
-    border-radius: 0
+    border-radius: var(--bal-radius-none)
   +modifier(is-selected)
-    background: var(--bal-color-blue-2)
+    background: var(--bal-color-primary-2)
   +modifier(is-clickable)
     cursor: pointer
     transition: transform 0.15s ease-in-out
@@ -153,12 +153,17 @@
 +block(card-title)
   display: block
   position: static
-  .title
+  .title,
+  .bal-heading__text
     .bal-tag-group,
     .bal-button-group
       margin-top: .5rem
   +tablet
-    .title
+    .bal-heading h3
+      display: flex
+      align-items: center
+    .title,
+    .bal-heading__text
       display: flex
       .bal-tag-group,
       .bal-button-group
@@ -170,8 +175,6 @@
           margin-top: .125rem
       .bal-button-group
         flex: 1
-        .bal-button
-          margin-top: -0.5rem
 
 +block(card-subtitle)
   display: block

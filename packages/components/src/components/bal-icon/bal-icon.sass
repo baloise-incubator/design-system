@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 =iconSize($size: 1rem)
   width: $size
@@ -11,7 +11,7 @@
   position: static
   pointer-events: visible
   +iconSize(1.125rem)
-  +fillSvg(var(--bal-color-blue))
+  +fillSvg(var(--bal-color-primary))
   //
   // modifiers
   +modifier(shadow)
@@ -29,7 +29,11 @@
     transition: transform .2s ease-in-out
     padding: 0.063rem
     +iconSize(1.125rem)
-    +modifier(turn)
+    +modifier(turn-plus)
+      transform: rotate(225deg)
+    +modifier(turn-caret-down)
+      transform: rotate(180deg)
+    +modifier(turn-nav-go-down)
       transform: rotate(180deg)
     & > svg
       vertical-align: top
@@ -57,6 +61,10 @@
     +fillSvg(var(--bal-color-warning))
   +modifier(is-danger)
     +fillSvg(var(--bal-color-danger))
+  +modifier(is-primary)
+    +fillSvg(var(--bal-color-primary))
+  +modifiers(is-primary-light)
+    +fillSvg(var(--bal-color-primary-2))
   +modifiers(is-white, is-inverted)
     +fillSvg(var(--bal-color-white))
 

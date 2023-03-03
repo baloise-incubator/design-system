@@ -1,10 +1,10 @@
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalToast, BalButton } from '../../../../../.storybook/vue/components'
+import { BalToast, BalButton } from '../../../../../.storybook/vue/generated/components'
 import { balToastController } from '../bal-toast.controller'
 import docs from './bal-toast.docs.mdx'
 
 const component = BalComponentStory({
-  title: 'Components/Notice/Toast',
+  title: 'Components/Overlay/Toast',
   component: BalToast,
   args: {
     message: '<b>Message: </b>Hello World Hello World Hello World Hello World Hello World Hello World Hello World',
@@ -28,6 +28,6 @@ const Template = args => ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  color: 'warning',
+  color: 'success',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }

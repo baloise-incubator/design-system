@@ -7,7 +7,7 @@ export * from './selectors'
 /**
  * Helpers
  */
-export { testOnPlatforms, selectors } from './commands/helpers'
+export { testOnPlatforms } from './commands/helpers'
 
 /**
  * Legacy Commands
@@ -59,7 +59,6 @@ import './commands/overrides/check.command'
 import './commands/overrides/uncheck.command'
 import './commands/overrides/clear.command'
 import './commands/overrides/click.command'
-import './commands/overrides/contains.command'
 import './commands/overrides/focus.command'
 import './commands/overrides/should.command'
 import './commands/overrides/select.command'

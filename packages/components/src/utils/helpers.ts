@@ -1,5 +1,6 @@
 import { EventEmitter } from '@stencil/core'
 import { isWindowDefined } from './browser'
+import { BalConfig } from './config'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
@@ -85,7 +86,7 @@ export const componentOnReady = (el: any, callback: any) => {
  * Patched version of requestAnimationFrame that avoids ngzone
  * Use only when you know ngzone should not run
  */
-const raf = (h: any) => {
+export const raf = (h: any) => {
   if (typeof __zone_symbol__requestAnimationFrame === 'function') {
     return __zone_symbol__requestAnimationFrame(h)
   }
@@ -95,6 +96,56 @@ const raf = (h: any) => {
   return setTimeout(h)
 }
 
+export const transitionEndAsync = (el: HTMLElement | null, expectedDuration = 0) => {
+  return new Promise(resolve => {
+    transitionEnd(el, expectedDuration, resolve)
+  })
+}
+
+/**
+ * Allows developer to wait for a transition
+ * to finish and fallback to a timer if the
+ * transition is cancelled or otherwise
+ * never finishes. Also see transitionEndAsync
+ * which is an await-able version of this.
+ */
+const transitionEnd = (el: HTMLElement | null, expectedDuration = 0, callback: (ev?: TransitionEvent) => void) => {
+  let unRegTrans: (() => void) | undefined
+  let animationTimeout: any
+  const opts: any = { passive: true }
+  const ANIMATION_FALLBACK_TIMEOUT = 500
+
+  const unregister = () => {
+    if (unRegTrans) {
+      unRegTrans()
+    }
+  }
+
+  const onTransitionEnd = (ev?: Event) => {
+    if (ev === undefined || el === ev.target) {
+      unregister()
+      callback(ev as TransitionEvent)
+    }
+  }
+
+  if (el) {
+    el.addEventListener('webkitTransitionEnd', onTransitionEnd, opts)
+    el.addEventListener('transitionend', onTransitionEnd, opts)
+    animationTimeout = setTimeout(onTransitionEnd, expectedDuration + ANIMATION_FALLBACK_TIMEOUT)
+
+    unRegTrans = () => {
+      if (animationTimeout) {
+        clearTimeout(animationTimeout)
+        animationTimeout = undefined
+      }
+      el.removeEventListener('webkitTransitionEnd', onTransitionEnd, opts)
+      el.removeEventListener('transitionend', onTransitionEnd, opts)
+    }
+  }
+
+  return unregister
+}
+
 export const shallowReady = (el: any | undefined): Promise<any> => {
   if (el) {
     return new Promise(resolve => componentOnReady(el, resolve))
@@ -102,17 +153,22 @@ export const shallowReady = (el: any | undefined): Promise<any> => {
   return Promise.resolve()
 }
 
-export const deepReady = async (el: any | undefined): Promise<void> => {
+export const deepReady = async (el: any | undefined, full = false): Promise<void> => {
   const element = el as any
   if (element) {
-    if (element.componentOnReady != null) {
+    if (element.componentOnReady !== null && element.componentOnReady !== undefined) {
       const stencilEl = await element.componentOnReady()
-      if (stencilEl != null) {
+      if (!full && stencilEl !== null && stencilEl !== undefined) {
         return
       }
     }
-    await Promise.all(Array.from(element.children).map(deepReady))
+    await Promise.all(Array.from(element.children).map(child => deepReady(child, full)))
   }
+}
+
+export const waitForComponent = async (el: HTMLElement | null) => {
+  await deepReady(el, true)
+  await wait(20)
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
@@ -121,4 +177,24 @@ export const addEventListener = (el: any, eventName: string, callback: any, opts
 
 export const removeEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
   return el.removeEventListener(eventName, callback, opts)
+}
+
+export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): Promise<void> => {
+  const config: any = { animated: false, icons: {}, ..._config }
+  const element = el as any
+  if (element) {
+    const webComponents = Array.prototype.slice
+      .call(element.querySelectorAll('*'))
+      .filter(el => el.tagName.match(/^bal/i))
+
+    await Promise.all(webComponents.map(c => c.componentOnReady()))
+    await Promise.all(
+      webComponents.map(c => {
+        if (c.configChanged) {
+          return c.configChanged(config)
+        }
+      }),
+    )
+  }
+  await wait(20)
 }

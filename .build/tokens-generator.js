@@ -34,7 +34,8 @@ async function main() {
   generateShadows()
   generateTypography()
   generateSpacings()
-
+  generateAnimation()
+  generateBorder()
 
   await file.save(path.join(SRC_PATH, 'tokens.ts'), toTs())
   await file.save(path.join(DIST_PATH, 'tokens.docs.json'), JSON.stringify(BaloiseDesignToken))
@@ -157,11 +158,6 @@ function generateColors(){
     }
   }
 
-  const typographyColors = BaloiseDesignToken.typography.colors
-  for (const color in typographyColors) {
-    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
-  }
-
   const borderColors = BaloiseDesignToken.border.colors
   for (const color in borderColors) {
     addToken(`color-border-${color}`, `border-${color}`, newAlias(`color-${borderColors[color]}`), colors[borderColors[color]].hex)
@@ -172,6 +168,12 @@ function generateColors(){
       addToken(`color-${color}-inverted`, `${color}-inverted`, newAlias(`color-${colors[color].inverted}`), colors[colors[color].inverted].hex)
     }
   }
+
+  const typographyColors = BaloiseDesignToken.typography.colors
+  for (const color in typographyColors) {
+    addToken(`color-text-${color}`, `text-${color}`, newAlias(`color-${typographyColors[color]}`), colors[typographyColors[color]].hex)
+    addToken(`color-text-${color}-inverted`, `text-${color}-inverted`, newAlias(`color-${typographyColors[color]}-inverted`), colors[colors[typographyColors[color]].inverted].hex)
+  }
 }
 
 function generateContainer() {
@@ -179,15 +181,19 @@ function generateContainer() {
   addToken('container-space', 'container-space', container.space.mobile)
   addToken('container-space-tablet', 'container-space-tablet', container.space.tablet)
   addToken('container-space-desktop', 'container-space-desktop', container.space.desktop)
+
+  // legacy variable
   addToken('container-max-width', 'container-max-width', container.maxWidth)
+
+  for (const size in container.size) {
+    addToken(`container-size-${size}`, `container-size-${size}`, container.size[size])
+  }
 }
 
 function generateBreakpoints() {
   const breakpoints = BaloiseDesignToken.breakpoint
   for (const breakpoint in breakpoints) {
     addToken(`breakpoint-${breakpoint}`, `breakpoint-${breakpoint}`, breakpoints[breakpoint])
-    // // legacy variable
-    // addToken(breakpoint, breakpoint, breakpoints[breakpoint])
   }
 }
 
@@ -200,21 +206,18 @@ function generateRadius() {
   const radius = BaloiseDesignToken.radius
   for (const r in radius) {
     addToken(`radius${parseKey(r)}`, `radius${parseKey(r)}`, radius[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`radius`, `radius`, radius[r].value)
-    // }
   }
 }
 
 function generateShadows() {
-  const shadow = BaloiseDesignToken.shadow
+  const shadow = BaloiseDesignToken.shadow.box
   for (const r in shadow) {
     addToken(`shadow${parseKey(r)}`, `shadow${parseKey(r)}`, shadow[r].value)
-    // legacy variable
-    // if(r === 'normal'){
-    //   addToken(`shadow`, `shadow`, shadow[r].value)
-    // }
+  }
+
+  const textShadow = BaloiseDesignToken.shadow.text
+  for (const r in textShadow) {
+    addToken(`text-shadow${parseKey(r)}`, `text-shadow${parseKey(r)}`, textShadow[r].value)
   }
 }
 
@@ -280,6 +283,18 @@ function generateSpacings() {
     spaceTabletVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-tablet-${r}`)}`)
     spaceDesktopVariablesLegacy.push(`"${spacing[r].legacy}": ${sassKey(`space-desktop-${r}`)}`)
   }
+}
+
+function generateAnimation() {
+  const animation = BaloiseDesignToken.animation
+  for (const r in animation.transition) {
+    addToken(`animation-transition-${r}`, `animation-transition-${r}`, animation.transition[r])
+  }
+}
+
+function generateBorder() {
+  const border = BaloiseDesignToken.border
+  addToken(`border-width-normal`, `border-width-normal`, border.width)
 }
 
 main()

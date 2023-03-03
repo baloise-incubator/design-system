@@ -6,7 +6,7 @@ import {
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
-} from '../../../../../.storybook/vue/components'
+} from '../../../../../.storybook/vue/generated/components'
 import { marvelHeros } from './bal-select.templates.ts'
 import docs from './bal-select.docs.mdx'
 import { ref } from 'vue'
@@ -221,5 +221,60 @@ MultiSelect.args = {
 }
 MultiSelect.parameters = {
   ...component.sourceCode(MultiSelect),
+  controls: { exclude: excludedControls },
+}
+
+export const NativeSelect = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `
+<div class="field">
+  <label class="label">Subject</label>
+  <div class="control">
+      <div class="select">
+          <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+          </select>
+      </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label is-disabled">Subject</label>
+  <div class="control">
+      <div class="select is-disabled">
+          <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+          </select>
+      </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label is-success">Subject</label>
+  <div class="control">
+      <div class="select is-success">
+          <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+          </select>
+      </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label is-danger">Subject</label>
+  <div class="control">
+      <div class="select is-danger">
+          <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+          </select>
+      </div>
+  </div>
+</div>`,
+})
+NativeSelect.args = {}
+NativeSelect.parameters = {
+  ...component.sourceCode(NativeSelect),
   controls: { exclude: excludedControls },
 }

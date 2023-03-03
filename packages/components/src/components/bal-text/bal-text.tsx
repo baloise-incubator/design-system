@@ -65,13 +65,13 @@ export class Text {
         <Text
           class={{
             ...block.element('text').class(),
-            [`has-text-${color}`]: true,
-            'is-small': this.size === 'small',
-            'is-lead': this.size === 'lead',
-            'is-block': this.size === 'block',
-            'is-bold': this.bold,
+            ...block.element('text').modifier(`has-text-${color}`).class(),
+            'is-size-small': this.size === 'small',
+            'is-size-large': this.size === 'lead',
+            'is-size-medium': this.size === 'block',
+            'has-text-weight-bold': this.bold,
             'is-family-title': this.heading,
-            'has-blur-shadow': this.shadow,
+            'has-text-shadow': this.shadow,
             'data-test-text': true,
           }}
         >

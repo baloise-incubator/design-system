@@ -1,17 +1,9 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
+import { Basic } from './bal-icon.stories'
 
-<bal-doc-banner id="story--components-icon--basic" status="rebranded,sass">Icon</bal-doc-banner>
-
-<bal-doc-tabs>
-  <a href="#story--components-icon--basic">Overview</a>
-  <a href="#examples">Examples</a>
-  <a href="#component-api">API</a>
-  {/* <a href="#usage">Usage</a> */}
-  <a href="#integration">Integration</a>
-  <a href="#testing">Testing</a>
-</bal-doc-tabs>
+<bal-doc-banner id="story--components-icon--basic" >Icon</bal-doc-banner>
 
 <bal-doc-lead>
   <b>Icons</b> are pure svg files. To add a new icon just place your svg file into the{' '}
@@ -29,82 +21,32 @@ import readme from '../readme.md'
     <a class="button is-primary" href="?path=/story/components-icon--basic">
       Go to playground (Canvas)
     </a>
+    <bal-doc-stackblitz
+      framework="angular"
+      template={Basic.parameters.docs.source.code}
+      modules="icon"
+    ></bal-doc-stackblitz>
+    <bal-doc-stackblitz
+      framework="html"
+      template={Basic.parameters.docs.source.code}
+      modules="icon"
+    ></bal-doc-stackblitz>
   </bal-button-group>
 </bal-doc-app>
 
-By default the icons are not loaded by the Design System. To import the icons we support two ways.
-
-- Pass the raw SVG content directly to the `bal-icon` component (recommended)
-- During the initialization of the Design System
-
-### Import into the component
-
-When importing an SVG into your component you decrease the initial page load. So you use the SVG only where
-you needed and at the time you wanted.
-
-First import the icon.
-
-```typescript
-import { balIconAccount } from '@baloise/design-system-icons'
-```
-
-Then use it directly with the `bal-icon` component inside your app component.
-
-```html
-<!-- Angular -->
-<bal-icon [svg]="balIconAccount"></bal-icon>
-
-<!-- Vue -->
-<bal-icon :svg="balIconAccount"></bal-icon>
-```
-
-### Import during initialization
-
-Import the icons form the `@baloise/design-system-icons` package and pass them with
-the BalConfig during the initialization.
-
-First import the icon.
-
-```typescript
-import { balIconAccount } from '@baloise/design-system-icons'
-```
-
-#### Angular
-
-```typescript
-@NgModule({
-  imports: [
-    BalCoreModule.forRoot({
-      defaults: {
-        icons: { balIconAccount },
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
-
-#### Vue
-
-```typescript
-createApp(App)
-  .use(
-    createBaloiseDesignSystem({
-      defaults: {
-        icons: { balIconAccount },
-      },
-    }),
-  )
-  .mount('#app')
-```
-
-Then the icon can be found with the name prop of the component. Just remove the prefix `balIcon` and start with a small letter.
-
-```html
-<bal-icon name="account"></bal-icon>
-```
+> **TIP**
+>
+> The bal-icon is based on the [icons foundation](?path=/docs/foundation-icons-development--page) so check this out for adding more icons to your set.
 
 ## Examples
+
+<span id="story--components-icon--svg" style={{ opacity: 0 }}></span>
+
+### SVG
+
+<Canvas withSource="closed">
+  <Story id="components-icon--svg" />
+</Canvas>
 
 <span id="story--components-icon--sizes" style={{ opacity: 0 }}></span>
 
@@ -130,22 +72,19 @@ Here is how you can change the size:
 
 <br />
 
+## Integration
+
 This documentation explains how to implement and use Baloise Design System components across different technologies.
 
-<bal-doc-link-list>
-  <a href="?path=/docs/development-getting-started-html5-overview--page">
-    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-vue-overview--page">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-angular-overview--page">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/development-getting-started-react-overview--page">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<a class="button is-primary" href="?path=/docs/development-components--page">
+  Go to component usage
+</a>
+
+How to add new icons have a look at the foundations.
+
+<a class="button is-info" href="?path=/docs/foundation-icons-development--page">
+  Go to icon foundation
+</a>
 
 import testing from './testing.md'
 

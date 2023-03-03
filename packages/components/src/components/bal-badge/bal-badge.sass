@@ -1,4 +1,4 @@
-@import '@baloise/design-system-css/scss/baloise-design-system.utilities'
+@import '@baloise/design-system-css/sass/mixins'
 
 +block(badge)
   +unselectable
@@ -18,11 +18,11 @@
     height: 2rem
   // colors
   +modifier(has-background-danger)
-    background: var(--bal-color-danger)
+    background: var(--bal-color-danger-4)
   +modifier(has-background-warning)
-    background: var(--bal-color-warning)
+    background: var(--bal-color-warning-4)
   +modifier(has-background-success)
-    background: var(--bal-color-success)
+    background: var(--bal-color-success-4)
   // position
   +modifiers(has-position-card, has-position-button)
     position: absolute
@@ -37,14 +37,16 @@
 
   // label
   +element(label)
-    font-weight: $weight-bold !important
+    font-weight: var(--bal-weight-bold) !important
     font-family: var(--bal-font-family-text) !important
     font-size: var(--bal-size-small) !important
-    color: var(--bal-color-white)
+    color: var(--bal-color-text-white)
     line-height: 1.5rem !important
     hyphens: auto
     +modifier(is-hidden)
       display: none !important
+    +modifier(has-color-warning)
+      color: var(--bal-color-primary)
 
     // icon
   +element(icon)

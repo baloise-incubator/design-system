@@ -15,9 +15,13 @@ import { Props, Events } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { BalRadioOption } from './bal-radio.type'
 
 @Component({
   tag: 'bal-radio',
+  styleUrls: {
+    css: '../bal-checkbox/radio-checkbox.sass',
+  },
 })
 export class Radio implements ComponentInterface, Loggable {
   private inputId = `bal-rb-${radioIds++}`
@@ -196,6 +200,30 @@ export class Radio implements ComponentInterface, Loggable {
   @Method()
   getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
+  }
+
+  /**
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async getOption(): Promise<BalRadioOption> {
+    return this.option
+  }
+
+  get option() {
+    return {
+      name: this.name,
+      value: this.value,
+      label: this.label,
+      labelHidden: this.labelHidden,
+      flat: this.flat,
+      interface: this.interface,
+      disabled: this.disabled,
+      readonly: this.readonly,
+      required: this.required,
+      hidden: this.hidden,
+      invalid: this.invalid,
+    }
   }
 
   /**
