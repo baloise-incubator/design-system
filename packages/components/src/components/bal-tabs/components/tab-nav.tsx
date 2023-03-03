@@ -50,6 +50,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       isVertical={isVertical}
       iconPosition={iconPosition}
       spaceless={spaceless}
+      expanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}
     ></TabButton>
@@ -64,6 +65,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
         ...bemEl.modifier(`border`).class(border),
         ...bemEl.modifier(`animated`).class(animated),
         ...bemEl.modifier(`vertical`).class(isVertical),
+        ...bemEl.modifier(`expanded`).class(expanded && !isVertical),
         ...bemEl.modifier(`vertical-col-${verticalColSize}`).class(isVertical),
       }}
     >

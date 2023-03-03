@@ -216,9 +216,13 @@ export class Carousel implements ComponentInterface {
             const containerWidth = this.innerEl.clientWidth || 0
             const itemsWith = lastSlide.transformNext || 0
             const noNeedForSlide = itemsWith <= containerWidth
+            let maxAmount = itemsWith - containerWidth
+            let isLastSlideVisible = maxAmount <= amount
             // -1 one is needed for example when we use items per view 3 with 33.333%
-            const maxAmount = itemsWith - containerWidth - 1
-            const isLastSlideVisible = maxAmount <= amount
+            if (this.itemsPerView === 3) {
+              maxAmount = itemsWith - containerWidth - 1
+              isLastSlideVisible = maxAmount <= amount
+            }
             const isFirst = amount === 0 || maxAmount <= 2
 
             if (isFirst) {

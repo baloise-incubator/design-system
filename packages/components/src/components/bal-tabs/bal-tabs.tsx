@@ -2,7 +2,6 @@ import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, 
 import { areArraysEqual } from '@baloise/web-app-utils'
 import { debounceEvent, deepReady, isChildOfEventTarget, raf, transitionEndAsync } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import { watchForTabs } from './utils/watch-tabs'
 import { Props, Events } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
@@ -14,6 +13,7 @@ import { stopEventBubbling } from '../../utils/form-input'
 import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
+import { MutationHandler } from '../../utils/mutations'
 
 /**
  * TODO's
@@ -32,7 +32,7 @@ import { getPadding, Padding } from '../../utils/style'
 export class Tabs implements Loggable, BalConfigObserver {
   @Element() el!: HTMLElement
 
-  private mutationO?: MutationObserver
+  private mutationHandler = MutationHandler({ tags: ['bal-tabs', 'bal-tab-item'] })
   private resizeWidthHandler = ResizeHandler()
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
@@ -91,6 +91,11 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Watch('options')
   protected async optionChanged() {
     this.onOptionChange()
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   /**
@@ -185,22 +190,22 @@ export class Tabs implements Loggable, BalConfigObserver {
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+    this.mutationHandler.connect(this.el, () => this.onOptionChange())
+
+    if (this.options === undefined) {
+      this.mutationHandler.observe()
+    } else {
+      this.mutationHandler.stopObserve()
+    }
   }
 
   componentDidLoad() {
     this.onOptionChange()
-    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-      this.onOptionChange()
-    })
   }
 
   disconnectedCallback() {
     detachComponentToConfig(this)
-
-    if (this.mutationO) {
-      this.mutationO.disconnect()
-      this.mutationO = undefined
-    }
+    this.mutationHandler.disconnect()
   }
 
   /**
@@ -655,7 +660,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
 
     const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
-    const hasCarousel = !isVertical && this.overflow
+    const hasCarousel = !isVertical && this.overflow && !this.expanded
 
     const isSelect = isMobile && this.selectOnMobile
 

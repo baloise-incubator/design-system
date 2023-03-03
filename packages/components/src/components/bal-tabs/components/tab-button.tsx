@@ -12,6 +12,7 @@ export interface TabButtonProps {
   isLast: boolean
   isMobile: boolean
   isVertical: boolean
+  expanded: boolean
   spaceless: boolean
   clickable: boolean
   iconPosition: Props.BalTabsIconPosition
@@ -25,6 +26,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isLast,
   isMobile,
   isVertical,
+  expanded,
   spaceless,
   clickable,
   iconPosition,
@@ -53,6 +55,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('active').class(item.active),
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('clickable').class(clickable),
+        ...bemEl.modifier('expanded').class(expanded),
         ...bemEl.modifier('spaceless').class(spaceless),
         ...bemEl.modifier('first').class(isFirst),
         ...bemEl.modifier('last').class(isLast),
