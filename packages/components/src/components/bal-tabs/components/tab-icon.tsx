@@ -1,15 +1,23 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { BalTabOption } from '../bal-tab.type'
 
 export interface TabIconProps {
   item: BalTabOption
+  accordion: boolean
   isMobile: boolean
+  inverted: boolean
   hasBubble: boolean
 }
 
-export const TabIcon: FunctionalComponent<TabIconProps> = ({ item, isMobile, hasBubble }) => {
+export const TabIcon: FunctionalComponent<TabIconProps> = ({ item, inverted, accordion, isMobile, hasBubble }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item').element('icon')
+
+  let iconColor: Props.BalIconColor = item.disabled ? 'grey' : 'primary'
+  if (inverted) {
+    iconColor = item.disabled ? 'primary-light' : 'white'
+  }
 
   return (
     <span
@@ -19,7 +27,12 @@ export const TabIcon: FunctionalComponent<TabIconProps> = ({ item, isMobile, has
         ...bemEl.modifier('disabled').class(item.disabled),
       }}
     >
-      <bal-icon size={isMobile ? 'small' : ''} name={item.icon} color={item.disabled ? 'grey' : 'primary'}></bal-icon>
+      <bal-icon
+        size={isMobile || accordion ? 'small' : ''}
+        name={accordion ? 'nav-go-down' : item.icon}
+        color={iconColor}
+        turn={accordion === true && item.active}
+      ></bal-icon>
       {hasBubble ? (
         <bal-badge class={{ ...bemEl.element('bubble').class() }} size="small">
           {item.bubble}

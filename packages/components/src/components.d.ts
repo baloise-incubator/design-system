@@ -339,6 +339,10 @@ export namespace Components {
          */
         "interface": 'card' | 'image' | 'product' | '';
         /**
+          * If `true` the carousel can be used on dark background
+         */
+        "inverted": boolean;
+        /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
         "itemsPerView": 'auto' | 1 | 2 | 3 | 4;
@@ -2471,10 +2475,14 @@ export namespace Components {
      * TODO's
      * ------------------------
      * - fix component tests
-     * - add inverted style
+     * - accordion tabs
      * - add interfaces for meta navbar...
      */
     interface BalTabs {
+        /**
+          * If `true` the tab items can be open and closed
+         */
+        "accordion": boolean;
         /**
           * If `true` a light border is shown for the tabs.
          */
@@ -3615,7 +3623,7 @@ declare global {
      * TODO's
      * ------------------------
      * - fix component tests
-     * - add inverted style
+     * - accordion tabs
      * - add interfaces for meta navbar...
      */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
@@ -4103,6 +4111,10 @@ declare namespace LocalJSX {
           * Defines special looks.
          */
         "interface"?: 'card' | 'image' | 'product' | '';
+        /**
+          * If `true` the carousel can be used on dark background
+         */
+        "inverted"?: boolean;
         /**
           * Defines how many slides are visible in the container for the user. `auto` will use the size of the actual item content
          */
@@ -6279,10 +6291,14 @@ declare namespace LocalJSX {
      * TODO's
      * ------------------------
      * - fix component tests
-     * - add inverted style
+     * - accordion tabs
      * - add interfaces for meta navbar...
      */
     interface BalTabs {
+        /**
+          * If `true` the tab items can be open and closed
+         */
+        "accordion"?: boolean;
         /**
           * If `true` a light border is shown for the tabs.
          */
@@ -6803,7 +6819,7 @@ declare module "@stencil/core" {
              * TODO's
              * ------------------------
              * - fix component tests
-             * - add inverted style
+             * - accordion tabs
              * - add interfaces for meta navbar...
              */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

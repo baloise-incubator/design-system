@@ -12,6 +12,8 @@ export interface TabButtonProps {
   isLast: boolean
   isMobile: boolean
   isVertical: boolean
+  accordion: boolean
+  inverted: boolean
   expanded: boolean
   spaceless: boolean
   clickable: boolean
@@ -26,6 +28,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isLast,
   isMobile,
   isVertical,
+  accordion,
+  inverted,
   expanded,
   spaceless,
   clickable,
@@ -42,9 +46,16 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   const hasIcon = item.icon !== undefined
 
   const hasIconBubble =
-    (hasIcon && hasBubble && iconPosition !== 'horizontal') || (isMobile && hasIcon && hasBubble && !isVertical)
+    (hasIcon && hasBubble && iconPosition !== 'horizontal' && !accordion) ||
+    (isMobile && hasIcon && hasBubble && !isVertical && !accordion)
+
+  const hasAccordionIconBubble =
+    (accordion && hasBubble) || (accordion && isMobile && hasIcon && hasBubble && !isVertical)
+
   const hasLabelBubble =
-    (!hasIcon && hasBubble) || (hasBubble && !isMobile && iconPosition === 'horizontal') || (hasBubble && isVertical)
+    (!hasIcon && hasBubble && !accordion) ||
+    (hasBubble && !isMobile && iconPosition === 'horizontal' && !accordion) ||
+    (hasBubble && isVertical && !accordion)
 
   return (
     <a
@@ -55,6 +66,8 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('active').class(item.active),
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('clickable').class(clickable),
+        ...bemEl.modifier('accordion').class(accordion),
+        ...bemEl.modifier('inverted').class(inverted),
         ...bemEl.modifier('expanded').class(expanded),
         ...bemEl.modifier('spaceless').class(spaceless),
         ...bemEl.modifier('first').class(isFirst),
@@ -63,6 +76,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
       }}
+      draggable={false}
       data-label={item.label}
       data-value={item.value}
       data-index={item.index}
@@ -72,8 +86,37 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       target={item.target}
       onClick={(event: MouseEvent) => onSelectTab(event, item)}
     >
-      {item.icon ? <TabIcon item={item} isMobile={isMobile} hasBubble={hasIconBubble}></TabIcon> : ''}
-      <TabLabel item={item} isMobile={isMobile} isVertical={isVertical} hasBubble={hasLabelBubble}></TabLabel>
+      {item.icon ? (
+        <TabIcon
+          accordion={false}
+          item={item}
+          isMobile={isMobile}
+          hasBubble={hasIconBubble}
+          inverted={inverted}
+        ></TabIcon>
+      ) : (
+        ''
+      )}
+      <TabLabel
+        item={item}
+        isMobile={isMobile}
+        isVertical={isVertical}
+        hasBubble={hasLabelBubble}
+        inverted={inverted}
+      ></TabLabel>
+      {accordion ? (
+        <TabIcon
+          accordion={accordion}
+          item={item}
+          isMobile={isMobile}
+          hasBubble={hasAccordionIconBubble}
+          inverted={inverted}
+        ></TabIcon>
+      ) : (
+        ''
+      )}
+
+      {/* {accordion ? <bal-icon name="nav-go-down" color={iconColor} size="small" turn={item.active}></bal-icon> : ''} */}
     </a>
   )
 }

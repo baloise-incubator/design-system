@@ -464,7 +464,7 @@ const tokens = {
       'grey': 'grey-5', // placeholder texts
       'light-blue': 'light-blue-5', // hover color
       'primary-dark': 'primary-6', // active color
-      'primary-light': 'primary-3',
+      'primary-light': 'primary-3', // inverted disabled
       'success': 'success-4',
       'info': 'info-4',
       'warning': 'warning-5',
@@ -481,6 +481,8 @@ const tokens = {
     width: '2px',
     colors: {
       'primary': 'primary-5',
+      'primary-light': 'primary-3', // inverted disabled
+      'white': 'white', // inverted
       'grey': 'grey-3',
       'grey-dark': 'grey-4',
       'warning': 'warning-5',

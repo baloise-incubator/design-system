@@ -19,10 +19,14 @@
   padding: 0.5rem
   min-width: 5rem
   min-height: 3rem
+  user-select: none
+  -webkit-user-drag: none
   +tablet
     flex-direction: row
     min-height: 3.5rem
     padding: 0.5rem 1rem
+  &--accordion
+    flex-direction: row
   &--hidden
     +hide-element
   &--expanded
@@ -52,6 +56,18 @@
         color: var(--bal-color-primary-6)
       .bal-tabs__nav__item__icon
         +fillSvg(var(--bal-color-primary-6))
+  &:not(&--disabled)#{&}--inverted
+    +hover()
+      &:hover
+        .bal-tabs__nav__item__label
+          color: var(--bal-color-light-blue-2)
+        .bal-tabs__nav__item__icon
+          +fillSvg(var(--bal-color-light-blue-2))
+    &:active
+      .bal-tabs__nav__item__label
+        color: var(--bal-color-text-info)
+      .bal-tabs__nav__item__icon
+        +fillSvg(var(--bal-color-text-info))
   //
   // Vertical layout
   &--vertical

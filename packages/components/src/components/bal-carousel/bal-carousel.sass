@@ -38,6 +38,9 @@
   z-index: 1
   transform: translate3d(0px,0px,0px)
 
+.bal-carousel__inner__container__border--inverted
+  background: var(--bal-color-border-primary-light)
+
 .bal-carousel__item
   text-align: center
   font-size: var(--bal-size-large)
@@ -71,6 +74,12 @@
   content: ''
   right: 0
   background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-white) 50%)
+
+.bal-carousel__inner--shadow-left.bal-carousel__inner--inverted::before
+  background: linear-gradient(90deg, var(--bal-color-primary) 50%, rgba(255, 255, 255, 0) 100%)
+
+.bal-carousel__inner--shadow-right.bal-carousel__inner--inverted::after
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--bal-color-primary) 50%)
 
 .bal-carousel__inner
   &--items-per-view-auto

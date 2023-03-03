@@ -11,7 +11,10 @@ export interface TabNavProps {
   hasCarousel: boolean
   isVertical: boolean
   isMobile: boolean
+  lineActive: boolean
   border: boolean
+  accordion: boolean
+  inverted: boolean
   clickable: boolean
   animated: boolean
   spaceless: boolean
@@ -27,7 +30,10 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   hasCarousel,
   isVertical,
   isMobile,
+  lineActive,
   border,
+  accordion,
+  inverted,
   clickable,
   animated,
   spaceless,
@@ -50,6 +56,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       isVertical={isVertical}
       iconPosition={iconPosition}
       spaceless={spaceless}
+      inverted={inverted}
+      accordion={accordion}
       expanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}
@@ -76,6 +84,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
             ...bemEl.element('carousel').class(),
           }}
           border={border}
+          inverted={inverted}
           controls="small"
           items-per-view="auto"
           steps={3}
@@ -95,6 +104,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
             id={`${tabsId}-line`}
             class={{
               ...bemEl.element('line').class(),
+              ...bemEl.element('line').modifier(`active`).class(lineActive),
+              ...bemEl.element('line').modifier(`inverted`).class(inverted),
               ...bemEl.element('line').modifier(`animated`).class(animated),
               ...bemEl.element('line').modifier(`vertical`).class(isVertical),
             }}
@@ -108,6 +119,8 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           id={`${tabsId}-line`}
           class={{
             ...bemEl.element('line').class(),
+            ...bemEl.element('line').modifier(`active`).class(lineActive),
+            ...bemEl.element('line').modifier(`inverted`).class(inverted),
             ...bemEl.element('line').modifier(`animated`).class(animated),
             ...bemEl.element('line').modifier(`vertical`).class(isVertical),
           }}
@@ -120,6 +133,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           id={`${tabsId}-border`}
           class={{
             ...bemEl.element('border').class(),
+            ...bemEl.element('border').modifier(`inverted`).class(inverted),
             ...bemEl.element('border').modifier(`vertical`).class(isVertical),
           }}
         ></div>

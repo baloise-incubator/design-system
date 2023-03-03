@@ -55,6 +55,8 @@
       height: 100%
       top: 0
       right: auto
+    &--inverted
+      background: var(--bal-color-border-white)
   //
   // Line style
   &__line
@@ -65,12 +67,16 @@
     z-index: 2
     &:not(&--vertical)
       bottom: 0
-      height: var(--bal-border-width-normal)
       min-width: 5rem
     &--vertical
       top: 0
-      width: var(--bal-border-width-normal)
       min-height: 2.5rem
+    &:not(&--vertical)#{&}--active
+      height: var(--bal-border-width-normal)
+    &--vertical#{&}--active
+      width: var(--bal-border-width-normal)
     &--animated
       will-change: min-width, width, min-height, height, transform
       transition: all var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
+    &--inverted
+      background: var(--bal-color-border-white)

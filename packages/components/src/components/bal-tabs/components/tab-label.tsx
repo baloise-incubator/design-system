@@ -4,18 +4,20 @@ import { BalTabOption } from '../bal-tab.type'
 
 export interface TabLabelProps {
   item: BalTabOption
+  inverted: boolean
   isMobile: boolean
   isVertical: boolean
   hasBubble: boolean
 }
 
-export const TabLabel: FunctionalComponent<TabLabelProps> = ({ item, hasBubble, isVertical }) => {
+export const TabLabel: FunctionalComponent<TabLabelProps> = ({ item, inverted, hasBubble, isVertical }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item').element('label')
 
   return (
     <span
       class={{
         ...bemEl.class(),
+        ...bemEl.modifier('inverted').class(inverted),
         ...bemEl.modifier('active').class(item.active),
         ...bemEl.modifier('disabled').class(item.disabled),
         ...bemEl.modifier('vertical').class(isVertical),

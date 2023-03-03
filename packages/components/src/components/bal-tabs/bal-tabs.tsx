@@ -19,7 +19,6 @@ import { MutationHandler } from '../../utils/mutations'
  * TODO's
  * ------------------------
  * - fix component tests
- * - add inverted style
  * - add interfaces for meta navbar...
  */
 
@@ -77,6 +76,11 @@ export class Tabs implements Loggable, BalConfigObserver {
    * @deprecated If `true` the tabs is a block element and uses 100% of the width
    */
   @Prop() fullwidth = false
+
+  /**
+   * If `true` the tab items can be open and closed
+   */
+  @Prop() accordion = false
 
   /**
    * If `true` the tabs have a carousel if they need more space than provided.
@@ -457,7 +461,7 @@ export class Tabs implements Loggable, BalConfigObserver {
       const firstActiveTab = activeTabs[0]
       this.value = firstActiveTab.value
     } else {
-      if (this.value === undefined && this.store.length > 0) {
+      if (!this.accordion && this.value === undefined && this.store.length > 0) {
         const firstStep = this.store[0]
         this.value = firstStep.value
       }
@@ -632,15 +636,22 @@ export class Tabs implements Loggable, BalConfigObserver {
       stopEventBubbling(event)
     }
 
-    if (!step.disabled) {
+    if (!step.disabled && this.clickable) {
+      if (this.accordion) {
+        if (step.value === this.value) {
+          this.value = undefined
+          this.balChange.emit()
+          return
+        }
+      }
+
       if (step.navigate) {
         step.navigate.emit(event)
       }
-      if (this.clickable) {
-        if (step.value !== this.value) {
-          this.balChange.emit(step.value)
-          await this.select(step)
-        }
+
+      if (step.value !== this.value) {
+        this.balChange.emit(step.value)
+        await this.select(step)
       }
     }
   }
@@ -690,6 +701,9 @@ export class Tabs implements Loggable, BalConfigObserver {
             tabsId={this.tabsId}
             onSelectTab={this.onSelectTab}
             clickable={this.clickable}
+            accordion={this.accordion}
+            lineActive={this.value !== undefined}
+            inverted={this.inverted}
             animated={this.animated}
             border={this.border}
             spaceless={this.spaceless}

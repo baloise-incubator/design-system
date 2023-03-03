@@ -78,6 +78,11 @@ export class Carousel implements ComponentInterface {
   @Prop() controlsOverflow = false
 
   /**
+   * If `true` the carousel can be used on dark background
+   */
+  @Prop() inverted = false
+
+  /**
    * Defines the image aspect ratio.
    * Should be combined with the interface `product`
    */
@@ -386,6 +391,7 @@ export class Carousel implements ComponentInterface {
             ...inner.class(),
             ...inner.modifier(`items-per-view-${this.itemsPerView}`).class(),
             ...inner.modifier(`is-${this.aspectRatio}`).class(),
+            ...inner.modifier(`inverted`).class(this.inverted),
             ...inner.modifier(`shadow-left`).class(this.hasShadowLeft()),
             ...inner.modifier(`shadow-right`).class(this.hasShadowRight()),
           }}
@@ -402,7 +408,10 @@ export class Carousel implements ComponentInterface {
             {this.border ? (
               <div
                 id={`${this.carouselId}-border`}
-                class={{ ...container.element('border').class() }}
+                class={{
+                  ...container.element('border').class(),
+                  ...container.element('border').modifier('inverted').class(this.inverted),
+                }}
                 ref={el => (this.borderEl = el)}
               ></div>
             ) : (
@@ -425,6 +434,7 @@ export class Carousel implements ComponentInterface {
           <LargeControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
+            inverted={this.inverted}
             areControlsHidden={this.areControlsHidden}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
@@ -437,6 +447,7 @@ export class Carousel implements ComponentInterface {
           <SmallControl
             isFirst={this.isFirst()}
             isLast={this.isLast()}
+            inverted={this.inverted}
             onNextClick={() => this.onNextButtonClick()}
             onPreviousClick={() => this.onPreviousButtonClick()}
           ></SmallControl>
