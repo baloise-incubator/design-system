@@ -21,7 +21,7 @@ export class DocTokensBorderColors implements ComponentInterface {
       'success': 'Use for valid state.',
       'danger': 'Use for invalid state.',
       'white': 'Default color on dark backgrounds.',
-      'primary-light': 'Disabled color on dark backgrounds.',
+      'primary-light': 'Disabled or secondary color on dark backgrounds.',
     }
 
     const isInverted = (v: string) => (['white', 'primary-light'].includes(v) ? 'primary' : '')
