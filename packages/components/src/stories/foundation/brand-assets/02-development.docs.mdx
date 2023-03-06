@@ -14,6 +14,14 @@ The logo can be created with our [component](?path=/docs/components-logo--basic)
 
 ## Favicons
 
+### Configure
+
+First install our favicons library
+
+```bash
+npm add -D @baloise/design-system-favicons
+```
+
 We need provide the favicons to our web application.
 To do so we recommend the tool copyfiles to copy the favicons files into your assets folder.
 
@@ -27,14 +35,23 @@ Add a new script called **copy:favicons** and adjust the second path to your app
 ```json
 "scripts": {
   "postinstall": "npm run copy:favicons",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/lib/* src/assets/favicons"
+    "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons/primary"
 }
 ```
+
+Favicons are available in multiple colors (green, primary, purple, red, white, yellow). 
+In this example we use primary, but you can pick oneof available ones by changing the folder name from the first path.
 
 To copy the fonts run the following command.
 
 ```
 npm run copy:favicons
+```
+
+Final step is to add the favicon in index.html file of your application.
+
+```
+<link rel="icon" type="image/x-icon" href="./assets/favicons/primary/favicon.ico" />
 ```
 
 <span id="story--foundation-brand-assets-development--shape" style={{ opacity: 0 }}></span>
