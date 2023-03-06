@@ -19,7 +19,7 @@ describe('bal-tabs.cy.ts', () => {
         ],
       },
     })
-    cy.get('.bal-tabs').waitForComponents()
+    cy.get('.bal-tabs').waitForDesignSystem()
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -37,7 +37,7 @@ describe('bal-tabs.cy.ts', () => {
         onBalChange: onBalChangeSpy,
       },
     })
-    cy.get('.bal-tabs').waitForComponents()
+    cy.get('.bal-tabs').waitForDesignSystem()
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(0).click()
 
     cy.get('@balChange').should('have.been.calledOnce')
@@ -56,7 +56,7 @@ describe('bal-tabs.cy.ts', () => {
         onBalChange: onBalChangeSpy,
       },
     })
-    cy.get('.bal-tabs').waitForComponents()
+    cy.get('.bal-tabs').waitForDesignSystem()
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').should('have.length', 5)
   })
 
@@ -72,7 +72,7 @@ describe('bal-tabs.cy.ts', () => {
         onBalChange: onBalChangeSpy,
       },
     })
-    cy.get('.bal-tabs').waitForComponents()
+    cy.get('.bal-tabs').waitForDesignSystem()
     cy.get('.bal-tabs').find('.bal-tab-item').eq(4).spyEvent('balNavigate')
 
     cy.get('.bal-tabs').find('.bal-tabs__nav__carousel__item').eq(3).click()
