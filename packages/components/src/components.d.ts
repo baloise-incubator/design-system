@@ -722,6 +722,7 @@ export namespace Components {
     interface BalDocTokensBorder {
     }
     interface BalDocTokensBorderColors {
+        "overview": boolean;
     }
     interface BalDocTokensBreakpoints {
     }
@@ -4398,6 +4399,7 @@ declare namespace LocalJSX {
     interface BalDocTokensBorder {
     }
     interface BalDocTokensBorderColors {
+        "overview"?: boolean;
     }
     interface BalDocTokensBreakpoints {
     }
