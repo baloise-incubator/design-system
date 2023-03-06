@@ -33,7 +33,7 @@ Add a new script called **copy:favicons** and adjust the second path to your app
 ```json
 "scripts": {
   "postinstall": "npm run copy:favicons",
-    "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons/primary"
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
 }
 ```
 
@@ -51,6 +51,10 @@ The final step is to add the favicon to the index.html file of your application.
 ```
 <link rel="icon" type="image/x-icon" href="./assets/favicons/primary/favicon.ico" />
 ```
+
+> **TIP**
+>
+> - Add the generated files to the `.gitignore` file.
 
 <span id="story--foundation-brand-assets-development--shape" style={{ opacity: 0 }}></span>
 
