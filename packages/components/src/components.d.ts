@@ -2478,7 +2478,6 @@ export namespace Components {
     /**
      * TODO's
      * ------------------------
-     * - fix component tests
      * - add interfaces for meta navbar...
      */
     interface BalTabs {
@@ -3625,7 +3624,6 @@ declare global {
     /**
      * TODO's
      * ------------------------
-     * - fix component tests
      * - add interfaces for meta navbar...
      */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
@@ -6296,7 +6294,6 @@ declare namespace LocalJSX {
     /**
      * TODO's
      * ------------------------
-     * - fix component tests
      * - add interfaces for meta navbar...
      */
     interface BalTabs {
@@ -6823,7 +6820,6 @@ declare module "@stencil/core" {
             /**
              * TODO's
              * ------------------------
-             * - fix component tests
              * - add interfaces for meta navbar...
              */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

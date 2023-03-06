@@ -18,7 +18,6 @@ import { MutationHandler } from '../../utils/mutations'
 /**
  * TODO's
  * ------------------------
- * - fix component tests
  * - add interfaces for meta navbar...
  */
 
