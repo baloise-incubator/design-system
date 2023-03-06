@@ -69,7 +69,7 @@ npm install @baloise/design-system-components-angular
 
 ### Import Fonts & Favicons
 
-The font package is included in the `@baloise/design-system-components-angular` package, however the favicons needs to be installed separately. 
+The font package is included in the `@baloise/design-system-components-angular` package, however the favicons needs to be installed separately.
 
 ```
 npm install @baloise/design-system-favicons

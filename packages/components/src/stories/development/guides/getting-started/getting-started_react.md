@@ -36,7 +36,7 @@ npm install @baloise/design-system-components-react sass copyfiles
 
 ### Import Fonts & Favicons
 
-The font package is included in the `@baloise/design-system-components-react` package, however the favicons needs to be installed separately. 
+The font package is included in the `@baloise/design-system-components-react` package, however the favicons needs to be installed separately.
 
 ```
 npm install @baloise/design-system-favicons
