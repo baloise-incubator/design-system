@@ -45,7 +45,7 @@ export class DocTokensBorderTextShadow implements ComponentInterface {
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
                     <p class="mt-none mb-x-small is-size-small py-xx-small px-x-small has-background-grey-2 has-radius-normal has-text-weight-bold">
-                      var(--bal-shadow{`-${c.name}`})
+                      var(--bal-text-shadow{`-${c.name}`})
                     </p>
                   </td>
                   <td style={{ verticalAlign: 'top' }}>
