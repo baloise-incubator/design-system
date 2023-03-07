@@ -583,7 +583,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1107,7 +1107,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -2271,9 +2271,9 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
-        "inverted"?: boolean;
+        "inverted": boolean;
         /**
           * If true the Baloise Shape is set
          */
@@ -2557,7 +2557,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
@@ -4303,7 +4303,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -4819,7 +4819,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
@@ -6042,7 +6042,7 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
-          * sets text color to white for images and dark backgrounds (optional)
+          * @deprecated sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: boolean;
         /**
@@ -6319,7 +6319,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * If `true` this component can be placed on dark background
+          * @deprecated If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
