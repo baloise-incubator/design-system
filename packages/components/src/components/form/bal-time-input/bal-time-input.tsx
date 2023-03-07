@@ -41,6 +41,7 @@ import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { ACTION_KEYS, NUMBER_KEYS, isCtrlOrCommandKey } from '../../../utils/constants/keys.constant'
 import { BEM } from '../../../utils/bem'
+import { i18nTime } from './bal-time-input.i18n'
 
 @Component({
   tag: 'bal-time-input',
@@ -207,7 +208,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS]
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ':']
   }
 
   private getRawValue(): string {
@@ -284,6 +285,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
               'has-focus': this.hasFocus,
+              'show-placeholder': !this.hasFocus && (this.value === '' || this.value === undefined),
               'has-value': this.value !== '' && this.value !== undefined,
               ...native.class(),
             }}
@@ -294,6 +296,7 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
             disabled={this.disabled}
             readonly={this.readonly}
             required={this.required}
+            placeholder={`${i18nTime[this.language].hours}:${i18nTime[this.language].minutes}`}
             value={value}
             onInput={ev => this.onInput(ev as InputEvent)}
             onFocus={e => this.onFocus(e)}
