@@ -13,16 +13,16 @@ if (IS_BAL_DS_RELEASE) {
 }
 
 export const StencilBaseConfig: Config = {
+  autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
-  sourceMap: false,
+  // sourceMap: false,
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
-  enableCache: true,
+  // enableCache: true,
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
   invisiblePrehydration: true,
-  autoprefixCss: true,
   plugins: [
     sass({
       outputStyle: 'compressed',
@@ -32,6 +32,15 @@ export const StencilBaseConfig: Config = {
   outputTargets: [
     {
       type: 'dist-custom-elements',
+      dir: 'components',
+      copy: [
+        {
+          src: '../config/custom-elements',
+          dest: 'components',
+          warn: true,
+        },
+      ],
+      includeGlobalScripts: false,
     },
     {
       type: 'docs-vscode',
