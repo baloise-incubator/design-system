@@ -120,7 +120,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         c =>
           `import { defineCustomElement as define${capitalize(
             c.tag,
-          )} } from '@baloise/design-system-components/dist/components/${c.tag}';`,
+          )} } from '@baloise/design-system-components/components/${c.tag}';`,
       )
       .join(NEWLINE)
 
@@ -134,7 +134,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
  */
 
 import '@baloise/design-system-components/dist/design-system-components/design-system-components.css';
-import '@baloise/design-system-components/dist/components';
+import '@baloise/design-system-components/components';
 ${componentImports}
 
 import './example';

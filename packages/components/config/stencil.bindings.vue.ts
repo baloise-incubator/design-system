@@ -41,5 +41,5 @@ export const VueGenerator = (
     componentCorePackage,
     componentModels: vueComponentModels,
     excludeComponents,
-    customElementsDir: 'dist/components',
+    customElementsDir: 'components',
   })

@@ -71,7 +71,7 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';\n`
     c =>
       `import { defineCustomElement as define${dashToPascalCase(c.tagName)} } from '${normalizePath(
         outputTarget.componentCorePackage || '',
-      )}/dist/components/${c.tagName}';`,
+      )}/components/${c.tagName}';`,
   )
 
   const typeImports = !outputTarget.componentCorePackage
