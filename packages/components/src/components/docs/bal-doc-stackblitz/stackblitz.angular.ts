@@ -92,9 +92,7 @@ export const openAngularProject = async (project: AngularProject) => {
         'tsconfig.json': tsconfig_json,
       },
       dependencies: {
-        // '@baloise/design-system-components': '12.5.0',
         '@baloise/design-system-components': 'latest',
-        // '@baloise/design-system-components-angular': '12.5.0',
         '@baloise/design-system-components-angular': 'latest',
       },
     },
