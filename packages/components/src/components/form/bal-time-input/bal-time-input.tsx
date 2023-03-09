@@ -34,8 +34,6 @@ import {
   inputHandleBlur,
   inputHandleChange,
   stopEventBubbling,
-  inputHandleClick,
-  inputHandleHostClick,
 } from '../../../utils/form-input'
 import { debounceEvent, findItemLabel } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
@@ -67,11 +65,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
-
-  /**
-   * Set this to `true` when the component is placed on a dark background.
-   */
-  @Prop() inverted = false
 
   /**
    * If `true` the component gets a invalid style.
@@ -252,10 +245,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
     }
   }
 
-  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
-
-  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
-
   render() {
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
@@ -270,7 +259,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
 
     return (
       <Host
-        onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
@@ -281,7 +269,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
             type="time"
             class={{
               'input': true,
-              'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
               'has-focus': this.hasFocus,
@@ -301,7 +288,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
             onInput={ev => this.onInput(ev as InputEvent)}
             onFocus={e => this.onFocus(e)}
             onBlur={e => this.onBlur(e)}
-            onClick={this.onClick}
             onKeyDown={e => this.onKeydown(e)}
             onKeyPress={e => this.balKeyPress.emit(e)}
             {...this.inheritedAttributes}
@@ -309,7 +295,6 @@ export class TimeInput implements ComponentInterface, BalConfigObserver, FormInp
           <bal-icon
             is-right
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
-            inverted={this.inverted}
             name="clock"
           />
         </bal-input-group>
