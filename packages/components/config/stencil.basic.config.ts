@@ -33,7 +33,7 @@ export const StencilBaseConfig: Config = {
       copy: [
         {
           src: '../config/custom-elements',
-          dest: 'components',
+          dest: '/dist/components',
           warn: true,
         },
       ],
