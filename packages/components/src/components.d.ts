@@ -2623,10 +2623,6 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
-         */
-        "inverted": boolean;
-        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -6396,10 +6392,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * Set this to `true` when the component is placed on a dark background.
-         */
-        "inverted"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
