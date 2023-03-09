@@ -20,8 +20,6 @@
     "noUnusedParameters": true,
     "pretty": true,
     "removeComments": true,
-    // "inlineSources": true,
-    // "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true

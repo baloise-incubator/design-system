@@ -130,7 +130,7 @@ import '@baloise/design-system-components/dist/design-system-components/design-s
 import { initializeBaloiseDesignSystem } from '@baloise/design-system-components';
 import {
 ${componentImports}
-} from '@baloise/design-system-components/components';
+} from '@baloise/design-system-components/dist/components';
 
 import './example';
 
