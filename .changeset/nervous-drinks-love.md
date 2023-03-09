@@ -5,4 +5,4 @@
 '@baloise/design-system-components': minor
 ---
 
-bal-time-input
+new form component bal-time-input added
