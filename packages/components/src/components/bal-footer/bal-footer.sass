@@ -10,15 +10,34 @@
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-primary)
     color: var(--bal-color-text-white)
-    padding: var(--bal-space-large)
+    padding-top: var(--bal-space-large)
+    padding-bottom: var(--bal-space-large)
     +tablet
-      padding: var(--bal-space-tablet-large)
+      padding-top: var(--bal-space-large)
+      padding-bottom: var(--bal-space-large)
     +desktop
-      padding: var(--bal-space-desktop-large)
+      padding-top: var(--bal-space-large)
+      padding-bottom: var(--bal-space-large)
 
     &,
     p
       color: var(--bal-color-white)
+
+    +element(header-container)
+      display: flex
+      justify-content: space-between
+      flex-wrap: nowrap
+      flex-direction: row
+      padding-bottom: var(--bal-space-large)
+
+      +element(language)
+        display: flex
+        flex-wrap: nowrap
+        align-items: center
+
+      +element(logo)
+        display: flex
+        align-items: center
 
     +element(links-container)
       display: flex
@@ -34,23 +53,42 @@
       +element(legal-links)
         display: flex
         flex-wrap: wrap
-        padding-top: var(--bal-space-normal)
-        gap: .75rem
+        align-items: center
+        gap: var(--bal-space-desktop-large)
 
-        & > a
-          white-space: nowrap
-          &.is-current
-            text-decoration: underline
+        +mobile
+          flex-direction: column
+          justify-content: center
+          width: 100%
+          gap: var(--bal-space-normal)
 
-      +element(language-links)
-        padding-top: var(--bal-space-normal)
-        gap: .75rem
-        & > a
-          white-space: nowrap
-          &.is-current
-            text-decoration: underline
-            text-underline-offset: 4px
-            text-decoration-thickness: 2px
+        // .bal-text
+        //   margin: 0
 
-      +tablet
-        flex-wrap: nowrap
+        // & > a
+        //   white-space: nowrap
+        //   &.is-current
+        //     text-decoration: underline
+
+      +element(social-media-links)
+        align-items: center
+        gap: var(--bal-space-desktop-large)
+        padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
+
+        +tablet-only
+          padding-bottom: var(--bal-space-large)
+
+        +mobile
+          padding-bottom: var(--bal-space-large)
+          justify-content: center
+          width: 100%
+
+        // & > a
+        //   white-space: nowrap
+        //   &.is-current
+        //     text-decoration: underline
+        //     text-underline-offset: 4px
+        //     text-decoration-thickness: 2px
+
+      // +tablet
+      //   flex-wrap: nowrap

@@ -1,4 +1,4 @@
-import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
+import { FooterLink, Language, loadFooterLinks, loadSocialMediaLinks, SocialMediaLink } from '@baloise/web-app-utils'
 import { Component, Host, h, Prop, State, Watch, Method } from '@stencil/core'
 import {
   BalConfigObserver,
@@ -20,6 +20,7 @@ import { BEM } from '../../utils/bem'
 })
 export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []
+  @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() allowedLanguages: BalLanguage[] = defaultConfig.allowedLanguages
@@ -46,6 +47,7 @@ export class Footer implements BalConfigObserver {
   connectedCallback() {
     attachComponentToConfig(this)
     this.updateFooterLinks()
+    this.updateSocialMediaLinks()
   }
 
   /**
@@ -57,6 +59,7 @@ export class Footer implements BalConfigObserver {
     this.region = state.region
     this.allowedLanguages = state.allowedLanguages
     this.updateFooterLinks()
+    this.updateSocialMediaLinks()
   }
 
   @Watch('locale')
@@ -64,6 +67,7 @@ export class Footer implements BalConfigObserver {
     if (this.locale !== '') {
       this.language = this.locale
       this.updateFooterLinks()
+      this.updateSocialMediaLinks()
     }
   }
 
@@ -78,13 +82,23 @@ export class Footer implements BalConfigObserver {
     }
   }
 
+  updateSocialMediaLinks() {
+    if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
+      // The following footer links only apply to swiss and german applications
+      loadSocialMediaLinks(new Language(this.language), this.region).then(links => (this.socialMediaLinks = links))
+    }
+  }
+
   render() {
     const block = BEM.block('footer')
     const elInner = block.element('inner')
     const elContainer = elInner.element('container')
     const elLinksContainer = elInner.element('links-container')
+    const elHeaderContainer = elInner.element('header-container')
+    const elLogo = elHeaderContainer.element('logo')
+    const elLanguage = elHeaderContainer.element('language')
     const elLegalLinks = elLinksContainer.element('legal-links')
-    const elLanguageLinks = elLinksContainer.element('language-links')
+    const elSocialMediaLinks = elLinksContainer.element('social-media-links')
 
     return (
       <Host
@@ -97,7 +111,39 @@ export class Footer implements BalConfigObserver {
             ...elInner.class(),
           }}
         >
-          <slot></slot>
+          {/* <slot></slot> */}
+          <div
+            class={{
+              container: true,
+              ...elContainer.class(),
+              ...elHeaderContainer.class(),
+            }}
+          >
+            <div
+              class={{
+                ...elLogo.class(),
+              }}
+            >
+              <bal-logo color="white"></bal-logo>
+            </div>
+            <div
+              class={{
+                ...elLanguage.class(),
+              }}
+              style={{
+                display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
+              }}
+            >
+              <bal-icon name="web" color="white"></bal-icon>
+              <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
+                {this.allowedLanguages.map(language => (
+                  <bal-select-option label={language.toLocaleUpperCase()} value={language}>
+                    {language.toLocaleUpperCase()}
+                  </bal-select-option>
+                ))}
+              </bal-select>
+            </div>
+          </div>
           <div
             class={{
               container: true,
@@ -107,41 +153,29 @@ export class Footer implements BalConfigObserver {
           >
             <div
               class={{
-                ...elLegalLinks.class(),
-              }}
-              style={{ display: this.hideLinks ? 'none' : 'flex' }}
-            >
-              {this.links.map(link => (
-                <a
-                  class={{
-                    'is-link': true,
-                    'is-inverted': true,
-                  }}
-                  href={link.link}
-                  target="_blank"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <div
-              class={{
-                ...elLanguageLinks.class(),
+                ...elSocialMediaLinks.class(),
               }}
               style={{
                 display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
               }}
             >
-              {this.allowedLanguages.map(lang => (
-                <a
-                  class={[
-                    'is-link',
-                    'is-inverted',
-                    this.language.toLowerCase() == lang.toLowerCase() ? 'is-current' : '',
-                  ].join(' ')}
-                  onClick={() => this.changeLanguage(lang)}
-                >
-                  {lang.toUpperCase()}
+              {this.socialMediaLinks.map(link => (
+                <a href={link.link}>
+                  <bal-icon name={link.label.toLowerCase()} color="white"></bal-icon>
+                </a>
+              ))}
+            </div>
+            <div
+              class={{
+                ...elLegalLinks.class(),
+              }}
+              style={{ display: this.hideLinks ? 'none' : 'flex' }}
+            >
+              {this.links.map(link => (
+                <a href={link.link} target="_blank">
+                  <bal-text size="small" space="none">
+                    {link.label}
+                  </bal-text>
                 </a>
               ))}
             </div>
