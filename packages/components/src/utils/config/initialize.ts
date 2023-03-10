@@ -59,7 +59,7 @@ export const defaultConfig: BalConfigState = {
     balIconXing,
     balIconYoutube,
     balIconWeb,
-    balIconCaretUp
+    balIconCaretUp,
   },
   fallbackLanguage: 'de',
   logger: defaultLoggerConfig,
