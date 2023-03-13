@@ -1076,6 +1076,7 @@ export class Select implements ComponentInterface, Loggable {
               }
               turn={this.isPopoverOpen}
               onClick={ev => this.handleInputClick(ev, true)}
+              size={!this.isInverted ? '' : 'small'}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
