@@ -97,6 +97,7 @@ export class Footer implements BalConfigObserver {
     const elHeaderContainer = elInner.element('header-container')
     const elLogo = elHeaderContainer.element('logo')
     const elLanguage = elHeaderContainer.element('language')
+    const elWrapper = elLanguage.element('wrapper')
     const elLegalLinks = elLinksContainer.element('legal-links')
     const elSocialMediaLinks = elLinksContainer.element('social-media-links')
 
@@ -135,13 +136,19 @@ export class Footer implements BalConfigObserver {
               }}
             >
               <bal-icon name="web" color="white"></bal-icon>
-              <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
-                {this.allowedLanguages.map(language => (
-                  <bal-select-option label={language.toLocaleUpperCase()} value={language}>
-                    {language.toLocaleUpperCase()}
-                  </bal-select-option>
-                ))}
-              </bal-select>
+              <div
+                class={{
+                  ...elWrapper.class(),
+                }}
+              >
+                <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
+                  {this.allowedLanguages.map(language => (
+                    <bal-select-option label={language.toLocaleUpperCase()} value={language}>
+                      {language.toLocaleUpperCase()}
+                    </bal-select-option>
+                  ))}
+                </bal-select>
+              </div>
             </div>
           </div>
           <div
