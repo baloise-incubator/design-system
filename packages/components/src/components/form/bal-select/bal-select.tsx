@@ -86,7 +86,6 @@ export class Select implements ComponentInterface, Loggable {
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo = ''
   @State() labelToSelectTo = ''
-  @State() isInverted = false
 
   /**
    * PUBLIC PROPERTY API
@@ -931,7 +930,7 @@ export class Select implements ComponentInterface, Loggable {
   }
 
   private isInsideOfFooter() {
-    this.isInverted = this.el.closest('bal-footer') !== null
+    this.inverted = this.el.closest('bal-footer') !== null
   }
 
   /**
@@ -985,7 +984,7 @@ export class Select implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('inverted').class(this.inverted),
-          ...block.modifier('inverted-footer').class(this.isInverted),
+          ...block.modifier('inverted-footer').class(this.inverted),
         }}
       >
         <select
@@ -1013,7 +1012,7 @@ export class Select implements ComponentInterface, Loggable {
               ...controlEl.modifier('invalid').class(this.invalid),
               ...controlEl.modifier('disabled').class(this.disabled || this.readonly),
               ...controlEl.modifier('focused').class(this.isPopoverOpen),
-              ...controlEl.modifier('inverted-footer').class(this.isInverted),
+              ...controlEl.modifier('inverted-footer').class(this.inverted),
             }}
           >
             <div
@@ -1064,11 +1063,11 @@ export class Select implements ComponentInterface, Loggable {
                 ...controlIconEl.modifier('loading').class(this.loading),
                 ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
-              name={!this.isInverted ? 'caret-down' : 'caret-up'}
+              name={!this.inverted ? 'caret-down' : 'caret-up'}
               color={
                 this.disabled || this.readonly
                   ? 'grey-light'
-                  : this.isInverted
+                  : this.inverted
                   ? 'white'
                   : this.invalid
                   ? 'danger'
@@ -1076,7 +1075,7 @@ export class Select implements ComponentInterface, Loggable {
               }
               turn={this.isPopoverOpen}
               onClick={ev => this.handleInputClick(ev, true)}
-              size={!this.isInverted ? '' : 'xsmall'}
+              size={!this.inverted ? '' : 'xsmall'}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>

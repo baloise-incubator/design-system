@@ -10,7 +10,7 @@
     font-family: var(--bal-family-primary)
     background-color: var(--bal-color-primary)
     color: var(--bal-color-text-white)
-    padding-top: var(--bal-space-large)
+    padding-top: var(--bal-space-x-small)
     padding-bottom: var(--bal-space-large)
     +tablet
       padding-top: var(--bal-space-large)
@@ -65,30 +65,17 @@
         align-items: center
         gap: var(--bal-space-desktop-large)
 
-        a:hover
-          opacity: .5
-
         +mobile
           flex-direction: column
           justify-content: center
           width: 100%
           gap: var(--bal-space-normal)
 
-        // .bal-text
-        //   margin: 0
-
-        // & > a
-        //   white-space: nowrap
-        //   &.is-current
-        //     text-decoration: underline
-
       +element(social-media-links)
+        display: flex
         align-items: center
         gap: var(--bal-space-desktop-large)
         padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
-
-        a:hover
-          opacity: .5
 
         +tablet-only
           padding-bottom: var(--bal-space-large)
@@ -97,13 +84,3 @@
           padding-bottom: var(--bal-space-large)
           justify-content: center
           width: 100%
-
-        // & > a
-        //   white-space: nowrap
-        //   &.is-current
-        //     text-decoration: underline
-        //     text-underline-offset: 4px
-        //     text-decoration-thickness: 2px
-
-      // +tablet
-      //   flex-wrap: nowrap

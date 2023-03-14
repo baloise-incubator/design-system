@@ -11,6 +11,7 @@ import {
   BalRegion,
 } from '../../utils/config'
 import { BEM } from '../../utils/bem'
+import { Loggable, Logger, LogInstance } from '../../utils/log'
 
 @Component({
   tag: 'bal-footer',
@@ -18,12 +19,24 @@ import { BEM } from '../../utils/bem'
     css: 'bal-footer.sass',
   },
 })
-export class Footer implements BalConfigObserver {
+export class Footer implements BalConfigObserver, Loggable {
   @State() links: FooterLink[] = []
   @State() socialMediaLinks: SocialMediaLink[] = []
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() allowedLanguages: BalLanguage[] = defaultConfig.allowedLanguages
+
+  log!: LogInstance
+
+  @Logger('bal-footer')
+  createLogger(log: LogInstance) {
+    this.log = log
+  }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * @deprecated The languages in which the links will appear.
@@ -40,15 +53,25 @@ export class Footer implements BalConfigObserver {
    */
   @Prop() hideLanguageSelection = false
 
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
 
   connectedCallback() {
     attachComponentToConfig(this)
     this.updateFooterLinks()
     this.updateSocialMediaLinks()
   }
+
+  disconnectedCallback() {
+    detachComponentToConfig(this)
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
   /**
    * @internal define config for the component
@@ -71,23 +94,34 @@ export class Footer implements BalConfigObserver {
     }
   }
 
-  changeLanguage(language: BalLanguage) {
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private changeLanguage(language: BalLanguage) {
     updateBalLanguage(language)
   }
 
-  updateFooterLinks() {
+  private updateFooterLinks() {
     if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
       // The following footer links only apply to swiss and german applications
       loadFooterLinks(new Language(this.language), this.region).then(links => (this.links = links))
     }
   }
 
-  updateSocialMediaLinks() {
-    if (!this.hideLinks && (this.region === 'CH' || this.region === 'DE')) {
+  private updateSocialMediaLinks() {
+    if (this.region === 'CH' || this.region === 'DE') {
+      // filtering?
       // The following footer links only apply to swiss and german applications
       loadSocialMediaLinks(new Language(this.language), this.region).then(links => (this.socialMediaLinks = links))
     }
   }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
 
   render() {
     const block = BEM.block('footer')
@@ -112,7 +146,6 @@ export class Footer implements BalConfigObserver {
             ...elInner.class(),
           }}
         >
-          {/* <slot></slot> */}
           <div
             class={{
               container: true,
@@ -151,6 +184,7 @@ export class Footer implements BalConfigObserver {
               </div>
             </div>
           </div>
+          <slot></slot>
           <div
             class={{
               container: true,
@@ -162,13 +196,19 @@ export class Footer implements BalConfigObserver {
               class={{
                 ...elSocialMediaLinks.class(),
               }}
-              style={{
-                display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
-              }}
+              // style={{
+              //   display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
+              // }}
             >
               {this.socialMediaLinks.map(link => (
-                <a href={link.link}>
-                  <bal-icon name={link.label.toLowerCase()} color="white"></bal-icon>
+                <a
+                  href={link.link}
+                  class={{
+                    'is-link': true,
+                    'is-inverted': true,
+                  }}
+                >
+                  <bal-icon name={link.label.toLowerCase()}></bal-icon>
                 </a>
               ))}
             </div>
@@ -179,10 +219,15 @@ export class Footer implements BalConfigObserver {
               style={{ display: this.hideLinks ? 'none' : 'flex' }}
             >
               {this.links.map(link => (
-                <a href={link.link} target="_blank">
-                  <bal-text size="small" space="none">
-                    {link.label}
-                  </bal-text>
+                <a
+                  href={link.link}
+                  target="_blank"
+                  class={{
+                    'is-link': true,
+                    'is-light': true,
+                  }}
+                >
+                  {link.label}
                 </a>
               ))}
             </div>

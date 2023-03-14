@@ -27,7 +27,6 @@ const Template = args => ({
   },
   template: `<bal-footer v-bind="args">
   <div class="container">
-    <bal-logo color="white"></bal-logo>
     <p class="mt-x-small">{{ args.content }}</p>
   </div>
 </bal-footer>`,
@@ -38,7 +37,10 @@ Basic.args = {
   content: 'Footer Content',
   hideLinks: false,
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(Basic),
+}
 
 export const FooterOfGermany = Template.bind({})
 FooterOfGermany.args = {
@@ -47,4 +49,7 @@ FooterOfGermany.args = {
   region: 'DE',
   language: 'de',
 }
-FooterOfGermany.parameters = { ...component.sourceCode(FooterOfGermany) }
+FooterOfGermany.parameters = {
+  layout: 'fullscreen',
+  ...component.sourceCode(FooterOfGermany),
+}
