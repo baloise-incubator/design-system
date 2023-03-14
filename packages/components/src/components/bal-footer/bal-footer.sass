@@ -23,64 +23,76 @@
     p
       color: var(--bal-color-white)
 
-    +element(header-container)
+    +element(wrapper)
       display: flex
-      justify-content: space-between
-      flex-wrap: nowrap
-      flex-direction: row
-      padding-bottom: var(--bal-space-large)
-
-      +element(language)
-        display: flex
-        flex-wrap: nowrap
-        align-items: center
-
-        +element(wrapper)
-          width: 57px
-
-      +element(logo)
-        display: flex
-        align-items: center
+      flex-direction: column
+      gap: var(--bal-space-large)
 
       +tablet-only
-        padding-bottom: var(--bal-space-tablet-medium)
+        gap: var(--bal-space-tablet-medium)
 
       +mobile
-        padding-bottom: var(--bal-space-tablet-medium)
+        gap: var(--bal-space-tablet-medium)
 
-    +element(links-container)
-      display: flex
-      justify-content: space-between
-      flex-wrap: wrap
-
-      +tablet
-        flex-direction: column
-
-      +desktop
+      +element(header-container)
+        display: flex
+        justify-content: space-between
+        flex-wrap: nowrap
         flex-direction: row
 
-      +element(legal-links)
+        +element(language)
+          display: flex
+          flex-wrap: nowrap
+          align-items: center
+
+          +element(wrapper)
+            width: 57px
+
+          +element(icon)
+            &:hover
+              +fillSvg(var(--bal-color-light-blue-2))
+            &:active
+              +fillSvg(var(--bal-color-info-3))
+
+        +element(logo)
+          display: flex
+          align-items: center
+
+      +element(links-container)
         display: flex
+        justify-content: space-between
         flex-wrap: wrap
-        align-items: center
-        gap: var(--bal-space-desktop-large)
 
-        +mobile
+        +tablet
           flex-direction: column
-          justify-content: center
-          width: 100%
-          gap: var(--bal-space-normal)
 
-      +element(social-media-links)
-        display: flex
-        align-items: center
-        gap: var(--bal-space-desktop-large)
-        padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
+        +desktop
+          flex-direction: row
 
-        +tablet-only
-          padding-bottom: var(--bal-space-large)
+        +element(legal-links)
+          display: flex
+          flex-wrap: wrap
+          align-items: center
+          gap: var(--bal-space-desktop-large)
 
-        +mobile
-          padding-bottom: var(--bal-space-large)
-          justify-content: center
-          width: 100%
+          a
+            font-size: var(--bal-size-small) !important
+
+          +mobile
+            flex-direction: column
+            justify-content: center
+            width: 100%
+            gap: var(--bal-space-normal)
+
+        +element(social-media-links)
+          align-items: center
+          gap: var(--bal-space-desktop-large)
+          padding: var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-normal) var(--bal-space-none)
+
+          +tablet-only
+            padding-bottom: var(--bal-space-large)
+
+          +mobile
+            padding-bottom: var(--bal-space-large)
+            justify-content: center
+            width: 100%

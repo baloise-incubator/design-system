@@ -27,7 +27,7 @@ const Template = args => ({
   },
   template: `<bal-footer v-bind="args">
   <div class="container">
-    <p class="mt-x-small">{{ args.content }}</p>
+    <p>{{ args.content }}</p>
   </div>
 </bal-footer>`,
 })
@@ -46,6 +46,7 @@ export const FooterOfGermany = Template.bind({})
 FooterOfGermany.args = {
   hideLinks: false,
   hideLanguageSelection: true,
+  showSocialMedia: true,
   region: 'DE',
   language: 'de',
 }
