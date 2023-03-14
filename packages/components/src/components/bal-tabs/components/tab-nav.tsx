@@ -10,7 +10,9 @@ export interface TabNavProps {
   tabsId: string
   hasCarousel: boolean
   isVertical: boolean
+  inNavbar: boolean
   isMobile: boolean
+  isTouch: boolean
   lineActive: boolean
   border: boolean
   accordion: boolean
@@ -29,7 +31,9 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   tabsId,
   hasCarousel,
   isVertical,
+  inNavbar,
   isMobile,
+  isTouch,
   lineActive,
   border,
   accordion,
@@ -45,6 +49,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   const bemEl = BEM.block('tabs').element('nav')
 
   const tabs = items.filter(tab => !tab.hidden)
+  const isFullHeight = inNavbar && !isTouch
 
   const Button: FunctionalComponent<{ item: BalTabOption; index: number }> = ({ item, index }) => (
     <TabButton
@@ -70,6 +75,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       id={`${tabsId}-nav`}
       class={{
         ...bemEl.class(),
+        ...bemEl.modifier(`full-height`).class(isFullHeight),
         ...bemEl.modifier(`border`).class(border),
         ...bemEl.modifier(`animated`).class(animated),
         ...bemEl.modifier(`vertical`).class(isVertical),
@@ -83,6 +89,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
           class={{
             ...bemEl.element('carousel').class(),
           }}
+          fullHeight={isFullHeight}
           border={border}
           inverted={inverted}
           controls="small"

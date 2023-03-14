@@ -23,6 +23,12 @@ export namespace Events {
   export type BalPopoverDidAnimateDetail = void
   export type BalPopoverDidAnimate = CustomEvent<BalPopoverDidAnimateDetail>
 
+  export type BalNavbarMenuWillAnimateDetail = boolean
+  export type BalNavbarMenuWillAnimate = CustomEvent<BalNavbarMenuWillAnimateDetail>
+
+  export type BalNavbarMenuDidAnimateDetail = boolean
+  export type BalNavbarMenuDidAnimate = CustomEvent<BalNavbarMenuDidAnimateDetail>
+
   export type BalCheckboxChangeDetail = boolean
   export type BalCheckboxChange = CustomEvent<BalCheckboxChangeDetail>
 

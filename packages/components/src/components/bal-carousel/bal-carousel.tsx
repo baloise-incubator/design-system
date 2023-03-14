@@ -83,6 +83,11 @@ export class Carousel implements ComponentInterface {
   @Prop() inverted = false
 
   /**
+   * If `true` the carousel uses the full height
+   */
+  @Prop() fullHeight = false
+
+  /**
    * Defines the image aspect ratio.
    * Should be combined with the interface `product`
    */
@@ -373,6 +378,7 @@ export class Carousel implements ComponentInterface {
         class={{
           ...block.class(),
           ...block.modifier(this.interface).class(this.interface !== ''),
+          ...block.modifier(`full-height`).class(this.fullHeight),
           ...block.modifier('controls-sticky').class(this.controlsSticky),
           ...block.modifier(`controls-${this.controls}`).class(),
         }}
@@ -392,6 +398,7 @@ export class Carousel implements ComponentInterface {
             ...inner.modifier(`items-per-view-${this.itemsPerView}`).class(),
             ...inner.modifier(`is-${this.aspectRatio}`).class(),
             ...inner.modifier(`inverted`).class(this.inverted),
+            ...inner.modifier(`full-height`).class(this.fullHeight),
             ...inner.modifier(`shadow-left`).class(this.hasShadowLeft()),
             ...inner.modifier(`shadow-right`).class(this.hasShadowRight()),
           }}

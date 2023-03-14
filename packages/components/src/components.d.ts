@@ -335,6 +335,10 @@ export namespace Components {
          */
         "controlsSticky": boolean;
         /**
+          * If `true` the carousel uses the full height
+         */
+        "fullHeight": boolean;
+        /**
           * Defines special looks.
          */
         "interface": 'card' | 'image' | 'product' | '';
@@ -2475,11 +2479,6 @@ export namespace Components {
          */
         "expanded": boolean;
     }
-    /**
-     * TODO's
-     * ------------------------
-     * - add interfaces for meta navbar...
-     */
     interface BalTabs {
         /**
           * If `true` the tab items can be open and closed
@@ -2518,7 +2517,7 @@ export namespace Components {
          */
         "iconPosition": Props.BalTabsIconPosition;
         /**
-          * Defines the layout of the tabs.
+          * @deprecated Defines the layout of the tabs.
          */
         "interface": Props.BalTabsInterface;
         /**
@@ -3621,11 +3620,6 @@ declare global {
         prototype: HTMLBalTableElement;
         new (): HTMLBalTableElement;
     };
-    /**
-     * TODO's
-     * ------------------------
-     * - add interfaces for meta navbar...
-     */
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
     }
     var HTMLBalTabsElement: {
@@ -4107,6 +4101,10 @@ declare namespace LocalJSX {
           * If `true` the controls will be sticky to the top.
          */
         "controlsSticky"?: boolean;
+        /**
+          * If `true` the carousel uses the full height
+         */
+        "fullHeight"?: boolean;
         /**
           * Defines special looks.
          */
@@ -5346,10 +5344,12 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        "onBalDidAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarMenuDidAnimateDetail>) => void;
         /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: BalNavbarBrandCustomEvent<MouseEvent>) => void;
+        "onBalWillAnimate"?: (event: BalNavbarBrandCustomEvent<Events.BalNavbarMenuWillAnimateDetail>) => void;
         /**
           * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -6291,11 +6291,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
     }
-    /**
-     * TODO's
-     * ------------------------
-     * - add interfaces for meta navbar...
-     */
     interface BalTabs {
         /**
           * If `true` the tab items can be open and closed
@@ -6330,7 +6325,7 @@ declare namespace LocalJSX {
          */
         "iconPosition"?: Props.BalTabsIconPosition;
         /**
-          * Defines the layout of the tabs.
+          * @deprecated Defines the layout of the tabs.
          */
         "interface"?: Props.BalTabsInterface;
         /**
@@ -6817,11 +6812,6 @@ declare module "@stencil/core" {
             "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
-            /**
-             * TODO's
-             * ------------------------
-             * - add interfaces for meta navbar...
-             */
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;

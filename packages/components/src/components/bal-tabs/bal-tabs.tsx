@@ -1,6 +1,14 @@
 import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { areArraysEqual } from '@baloise/web-app-utils'
-import { debounceEvent, deepReady, isChildOfEventTarget, raf, transitionEndAsync } from '../../utils/helpers'
+import {
+  debounceEvent,
+  deepReady,
+  hasParent,
+  isChildOfEventTarget,
+  isDescendant,
+  raf,
+  transitionEndAsync,
+} from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { Props, Events } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
@@ -14,12 +22,6 @@ import { TabSelect } from './components/tab-select'
 import { TabNav } from './components/tab-nav'
 import { getPadding, Padding } from '../../utils/style'
 import { MutationHandler } from '../../utils/mutations'
-
-/**
- * TODO's
- * ------------------------
- * - add interfaces for meta navbar...
- */
 
 @Component({
   tag: 'bal-tabs',
@@ -35,6 +37,8 @@ export class Tabs implements Loggable, BalConfigObserver {
   private tabsId = `bal-tabs-${TabsIds++}`
   private currentRaf: number | undefined
 
+  @State() isNavbarOpen = false
+  @State() inNavbar = false
   @State() isMobile = isPlatform('mobile')
   @State() isTablet = isPlatform('tablet')
   @State() store: BalTabOption[] = []
@@ -46,19 +50,6 @@ export class Tabs implements Loggable, BalConfigObserver {
   createLogger(log: LogInstance) {
     this.log = log
   }
-
-  // private didInit = false
-  // private mutationO?: MutationObserver
-  // private timeoutTimer?: NodeJS.Timer
-  // private tabsId = `bal-tabs-${TabsIds++}`
-
-  // @State() tabsOptions: BalTabOption[] = []
-  // @State() lineWidth = 0
-  // @State() lineOffsetLeft = 0
-  // @State() lineHeight = 0
-  // @State() lineOffsetTop = 0
-  // @State() isReady = false
-  // @State() platform: Platforms[] = ['mobile']
 
   /**
    * PUBLIC PROPERTY API
@@ -102,6 +93,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   }
 
   /**
+   * @deprecated
    * Defines the layout of the tabs.
    */
   @Prop() interface: Props.BalTabsInterface = 'tabs'
@@ -191,6 +183,7 @@ export class Tabs implements Loggable, BalConfigObserver {
    */
 
   connectedCallback() {
+    this.inNavbar = hasParent('bal-navbar', this.el)
     this.debounceChanged()
     attachComponentToConfig(this)
     this.mutationHandler.connect(this.el, () => this.onOptionChange())
@@ -226,8 +219,6 @@ export class Tabs implements Loggable, BalConfigObserver {
       this.isMobile = isPlatform('mobile')
       this.isTablet = isPlatform('tablet')
       this.animateLine()
-      // this.platform = getPlatforms()
-      // this.moveLine(this.getTargetElement(this.value))
     })
   }
 
@@ -239,60 +230,17 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Listen('balDidAnimate', { target: 'window' })
   listenToDidAnimate(event: UIEvent) {
     isChildOfEventTarget(event, this.el, () => this.animateLine())
+    this.isUsedInNavbar(event)
   }
 
-  // @Listen('balPopoverPrepare', { target: 'window' })
-  // async popoverHandler() {
-  //   // this.platform = getPlatforms()
-  //   // this.moveLine(this.getTargetElement(this.value))
-  // }
-
-  // /**
-  //  * @Internal need this to animate the line when the accordion has opened
-  //  */
-  // @Listen('balChange', { target: 'window' })
-  // async accordionChangeHandler(event: Events.BalAccordionChange) {
-  //   const accordion = this.el.closest('bal-accordion')
-  //   if (event.target === accordion) {
-  //     // this.moveLine(this.getTargetElement(this.value))
-  //   }
-  // }
-
-  // connectedCallback() {
-  //   this.platform = getPlatforms()
-  //   this.debounceChanged()
-  // }
-
-  // disconnectedCallback() {
-  //   if (this.mutationO) {
-  //     this.mutationO.disconnect()
-  //     this.mutationO = undefined
-  //   }
-  // }
-
-  // componentDidLoad() {
-  //   this.didInit = true
-
-  //   this.updateTabs().then(() => {
-  //     let value = this.value
-  //     if ((value === undefined || value === '') && this.interface !== 'navigation') {
-  //       const availableTabs = this.tabsOptions.filter(t => !t.disabled)
-  //       if (availableTabs.length > 0) {
-  //         value = availableTabs[0].value
-  //       }
-  //     }
-  //     this.value = value
-  //     this.valueChanged(value, this.value)
-  //   })
-
-  //   this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
-  //     this.updateTabs()
-  //   })
-  // }
-
-  // componentDidRender() {
-  //   this.moveLine(this.getTargetElement(this.value))
-  // }
+  isUsedInNavbar(event: UIEvent) {
+    const target = event.target as HTMLElement
+    const parentNavbar = target.closest('bal-navbar')
+    const isNavbarOpen = event.target as any | false
+    if (parentNavbar && isDescendant(parentNavbar, this.el)) {
+      this.isNavbarOpen = isNavbarOpen
+    }
+  }
 
   /**
    * PUBLIC METHODS
@@ -323,113 +271,12 @@ export class Tabs implements Loggable, BalConfigObserver {
   @Method()
   async renderLine() {
     this.animateLine()
-    // this.moveLine(this.getTargetElement(this.value), 100)
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
-
-  // private get tabs(): HTMLBalTabItemElement[] {
-  //   return Array.from(this.el.querySelectorAll(`#${this.tabsId} > bal-tab-item`))
-  // }
-
-  // private async updateTabs() {
-  //   try {
-  //     await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-  //       if (!areArraysEqual(this.tabsOptions, tabsOptions)) {
-  //         this.tabsOptions = tabsOptions
-  //       }
-  //     })
-  //     const activeTabs = this.tabsOptions.filter(t => t.active)
-  //     if (activeTabs.length > 0) {
-  //       const firstActiveTab = activeTabs[0]
-  //       this.value = firstActiveTab.value
-  //     }
-  //   } catch (e) {
-  //     console.warn('[WARN] - Could not read tab options')
-  //   }
-  // }
-
-  // private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
-  //   if (tab.prevent || tab.disabled || !this.clickable) {
-  //     stopEventBubbling(event)
-  //   }
-
-  //   if (!tab.disabled) {
-  //     tab.navigate.emit(event)
-  //     if (this.clickable) {
-  //       let value = tab.value
-  //       if (this.interface === 'navigation' && value === this.value && !tab.href) {
-  //         value = ''
-  //       }
-
-  //       if (value !== this.value) {
-  //         this.balChange.emit(value)
-  //         await this.select(tab)
-  //       }
-  //     }
-  //   }
-  // }
-
-  // private moveLine(element: HTMLElement, timeout = 0) {
-  //   if (this.timeoutTimer) {
-  //     clearTimeout(this.timeoutTimer)
-  //   }
-  //   this.timeoutTimer = setTimeout(() => {
-  //     if (this.interface !== 'steps' && this.interface !== 'o-steps') {
-  //       if (element) {
-  //         let paddingLeft = 0
-  //         let paddingRight = 0
-  //         const listElement = element.closest('li')
-  //         if (listElement) {
-  //           paddingLeft = parseInt(
-  //             window
-  //               .getComputedStyle(listElement.firstChild as Element)
-  //               .getPropertyValue('padding-left')
-  //               .slice(0, -2),
-  //             10,
-  //           )
-  //           paddingRight = parseInt(
-  //             window
-  //               .getComputedStyle(listElement.firstChild as Element)
-  //               .getPropertyValue('padding-right')
-  //               .slice(0, -2),
-  //             10,
-  //           )
-  //         }
-
-  //         const isMobile = isPlatform('mobile')
-  //         const isTablet = isPlatform('tablet')
-  //         const isVertical = this.parseVertical() === true
-  //         const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
-  //         const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
-  //         const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
-
-  //         if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
-  //           if (listElement?.clientHeight !== undefined) {
-  //             this.lineHeight = listElement.clientHeight - 8
-  //           }
-
-  //           if (listElement?.offsetTop !== undefined) {
-  //             this.lineOffsetTop = listElement.offsetTop + 4
-  //           }
-  //         } else {
-  //           if (listElement?.clientWidth !== undefined) {
-  //             this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : paddingLeft + paddingRight)
-  //           }
-
-  //           if (listElement?.offsetLeft !== undefined) {
-  //             this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : paddingLeft)
-  //           }
-  //         }
-  //       } else {
-  //         this.lineWidth = 0
-  //       }
-  //     }
-  //   }, timeout)
-  // }
 
   /**
    * PRIVATE METHODS
@@ -477,7 +324,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     return step.value === this.value
   }
 
-  private parseVertical(): Props.BalTabsVertical {
+  private parseVertical(): boolean {
     if ((this.vertical as any) === 'true' || (this.vertical as any) === '') {
       return true
     }
@@ -493,6 +340,15 @@ export class Tabs implements Loggable, BalConfigObserver {
     }
 
     return this.vertical
+  }
+
+  private isVertical(): boolean {
+    const isVertical = this.parseVertical()
+    const isMobile = isPlatform('mobile')
+    const isTablet = isPlatform('tablet')
+    const isTouch = isMobile || isTablet
+
+    return isVertical || (isTouch && this.inNavbar)
   }
 
   private getTargetElement(value?: string) {
@@ -515,7 +371,7 @@ export class Tabs implements Loggable, BalConfigObserver {
 
   private getLineSize = (element: HTMLElement, padding: Padding) => {
     if (element) {
-      const isVertical = this.parseVertical() === true
+      const isVertical = this.isVertical()
 
       if (isVertical) {
         return element.clientHeight
@@ -529,7 +385,7 @@ export class Tabs implements Loggable, BalConfigObserver {
   }
 
   private getOffset = (element: HTMLElement, padding: Padding) => {
-    const isVertical = this.parseVertical() === true
+    const isVertical = this.isVertical()
 
     if (isVertical) {
       if (element.offsetTop) {
@@ -573,7 +429,7 @@ export class Tabs implements Loggable, BalConfigObserver {
 
         const lineElement = this.getLineElement()
         if (lineElement) {
-          const isVertical = this.parseVertical() === true
+          const isVertical = this.isVertical()
           this.balWillAnimate.emit()
           const waitForTransition = transitionEndAsync(lineElement, 300)
 
@@ -665,11 +521,10 @@ export class Tabs implements Loggable, BalConfigObserver {
 
     const isMobile = isPlatform('mobile')
     const isTablet = isPlatform('tablet')
-    const isPropVertical = this.parseVertical() === true
-    const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
-    const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+    const isTouch = isMobile || isTablet
 
-    const isVertical = isPropVertical || isVerticalMobile || isVerticalTablet
+    const isInverted = (this.inNavbar && !isTouch) || (!this.inNavbar && this.inverted)
+    const isVertical = this.isVertical()
     const hasCarousel = !isVertical && this.overflow && !this.expanded
 
     const isSelect = isMobile && this.selectOnMobile
@@ -680,6 +535,7 @@ export class Tabs implements Loggable, BalConfigObserver {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier('navbar').class(this.inNavbar),
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
         }}
@@ -702,13 +558,15 @@ export class Tabs implements Loggable, BalConfigObserver {
             clickable={this.clickable}
             accordion={this.accordion}
             lineActive={this.value !== undefined}
-            inverted={this.inverted}
+            inverted={isInverted}
             animated={this.animated}
             border={this.border}
             spaceless={this.spaceless}
             expanded={this.expanded}
             isMobile={isMobile}
+            isTouch={isTouch}
             isVertical={isVertical}
+            inNavbar={this.inNavbar}
             hasCarousel={hasCarousel}
             iconPosition={this.iconPosition}
             verticalColSize={this.verticalColSize}

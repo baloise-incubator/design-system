@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
 import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
-import { Props } from '../../../types'
+import { Props, Events } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({
@@ -69,6 +69,16 @@ export class NavbarBrand {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalNavbarMenuWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalNavbarMenuDidAnimateDetail>
+
   connectedCallback() {
     this.migrateLinkTarget()
   }
@@ -86,6 +96,7 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
+    this.balWillAnimate.emit(this.isMenuActive)
     this.isMenuActive = isMenuActive
 
     if (this.isMenuActive) {
@@ -101,6 +112,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
+    this.balDidAnimate.emit(this.isMenuActive)
   }
 
   async onClick() {
