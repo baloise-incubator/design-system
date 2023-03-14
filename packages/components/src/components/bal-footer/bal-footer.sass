@@ -45,14 +45,20 @@
           flex-wrap: nowrap
           align-items: center
 
+          &:hover
+            bal-icon
+              +fillSvg(var(--bal-color-light-blue-2))
+            .input
+              color: var(--bal-color-light-blue-2)
+
+          &:active
+            bal-icon
+              +fillSvg(var(--bal-color-info-3))
+            .input
+              color: var(--bal-color-light-blue-3)
+
           +element(wrapper)
             width: 57px
-
-          +element(icon)
-            &:hover
-              +fillSvg(var(--bal-color-light-blue-2))
-            &:active
-              +fillSvg(var(--bal-color-info-3))
 
         +element(logo)
           display: flex
