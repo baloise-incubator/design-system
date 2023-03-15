@@ -20,7 +20,7 @@ const main = async () => {
     fs.mkdirSync(docsDir)
   }
 
-  const output = fs.createWriteStream(path.join(docsDir, 'map-icons.zip'))
+  const output = fs.createWriteStream(path.join(docsDir, 'map-markers.zip'))
   const archive = archiver('zip', {
     zlib: { level: 9 }, // Sets the compression level.
   })
