@@ -76,10 +76,8 @@ const main = async () => {
   })
 
   await file.save(path.join(PACKAGE, 'src/markers.ts'), lines.join(NEWLINE))
-  await file.save(
-    path.join(PACKAGE, 'src/markers.json'),
-    JSON.stringify([...contents.keys()]),
-  )
+
+
 }
 
 main()
