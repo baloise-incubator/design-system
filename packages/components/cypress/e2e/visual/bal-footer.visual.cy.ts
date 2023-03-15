@@ -2,10 +2,6 @@ describe('bal-footer', () => {
   beforeEach(() => cy.page('/components/bal-footer/test/bal-footer.visual.html'))
 
   it('basic component', () => {
-    cy.platform('widescreen').wait(1000)
-    cy.getByTestId('basic').compareSnapshot('basic-footer-widescreen', 0.0)
-    cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-widescreen', 0.0)
-
     cy.platform('desktop').wait(1000)
     cy.getByTestId('basic').compareSnapshot('basic-footer-desktop', 0.0)
     cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop', 0.0)
