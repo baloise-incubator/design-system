@@ -222,6 +222,7 @@ export class Footer implements BalConfigObserver, Loggable {
                 {this.socialMediaLinks.map(link => (
                   <a
                     href={link.link}
+                    target="_blank"
                     class={{
                       'is-link': true,
                       'is-inverted': true,
