@@ -4,6 +4,7 @@
   +unselectable
   display: block
   position: static
+  user-select: auto
 
   +element(inner)
     position: relative
@@ -53,7 +54,7 @@
 
           &:active
             bal-icon
-              +fillSvg(var(--bal-color-info-3))
+              +fillSvg(var(--bal-color-light-blue-3))
             .input
               color: var(--bal-color-light-blue-3)
 
