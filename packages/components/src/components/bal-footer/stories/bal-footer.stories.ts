@@ -36,6 +36,8 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Footer Content',
   hideLinks: false,
+  hideLanguageSelection: false,
+  showSocialMedia: false,
 }
 Basic.parameters = {
   layout: 'fullscreen',
