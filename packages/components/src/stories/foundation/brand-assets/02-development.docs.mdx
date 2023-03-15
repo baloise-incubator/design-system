@@ -32,7 +32,8 @@ Add a new script called **copy:favicons** and adjust the second path to your app
 
 ```json
 "scripts": {
-  "postinstall": "npm run copy:favicons",
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:favicons",
   "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
 }
 ```
@@ -65,5 +66,70 @@ The shape can be created with our [component](?path=/docs/components-shape--basi
 <Canvas withSource="open">
   <Story id="foundation-brand-assets-development--shape" />
 </Canvas>
+
+## Maps
+
+The map markers and styles are provided in a separate package **@baloise/design-system-maps**.
+
+First install our maps package
+
+```
+npm install @baloise/design-system-maps
+npm install @types/googlemaps --save-dev
+```
+
+### Styles
+
+After installing import the **balMapTypeStyles** into your Google Maps config object.
+
+```typescript
+import { balMapTypeStyles } '@baloise/design-system-maps'
+
+const myMap = new google.maps.map(myMapElement, {
+  ...
+  styles: balMapTypeStyles
+})
+```
+
+### Markers
+
+To provide the icons we need to copy them into your project.
+
+```typescript
+import { balMapMarkerDefault } '@baloise/design-system-maps'
+
+new google.maps.Marker({
+  position: { lat: 36.6163, lng: -100.61 },
+  map,
+  icon: {
+    path: balMapMarkerDefault,
+    fillColor: '#0000ff',
+    fillOpacity: 1,
+    anchor: new google.maps.Point(
+      faBus.icon[0] / 2, // width
+      faBus.icon[1], // height
+    ),
+    strokeWeight: 1,
+    strokeColor: '#ffffff',
+    scale: 0.075,
+  },
+  title: 'SVG Marker',
+})
+```
+
+```
+npm install copyfiles --save-dev
+```
+
+After installing our copyfiles dependency we need to define the copy command in our **package.json** file.
+Add a new script called **copy:maps** and adjust the second path to your application.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:maps",
+  "copy:maps": "copyfiles --flat node_modules/@baloise/design-system-maps/markers/* src/assets/markers"
+}
+```
 
 <bal-doc-github link="/stories/foundation/brand-assets/02-development.docs.mdx"></bal-doc-github>
