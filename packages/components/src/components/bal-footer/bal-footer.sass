@@ -59,7 +59,17 @@
               color: var(--bal-color-light-blue-3)
 
           +element(wrapper)
-            width: 57px
+            width: 80px
+
+            bal-input-group
+              background: var(--bal-color-transparent)
+              border: none
+
+              &:hover
+                background: var(--bal-color-transparent) !important
+
+              bal-icon
+                min-width: 12px !important
 
         +element(logo)
           display: flex

@@ -179,25 +179,27 @@ export class Footer implements BalConfigObserver, Loggable {
                   display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
                 }}
               >
-                <bal-icon
-                  class={{
-                    ...elIcon.class(),
-                  }}
-                  name="web"
-                  color="white"
-                ></bal-icon>
                 <div
                   class={{
                     ...elWrapper.class(),
                   }}
                 >
-                  <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
-                    {this.allowedLanguages.map(language => (
-                      <bal-select-option label={language.toLocaleUpperCase()} value={language}>
-                        {language.toLocaleUpperCase()}
-                      </bal-select-option>
-                    ))}
-                  </bal-select>
+                  <bal-input-group>
+                    <bal-icon
+                      class={{
+                        ...elIcon.class(),
+                      }}
+                      name="web"
+                      color="white"
+                    ></bal-icon>
+                    <bal-select value={this.language} onBalChange={event => this.changeLanguage(event.detail as any)}>
+                      {this.allowedLanguages.map(language => (
+                        <bal-select-option label={language.toLocaleUpperCase()} value={language}>
+                          {language.toLocaleUpperCase()}
+                        </bal-select-option>
+                      ))}
+                    </bal-select>
+                  </bal-input-group>
                 </div>
               </div>
             </div>

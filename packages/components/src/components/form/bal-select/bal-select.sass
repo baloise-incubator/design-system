@@ -60,19 +60,22 @@
         color: var(--bal-color-text-grey)
     +modifier(inverted-footer)
       border: none
-      background-color: var(--bal-color-transparent)
-      background: var(--bal-color-transparent)
+      background-color: var(--bal-color-transparent) !important
+      background: var(--bal-color-transparent) !important
       padding-right: var(--bal-space-none)
       &:hover
-        background-color: var(--bal-color-transparent)
+        background-color: var(--bal-color-transparent) !important
 
       .input
         color: var(--bal-color-text-white)
-        background-color: var(--bal-color-transparent)
+        background-color: var(--bal-color-transparent) !important
         &:hover
-          background-color: var(--bal-color-transparent)
-      
-      &:focus-within
+          background-color: var(--bal-color-transparent) !important
+
+      &:focus
+        box-shadow: none
+
+      &:focus-visible
         box-shadow: var(--bal-color-white) 0 0 0 2px,var(--bal-color-yellow) 0 0 0 5px !important
     //
     // trigger icon on the right
