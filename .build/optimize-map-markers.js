@@ -26,7 +26,14 @@ const readSVG = async (name, filePath) => {
   }
 
   try {
-    const svg = await svgo.optimize(svgContent)
+    const svg = await svgo.optimize(svgContent, {
+      plugins: [
+        {
+          name: 'preset-default',
+          active: false,
+        },
+      ],
+    })
     svgContent = svg.data
   } catch (error) {
     log.error(`Could not optimize the file ${filePath}`, error)
@@ -64,7 +71,7 @@ const main = async () => {
   ]
 
   contents.forEach((value, key) => {
-    lines.push(`export const balMapMarker${upperFirst(camelCase(key))} = /*#__PURE__*/ '${value}';`)
+    lines.push(`export const balMapMarker${upperFirst(camelCase(key))} = /*#__PURE__*/ 'data:image/svg+xml;utf-8, ${value}';`)
     lines.push(``)
   })
 
