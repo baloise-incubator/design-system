@@ -64,8 +64,16 @@ Cypress.Commands.add('waitForDesignSystem', () => {
       expect($el, 'if bal-app is ready').to.eq('')
     })
     .wait(100, { log: false })
-
-  cy.disableAnimation()
+    .disableAnimation()
+    .then(() => {
+      return new Promise(resolve => {
+        if ('requestIdleCallback' in window) {
+          ;(window as any).requestIdleCallback(resolve)
+        } else {
+          setTimeout(resolve, 32)
+        }
+      })
+    })
 
   cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })
