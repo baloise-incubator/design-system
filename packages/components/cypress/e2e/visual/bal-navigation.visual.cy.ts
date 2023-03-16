@@ -12,7 +12,7 @@ describe('bal-navigation', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
+        cy.visit('/components/bal-navigation/test/bal-navigation.visual.html')
           .platform(platform)
           .getComponent('bal-navigation')
           .then(() => {
@@ -53,7 +53,7 @@ describe('bal-navigation', () => {
   function testNavigationOnTouch(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.page('/components/bal-navigation/test/bal-navigation.visual.html')
+        cy.visit('/components/bal-navigation/test/bal-navigation.visual.html')
           .platform(platform)
           .getComponent('bal-navigation')
           .then(() => {
@@ -96,7 +96,7 @@ describe('bal-navigation-colors', () => {
   function testNavigationOnDesktop(platform: Platforms) {
     describe(platform, () => {
       beforeEach(() => {
-        cy.page('/components/bal-navigation/test/bal-navigation-colors.visual.html')
+        cy.visit('/components/bal-navigation/test/bal-navigation-colors.visual.html')
           .platform(platform)
           .getComponent('bal-navigation')
           .then(() => {

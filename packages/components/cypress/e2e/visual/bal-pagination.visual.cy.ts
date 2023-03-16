@@ -1,5 +1,5 @@
 describe('bal-pagination', () => {
-  beforeEach(() => cy.page('/components/bal-pagination/test/bal-pagination.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-pagination/test/bal-pagination.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop')

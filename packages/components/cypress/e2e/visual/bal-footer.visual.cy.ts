@@ -1,5 +1,5 @@
 describe('bal-footer', () => {
-  beforeEach(() => cy.page('/components/bal-footer/test/bal-footer.visual.html'))
+  beforeEach(() => cy.visit('/components/bal-footer/test/bal-footer.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
     cy.platform('desktop').wait(1000)

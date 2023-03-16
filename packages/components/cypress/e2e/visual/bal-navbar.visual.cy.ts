@@ -8,7 +8,7 @@ describe('bal-navbar', () => {
   function testNavbar(platform: Platforms) {
     describe(platform, () => {
       before(() => {
-        cy.page('/components/bal-navbar/test/bal-navbar.visual.html')
+        cy.visit('/components/bal-navbar/test/bal-navbar.visual.html')
           .then(() => {
             return new Promise(resolve => {
               if ('requestIdleCallback' in window) {

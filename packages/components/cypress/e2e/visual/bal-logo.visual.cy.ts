@@ -1,6 +1,6 @@
 describe('bal-logo', () => {
   before(() => {
-    cy.page('/components/bal-logo/test/bal-logo.visual.html')
+    cy.visit('/components/bal-logo/test/bal-logo.visual.html')
       .then(() => {
         return new Promise(resolve => {
           if ('requestIdleCallback' in window) {
