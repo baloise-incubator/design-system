@@ -40,18 +40,24 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add('disableAnimation', () => {
-  cy.window().then(win => {
+  cy.window({ log: false }).then(win => {
     ;(win as any).BaloiseDesignSystem.config.animated = false
   })
 })
 
 Cypress.Commands.add('waitForDesignSystem', () => {
-  cy.document().then(document => document.fonts.ready)
+  cy.document({ log: false }).then(document => document.fonts.ready)
 
-  cy.disableAnimation()
-
-  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
+  cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })
+    .then($app => {
+      Cypress.log({
+        type: 'parent',
+        $el: $app,
+        displayName: 'bal-app',
+        message: 'wait for DesignSystem to be ready',
+      })
+    })
     .waitForComponents({ log: false })
     .invoke({ log: false }, 'attr', 'ready')
     .should($el => {
@@ -59,14 +65,16 @@ Cypress.Commands.add('waitForDesignSystem', () => {
     })
     .wait(100, { log: false })
 
-  cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
+  cy.disableAnimation()
+
+  cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })
     .then($app => {
       Cypress.log({
         type: 'parent',
         $el: $app,
         displayName: 'bal-app',
-        message: 'is ready 🚀',
+        message: 'DesignSystem is ready 🚀',
       })
     })
 })
