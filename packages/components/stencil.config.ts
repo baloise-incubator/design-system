@@ -13,18 +13,12 @@ export const config: Config = {
     dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
-    appendChildSlotFix: true,
-    cloneNodeFix: true,
   },
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
     /**
      * Library outputs
      */
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),

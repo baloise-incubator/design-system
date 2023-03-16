@@ -16,6 +16,7 @@ export const StencilBaseConfig: Config = {
   autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
+  enableCache: true,
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
@@ -31,6 +32,11 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
+      generateTypeDeclarations: true,
+    },
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     {
       type: 'docs-vscode',
@@ -57,19 +63,19 @@ export const StencilBaseConfig: Config = {
         'bal-card-title',
       ],
     },
+    { components: ['bal-carousel', 'bal-carousel-item'] },
     { components: ['bal-close'] },
     { components: ['bal-data', 'bal-data-item', 'bal-data-label', 'bal-data-value'] },
     { components: ['bal-footer'] },
     { components: ['bal-heading', 'bal-text'] },
     { components: ['bal-hint', 'bal-hint-text', 'bal-hint-title'] },
     { components: ['bal-icon'] },
-    { components: ['bal-carousel', 'bal-carousel-item'] },
     {
       components: [
         'bal-list',
         'bal-list-item',
-        'bal-list-item-accordion-head',
         'bal-list-item-accordion-body',
+        'bal-list-item-accordion-head',
         'bal-list-item-content',
         'bal-list-item-icon',
         'bal-list-item-title',
@@ -133,6 +139,7 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-radio', 'bal-radio-group'] },
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
+    { components: ['bal-time-input'] },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },
