@@ -1,5 +1,7 @@
 describe('bal-input-slider', () => {
-  beforeEach(() => cy.visit('/components/form/bal-input-slider/test/bal-input-slider.visual.html').waitForDesignSystem())
+  beforeEach(() =>
+    cy.visit('/components/form/bal-input-slider/test/bal-input-slider.visual.html').waitForDesignSystem(),
+  )
 
   it('basic component', () => {
     cy.platform('desktop')
