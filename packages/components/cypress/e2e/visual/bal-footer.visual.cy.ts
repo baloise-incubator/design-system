@@ -2,7 +2,7 @@ describe('bal-footer', () => {
   beforeEach(() => cy.visit('/components/bal-footer/test/bal-footer.visual.html').waitForDesignSystem())
 
   it('basic component', () => {
-    cy.platform('desktop').wait(1000)
+    cy.platform('desktop')
     cy.getByTestId('basic').compareSnapshot('basic-footer-desktop', 0.0)
     cy.getByTestId('all-variations').compareSnapshot('all-variations-footer-desktop', 0.0)
 
