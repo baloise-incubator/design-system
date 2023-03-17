@@ -5,7 +5,13 @@
 
 namespace BalEvents {
   export type BalInputTimeChangeDetail = string | undefined
-  export type BalInputTimeChange = CustomEvent<BalInputTimeChangeDetail>
+  export interface BalInputTimeChange extends CustomEvent {
+    detail: BalInputTimeChangeDetail
+    target: HTMLBalTimeInputElement
+  }
   export type BalInputTimeInputDetail = string | undefined
-  export type BalInputTimeInput = CustomEvent<BalInputTimeInputDetail>
+  export interface BalInputTimeInput extends CustomEvent {
+    detail: BalInputTimeInputDetail
+    target: HTMLBalTimeInputElement
+  }
 }

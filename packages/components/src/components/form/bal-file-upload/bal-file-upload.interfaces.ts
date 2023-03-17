@@ -4,9 +4,9 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalInputSliderChangeDetail = string | number | null
-  export interface BalInputSliderChange extends CustomEvent {
-    detail: BalInputSliderChangeDetail
-    target: HTMLBalInputSliderElement
+  export type BalFileUploadChangeDetail = any[]
+  export interface BalFileUploadChange extends CustomEvent {
+    detail: BalFileUploadChangeDetail
+    target: HTMLBalFileUploadElement
   }
 }

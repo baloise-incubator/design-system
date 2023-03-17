@@ -5,7 +5,14 @@
 
 namespace BalEvents {
   export type BalInputNumberChangeDetail = number | undefined
-  export type BalInputNumberChange = CustomEvent<BalInputNumberChangeDetail>
+  export interface BalInputNumberChange extends CustomEvent {
+    detail: BalInputNumberChangeDetail
+    target: HTMLBalNumberInputElement
+  }
+
   export type BalInputNumberInputDetail = number | undefined
-  export type BalInputNumberInput = CustomEvent<BalInputNumberInputDetail>
+  export interface BalInputNumberInput extends CustomEvent {
+    detail: BalInputNumberInputDetail
+    target: HTMLBalNumberInputElement
+  }
 }

@@ -9,5 +9,8 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalSelectChangeDetail = string | string[] | undefined
-  export type BalSelectChange = CustomEvent<BalSelectChangeDetail>
+  export interface BalSelectChange extends CustomEvent {
+    detail: BalSelectChangeDetail
+    target: HTMLBalSelectElement
+  }
 }

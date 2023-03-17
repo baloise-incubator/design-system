@@ -10,7 +10,14 @@ namespace BalProps {
 
 namespace BalEvents {
   export type BalRadioChangeDetail = boolean
-  export type BalRadioChange = CustomEvent<BalRadioChangeDetail>
+  export interface BalRadioChange extends CustomEvent {
+    detail: BalRadioChangeDetail
+    target: HTMLBalRadioElement
+  }
+
   export type BalRadioGroupChangeDetail = number | string | boolean
-  export type BalRadioGroupChange = CustomEvent<BalRadioGroupChangeDetail>
+  export interface BalRadioGroupChange extends CustomEvent {
+    detail: BalRadioGroupChangeDetail
+    target: HTMLBalRadioElement
+  }
 }
