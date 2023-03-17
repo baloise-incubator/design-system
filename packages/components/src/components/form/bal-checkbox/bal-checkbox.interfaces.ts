@@ -20,4 +20,16 @@ namespace BalEvents {
     detail: BalCheckboxGroupChangeDetail
     target: HTMLBalCheckboxElement
   }
+
+  export type BalCheckboxFocusDetail = FocusEvent
+  export interface BalCheckboxFocus extends CustomEvent {
+    detail: BalCheckboxFocusDetail
+    target: HTMLBalCheckboxElement
+  }
+
+  export type BalCheckboxBlurDetail = FocusEvent
+  export interface BalCheckboxBlur extends CustomEvent {
+    detail: BalCheckboxBlurDetail
+    target: HTMLBalCheckboxElement
+  }
 }

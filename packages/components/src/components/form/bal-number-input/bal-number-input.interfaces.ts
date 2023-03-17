@@ -4,15 +4,33 @@
 /// <reference path="../../../interfaces.d.ts" />
 
 namespace BalEvents {
-  export type BalInputNumberChangeDetail = number | undefined
-  export interface BalInputNumberChange extends CustomEvent {
-    detail: BalInputNumberChangeDetail
+  export type BalNumberInputChangeDetail = number | undefined
+  export interface BalNumberInputChange extends CustomEvent {
+    detail: BalNumberInputChangeDetail
     target: HTMLBalNumberInputElement
   }
 
-  export type BalInputNumberInputDetail = number | undefined
-  export interface BalInputNumberInput extends CustomEvent {
-    detail: BalInputNumberInputDetail
+  export type BalNumberInputInputDetail = number | undefined
+  export interface BalNumberInputInput extends CustomEvent {
+    detail: BalNumberInputInputDetail
+    target: HTMLBalNumberInputElement
+  }
+
+  export type BalNumberInputBlurDetail = FocusEvent
+  export interface BalNumberInputBlur extends CustomEvent {
+    detail: BalNumberInputBlurDetail
+    target: HTMLBalNumberInputElement
+  }
+
+  export type BalNumberInputKeyPressDetail = KeyboardEvent
+  export interface BalNumberInputKeyPress extends CustomEvent {
+    detail: BalNumberInputKeyPressDetail
+    target: HTMLBalNumberInputElement
+  }
+
+  export type BalNumberInputFocusDetail = FocusEvent
+  export interface BalNumberInputFocus extends CustomEvent {
+    detail: BalNumberInputFocusDetail
     target: HTMLBalNumberInputElement
   }
 }

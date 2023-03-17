@@ -130,17 +130,17 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Triggers when a file is added or removed.
    */
-  @Event() balChange!: EventEmitter<File[]>
+  @Event() balChange!: EventEmitter<BalEvents.BalFileUploadChangeDetail>
 
   /**
    * Triggers when a file is added.
    */
-  @Event() balFilesAdded!: EventEmitter<File[]>
+  @Event() balFilesAdded!: EventEmitter<BalEvents.BalFileUploadFilesAddedDetail>
 
   /**
    * Triggers when a file is removed.
    */
-  @Event() balFilesRemoved!: EventEmitter<File[]>
+  @Event() balFilesRemoved!: EventEmitter<BalEvents.BalFileUploadFilesRemovedDetail>
 
   /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
@@ -150,17 +150,17 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Emitted when the input has clicked.
    */
-  @Event() balInputClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalFileUploadInputClickDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalFileUploadBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalFileUploadFocusDetail>
 
   /**
    * LIFECYCLE

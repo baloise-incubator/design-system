@@ -15,9 +15,33 @@ namespace BalEvents {
     target: HTMLBalRadioElement
   }
 
+  export type BalRadioBlurDetail = FocusEvent
+  export interface BalRadioBlur extends CustomEvent {
+    detail: BalRadioBlurDetail
+    target: HTMLBalRadioElement
+  }
+
+  export type BalRadioFocusDetail = FocusEvent
+  export interface BalRadioFocus extends CustomEvent {
+    detail: BalRadioFocusDetail
+    target: HTMLBalRadioElement
+  }
+
   export type BalRadioGroupChangeDetail = number | string | boolean
   export interface BalRadioGroupChange extends CustomEvent {
     detail: BalRadioGroupChangeDetail
-    target: HTMLBalRadioElement
+    target: HTMLBalRadioGroupElement
+  }
+
+  export type BalRadioGroupBlurDetail = FocusEvent
+  export interface BalRadioGroupBlur extends CustomEvent {
+    detail: BalRadioGroupBlurDetail
+    target: HTMLBalRadioGroupElement
+  }
+
+  export type BalRadioGroupFocusDetail = FocusEvent
+  export interface BalRadioGroupFocus extends CustomEvent {
+    detail: BalRadioGroupFocusDetail
+    target: HTMLBalRadioGroupElement
   }
 }

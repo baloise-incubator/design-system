@@ -20,4 +20,22 @@ namespace BalEvents {
     detail: BalTextareaInputDetail
     target: HTMLBalTextareaElement
   }
+
+  export type BalTextareaBlurDetail = FocusEvent
+  export interface BalTextareaBlur extends CustomEvent {
+    detail: BalTextareaBlurDetail
+    target: HTMLBalTextareaElement
+  }
+
+  export type BalTextareaKeyPressDetail = KeyboardEvent
+  export interface BalTextareaKeyPress extends CustomEvent {
+    detail: BalTextareaKeyPressDetail
+    target: HTMLBalTextareaElement
+  }
+
+  export type BalTextareaFocusDetail = FocusEvent
+  export interface BalTextareaFocus extends CustomEvent {
+    detail: BalTextareaFocusDetail
+    target: HTMLBalTextareaElement
+  }
 }

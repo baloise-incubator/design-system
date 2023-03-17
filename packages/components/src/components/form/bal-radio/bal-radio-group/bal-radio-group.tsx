@@ -155,12 +155,12 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioGroupFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioGroupBlurDetail>
 
   /**
    * LIFECYCLE

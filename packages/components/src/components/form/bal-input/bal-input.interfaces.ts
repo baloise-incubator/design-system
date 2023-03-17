@@ -100,4 +100,22 @@ namespace BalEvents {
     detail: BalInputInputDetail
     target: HTMLBalInputElement
   }
+
+  export type BalInputBlurDetail = FocusEvent
+  export interface BalInputBlur extends CustomEvent {
+    detail: BalInputBlurDetail
+    target: HTMLBalInputElement
+  }
+
+  export type BalInputKeyPressDetail = KeyboardEvent
+  export interface BalInputKeyPress extends CustomEvent {
+    detail: BalInputKeyPressDetail
+    target: HTMLBalInputElement
+  }
+
+  export type BalInputFocusDetail = FocusEvent
+  export interface BalInputFocus extends CustomEvent {
+    detail: BalInputFocusDetail
+    target: HTMLBalInputElement
+  }
 }
