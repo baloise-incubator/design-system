@@ -268,17 +268,6 @@ a.bal-tabs__tabs__item__button
     color: var(--bal-color-text-primary-dark)
     +fillSvg(var(--bal-color-primary-6))
 
-a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--context-navbar
-  +touch
-    color: var(--bal-color-text-primary)
-    +fillSvg(var(--bal-color-primary))
-    &:hover
-      color: var(--bal-color-text-light-blue)
-      +fillSvg(var(--bal-color-light-blue-5))
-    &:active
-      color: var(--bal-color-text-primary-dark)
-      +fillSvg(var(--bal-color-primary-6))
-
 a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--inverted
   color: var(--bal-color-text-primary-inverted)
   +fillSvg(var(--bal-color-primary-inverted))
@@ -291,6 +280,17 @@ a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--inverted
   &:focus-visible
     &:not(:active)
       @extend %focus-inverted-inset-shadow
+
+a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--context-navbar
+  +touch
+    color: var(--bal-color-text-primary)
+    +fillSvg(var(--bal-color-primary))
+    &:hover
+      color: var(--bal-color-text-light-blue)
+      +fillSvg(var(--bal-color-light-blue-5))
+    &:active
+      color: var(--bal-color-text-primary-dark)
+      +fillSvg(var(--bal-color-primary-6))
 
 a.bal-tabs__tabs__item__button.bal-tabs__tabs__item__button--disabled
   color: var(--bal-color-text-grey)
