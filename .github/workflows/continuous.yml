@@ -92,7 +92,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-components
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -149,7 +149,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-a11y
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -198,7 +198,7 @@ jobs:
           browser: chrome
           env: type=actual
           spec: |
-            cypress/e2e/visual/bal-!(navigation|button|select|radio|navbar|checkbox|tabs|card|datepicker).visual.cy.ts
+            cypress/e2e/visual/bal-!(navigation|button|field|input-group|popover|select|radio|navbar|checkbox|tabs|card|datepicker).visual.cy.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -206,7 +206,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-a
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -250,8 +250,11 @@ jobs:
             cypress/e2e/visual/bal-card.visual.cy.ts
             cypress/e2e/visual/bal-checkbox.visual.cy.ts
             cypress/e2e/visual/bal-datepicker.visual.cy.ts
+            cypress/e2e/visual/bal-field.visual.cy.ts
+            cypress/e2e/visual/bal-input-group.visual.cy.ts
             cypress/e2e/visual/bal-navbar.visual.cy.ts
             cypress/e2e/visual/bal-navigation.visual.cy.ts
+            cypress/e2e/visual/bal-popover.visual.cy.ts
             cypress/e2e/visual/bal-radio.visual.cy.ts
             cypress/e2e/visual/bal-select.visual.cy.ts
             cypress/e2e/visual/bal-tabs.visual.cy.ts
@@ -262,7 +265,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-snapshots
+          name: cypress-snapshots-b
           path: packages/components/cypress/snapshots
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
