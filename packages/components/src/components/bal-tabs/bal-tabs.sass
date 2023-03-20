@@ -157,18 +157,6 @@
           padding: 1rem
           +modifier(icon-horizontal)
             flex-direction: column
-        +modifier(inverted)
-          color: var(--bal-color-text-primary-inverted)
-          +fillSvg(var(--bal-color-primary-inverted))
-          &:hover
-            color: var(--bal-color-light-blue-2)
-            +fillSvg(var(--bal-color-light-blue-2))
-          &:active
-            color: var(--bal-color-text-info)
-            +fillSvg(var(--bal-color-info))
-          &:focus-visible
-            &:not(:active)
-              @extend %focus-inverted-inset-shadow
         +modifier(context-navbar)
           +touch
             color: var(--bal-color-text-primary)
@@ -296,3 +284,16 @@
   display: none
   +modifier(active)
     display: block
+
+a.bal-tabs__tabs__item__button--inverted
+  color: var(--bal-color-text-primary-inverted)
+  +fillSvg(var(--bal-color-primary-inverted))
+  &:hover
+    color: var(--bal-color-light-blue-2)
+    +fillSvg(var(--bal-color-light-blue-2))
+  &:active
+    color: var(--bal-color-text-info)
+    +fillSvg(var(--bal-color-info))
+  &:focus-visible
+    &:not(:active)
+      @extend %focus-inverted-inset-shadow
