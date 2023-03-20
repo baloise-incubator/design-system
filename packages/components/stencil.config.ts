@@ -22,10 +22,6 @@ export const config: Config = {
      * Library outputs
      */
     {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
-    },
-    {
       type: 'docs-json',
       file: './public/assets/data/components.json',
     },
