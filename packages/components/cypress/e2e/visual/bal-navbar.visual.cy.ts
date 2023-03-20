@@ -7,33 +7,8 @@ describe('bal-navbar', () => {
 
   function testNavbar(platform: Platforms) {
     describe(platform, () => {
-      before(() => {
-        cy.visit('/components/bal-navbar/test/bal-navbar.visual.html')
-          .then(() => {
-            return new Promise(resolve => {
-              if ('requestIdleCallback' in window) {
-                ;(window as any).requestIdleCallback(resolve)
-              } else {
-                setTimeout(resolve, 32)
-              }
-            })
-          })
-          .wait(500)
-      })
-
       beforeEach(() => {
-        cy.platform(platform)
-          .getComponent('bal-navbar')
-          .then(() => {
-            return new Promise(resolve => {
-              if ('requestIdleCallback' in window) {
-                ;(window as any).requestIdleCallback(resolve)
-              } else {
-                setTimeout(resolve, 32)
-              }
-            })
-          })
-          .wait(500)
+        cy.visit('/components/bal-navbar/test/bal-navbar.visual.html').platform(platform).waitForDesignSystem()
       })
 
       it('basic component', () => {
