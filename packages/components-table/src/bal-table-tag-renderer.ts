@@ -1,7 +1,7 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
 import type { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
-import { formatValue } from './utils/format'
+import { parsingValue } from './utils/parsing'
 
 interface BalTableTagRendererOptions {
   color?: (params: ICellRendererParams) => Props.BalTagColor
@@ -13,7 +13,7 @@ export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellR
   Renderer.prototype.options = options
 
   Renderer.prototype.init = function (params: ICellRendererParams): void {
-    if (params.value != null && params.value !== undefined) {
+    if (params.value !== null && params.value !== undefined) {
       this.params = params
       this.element = document.createElement('bal-tag')
       this.element.setAttribute('size', 'small')
@@ -29,7 +29,7 @@ export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellR
   }
 
   Renderer.prototype.update = function () {
-    this.element.innerHTML = formatValue(this.params.value)
+    this.element.innerHTML = parsingValue(this.params.value)
 
     const color = isNil(options.color) ? '' : options.color(this.params)
     this.element.setAttribute('color', color)

@@ -1,7 +1,7 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
 import type { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
-import { formatValue } from './utils/format'
+import { parsingValue } from './utils/parsing'
 
 interface BalTableButtonRendererOptions {
   color?: (params: ICellRendererParams) => Props.BalButtonColor
@@ -36,7 +36,7 @@ export function BalTableButtonRenderer(options: BalTableButtonRendererOptions): 
   }
 
   Renderer.prototype.update = function () {
-    this.element.innerHTML = formatValue(this.params.value)
+    this.element.innerHTML = parsingValue(this.params.value)
 
     const color = isNil(options.color) ? '' : options.color(this.params)
     this.element.setAttribute('color', color)
