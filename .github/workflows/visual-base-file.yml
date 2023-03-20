@@ -1,7 +1,12 @@
-name: Visual Regression Test - Base Image
+name: Visual Regression Test by File - Base Image
 
 on:
   workflow_dispatch:
+    inputs:
+      specFile:
+        description: 'name of the visual test file'
+        required: true
+        type: string
 
 jobs:
   CreateBaseImages:
@@ -44,7 +49,7 @@ jobs:
           browser: chrome
           env: type=base
           spec: |
-            cypress/e2e/visual/*.cy.ts
+            cypress/e2e/visual/${{ inputs.specFile }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
