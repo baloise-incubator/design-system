@@ -27,7 +27,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **tabs:** add is-hidden property to bal-tab-item ([c0e7200](https://github.com/baloise/design-system/commit/c0e720064bd12e8c3cc13a0d89141503e9ed73cd))
 
-
 ### Bug Fixes
 
 * **components-react:** Typo in Homepage ([40211a8](https://github.com/baloise/design-system/commit/40211a83d2cf73256f9ab1f2235d9ca65c13c65a))
