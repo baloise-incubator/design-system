@@ -11,6 +11,15 @@ Cypress.Commands.add(
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
+      .then(() => {
+        return new Promise(resolve => {
+          if ('requestIdleCallback' in window) {
+            ;(window as any).requestIdleCallback(resolve)
+          } else {
+            setTimeout(resolve, 32)
+          }
+        })
+      })
       .wrap(subject, o) as any
   },
 )

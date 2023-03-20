@@ -185,9 +185,19 @@ export const deepReady = async (el: any | undefined, full = false): Promise<void
   }
 }
 
+export const waitForRequestIdleCallback = () => {
+  return new Promise(resolve => {
+    if ('requestIdleCallback' in window) {
+      ;(window as any).requestIdleCallback(resolve)
+    } else {
+      setTimeout(resolve, 32)
+    }
+  })
+}
+
 export const waitForComponent = async (el: HTMLElement | null) => {
   await deepReady(el, true)
-  await wait(20)
+  await waitForRequestIdleCallback()
 }
 
 export const addEventListener = (el: any, eventName: string, callback: any, opts?: any) => {
@@ -238,5 +248,5 @@ export const waitForDesignSystem = async (el: any | null, _config?: BalConfig): 
       }),
     )
   }
-  await wait(20)
+  await waitForRequestIdleCallback()
 }
