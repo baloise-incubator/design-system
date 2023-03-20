@@ -33,12 +33,8 @@ export const StencilBaseConfig: Config = {
       includeGlobalScripts: false,
     },
     {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
-    },
-    {
-      type: 'docs-json',
-      file: './public/assets/data/components.json',
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
