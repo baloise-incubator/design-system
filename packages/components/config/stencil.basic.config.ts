@@ -151,6 +151,10 @@ export const StencilBaseConfig: Config = {
           for (const file of styleFiles) {
             this.addWatchFile(file)
           }
+          const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
+          for (const file of templateFiles) {
+            this.addWatchFile(file)
+          }
         },
       },
     ],
