@@ -1,6 +1,6 @@
 describe('bal-logo', () => {
   before(() => {
-    cy.visit('/components/bal-logo/test/bal-logo.visual.html').platform('desktop').waitForDesignSystem()
+    cy.visit('/components/bal-logo/test/bal-logo.visual.html').waitForDesignSystem()
   })
 
   it('basic component', () => {

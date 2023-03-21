@@ -1,3 +1,4 @@
+import { waitAfterIdleCallback, waitAfterFramePaint } from '@baloise/design-system-components'
 import { areComponentsReady, log, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
@@ -11,15 +12,7 @@ Cypress.Commands.add(
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
-      .then(() => {
-        return new Promise(resolve => {
-          if ('requestIdleCallback' in window) {
-            ;(window as any).requestIdleCallback(resolve)
-          } else {
-            setTimeout(resolve, 32)
-          }
-        })
-      })
+      .then(() => waitAfterIdleCallback())
       .wrap(subject, o) as any
   },
 )
@@ -72,17 +65,9 @@ Cypress.Commands.add('waitForDesignSystem', () => {
     .should($el => {
       expect($el, 'if bal-app is ready').to.eq('')
     })
-    .wait(100, { log: false })
+    .then(() => waitAfterFramePaint())
     .disableAnimation()
-    .then(() => {
-      return new Promise(resolve => {
-        if ('requestIdleCallback' in window) {
-          ;(window as any).requestIdleCallback(resolve)
-        } else {
-          setTimeout(resolve, 32)
-        }
-      })
-    })
+    .then(() => waitAfterIdleCallback())
 
   cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })
