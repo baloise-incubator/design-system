@@ -35,6 +35,10 @@ export const StencilBaseConfig: Config = {
       sourceCodeBaseUrl: 'https://github.com/baloise-incubator/design-system',
     },
     {
+      type: 'docs-vscode',
+      file: 'vscode-data.json',
+    },
+    {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
       generateTypeDeclarations: true,
