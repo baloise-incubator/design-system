@@ -253,33 +253,20 @@ describe('Accordion', () => {
 #### getByTestId
 
 Gets the element / component by the attribute `data-testid` and waits until fully loaded.
+Internally it calls `waitForComponents`.
 
 ```typescript
 cy.getByTestId('button')
 ```
 
-#### disableAnimation
+#### waitForDesignSystem
 
-Disables the animation of all the components.
-
-```typescript
-cy.disableAnimation()
-```
-
-#### getComponent
-
-Gets the element / component by jquery selector and waits until fully loaded.
+Waits until the custom font has loaded, Design System is initialized, web-components are ready
+and firt browser print has fullfilled. Moreover, it disables all the animations for more stable
+and faster tests.
 
 ```typescript
-cy.getComponent('bal-button')
-```
-
-#### wrapComponent
-
-Wraps the element / component and waits until fully loaded.
-
-```typescript
-cy.wrapComponent($el)
+cy.waitForDesignSystem()
 ```
 
 #### waitForComponents
