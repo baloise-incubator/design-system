@@ -24,5 +24,13 @@ Cypress.Commands.add<any>('platform', platform => {
     case 'fullhd':
       return cy.viewport(1920, 1920, { log: false })
   }
-  return cy.viewport(1024, 1280, { log: false })
+  return cy.viewport(1024, 1280, { log: false }).then(() => {
+    return new Promise(resolve => {
+      if ('requestIdleCallback' in window) {
+        ;(window as any).requestIdleCallback(resolve)
+      } else {
+        setTimeout(resolve, 32)
+      }
+    })
+  })
 })
