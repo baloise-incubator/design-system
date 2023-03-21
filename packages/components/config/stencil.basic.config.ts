@@ -16,6 +16,7 @@ export const StencilBaseConfig: Config = {
   autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
+  enableCache: true,
   globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
@@ -31,6 +32,7 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
+      generateTypeDeclarations: true,
     },
     {
       type: 'dist',
@@ -133,6 +135,7 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-radio', 'bal-radio-group'] },
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
+    { components: ['bal-time-input'] },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },
