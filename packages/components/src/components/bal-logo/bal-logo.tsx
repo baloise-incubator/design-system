@@ -41,7 +41,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLElement
 
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = false
 
   /**
    * PUBLIC PROPERTY API
@@ -189,6 +189,8 @@ export class Logo implements ComponentInterface, Loggable {
     }
 
     const LogoElement = this.animated ? AnimatedLogo : this.isTouch ? SmallLogo : LargeLogo
+
+    console.log('logo render', this.animated, this.isTouch)
 
     return (
       <Host

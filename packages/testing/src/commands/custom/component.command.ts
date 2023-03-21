@@ -12,6 +12,7 @@ Cypress.Commands.add(
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
+      .then(() => waitAfterFramePaint())
       .then(() => waitAfterIdleCallback())
       .wrap(subject, o) as any
   },
@@ -65,9 +66,7 @@ Cypress.Commands.add('waitForDesignSystem', () => {
     .should($el => {
       expect($el, 'if bal-app is ready').to.eq('')
     })
-    .then(() => waitAfterFramePaint())
     .disableAnimation()
-    .then(() => waitAfterIdleCallback())
 
   cy.get('bal-app,.bal-app', { log: false })
     .first({ log: false })

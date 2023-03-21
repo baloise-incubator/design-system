@@ -50,7 +50,7 @@ describe('AppComponent', () => {
 
     // waits until the Design System has been initialized and the async
     // web components have been rendered
-    await waitForDesignSystem(fixture.nativeElement)
+    await waitForDesignSystem()
 
     const input = fixture.debugElement.query(By.css('[data-testid="input"]'))
     expect(input.nativeElement.value).toContain('My Value')
@@ -61,6 +61,30 @@ describe('AppComponent', () => {
 Use the `waitForDesignSystem` util function to wait until the web-component tree has fully rendered.
 
 To wait after a user interaction use the util function `waitForComponent`.
+
+```typescript
+button.click()
+await fixture.whenStable()
+await waitForComponent(fixture.nativeElement)
+
+// now we can do the assertions
+expect(component.onEditButtonClick).toHaveBeenCalled()
+```
+
+#### Utils
+
+The Design System provides some utilities to write stable unit tests. All functions return a promise and cand be fullfilled with `await`.
+
+```typescript
+await waitForDesignSystem()
+```
+
+| Util                                             | Description                                                                                                                                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `waitForDesignSystem(config?: BalConfig \| any)` | waits until the Design System has initialized and disables all animations. Moreover, it waits unit all components are ready and the first print is done. |
+| `waitForComponent(el: HTMLElement)`              | Waits until the compoennt and his nested components has rendered.                                                                                        |
+| `waitAfterFramePaint()`                          | Waits until the browser has updated the DOM                                                                                                              |
+| `waitAfterIdleCallback()`                        | Waits until the browser goes in idle mode.                                                                                                               |
 
 ## Component Testing with Cypress
 
