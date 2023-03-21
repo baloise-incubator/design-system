@@ -145,7 +145,7 @@ export class FileUpload implements FormInput<File[]> {
   /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
    */
-  @Event() balRejectedFile!: EventEmitter<FileUploadRejectedFile>
+  @Event() balRejectedFile!: EventEmitter<BalEvents.BalFileUploadRejectedFileDetail>
 
   /**
    * Emitted when the input has clicked.
