@@ -150,7 +150,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balInput!: EventEmitter<BalEvents.BalRadioGroupChangeDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalRadioGroupInputDetail>
 
   /**
    * Emitted when the toggle has focus.

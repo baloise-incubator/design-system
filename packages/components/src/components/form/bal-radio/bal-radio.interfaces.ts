@@ -44,4 +44,10 @@ namespace BalEvents {
     detail: BalRadioGroupFocusDetail
     target: HTMLBalRadioGroupElement
   }
+
+  export type BalRadioGroupInputDetail = FocusEvent
+  export interface BalRadioGroupInput extends CustomEvent {
+    detail: BalRadioGroupInputDetail
+    target: HTMLBalRadioGroupElement
+  }
 }
