@@ -73,6 +73,10 @@ export class Logo implements ComponentInterface, Loggable {
     this.animatedWatcher()
   }
 
+  componentWillRender() {
+    this.updatePlatform()
+  }
+
   componentDidUpdate() {
     this.resetAnimation()
   }
@@ -94,18 +98,20 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      const newIsTouch = isPlatform('touch')
-      if (this.isTouch !== newIsTouch) {
-        this.isTouch = newIsTouch
-      }
-    })
+    this.resizeWidthHandler(() => this.updatePlatform())
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private updatePlatform = () => {
+    const newIsTouch = isPlatform('touch')
+    if (this.isTouch !== newIsTouch) {
+      this.isTouch = newIsTouch
+    }
+  }
 
   private async resetAnimation() {
     this.destroyAnimation()
@@ -189,8 +195,6 @@ export class Logo implements ComponentInterface, Loggable {
     }
 
     const LogoElement = this.animated ? AnimatedLogo : this.isTouch ? SmallLogo : LargeLogo
-
-    console.log('logo render', this.animated, this.isTouch)
 
     return (
       <Host

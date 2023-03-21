@@ -73,7 +73,7 @@ expect(component.onEditButtonClick).toHaveBeenCalled()
 
 #### Utils
 
-The Design System provides some utilities to write stable unit tests. All functions return a promise and cand be fullfilled with `await`.
+The Design System provides some utilities to write stable unit tests. All functions return a promise and can be resolved with `await`.
 
 ```typescript
 await waitForDesignSystem()
@@ -82,7 +82,7 @@ await waitForDesignSystem()
 | Util                                             | Description                                                                                                                                              |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `waitForDesignSystem(config?: BalConfig \| any)` | waits until the Design System has initialized and disables all animations. Moreover, it waits unit all components are ready and the first print is done. |
-| `waitForComponent(el: HTMLElement)`              | Waits until the compoennt and his nested components has rendered.                                                                                        |
+| `waitForComponent(el: HTMLElement)`              | Waits until the component and his nested components has rendered.                                                                                        |
 | `waitAfterFramePaint()`                          | Waits until the browser has updated the DOM                                                                                                              |
 | `waitAfterIdleCallback()`                        | Waits until the browser goes in idle mode.                                                                                                               |
 
@@ -262,7 +262,7 @@ cy.getByTestId('button')
 #### waitForDesignSystem
 
 Waits until the custom font has loaded, Design System is initialized, web-components are ready
-and firt browser print has fullfilled. Moreover, it disables all the animations for more stable
+and first browser print has fulfilled. Moreover, it disables all the animations for more stable
 and faster tests.
 
 ```typescript
