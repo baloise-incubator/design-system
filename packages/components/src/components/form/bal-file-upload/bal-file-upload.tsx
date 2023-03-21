@@ -10,7 +10,6 @@ import {
   stopEventBubbling,
 } from '../../../utils/form-input'
 import { Logger, LogInstance } from '../../../utils/log'
-import { FileUploadRejectedFile } from './bal-file-upload.type'
 import { FileListComponent } from './components/file-list'
 import { toFileArray, toFileList } from './utils/file-list.util'
 import { validateFileArray } from './utils/file-validation.util'
