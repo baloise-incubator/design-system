@@ -30,6 +30,11 @@ export const StencilBaseConfig: Config = {
   ],
   outputTargets: [
     {
+      type: 'docs-vscode',
+      file: 'dist/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise-incubator/design-system',
+    },
+    {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
       generateTypeDeclarations: true,
@@ -37,10 +42,6 @@ export const StencilBaseConfig: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
