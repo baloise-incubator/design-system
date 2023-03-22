@@ -27,26 +27,23 @@ This section describes how to setup the Baloise Design System with an basic Reac
 Install the Design System and his dependencies.
 
 ```
-npm install @baloise/design-system-components-react sass copyfiles
+npm install @baloise/design-system-components-react
 ```
 
-> **Hint**
+> **Use SASS**
 >
+> - Install SASS `npm install sass --save-dev`
 > - Change the _.css files to _.scss and adjust the import as well.
 
 ### Import Fonts & Favicons
 
 The font package is included in the `@baloise/design-system-components-react` package, however the favicons needs to be installed separately.
 
-```
-npm install @baloise/design-system-favicons
-```
-
 Next step is to provide the fonts and favicons to our web application.
 To do so we recommend the tool copyfiles to copy the font files into your assets folder.
 
 ```
-npm install copyfiles --save-dev
+npm install @baloise/design-system-favicons copyfiles --save-dev
 ```
 
 After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
@@ -63,7 +60,7 @@ After installing our copyfiles dependency we need to define the copy commands in
 To copy all the assets run the following command.
 
 ```
-npm run copy:assets
+npm install
 ```
 
 > **TIP**

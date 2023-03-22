@@ -89,7 +89,6 @@
     "@types/jquery": "~3.5.6",
     "@types/lodash.camelcase": "~4.3.6",
     "@types/lodash.capitalize": "~4.2.6",
-    "@types/lodash.isarray": "~4.0.7",
     "@types/lodash.isempty": "~4.4.6",
     "@types/lodash.isfunction": "^3.0.7",
     "@types/lodash.isnan": "~3.0.6",

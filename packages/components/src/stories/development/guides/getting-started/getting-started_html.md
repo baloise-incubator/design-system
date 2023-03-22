@@ -8,13 +8,13 @@ This is the recommended setup for HTML5 applications or server-side-rendering ap
 
 First lets create a node project to manage the dependencies versions. Open the terminal and navigate into your project folder. Then run `npm init` to setup the `package.json` file.
 
-```bash
+```
 npm init
 ```
 
 Now lets install the Baloise Design System.
 
-```bash
+```
 npm install @baloise/design-system-components --save
 ```
 

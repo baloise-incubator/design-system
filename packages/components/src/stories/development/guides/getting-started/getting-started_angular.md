@@ -71,15 +71,11 @@ npm install @baloise/design-system-components-angular
 
 The font package is included in the `@baloise/design-system-components-angular` package, however the favicons needs to be installed separately.
 
-```
-npm install @baloise/design-system-favicons
-```
-
 Next step is to provide the fonts and favicons to our web application.
 To do so we recommend the tool copyfiles to copy the font files into your assets folder.
 
 ```
-npm install copyfiles --save-dev
+npm install @baloise/design-system-favicons copyfiles --save-dev
 ```
 
 After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
@@ -96,7 +92,7 @@ After installing our copyfiles dependency we need to define the copy commands in
 To copy all the assets run the following command.
 
 ```
-npm run copy:assets
+npm install
 ```
 
 > **TIP**
