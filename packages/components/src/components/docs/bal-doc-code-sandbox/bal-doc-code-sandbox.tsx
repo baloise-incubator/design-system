@@ -1,9 +1,7 @@
-import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch, Build } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop, State, Watch } from '@stencil/core'
 import { logoAngular, logoCodeSandbox, logoHtml, logoReact } from './code-sandbox.logos'
 import { Frameworks, getFramework } from './code-sandbox.util'
-import { getParameters } from 'codesandbox/lib/api/define'
 import { buildHtmlParameters } from './code-sandbox.html'
-import { watch } from 'fs'
 import { buildReactParameters } from './code-sandbox.react'
 import { buildAngularParameters } from './code-sandbox.angular'
 
