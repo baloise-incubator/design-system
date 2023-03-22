@@ -1,6 +1,5 @@
-import sdk from '@stackblitz/sdk'
-import { loadSourceFiles, parseMarkdown } from './stackblitz.util'
-import { DEFAULT_BALOISE_VERSION, DEFAULT_EDITOR_DESCRIPTION, DEFAULT_EDITOR_TITLE } from './stackblitz.const'
+import { getParameters } from 'codesandbox/lib/api/define'
+import { loadSourceFiles, parseMarkdown } from './code-sandbox.util'
 
 interface HtmlProject {
   template: string
@@ -8,7 +7,7 @@ interface HtmlProject {
   fullscreen: boolean
 }
 
-export const openHtmlProject = async (project: HtmlProject) => {
+export const buildHtmlParameters = async (project: HtmlProject): Promise<string> => {
   const [index_html, index_ts, example_ts, package_json, tsconfig_json] = await loadSourceFiles([
     'html/index.html',
     'html/index.ts',
@@ -40,25 +39,28 @@ ${content}
     example_template = parseTemplate(parseMarkdown(project.template))
   }
 
-  sdk.openProject(
-    {
-      template: 'typescript',
-      title: DEFAULT_EDITOR_TITLE,
-      description: DEFAULT_EDITOR_DESCRIPTION,
-      files: {
-        'index.html': example_template,
-        'index.ts': index_ts,
-        'example.ts': example_component,
-        'tsconfig.json': tsconfig_json,
-        'package.json': package_json,
+  example_component = `${example_component}
+
+${index_ts}`
+
+  return getParameters({
+    files: {
+      'package.json': {
+        isBinary: false,
+        content: {
+          dependencies: {
+            '@baloise/design-system-components': 'latest',
+          },
+        } as any,
       },
-      dependencies: {
-        '@baloise/design-system-components': DEFAULT_BALOISE_VERSION,
+      'index.js': {
+        isBinary: false,
+        content: example_component.trim(),
+      },
+      'index.html': {
+        isBinary: false,
+        content: example_template.trim(),
       },
     },
-    {
-      openFile: ['index.html'],
-      showSidebar: false,
-    },
-  )
+  })
 }

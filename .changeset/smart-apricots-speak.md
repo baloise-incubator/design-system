@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-fix dynamic imports for stackblitz
+change Stack Blitz with Code SandBox
