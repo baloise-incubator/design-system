@@ -8,12 +8,10 @@ interface HtmlProject {
 }
 
 export const buildHtmlParameters = async (project: HtmlProject): Promise<string> => {
-  const [index_html, index_ts, example_ts, package_json, tsconfig_json] = await loadSourceFiles([
+  const [index_html, index_ts, example_ts] = await loadSourceFiles([
     'html/index.html',
     'html/index.ts',
     'html/example.ts',
-    'html/package.json',
-    'html/tsconfig.json',
   ])
 
   const parseTemplate = (content: string) => `<html>
@@ -39,9 +37,9 @@ ${content}
     example_template = parseTemplate(parseMarkdown(project.template))
   }
 
-  example_component = `${example_component}
+  example_component = `${index_ts}
 
-${index_ts}`
+${example_component}`
 
   return getParameters({
     files: {
