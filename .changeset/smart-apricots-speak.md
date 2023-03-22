@@ -2,4 +2,4 @@
 '@baloise/design-system-components': patch
 ---
 
-change Stack Blitz with Code SandBox
+reduce payload by providing tslib import helpers
