@@ -246,7 +246,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol()]
+    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol(), '.']
   }
 
   private getRawValue(): string {
@@ -280,7 +280,10 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
-    if (input && (input.value === getDecimalSeparator() || input.value === getNegativeSymbol())) {
+    if (
+      input &&
+      (input.value === getDecimalSeparator() || input.value === '.' || input.value === getNegativeSymbol())
+    ) {
       this.inputValue = undefined
       input.value = ''
     }
@@ -296,13 +299,20 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private onKeydown = (event: KeyboardEvent) => {
     if (!isNil(event) && !isCtrlOrCommandKey(event)) {
       if (!this.getAllowedKeys().includes(event.key)) {
+        console.log('out 1')
         return stopEventBubbling(event)
+      }
+
+      let decimalSeparator = getDecimalSeparator()
+
+      if (this.region !== 'CH' && event.key === '.') {
+        decimalSeparator = '.'
       }
 
       const value = getNativeInputValue(this)
 
-      if (event.key === getDecimalSeparator()) {
-        if (!this.decimal || value.includes(getDecimalSeparator())) {
+      if (event.key === decimalSeparator) {
+        if (!this.decimal || value.includes(decimalSeparator)) {
           return stopEventBubbling(event)
         }
       }
@@ -313,9 +323,9 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         }
       }
 
-      if ([...NUMBER_KEYS, getDecimalSeparator(), getNegativeSymbol()].indexOf(event.key) >= 0) {
+      if ([...NUMBER_KEYS, decimalSeparator, '.', getNegativeSymbol()].indexOf(event.key) >= 0) {
         const newValue = getUpcomingValue(this, event)
-        const decimalValue = newValue.includes(getDecimalSeparator()) ? newValue?.split(getDecimalSeparator())[1] : ''
+        const decimalValue = newValue.includes(decimalSeparator) ? newValue?.split(decimalSeparator)[1] : ''
         if (decimalValue && decimalValue.length > this.decimal) {
           return stopEventBubbling(event)
         }
