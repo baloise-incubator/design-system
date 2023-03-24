@@ -324,9 +324,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           }
         })
 
-        const decimalValue = newValue.includes(separator) ? newValue?.split(separator)[1] : ''
-        if (decimalValue && decimalValue.length > this.decimal) {
-          return stopEventBubbling(event)
+        if (separator !== '') {
+          const decimalValue = separator !== '' && newValue.includes(separator) ? newValue?.split(separator)[1] : ''
+          if (decimalValue && decimalValue.length > this.decimal) {
+            return stopEventBubbling(event)
+          }
         }
       }
     }
