@@ -65,6 +65,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   nativeInput?: HTMLInputElement
   inputValue = this.value
   initialValue = 0
+  decimalSeparators = [getDecimalSeparator(), '.']
 
   @Element() el!: HTMLElement
 
@@ -246,7 +247,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   private getAllowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol(), '.']
+    return [...NUMBER_KEYS, ...ACTION_KEYS, ...this.decimalSeparators, getNegativeSymbol()]
   }
 
   private getRawValue(): string {
@@ -280,10 +281,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     inputHandleBlur(this, event)
 
     const input = getInputTarget(event)
-    if (
-      input &&
-      (input.value === getDecimalSeparator() || input.value === '.' || input.value === getNegativeSymbol())
-    ) {
+    if (input && (this.decimalSeparators.indexOf(input.value) >= 0 || input.value === getNegativeSymbol())) {
       this.inputValue = undefined
       input.value = ''
     }
@@ -299,20 +297,13 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   private onKeydown = (event: KeyboardEvent) => {
     if (!isNil(event) && !isCtrlOrCommandKey(event)) {
       if (!this.getAllowedKeys().includes(event.key)) {
-        console.log('out 1')
         return stopEventBubbling(event)
-      }
-
-      let decimalSeparator = getDecimalSeparator()
-
-      if (this.region !== 'CH' && event.key === '.') {
-        decimalSeparator = '.'
       }
 
       const value = getNativeInputValue(this)
 
-      if (event.key === decimalSeparator) {
-        if (!this.decimal || value.includes(decimalSeparator)) {
+      if (this.decimalSeparators.indexOf(event.key) >= 0) {
+        if (!this.decimal || value.split('').some(el => this.decimalSeparators.includes(el))) {
           return stopEventBubbling(event)
         }
       }
@@ -323,9 +314,17 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         }
       }
 
-      if ([...NUMBER_KEYS, decimalSeparator, '.', getNegativeSymbol()].indexOf(event.key) >= 0) {
+      if ([...NUMBER_KEYS, ...this.decimalSeparators, getNegativeSymbol()].indexOf(event.key) >= 0) {
         const newValue = getUpcomingValue(this, event)
-        const decimalValue = newValue.includes(decimalSeparator) ? newValue?.split(decimalSeparator)[1] : ''
+        let separator = ''
+
+        value.split('').some(el => {
+          if (this.decimalSeparators.includes(el)) {
+            separator = el
+          }
+        })
+
+        const decimalValue = newValue.includes(separator) ? newValue?.split(separator)[1] : ''
         if (decimalValue && decimalValue.length > this.decimal) {
           return stopEventBubbling(event)
         }
