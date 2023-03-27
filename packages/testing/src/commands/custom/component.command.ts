@@ -16,6 +16,7 @@ Cypress.Commands.add(
       .then(($el: any) => areComponentsReady($el))
       .then(() => waitAfterFramePaint())
       .then(() => waitAfterIdleCallback())
+      .wait(100)
       .wrap(subject, o) as any
   },
 )
