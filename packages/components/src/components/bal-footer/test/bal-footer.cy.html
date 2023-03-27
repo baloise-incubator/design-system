@@ -8,35 +8,21 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
-  <body>
-    <bal-app>
-      <div class="container">
-        <h2 class="title is-size-xx-large">Basic</h2>
-        <section>
-          <bal-footer>
-            <div class="container">Footer</div>
-          </bal-footer>
-        </section>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-xx-large">Basic</h2>
+      <section>
+        <bal-footer hide-links hide-language-selection>
+          <div class="container">Footer</div>
+        </bal-footer>
+      </section>
 
-        <h2 class="title is-size-xx-large">With Track Line</h2>
-        <section>
-          <bal-footer has-track-line>
-            <div class="container">Footer</div>
-          </bal-footer>
-        </section>
-
-        <h2 class="title is-size-xx-large">Without Links</h2>
-        <section>
-          <bal-footer hide-links>
-            <div class="container">Footer without Links</div>
-          </bal-footer>
-        </section>
-
-        <h2 class="title is-size-xx-large">Links in another language</h2>
-        <section>
-          <bal-footer locale="de"></bal-footer>
-        </section>
-      </div>
-    </bal-app>
+      <h2 class="title is-size-xx-large">All variations</h2>
+      <section>
+        <bal-footer show-social-media>
+          <div class="container">Footer</div>
+        </bal-footer>
+      </section>
+    </div>
   </body>
 </html>

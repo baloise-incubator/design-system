@@ -10,10 +10,9 @@ export const config: Config = {
   ...StencilBaseConfig,
   buildEs5: 'prod',
   extras: {
+    __deprecated__dynamicImportShim: true,
     initializeNextTick: true,
     scriptDataOpts: true,
-    appendChildSlotFix: true,
-    cloneNodeFix: true,
   },
   outputTargets: [
     ...(StencilBaseConfig.outputTargets as any),
@@ -21,8 +20,8 @@ export const config: Config = {
      * Library outputs
      */
     {
-      type: 'dist',
-      esmLoaderPath: '../loader',
+      type: 'docs-json',
+      file: './public/assets/data/components.json',
     },
     VueGenerator(),
     AngularGenerator(),

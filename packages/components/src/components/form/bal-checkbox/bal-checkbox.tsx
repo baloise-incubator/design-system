@@ -22,11 +22,9 @@ import {
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
-import { Events, Props } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import isArray from 'lodash.isarray'
 
 @Component({
   tag: 'bal-checkbox',
@@ -75,7 +73,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
+  @Prop() interface: BalProps.BalCheckboxInterface = 'checkbox'
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -118,17 +116,17 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalCheckboxFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalCheckboxBlurDetail>
 
   /**
    * Emitted when the value property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalCheckboxChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -223,7 +221,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   }
 
   private updateState = () => {
-    if (this.group && this.group.control && isArray(this.group.value)) {
+    if (this.group && this.group.control && Array.isArray(this.group.value)) {
       this.checked = this.group.value.includes(this.value)
     }
   }

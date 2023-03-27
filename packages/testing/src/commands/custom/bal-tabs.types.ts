@@ -22,5 +22,16 @@ declare namespace Cypress {
       dataType?: 'label' | 'value',
       options?: Partial<Loggable>,
     ): Chainable<JQuery>
+    /**
+     * Assert that the tab item has the given state.
+     */
+    balTabItemShouldHaveState(
+      state: 'done' | 'failed' | 'active' | 'disabled',
+      options?: Partial<Loggable>,
+    ): Chainable<JQuery>
+    /**
+     * Assert that the tab item is active or not.
+     */
+    balTabItemShouldBeActive(active?: boolean, options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

@@ -1,5 +1,23 @@
 # @baloise/design-system-testing
 
+## 12.10.0
+
+### Minor Changes
+
+- [#1212](https://github.com/baloise-incubator/design-system/pull/1212) [`3af198e81`](https://github.com/baloise-incubator/design-system/commit/3af198e814bb7cc98d00d1878781a737a4c7bebb) Thanks [@hirsch88](https://github.com/hirsch88)! - add balTabItemShouldBeActive to assert if the step is active or not
+
+### Patch Changes
+
+- Updated dependencies [[`9fdf176ac`](https://github.com/baloise-incubator/design-system/commit/9fdf176ac82e6ac378200cf83928c98e61a3fe9e), [`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f), [`2d3ade3e5`](https://github.com/baloise-incubator/design-system/commit/2d3ade3e54cf919f4f2ad9323b5be8cd683a1c64)]:
+  - @baloise/design-system-components@12.10.0
+
+## 12.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`47c1e79a2`](https://github.com/baloise-incubator/design-system/commit/47c1e79a2cf955948a08acf6fbae936a08d44479), [`c89fd1312`](https://github.com/baloise-incubator/design-system/commit/c89fd13125a928195442e6ee22e28632d66dd95d), [`c2db6927d`](https://github.com/baloise-incubator/design-system/commit/c2db6927dfe29c2942d6dacb78a39d8930364064), [`855e6cbf5`](https://github.com/baloise-incubator/design-system/commit/855e6cbf5f23a822ac6c3e59a528154730ae6913), [`8a0dbc5af`](https://github.com/baloise-incubator/design-system/commit/8a0dbc5af1347904a6d79e317408ebea056aac1a), [`fff4c722a`](https://github.com/baloise-incubator/design-system/commit/fff4c722a0993ef59c088157286ec1114fc1fde1)]:
+  - @baloise/design-system-components@12.9.0
+
 ## 12.8.2
 
 ### Patch Changes

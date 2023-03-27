@@ -1,5 +1,23 @@
 # @baloise/design-system-components-table
 
+## 12.10.0
+
+### Patch Changes
+
+- [#1224](https://github.com/baloise-incubator/design-system/pull/1224) [`a95bddbf7`](https://github.com/baloise-incubator/design-system/commit/a95bddbf7c19fcf36f43828f4348e2a8ae77914c) Thanks [@mladenplaninicic](https://github.com/mladenplaninicic)! - handle rendering of the empty values in AgGrid cells
+
+- Updated dependencies [[`9fdf176ac`](https://github.com/baloise-incubator/design-system/commit/9fdf176ac82e6ac378200cf83928c98e61a3fe9e), [`ee0a5094d`](https://github.com/baloise-incubator/design-system/commit/ee0a5094d700197f6e110ded0607964a1bb8646f), [`2d3ade3e5`](https://github.com/baloise-incubator/design-system/commit/2d3ade3e54cf919f4f2ad9323b5be8cd683a1c64)]:
+  - @baloise/design-system-components@12.10.0
+  - @baloise/design-system-css@12.10.0
+
+## 12.9.0
+
+### Patch Changes
+
+- Updated dependencies [[`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`47c1e79a2`](https://github.com/baloise-incubator/design-system/commit/47c1e79a2cf955948a08acf6fbae936a08d44479), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`c89fd1312`](https://github.com/baloise-incubator/design-system/commit/c89fd13125a928195442e6ee22e28632d66dd95d), [`c2db6927d`](https://github.com/baloise-incubator/design-system/commit/c2db6927dfe29c2942d6dacb78a39d8930364064), [`855e6cbf5`](https://github.com/baloise-incubator/design-system/commit/855e6cbf5f23a822ac6c3e59a528154730ae6913), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c), [`8a0dbc5af`](https://github.com/baloise-incubator/design-system/commit/8a0dbc5af1347904a6d79e317408ebea056aac1a), [`fff4c722a`](https://github.com/baloise-incubator/design-system/commit/fff4c722a0993ef59c088157286ec1114fc1fde1), [`78b00ba20`](https://github.com/baloise-incubator/design-system/commit/78b00ba2042172ea23fe8827a60292c167d38e4c)]:
+  - @baloise/design-system-css@12.9.0
+  - @baloise/design-system-components@12.9.0
+
 ## 12.8.2
 
 ### Patch Changes

@@ -26,7 +26,7 @@ module.exports = {
 
 To improve the performance of the web components we need to configure zone.js.
 
-To make these changes, you need to create a ´zone-flags.ts´ file, such as the following.
+To make these changes, you need to create a **zone-flags.ts** file, such as the following.
 
 ```javascript
 // disable patching requestAnimationFrame
@@ -36,7 +36,7 @@ To make these changes, you need to create a ´zone-flags.ts´ file, such as the 
 (window as any).__Zone_disable_customElements = true;
 ```
 
-Next, import zone-flags before you import zone.js in the ´polyfills.ts´:
+Next, import zone-flags before you import zone.js in the **polyfills.ts**:
 
 ```typescript
 /***************************************************************************************************
@@ -60,52 +60,19 @@ Lets install the latest Angular components.
 
 ```
 npm install @baloise/design-system-components-angular
+
 ```
 
 > **TIP**
 >
-> - The font, tokens and component package are included.
+> - The font, tokens, css and component package are included.
 > - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
-
-### Import Fonts
-
-The font package is included in the `@baloise/design-system-components-angular` package.
-
-Next step is to provide the fonts to our web application.
-To do so we recommend the tool copyfiles to copy the font files into your assets folder.
-
-```
-npm install copyfiles --save-dev
-```
-
-After installing our copyfiles dependency we need to define the copy command in our **package.json** file.
-Add a new script called **copy:fonts** and adjust the second path to your application.
-
-```json
-"scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
-}
-```
-
-To copy the fonts run the following command.
-
-```
-npm run copy:fonts
-```
-
-> **TIP**
->
-> - Add the generated files to the `.gitignore` file.
 
 ### Import Styles
 
 To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
-// change variable before the import
-$font-path: '~assets/fonts';
-
 // SASS mixins and variables (optional)
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -235,3 +202,12 @@ npm start
 > **TIP**
 >
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
+
+## Provide the assets
+
+The Design System provides custom fonts and favicons.
+
+To add them to your application follow those guides:
+
+- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)

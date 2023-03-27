@@ -10,7 +10,6 @@ import {
   FunctionalComponent,
   Watch,
 } from '@stencil/core'
-import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
 import { isPlatform } from '../../utils/platform'
@@ -41,7 +40,7 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Element() el!: HTMLElement
 
-  @State() isTouch = isPlatform('touch')
+  @State() isTouch = false
 
   /**
    * PUBLIC PROPERTY API
@@ -51,7 +50,7 @@ export class Logo implements ComponentInterface, Loggable {
   /**
    * Defines the color of the logo.
    */
-  @Prop() color: Props.BalLogoColor = 'blue'
+  @Prop() color: BalProps.BalLogoColor = 'blue'
 
   /**
    * Defines if the animation should be active
@@ -71,6 +70,10 @@ export class Logo implements ComponentInterface, Loggable {
 
   connectedCallback() {
     this.animatedWatcher()
+  }
+
+  componentWillRender() {
+    this.updatePlatform()
   }
 
   componentDidUpdate() {
@@ -94,18 +97,20 @@ export class Logo implements ComponentInterface, Loggable {
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    this.resizeWidthHandler(() => {
-      const newIsTouch = isPlatform('touch')
-      if (this.isTouch !== newIsTouch) {
-        this.isTouch = newIsTouch
-      }
-    })
+    this.resizeWidthHandler(() => this.updatePlatform())
   }
 
   /**
    * PRIVATE METHODS
    * ------------------------------------------------------
    */
+
+  private updatePlatform = () => {
+    const newIsTouch = isPlatform('touch')
+    if (this.isTouch !== newIsTouch) {
+      this.isTouch = newIsTouch
+    }
+  }
 
   private async resetAnimation() {
     this.destroyAnimation()

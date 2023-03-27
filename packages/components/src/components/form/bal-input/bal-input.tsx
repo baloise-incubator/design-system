@@ -28,7 +28,6 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../utils/form-input'
-import { Events, Props } from '../../../types'
 import {
   formatBeEnterpriseNumber,
   formatBeIBAN,
@@ -88,7 +87,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: Props.BalInputInputType = 'text'
+  @Prop() type: BalProps.BalInputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -104,12 +103,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
-  @Prop() autocorrect: Props.BalInputAutocorrect = 'off'
+  @Prop() autocorrect: BalProps.BalInputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -177,11 +176,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   @Prop() spellcheck = false
 
   /**
-   * @deprecated  If `true` this component can be placed on dark background
-   */
-  @Prop() inverted = false
-
-  /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
@@ -212,7 +206,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: Props.BalInputInputMode
+  @Prop() inputmode?: BalProps.BalInputInputMode
 
   /**
    * The value of the input.
@@ -227,17 +221,17 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
    * Formatting for 'be-enterprise-number': ('1234.567.890')
    * Formatting for 'be-iban': ('BE68 5390 0754 7034')
    */
-  @Prop() mask?: Props.BalInputMask = undefined
+  @Prop() mask?: BalProps.BalInputMask = undefined
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<Events.BalInputInputDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalInputInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputBlurDetail>
 
   /**
    * @deprecated
@@ -248,17 +242,17 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalInputKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalInputChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -341,61 +335,65 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
         return value
       }
 
-      if (this.mask) {
-        switch (this.mask) {
-          case 'contract-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+      if (input.value) {
+        if (this.mask) {
+          switch (this.mask) {
+            case 'contract-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+              }
+              return inputValue
             }
-            return inputValue
+            case 'offer-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+              }
+              return inputValue
+            }
+            case 'claim-number': {
+              inputValue = input.value.replace(/[^\dXx]/g, '')
+              const inputParts = [
+                inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+                inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+                inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+              ].filter(val => val.length > 0)
+              switch (inputParts.length) {
+                case 1:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}`
+                  break
+                case 2:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+                  break
+                default:
+                  inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
+              }
+              if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+              }
+              return inputValue
+            }
+            case 'be-enterprise-number': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
+              }
+              return inputValue
+            }
+            case 'be-iban': {
+              inputValue = input.value.replace(/\D/g, '')
+              if (inputValue.length > MAX_LENGTH_BE_IBAN) {
+                inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
+              }
+              return inputValue
+            }
+            default:
+              return input.value
           }
-          case 'offer-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
-            }
-            return inputValue
-          }
-          case 'claim-number': {
-            inputValue = input.value.replace(/[^\dXx]/g, '')
-            const inputParts = [
-              inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
-              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
-              inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
-            ].filter(val => val.length > 0)
-            switch (inputParts.length) {
-              case 1:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}`
-                break
-              case 2:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
-                break
-              default:
-                inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(/\D/g, '')}`
-            }
-            if (inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
-            }
-            return inputValue
-          }
-          case 'be-enterprise-number': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_BE_ENTERPRISE_NUMBER) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_BE_ENTERPRISE_NUMBER)
-            }
-            return inputValue
-          }
-          case 'be-iban': {
-            inputValue = input.value.replace(/\D/g, '')
-            if (inputValue.length > MAX_LENGTH_BE_IBAN) {
-              inputValue = inputValue.substring(0, MAX_LENGTH_BE_IBAN)
-            }
-            return inputValue
-          }
-          default:
-            return input.value
         }
+      } else {
+        this.inputValue = input.value
       }
     }
 
@@ -557,7 +555,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined>,
             'data-test-input': true,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
-            'is-inverted': this.inverted,
             'clickable': this.clickable,
             'bal-focusable': !this.disabled,
             'has-icon-right': this.hasIconRight,

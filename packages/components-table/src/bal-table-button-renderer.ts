@@ -1,9 +1,9 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import type { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
+import { parseValue } from './utils/parsing'
 
 interface BalTableButtonRendererOptions {
-  color?: (params: ICellRendererParams) => Props.BalButtonColor
+  color?: (params: ICellRendererParams) => BalProps.BalButtonColor
   loading?: (params: ICellRendererParams) => boolean
   href?: (params: ICellRendererParams) => string
   icon?: string
@@ -25,7 +25,6 @@ export function BalTableButtonRenderer(options: BalTableButtonRendererOptions): 
     this.element = document.createElement('bal-button')
     this.element.className = 'bal-table-cell-button'
     this.element.setAttribute('size', 'small')
-    this.element.innerHTML = params.value
     this.update()
   }
 
@@ -36,6 +35,8 @@ export function BalTableButtonRenderer(options: BalTableButtonRendererOptions): 
   }
 
   Renderer.prototype.update = function () {
+    this.element.innerHTML = parseValue(this.params.value)
+
     const color = isNil(options.color) ? '' : options.color(this.params)
     this.element.setAttribute('color', color)
 

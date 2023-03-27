@@ -12,7 +12,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, transitionEndAsync } from '../../utils/helpers'
-import { AccordionState, Events } from '../../types'
+import { AccordionState } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { raf } from '../../utils/helpers'
@@ -95,17 +95,17 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   /**
    * Emitted when the accordion has opened or closed
    */
-  @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalAccordionChangeDetail>
 
   /**
    * @internal Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalAccordionWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalAccordionWillAnimateDetail>
 
   /**
    * @internal Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalAccordionDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalAccordionDidAnimateDetail>
 
   /**
    * LIFECYCLE

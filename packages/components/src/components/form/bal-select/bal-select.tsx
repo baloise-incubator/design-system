@@ -13,7 +13,6 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import isArray from 'lodash.isarray'
 import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
@@ -38,7 +37,6 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Events, Props } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -105,7 +103,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() filter: Props.BalSelectFilter = 'includes'
+  @Prop() filter: BalProps.BalSelectFilter = 'includes'
 
   /**
    * The tabindex of the control.
@@ -135,7 +133,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * @deprecated Enables the slide in animation for the option items.
@@ -227,44 +225,44 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
+  private emitChangeEvent(detail: BalEvents.BalSelectChangeDetail) {
     this.balChange.emit(detail)
   }
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalSelectChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalSelectChangeDetail>
 
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balInputClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalSelectInputClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<BalEvents.BalSelectInputDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalSelectBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalSelectFocusDetail>
 
   /**
    * Emitted when the user cancels the input.
    */
-  @Event() balCancel!: EventEmitter<KeyboardEvent>
+  @Event() balCancel!: EventEmitter<BalEvents.BalSelectCancelDetail>
 
   /**
    * Emitted when the input has focus and key from the keyboard go hit.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalSelectKeyPressDetail>
 
   /**
    * LIFECYCLE
@@ -285,6 +283,7 @@ export class Select implements ComponentInterface, Loggable {
 
   componentWillLoad() {
     this.waitForOptionsAndThenUpdateRawValues()
+    this.isInsideOfFooter()
 
     if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
       const firstOption = this.options.get(this.rawValue[0])
@@ -699,7 +698,7 @@ export class Select implements ComponentInterface, Loggable {
     let newValue: string[] = []
 
     if (!isNil(this.value) && this.value !== '') {
-      if (isArray(this.value)) {
+      if (Array.isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
         if (this.value.split('').includes(',')) {
@@ -928,6 +927,10 @@ export class Select implements ComponentInterface, Loggable {
     this.focusIndex = index
   }
 
+  private isInsideOfFooter() {
+    this.inverted = this.el.closest('bal-footer') !== null
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -979,6 +982,7 @@ export class Select implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('inverted').class(this.inverted),
+          ...block.modifier('inverted-footer').class(this.inverted),
         }}
       >
         <select
@@ -1006,6 +1010,7 @@ export class Select implements ComponentInterface, Loggable {
               ...controlEl.modifier('invalid').class(this.invalid),
               ...controlEl.modifier('disabled').class(this.disabled || this.readonly),
               ...controlEl.modifier('focused').class(this.isPopoverOpen),
+              ...controlEl.modifier('inverted-footer').class(this.inverted),
             }}
           >
             <div
@@ -1056,10 +1061,19 @@ export class Select implements ComponentInterface, Loggable {
                 ...controlIconEl.modifier('loading').class(this.loading),
                 ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
-              name="caret-down"
-              color={this.disabled || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'primary'}
+              name={!this.inverted ? 'caret-down' : 'caret-up'}
+              color={
+                this.disabled || this.readonly
+                  ? 'grey-light'
+                  : this.inverted
+                  ? 'white'
+                  : this.invalid
+                  ? 'danger'
+                  : 'primary'
+              }
               turn={this.isPopoverOpen}
               onClick={ev => this.handleInputClick(ev, true)}
+              size={!this.inverted ? '' : 'xsmall'}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>

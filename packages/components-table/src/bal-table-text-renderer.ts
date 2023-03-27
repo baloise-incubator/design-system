@@ -1,11 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import type { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
+import { parseValue } from './utils/parsing'
 
 interface BalTableTextRendererOptions {
-  color?: (params: ICellRendererParams) => Props.BalTextColor
+  color?: (params: ICellRendererParams) => BalProps.BalTextColor
   icon?: (params: ICellRendererParams) => string
-  iconColor?: (params: ICellRendererParams) => Props.BalIconColor
+  iconColor?: (params: ICellRendererParams) => BalProps.BalIconColor
   iconRight?: (params: ICellRendererParams) => boolean
 }
 
@@ -37,7 +37,7 @@ export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}):
   }
 
   Renderer.prototype.update = function () {
-    this.text.innerHTML = this.params.value
+    this.text.innerHTML = parseValue(this.params.value)
 
     const color = isNil(options.color) ? '' : options.color(this.params)
     this.text.setAttribute('color', color)

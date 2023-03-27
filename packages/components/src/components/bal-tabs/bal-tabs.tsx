@@ -10,7 +10,6 @@ import {
   transitionEndAsync,
 } from '../../utils/helpers'
 import { BalTabOption } from './bal-tab.type'
-import { Props, Events } from '../../types'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../utils/config'
 import { BEM } from '../../utils/bem'
 import { isPlatform } from '../../utils/platform'
@@ -60,7 +59,7 @@ export class Tabs implements Loggable, BalConfigObserver {
    * @deprecated Defines the layout of the tabs. Right only works from the breakpoint
    * high-definition and beyond.
    */
-  @Prop() float: Props.BalTabsFloat = 'left'
+  @Prop() float: BalProps.BalTabsFloat = 'left'
 
   /**
    * @deprecated If `true` the tabs is a block element and uses 100% of the width
@@ -96,12 +95,12 @@ export class Tabs implements Loggable, BalConfigObserver {
    * @deprecated
    * Defines the layout of the tabs.
    */
-  @Prop() interface: Props.BalTabsInterface = 'tabs'
+  @Prop() interface: BalProps.BalTabsInterface = 'tabs'
 
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
+  @Prop() iconPosition: BalProps.BalTabsIconPosition = 'horizontal'
 
   /**
    * If `true` the field expands over the whole width.
@@ -141,12 +140,12 @@ export class Tabs implements Loggable, BalConfigObserver {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical: Props.BalTabsVertical = false
+  @Prop() vertical: BalProps.BalTabsVertical = false
 
   /**
    * The col size of the tabs on vertical mode.
    */
-  @Prop() verticalColSize: Props.BalTabsColSize = 'one-third'
+  @Prop() verticalColSize: BalProps.BalTabsColSize = 'one-third'
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -165,17 +164,17 @@ export class Tabs implements Loggable, BalConfigObserver {
   /**
    * Emitted when the changes has finished.
    */
-  @Event() balChange!: EventEmitter<Events.BalTabsChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalTabsChangeDetail>
 
   /**
    * @internal Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalTabsWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalTabsWillAnimateDetail>
 
   /**
    * @internal Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalTabsDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalTabsDidAnimateDetail>
 
   /**
    * LIFECYCLE

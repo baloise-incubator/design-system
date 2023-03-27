@@ -7,8 +7,6 @@ export * from './utils/config'
  * Components
  */
 export { Components, JSX } from './components'
-export { Props } from './props'
-export { Events } from './events'
 
 /**
  * Types
@@ -29,6 +27,8 @@ export { NewBalOptionValue, NewBalSingleOptionValue } from './components/form/ba
 export {
   waitForComponent,
   waitForDesignSystem,
+  waitAfterFramePaint,
+  waitAfterIdleCallback,
   shallowReady,
   deepReady,
   wait,

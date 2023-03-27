@@ -45,36 +45,11 @@ To install the Baloise Design System run the following command.
 npm install @baloise/design-system-components-vue --save
 ```
 
-### Import fonts
-
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
-
-After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called copy:fonts and adjust the second path to your application.
-
-```json
-"scripts": {
-  "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
-}
-```
-
-To copy the fonts run the following command.
-
-```
-npm run copy:fonts
-```
-
-> **TIP**
->
-> - Add the generated files to the `.gitignore` file.
-> - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
-
 ### Import styles
 
 To include the necessary CSS in a project, add the following to the root App component or a global stylesheet.
 
 ```scss
-// change variable before the import
 // SASS mixins and variables (optional)
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -192,3 +167,12 @@ npm run dev
 
 > **TIP**
 > Your app gets served under [http://localhost:3000](http://localhost:3000).
+
+## Provide the assets
+
+The Design System provides custom fonts and favicons.
+
+To add them to your application follow those guides:
+
+- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)

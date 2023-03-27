@@ -130,7 +130,7 @@ const tokens = {
     size: {
       'detail-page': '744px',
       'compact': '896px',
-      'blog-page': '984px',
+      'blog-page': '984px', // deprecated
       'normal': '1496px',
       'fluid': 'none',
     },
@@ -142,11 +142,11 @@ const tokens = {
   },
   radius: {
     'none': { value: '0' },
-    'small': { value: '0.25rem' },
     'normal': { value: '0.25rem' },
     'large': { value: '0.75rem' },
-    'x-large': { value: '1rem' },
     'rounded': { value: '9999px' },
+    'small': { value: '0.25rem', deprecated: true },
+    'x-large': { value: '1rem', deprecated: true },
   },
   shadow: {
     box: {
@@ -488,6 +488,8 @@ const tokens = {
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
+      'primary-light': 'primary-3', // inverted disabled
+      'white': 'white', // inverted
     },
   },
   /**
@@ -613,6 +615,7 @@ export interface BaloiseDesignTokenColor {
 }
 
 export interface BaloiseDesignTokenValue {
-  description?: string
   value: string
+  description?: string
+  deprecated?: boolean
 }

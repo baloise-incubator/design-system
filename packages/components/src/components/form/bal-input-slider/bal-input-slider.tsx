@@ -1,6 +1,5 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { Events } from '../../../types'
 import { debounceEvent } from '../../../utils/helpers'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
@@ -83,27 +82,27 @@ export class InputSlider {
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | number | null>
+  @Event() balInput!: EventEmitter<BalEvents.BalInputSliderInputDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalInputSliderBlurDetail>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalInputSliderKeyPressDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalInputSliderFocusDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalInputSliderChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalInputSliderChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

@@ -13,15 +13,14 @@ if (IS_BAL_DS_RELEASE) {
 }
 
 export const StencilBaseConfig: Config = {
+  autoprefixCss: true,
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
-  sourceMap: false,
+  enableCache: false,
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
-  enableCache: true,
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
   invisiblePrehydration: true,
-  autoprefixCss: true,
   plugins: [
     sass({
       outputStyle: 'compressed',
@@ -30,16 +29,26 @@ export const StencilBaseConfig: Config = {
   ],
   outputTargets: [
     {
-      type: 'dist-custom-elements',
-      generateTypeDeclarations: true,
+      type: 'docs-vscode',
+      file: 'dist/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/baloise-incubator/design-system',
+    },
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     {
       type: 'docs-vscode',
       file: 'vscode-data.json',
     },
     {
-      type: 'docs-json',
-      file: './public/assets/data/components.json',
+      type: 'dist-custom-elements',
+      includeGlobalScripts: false,
+      generateTypeDeclarations: false,
+    },
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     VueGenerator('../../..', './.storybook/vue/generated/components.ts', []),
   ],
@@ -134,6 +143,7 @@ export const StencilBaseConfig: Config = {
     { components: ['bal-radio', 'bal-radio-group'] },
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
+    { components: ['bal-time-input'] },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },
@@ -150,6 +160,10 @@ export const StencilBaseConfig: Config = {
         async buildStart() {
           const styleFiles = await fg(resolve(__dirname, './src/**/*.sass'))
           for (const file of styleFiles) {
+            this.addWatchFile(file)
+          }
+          const templateFiles = await fg(resolve(__dirname, './src/**/*.html'))
+          for (const file of templateFiles) {
             this.addWatchFile(file)
           }
         },
