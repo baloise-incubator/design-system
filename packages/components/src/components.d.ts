@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
-import { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 import { Attributes } from "./utils/attributes";
@@ -20,7 +20,7 @@ import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
 export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
-export { Frameworks } from "./components/docs/bal-doc-stackblitz/stackblitz.util";
+export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
 export { Attributes } from "./utils/attributes";
@@ -671,6 +671,20 @@ export namespace Components {
         "shadowDom": boolean;
         "subtitle": string;
     }
+    interface BalDocCodeSandbox {
+        "component": string;
+        "component2": string;
+        "framework": Frameworks;
+        "fullscreen": boolean;
+        "label": string;
+        "logo": boolean;
+        "modules": string;
+        "name2": string;
+        "primary": boolean;
+        "template": string;
+        "template2": string;
+        "visible": boolean;
+    }
     interface BalDocColor {
         "background": boolean;
         "color": string;
@@ -709,20 +723,6 @@ export namespace Components {
     }
     interface BalDocShades {
         "color": string;
-    }
-    interface BalDocStackblitz {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen": boolean;
-        "label": string;
-        "logo": boolean;
-        "modules": string;
-        "name2": string;
-        "primary": boolean;
-        "template": string;
-        "template2": string;
-        "visible": boolean;
     }
     interface BalDocSupportColor {
         "color": string;
@@ -955,6 +955,10 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+        /**
+          * If `true` the social media links will be shown.
+         */
+        "showSocialMedia": boolean;
     }
     interface BalForm {
         /**
@@ -3029,6 +3033,12 @@ declare global {
         prototype: HTMLBalDocBannerElement;
         new (): HTMLBalDocBannerElement;
     };
+    interface HTMLBalDocCodeSandboxElement extends Components.BalDocCodeSandbox, HTMLStencilElement {
+    }
+    var HTMLBalDocCodeSandboxElement: {
+        prototype: HTMLBalDocCodeSandboxElement;
+        new (): HTMLBalDocCodeSandboxElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -3088,12 +3098,6 @@ declare global {
     var HTMLBalDocShadesElement: {
         prototype: HTMLBalDocShadesElement;
         new (): HTMLBalDocShadesElement;
-    };
-    interface HTMLBalDocStackblitzElement extends Components.BalDocStackblitz, HTMLStencilElement {
-    }
-    var HTMLBalDocStackblitzElement: {
-        prototype: HTMLBalDocStackblitzElement;
-        new (): HTMLBalDocStackblitzElement;
     };
     interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
     }
@@ -3707,6 +3711,7 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-banner": HTMLBalDocBannerElement;
+        "bal-doc-code-sandbox": HTMLBalDocCodeSandboxElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
@@ -3717,7 +3722,6 @@ declare global {
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-preview": HTMLBalDocPreviewElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
-        "bal-doc-stackblitz": HTMLBalDocStackblitzElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tokens-border": HTMLBalDocTokensBorderElement;
         "bal-doc-tokens-border-colors": HTMLBalDocTokensBorderColorsElement;
@@ -4483,6 +4487,20 @@ declare namespace LocalJSX {
         "shadowDom"?: boolean;
         "subtitle"?: string;
     }
+    interface BalDocCodeSandbox {
+        "component": string;
+        "component2": string;
+        "framework": Frameworks;
+        "fullscreen"?: boolean;
+        "label": string;
+        "logo"?: boolean;
+        "modules": string;
+        "name2": string;
+        "primary"?: boolean;
+        "template": string;
+        "template2": string;
+        "visible"?: boolean;
+    }
     interface BalDocColor {
         "background"?: boolean;
         "color"?: string;
@@ -4521,20 +4539,6 @@ declare namespace LocalJSX {
     }
     interface BalDocShades {
         "color"?: string;
-    }
-    interface BalDocStackblitz {
-        "component": string;
-        "component2": string;
-        "framework": Frameworks;
-        "fullscreen"?: boolean;
-        "label": string;
-        "logo"?: boolean;
-        "modules": string;
-        "name2": string;
-        "primary"?: boolean;
-        "template": string;
-        "template2": string;
-        "visible"?: boolean;
     }
     interface BalDocSupportColor {
         "color"?: string;
@@ -4777,6 +4781,10 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+        /**
+          * If `true` the social media links will be shown.
+         */
+        "showSocialMedia"?: boolean;
     }
     interface BalForm {
         /**
@@ -6619,6 +6627,7 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
         "bal-doc-banner": BalDocBanner;
+        "bal-doc-code-sandbox": BalDocCodeSandbox;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
@@ -6629,7 +6638,6 @@ declare namespace LocalJSX {
         "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-preview": BalDocPreview;
         "bal-doc-shades": BalDocShades;
-        "bal-doc-stackblitz": BalDocStackblitz;
         "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tokens-border": BalDocTokensBorder;
         "bal-doc-tokens-border-colors": BalDocTokensBorderColors;
@@ -6757,6 +6765,7 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
+            "bal-doc-code-sandbox": LocalJSX.BalDocCodeSandbox & JSXBase.HTMLAttributes<HTMLBalDocCodeSandboxElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
@@ -6767,7 +6776,6 @@ declare module "@stencil/core" {
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-preview": LocalJSX.BalDocPreview & JSXBase.HTMLAttributes<HTMLBalDocPreviewElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
-            "bal-doc-stackblitz": LocalJSX.BalDocStackblitz & JSXBase.HTMLAttributes<HTMLBalDocStackblitzElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tokens-border": LocalJSX.BalDocTokensBorder & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderElement>;
             "bal-doc-tokens-border-colors": LocalJSX.BalDocTokensBorderColors & JSXBase.HTMLAttributes<HTMLBalDocTokensBorderColorsElement>;

@@ -13,7 +13,6 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import isArray from 'lodash.isarray'
 import { debounce, deepReady, findItemLabel, isDescendant } from '../../../utils/helpers'
 import {
   areArraysEqual,
@@ -284,6 +283,7 @@ export class Select implements ComponentInterface, Loggable {
 
   componentWillLoad() {
     this.waitForOptionsAndThenUpdateRawValues()
+    this.isInsideOfFooter()
 
     if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
       const firstOption = this.options.get(this.rawValue[0])
@@ -698,7 +698,7 @@ export class Select implements ComponentInterface, Loggable {
     let newValue: string[] = []
 
     if (!isNil(this.value) && this.value !== '') {
-      if (isArray(this.value)) {
+      if (Array.isArray(this.value)) {
         newValue = [...this.value.filter(v => !isNil(v))]
       } else {
         if (this.value.split('').includes(',')) {
@@ -927,6 +927,10 @@ export class Select implements ComponentInterface, Loggable {
     this.focusIndex = index
   }
 
+  private isInsideOfFooter() {
+    this.inverted = this.el.closest('bal-footer') !== null
+  }
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -978,6 +982,7 @@ export class Select implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('inverted').class(this.inverted),
+          ...block.modifier('inverted-footer').class(this.inverted),
         }}
       >
         <select
@@ -1005,6 +1010,7 @@ export class Select implements ComponentInterface, Loggable {
               ...controlEl.modifier('invalid').class(this.invalid),
               ...controlEl.modifier('disabled').class(this.disabled || this.readonly),
               ...controlEl.modifier('focused').class(this.isPopoverOpen),
+              ...controlEl.modifier('inverted-footer').class(this.inverted),
             }}
           >
             <div
@@ -1055,10 +1061,19 @@ export class Select implements ComponentInterface, Loggable {
                 ...controlIconEl.modifier('loading').class(this.loading),
                 ...controlIconEl.modifier('clickable').class(!this.disabled && !this.readonly),
               }}
-              name="caret-down"
-              color={this.disabled || this.readonly ? 'grey-light' : this.invalid ? 'danger' : 'primary'}
+              name={!this.inverted ? 'caret-down' : 'caret-up'}
+              color={
+                this.disabled || this.readonly
+                  ? 'grey-light'
+                  : this.inverted
+                  ? 'white'
+                  : this.invalid
+                  ? 'danger'
+                  : 'primary'
+              }
               turn={this.isPopoverOpen}
               onClick={ev => this.handleInputClick(ev, true)}
+              size={!this.inverted ? '' : 'xsmall'}
             ></bal-icon>
           </div>
           <bal-popover-content class={{ ...popoverContentEl.class() }} scrollable={this.scrollable} spaceless expanded>
