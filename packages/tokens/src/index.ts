@@ -488,8 +488,6 @@ const tokens = {
       'warning': 'warning-5',
       'success': 'success-4',
       'danger': 'danger-4',
-      'primary-light': 'primary-3', // inverted disabled
-      'white': 'white', // inverted
     },
   },
   /**
