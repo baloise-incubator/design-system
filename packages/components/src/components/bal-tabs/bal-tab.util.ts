@@ -23,6 +23,7 @@ export const newBalTabOption = (option: Option): BalTabOption => {
     disabled: false,
     hidden: false,
     prevent: false,
+    navigate: undefined as any,
     ...option,
   }
 }

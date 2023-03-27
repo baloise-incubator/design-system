@@ -5762,9 +5762,9 @@ declare namespace LocalJSX {
           * Listen when the popover opens or closes. Returns the current value.
          */
         "onBalChange"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverChangeDetail>) => void;
-        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverDidAnimateDetail>) => void;
+        "onBalDidAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverDidAnimateDetail>) => void;
         "onBalPopoverPrepare"?: (event: BalPopoverCustomEvent<string>) => void;
-        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<Events.BalPopoverWillAnimateDetail>) => void;
+        "onBalWillAnimate"?: (event: BalPopoverCustomEvent<BalEvents.BalPopoverWillAnimateDetail>) => void;
         /**
           * Define padding of the overflow
          */

@@ -95,7 +95,7 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
-    this.balWillAnimate.emit(this.isMenuActive)
+    this.balWillAnimate.emit()
     this.isMenuActive = isMenuActive
 
     if (this.isMenuActive) {
@@ -111,7 +111,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
-    this.balDidAnimate.emit(this.isMenuActive)
+    this.balDidAnimate.emit()
   }
 
   async onClick() {

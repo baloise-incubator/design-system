@@ -13,7 +13,7 @@ namespace BalProps {
 }
 
 namespace BalEvents {
-  export type BalTabsChangeDetail = void
+  export type BalTabsChangeDetail = string | undefined
   export interface BalTabsChange extends CustomEvent {
     detail: BalTabsChangeDetail
     target: HTMLBalPopoverElement

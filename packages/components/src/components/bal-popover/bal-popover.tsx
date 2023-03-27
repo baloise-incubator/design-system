@@ -108,12 +108,12 @@ export class Popover {
   /**
    * @internal Emitted before the animation starts
    */
-  @Event() balWillAnimate!: EventEmitter<Events.BalPopoverWillAnimateDetail>
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
 
   /**
    * @internal Emitted after the animation has finished
    */
-  @Event() balDidAnimate!: EventEmitter<Events.BalPopoverDidAnimateDetail>
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
 
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(event: CustomEvent<string>) {

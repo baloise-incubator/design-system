@@ -15,7 +15,7 @@ export interface BalTabOption {
   passed?: boolean
   index?: number
   context?: BalProps.BalTabsInterface
-  navigate: EventEmitter<MouseEvent>
+  navigate?: EventEmitter<MouseEvent>
   trackingData?: Attributes
 }
 
