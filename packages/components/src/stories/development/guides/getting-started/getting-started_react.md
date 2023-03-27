@@ -35,38 +35,6 @@ npm install @baloise/design-system-components-react
 > - Install SASS `npm install sass --save-dev`
 > - Change the _.css files to _.scss and adjust the import as well.
 
-### Import Fonts & Favicons
-
-The font package is included in the `@baloise/design-system-components-react` package, however the favicons needs to be installed separately.
-
-Next step is to provide the fonts and favicons to our web application.
-To do so we recommend the tool copyfiles to copy the font files into your assets folder.
-
-```
-npm install @baloise/design-system-favicons copyfiles --save-dev
-```
-
-After installing our copyfiles dependency we need to define the copy commands in our **package.json** file.
-
-```json
-"scripts": {
-  "postinstall": "npm run copy:assets",
-  "copy:assets": "npm run copy:fonts && npm run copy:favicons",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* public/assets/favicons"
-}
-```
-
-To copy all the assets run the following command.
-
-```
-npm install
-```
-
-> **TIP**
->
-> - Add the generated files to the `.gitignore` file.
-
 ### Import Styles
 
 Import the necessary CSS styles into your `index.tsx` file.
@@ -98,9 +66,6 @@ import '@baloise/design-system-css/css/typography.css'
 #### Import Sass Styles
 
 ```scss
-// change variable before the import
-$font-path: '~assets/fonts';
-
 // SASS mixins and variables (optional)
 @import '@baloise/design-system-css/sass/mixins';
 
@@ -183,3 +148,12 @@ npm start
 > **TIP**
 >
 > Your app gets served under [http://localhost:3000](http://localhost:3000).
+
+## Provide the assets
+
+The Design System provides custom fonts and favicons.
+
+To add them to your application follow those guides:
+
+- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)

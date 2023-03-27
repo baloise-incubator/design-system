@@ -24,7 +24,7 @@ We need provide the favicons to our web application.
 To do so we recommend the tool copyfiles to copy the favicons files into your assets folder.
 
 After installing our copyfiles dependency we need to define the copy command in our **package.json** file.
-Add a new script called **copy:favicons** and adjust the second path to your application.
+Add a new script called `copy:favicons` and adjust the second path to your application.
 
 ```json
 "scripts": {
@@ -33,6 +33,10 @@ Add a new script called **copy:favicons** and adjust the second path to your app
   "copy:favicons": "copyfiles --flat node_modules/@baloise/design-system-favicons/icons/primary/* src/assets/favicons"
 }
 ```
+
+> **TIP**
+>
+> If fonts are provided to just extend the npm script `copy:assets` with `&& npm run copy:fonts`
 
 Favicons are available in multiple colors (green, primary, purple, red, white, and yellow).
 In this example we use primary, but you can pick one available by changing the folder name from the first path.

@@ -4,6 +4,8 @@
   "ignorePaths": ["node_modules/**", "contributors.md", "packages/components/src/components/**/usage/**"],
   "words": [
     "Jasmin",
+    "msapplication",
+    "browserconfig",
     "mladenplaninicic",
     "codesandbox",
     "nobilo",

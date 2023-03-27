@@ -68,6 +68,15 @@ Add the `bal-app` to your root element. Within this component we are able to use
 >
 > Now you can run your server with `npm start` and the server is available under http://127.0.0.1:8080/.
 
+## Provide the assets
+
+The Design System provides custom fonts and favicons.
+
+To add them to your application follow those guides:
+
+- [Font Installation](?path=/docs/foundation-typography-development--heading-and-display#installation)
+- [Favicons Installation](?path=/docs/foundation-brand-assets-development--logo#favicons)
+
 ### CDN
 
 An other way to easily use the library is via [CDN](https://www.jsdelivr.com/).
