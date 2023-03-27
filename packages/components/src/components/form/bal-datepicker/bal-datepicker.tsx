@@ -568,11 +568,27 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
+  private formatDate(value: string): string {
+    const parts = [value.substring(0, 2), value.substring(2, 4), value.substring(4, 8)].filter(val => val.length > 0)
+
+    switch (parts.length) {
+      case 1:
+        return `${value}`
+      case 2:
+        return `${parts[0]}${dateSeparator(this.getLocale())}${parts[1]}`
+      default:
+        return `${parts[0]}${dateSeparator(this.getLocale())}${parts[1]}${dateSeparator(this.getLocale())}${parts[2]}`
+    }
+  }
+
   private onInput = (event: Event) => {
     const input = getInputTarget(event)
 
     if (input) {
       this.inputValue = input.value
+      if (input.value) {
+        this.nativeInput.value = this.formatDate(this.inputValue.split(dateSeparator(this.getLocale())).join(''))
+      }
       if (this.inputValue && this.inputValue.length >= 6) {
         const date = parse(this.inputValue, this.getLocale())
         const dateString = formatDateString(date as Date)
