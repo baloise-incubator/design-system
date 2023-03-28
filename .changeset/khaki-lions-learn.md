@@ -2,4 +2,4 @@
 '@baloise/design-system-components': minor
 ---
 
-add automatic separators
+improve datepicker user input by automatically adding the date separators between day and month and month and a year
