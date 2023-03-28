@@ -39,7 +39,6 @@
     "dist/",
     "loader/",
     "src/styles/",
-    "vscode-data.json",
     "src/components/**/*.sass",
     "src/components/**/*.scss"
   ],

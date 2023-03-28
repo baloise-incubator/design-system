@@ -38,10 +38,6 @@ export const StencilBaseConfig: Config = {
       esmLoaderPath: '../loader',
     },
     {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
-    },
-    {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
       generateTypeDeclarations: false,
