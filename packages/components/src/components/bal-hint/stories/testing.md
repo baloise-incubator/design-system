@@ -29,7 +29,7 @@ describe('Hint', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                  | Description                                                                    | Signature               |
-| ------------------------ | ------------------------------------------------------------------------------ | ----------------------- |
-| `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | `(): Chainable<JQuery>` |
-| `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(): Chainable<JQuery>` |
+| Command                  | Description                                                                    | Signature                                          |
+| ------------------------ | ------------------------------------------------------------------------------ | -------------------------------------------------- |
+| `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(options?: Partial<Loggable>): Chainable<JQuery>` |

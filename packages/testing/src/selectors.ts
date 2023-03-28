@@ -3,6 +3,10 @@ export const dataTestSelector = (testId: string): string => `[data-test-id="${te
 
 export const byTestId = (testId: string): string => `[data-testid="${testId}"]`
 
+export const parseDataTestID = (testId: string): string => {
+  return testId.slice(0, -2).slice(14).trim()
+}
+
 /**
  * Selectors
  */
@@ -10,6 +14,10 @@ export const selectors = {
   accordion: {
     button: byTestId('bal-accordion-button'),
     content: byTestId('bal-accordion-content'),
+  },
+  steps: {
+    option: byTestId('bal-steps-option'),
+    optionLabel: byTestId('bal-steps-option-label'),
   },
   field: {
     hint: 'bal-field-hint > bal-hint',
@@ -59,8 +67,8 @@ export const selectors = {
     chips: '.bal-select__control__selections > .bal-tag',
   },
   tabs: {
-    tabItems: 'li.data-test-tab-item',
-    action: '.data-test-tabs-action',
+    item: byTestId('bal-tabs-item'),
+    itemLabel: byTestId('bal-tabs-item-label'),
   },
   toast: {
     main: '.bal-notices > .bal-toast',

@@ -1,7 +1,5 @@
 import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter, State } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
-import { Props } from '../../types'
-import { Events } from '../../types'
 import { BEM } from '../../utils/bem'
 import { isBrowser } from '../../utils/browser'
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset'
@@ -73,7 +71,7 @@ export class Popover {
   /**
    * Define the position of the popover content.
    */
-  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
+  @Prop() position: BalProps.BalPopoverPlacement = 'bottom-start'
 
   /**
    * If `true` the popover content is open.
@@ -100,12 +98,22 @@ export class Popover {
   /**
    * Listen when the popover opens or closes. Returns the current value.
    */
-  @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalPopoverChangeDetail>
 
   /**
    * @internal - Use this to close unused popovers.
    */
   @Event() balPopoverPrepare!: EventEmitter<string>
+
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<BalEvents.BalPopoverWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<BalEvents.BalPopoverDidAnimateDetail>
 
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(event: CustomEvent<string>) {
@@ -234,6 +242,7 @@ export class Popover {
         this.menuInnerElement.scrollTo(0, 0)
       }
       this.balPopoverPrepare.emit(this.popoverId)
+      this.balWillAnimate.emit()
       this.value = true
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -242,6 +251,7 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
+      this.balDidAnimate.emit()
     }
   }
 
@@ -253,6 +263,7 @@ export class Popover {
     if (this.value || options.force) {
       this.menuElement?.removeAttribute('data-show')
       this.menuElement?.setAttribute('aria-hidden', 'true')
+      this.balWillAnimate.emit()
       this.value = false
       this.popperInstance.setOptions((options: any) => ({
         ...options,
@@ -261,6 +272,7 @@ export class Popover {
       this.updatePopper()
 
       this.balChange.emit(this.value)
+      this.balDidAnimate.emit()
     }
   }
 

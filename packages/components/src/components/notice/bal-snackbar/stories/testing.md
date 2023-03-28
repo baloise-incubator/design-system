@@ -22,6 +22,6 @@ describe('Snackbar', () => {
 
 A list of the custom commands for this specific component.
 
-| Command           | Description                    | Signature               |
-| ----------------- | ------------------------------ | ----------------------- |
-| `balSnackbarFind` | Returns the visible snackbars. | `(): Chainable<JQuery>` |
+| Command           | Description                    | Signature                                          |
+| ----------------- | ------------------------------ | -------------------------------------------------- |
+| `balSnackbarFind` | Returns the visible snackbars. | `(options?: Partial<Loggable>): Chainable<JQuery>` |

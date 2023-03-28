@@ -22,6 +22,6 @@ describe('Toast', () => {
 
 A list of the custom commands for this specific component.
 
-| Command        | Description                 | Signature               |
-| -------------- | --------------------------- | ----------------------- |
-| `balToastFind` | Returns the visible toasts. | `(): Chainable<JQuery>` |
+| Command        | Description                 | Signature                                          |
+| -------------- | --------------------------- | -------------------------------------------------- |
+| `balToastFind` | Returns the visible toasts. | `(options?: Partial<Loggable>): Chainable<JQuery>` |

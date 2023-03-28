@@ -37,7 +37,6 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Props, Events } from '../../../types'
 import { stopEventBubbling } from '../../../utils/form-input'
 import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -104,7 +103,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() filter: Props.BalSelectFilter = 'includes'
+  @Prop() filter: BalProps.BalSelectFilter = 'includes'
 
   /**
    * The tabindex of the control.
@@ -134,7 +133,7 @@ export class Select implements ComponentInterface, Loggable {
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
+  @Prop() autocomplete: BalProps.BalInputAutocomplete = 'off'
 
   /**
    * @deprecated Enables the slide in animation for the option items.
@@ -226,44 +225,44 @@ export class Select implements ComponentInterface, Loggable {
     }
   }
 
-  private emitChangeEvent(detail: Events.BalSelectChangeDetail) {
+  private emitChangeEvent(detail: BalEvents.BalSelectChangeDetail) {
     this.balChange.emit(detail)
   }
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Events.BalSelectChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalSelectChangeDetail>
 
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balInputClick!: EventEmitter<BalEvents.BalSelectInputClickDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<BalEvents.BalSelectInputDetail>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalSelectBlurDetail>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalSelectFocusDetail>
 
   /**
    * Emitted when the user cancels the input.
    */
-  @Event() balCancel!: EventEmitter<KeyboardEvent>
+  @Event() balCancel!: EventEmitter<BalEvents.BalSelectCancelDetail>
 
   /**
    * Emitted when the input has focus and key from the keyboard go hit.
    */
-  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<BalEvents.BalSelectKeyPressDetail>
 
   /**
    * LIFECYCLE
@@ -876,7 +875,7 @@ export class Select implements ComponentInterface, Loggable {
       preventDefault(event)
     } else {
       this.focusIndex = -1
-      this.balClick.emit(event)
+      this.balInputClick.emit(event)
 
       if (this.typeahead) {
         if (this.isPopoverOpen && isIconClick) {

@@ -13,7 +13,6 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
-import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
 import { BalRadioOption } from '../bal-radio.type'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
@@ -84,7 +83,7 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface?: Props.BalRadioGroupInterface = undefined
+  @Prop() interface?: BalProps.BalRadioGroupInterface = undefined
 
   /**
    * Displays the checkboxes vertically
@@ -146,22 +145,22 @@ export class RadioGroup implements ComponentInterface, Loggable {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
+  @Event() balChange!: EventEmitter<BalEvents.BalRadioGroupChangeDetail>
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balInput!: EventEmitter<Events.BalRadioGroupChangeDetail>
+  @Event() balInput!: EventEmitter<BalEvents.BalRadioGroupInputDetail>
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioGroupFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioGroupBlurDetail>
 
   /**
    * LIFECYCLE

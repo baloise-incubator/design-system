@@ -17,7 +17,6 @@ export const StencilBaseConfig: Config = {
   namespace: 'design-system-components',
   hashedFileNameLength: 10,
   enableCache: true,
-  globalStyle: 'src/styles/global.sass',
   globalScript: 'src/global.ts',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   tsconfig: IS_BAL_DS_RELEASE ? 'tsconfig.release.json' : 'tsconfig.json',
@@ -35,13 +34,13 @@ export const StencilBaseConfig: Config = {
       sourceCodeBaseUrl: 'https://github.com/baloise-incubator/design-system',
     },
     {
-      type: 'docs-vscode',
-      file: 'vscode-data.json',
+      type: 'dist',
+      esmLoaderPath: '../loader',
     },
     {
       type: 'dist-custom-elements',
       includeGlobalScripts: false,
-      generateTypeDeclarations: true,
+      generateTypeDeclarations: false,
     },
     {
       type: 'dist',

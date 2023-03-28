@@ -42,7 +42,6 @@
   "style": "css/baloise-design-system.css",
   "files": [
     "css/",
-    "scss/",
     "sass/",
     "src/"
   ],

@@ -11,7 +11,6 @@ import {
   State,
   Watch,
 } from '@stencil/core'
-import { Props, Events } from '../../../types'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
@@ -94,7 +93,7 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: Props.BalRadioInterface = 'radio'
+  @Prop() interface: BalProps.BalRadioInterface = 'radio'
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -124,22 +123,17 @@ export class Radio implements ComponentInterface, Loggable {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event() balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<BalEvents.BalRadioFocusDetail>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<BalEvents.BalRadioBlurDetail>
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event() balClick!: EventEmitter<MouseEvent>
+  @Event() balChange!: EventEmitter<BalEvents.BalRadioChangeDetail>
 
   /**
    * LIFECYCLE
@@ -249,7 +243,6 @@ export class Radio implements ComponentInterface, Loggable {
     }
 
     this.checked = this.nativeInput.checked
-    this.balClick.emit()
     this.nativeInput.focus()
   }
 

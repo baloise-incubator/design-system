@@ -1,10 +1,10 @@
 import { Component, h, Host, Method, Prop, State } from '@stencil/core'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalConfigObserver, Props } from '../../types'
 import { BEM } from '../../utils/bem'
 import {
   attachComponentToConfig,
+  BalConfigObserver,
   BalConfigState,
   BalIcons,
   defaultConfig,
@@ -33,12 +33,12 @@ export class Icon implements BalConfigObserver {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: Props.BalIconSize = ''
+  @Prop() size: BalProps.BalIconSize = ''
 
   /**
    * The theme type of the button.
    */
-  @Prop() color: Props.BalIconColor = ''
+  @Prop() color: BalProps.BalIconColor = ''
 
   /**
    * If `true` the icon has display inline style
