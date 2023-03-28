@@ -14,6 +14,10 @@ export const getDecimalSeparator = (): string => {
   return getDecimalSeparatorUtil(getLocale())
 }
 
+export const getDecimalSeparators = (): string[] => {
+  return [getDecimalSeparator(), '.']
+}
+
 export const getThousandSeparator = (): string => {
   return getThousandSeparatorUtil(getLocale())
 }
