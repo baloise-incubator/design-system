@@ -16,6 +16,7 @@ export interface TabNavProps {
   lineActive: boolean
   border: boolean
   accordion: boolean
+  isAccordionOpen: boolean
   inverted: boolean
   clickable: boolean
   animated: boolean
@@ -37,6 +38,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
   lineActive,
   border,
   accordion,
+  isAccordionOpen,
   inverted,
   clickable,
   animated,
@@ -63,6 +65,7 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
       spaceless={spaceless}
       inverted={inverted}
       accordion={accordion}
+      isAccordionOpen={isAccordionOpen}
       expanded={expanded}
       clickable={clickable && !item.disabled}
       onSelectTab={onSelectTab}

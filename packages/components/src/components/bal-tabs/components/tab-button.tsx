@@ -13,6 +13,7 @@ export interface TabButtonProps {
   isMobile: boolean
   isVertical: boolean
   accordion: boolean
+  isAccordionOpen: boolean
   inverted: boolean
   expanded: boolean
   spaceless: boolean
@@ -29,6 +30,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   isMobile,
   isVertical,
   accordion,
+  isAccordionOpen,
   inverted,
   expanded,
   spaceless,
@@ -107,6 +109,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       {accordion ? (
         <TabIcon
           accordion={accordion}
+          isAccordionOpen={isAccordionOpen}
           item={item}
           isMobile={isMobile}
           hasBubble={hasAccordionIconBubble}
