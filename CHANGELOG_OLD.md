@@ -42,7 +42,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.13.4](https://github.com/baloise/design-system/compare/v10.13.3...v10.13.4) (2022-06-23)
 
-
 ### Bug Fixes
 
 * **testing:** update deps ([e55e44d](https://github.com/baloise/design-system/commit/e55e44ddc17b503f1a99275dd6070130cfc4bc81))
