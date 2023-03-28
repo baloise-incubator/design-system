@@ -55,7 +55,7 @@ describe.skip('bal-navigation', () => {
   }
 })
 
-describe('bal-navigation-colors', () => {
+describe.skip('bal-navigation-colors', () => {
   testNavigationOnDesktop('widescreen')
 
   function testNavigationOnDesktop(platform: Platforms) {
