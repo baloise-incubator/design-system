@@ -665,8 +665,6 @@ export class Tabs implements Loggable, BalConfigObserver {
           .map(t => t.label)
           .join(',')}
       >
-        {this.isAccordionOpen ? 'YES' : 'NO'}
-        {this.value}
         {isSelect ? (
           <TabSelect value={this.value} items={tabs} onSelectTab={this.onSelectTab}></TabSelect>
         ) : (
