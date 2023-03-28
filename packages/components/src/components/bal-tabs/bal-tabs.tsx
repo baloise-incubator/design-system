@@ -376,6 +376,11 @@ export class Tabs implements Loggable, BalConfigObserver {
         return element.clientHeight
       } else {
         const clientWidth = element.clientWidth
+
+        if (this.expanded) {
+          return clientWidth
+        }
+
         const paddingX = padding.left + padding.right
         return clientWidth - paddingX
       }

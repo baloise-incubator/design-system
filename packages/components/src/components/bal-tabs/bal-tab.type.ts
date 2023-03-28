@@ -4,7 +4,6 @@ import { Attributes } from '../../utils/attributes'
 export interface BalTabOption {
   value: string
   label: string
-  icon?: string
   href: string
   target: BalProps.BalButtonTarget
   active: boolean
@@ -12,6 +11,7 @@ export interface BalTabOption {
   hidden: boolean
   bubble: boolean | string
   prevent: boolean
+  icon?: string
   passed?: boolean
   index?: number
   context?: BalProps.BalTabsInterface
