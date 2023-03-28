@@ -32,20 +32,21 @@
   & .bal-tabs__tabs__content
     transition: max-height var(--bal-animation-transition-duration) var(--bal-animation-transition-easing)
 
-.bal-tabs__tabs__content
-  overflow: hidden
-  will-change: max-height
-
-.bal-tabs--collapsing .bal-tabs__tabs__content
-  max-height: 0 !important
-
-.bal-tabs--collapsed .bal-tabs__tabs__content
-  display: none
-
-.bal-tabs--expanding .bal-tabs__tabs__content
-  max-height: 0
-
-@media (prefers-reduced-motion: reduce)
-  .bal-tabs,
+.bal-tabs--accordion
   .bal-tabs__tabs__content
-    transition: none !important
+    overflow: hidden
+    will-change: max-height
+
+  &.bal-tabs--collapsing .bal-tabs__tabs__content
+    max-height: 0 !important
+
+  &.bal-tabs--collapsed .bal-tabs__tabs__content
+    display: none
+
+  &.bal-tabs--expanding .bal-tabs__tabs__content
+    max-height: 0
+
+  @media (prefers-reduced-motion: reduce)
+    .bal-tabs,
+    .bal-tabs__tabs__content
+      transition: none !important

@@ -650,6 +650,7 @@ export class Tabs implements Loggable, BalConfigObserver {
           ...block.modifier('navbar').class(this.inNavbar),
           ...block.modifier('vertical').class(isVertical),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
+          ...block.modifier('accordion').class(this.accordion),
           ...block.modifier('animated').class(this.animated),
           ...block.modifier('expanding').class(this.accordionState === AccordionState.Expanding),
           ...block.modifier('expanded').class(this.accordionState === AccordionState.Expanded),
