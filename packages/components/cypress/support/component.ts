@@ -82,7 +82,6 @@ Cypress.Commands.add('waitAfterFramePaint', () => {
   cy.then(() => waitAfterFramePaint())
 })
 
-
 Cypress.Commands.add('waitAfterIdleCallback', () => {
   cy.then(() => waitAfterIdleCallback())
 })

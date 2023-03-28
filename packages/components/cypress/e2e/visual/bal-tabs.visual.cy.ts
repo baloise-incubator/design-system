@@ -12,6 +12,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('meta').compareSnapshot('tabs-meta', errorThreshold)
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical', errorThreshold)
     })
   })
 
@@ -26,6 +27,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('meta').compareSnapshot('tabs-meta-tablet', errorThreshold)
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar-tablet', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation-tablet', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical-tablet', errorThreshold)
     })
   })
 
@@ -40,6 +42,7 @@ describe('bal-tabs', () => {
       cy.getByTestId('meta').compareSnapshot('tabs-meta-mobile', errorThreshold)
       cy.getByTestId('navbar').compareSnapshot('tabs-navbar-mobile', errorThreshold)
       cy.getByTestId('navigation').compareSnapshot('tabs-navigation-mobile', errorThreshold)
+      cy.getByTestId('vertical').compareSnapshot('tabs-vertical-mobile', errorThreshold)
     })
   })
 })
