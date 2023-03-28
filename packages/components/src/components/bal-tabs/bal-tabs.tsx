@@ -410,11 +410,18 @@ export class Tabs implements Loggable, BalConfigObserver {
       }
     } else {
       if (element.offsetLeft) {
+        if (this.expanded) {
+          return element.offsetLeft
+        }
+
         return element.offsetLeft + padding.left
       }
 
       const carouselItem = element.closest('bal-carousel-item')
       if (carouselItem) {
+        if (this.expanded) {
+          return carouselItem.offsetLeft
+        }
         return carouselItem.offsetLeft + padding.left
       }
     }
