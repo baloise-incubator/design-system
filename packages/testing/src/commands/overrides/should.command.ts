@@ -26,13 +26,13 @@ const shouldAndAndCommand = (
 ) => {
   if (isAccordion(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
-      return originalFn(element.find(selectors.accordion.button, { log: false }), condition, key, value, options)
+      return originalFn(element.find(selectors.accordion.trigger, { log: false }), condition, key, value, options)
     }
   }
 
   if (isButton(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
-      return originalFn(element.find(selectors.button.main, { log: false }), condition, key, value, options)
+      return originalFn(element.find(selectors.button.native, { log: false }), condition, key, value, options)
     }
   }
 

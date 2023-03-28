@@ -13,10 +13,10 @@ describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
 
   it('should ...', () => {
-    cy.get(accordion).find(selectors.accordion.button).contains('Show more')
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show more')
     cy.get(accordion).balAccordionIsClosed()
     cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(accordion).find(selectors.accordion.button).contains('Show less')
+    cy.get(accordion).find(selectors.accordion.trigger).contains('Show less')
     cy.get(accordion).find(selectors.accordion.content).contains('My Content')
     cy.get(accordion).click().balAccordionIsClosed()
   })

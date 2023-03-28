@@ -8,15 +8,56 @@ export const byTestId = (testId: string): string => `[data-testid="${testId}"]`
  */
 export const selectors = {
   accordion: {
-    button: byTestId('bal-accordion-button'),
+    trigger: byTestId('bal-accordion-button'),
     content: byTestId('bal-accordion-content'),
   },
-  field: {
-    hint: 'bal-field-hint > bal-hint',
+  badge: {
+    label: '.bal-badge__label',
+    icon: '.bal-badge__icon',
   },
   button: {
-    main: 'button',
+    native: 'button',
     label: '.data-test-button-label',
+  },
+  carousel: {
+    paginationPrevious: '.bal-pagination__nav__pagination-previous',
+    paginationNext: '.bal-pagination__nav__pagination-next',
+    carouselPrevious: '.bal-carousel__controls__button--right',
+    carouselNext: '.bal-carousel__controls__button--left',
+  },
+  close: {
+    button: '.bal-close__button',
+    icon: '.bal-close__button__icon',
+  },
+  data: {
+    editable: '.bal-data-value-btn',
+  },
+  footer: {
+    language: '.bal-footer__inner__wrapper__header-container__language',
+    socialMedia: '.bal-footer__inner__wrapper__links-container__social-media-links',
+    legalLinks: '.bal-footer__inner__wrapper__links-container__legal-links',
+  },
+  heading: {
+    native: '.bal-heading__text',
+  },
+  icon: {
+    native: '.bal-icon__inner',
+  },
+  notification: {
+    native: '.bal-notification__inner',
+  },
+  pagination: {
+    next: '.bal-pagination__nav__pagination-next',
+    previous: '.bal-pagination__nav__pagination-previous',
+    pages: '.bal-pagination__nav__pagination-list > li > bal-button',
+    button: '.bal-pagination__nav__pagination-list > li > bal-button > button',
+  },
+  tag: {
+    text: '.bal-tag__label',
+    close: '.bal-tag__close',
+  },
+  text: {
+    native: '.bal-text__text',
   },
   checkbox: {
     input: 'input.data-test-checkbox-input',
@@ -26,27 +67,27 @@ export const selectors = {
   datepicker: {
     input: 'input.data-test-input',
   },
-  popover: {
-    trigger: 'bal-popover-trigger',
-    content: 'bal-popover-content',
+  field: {
+    hint: 'bal-field-hint > bal-hint',
+  },
+  fileUpload: {
+    input: 'bal-file-upload-1',
+    label: '.file-cta > .file-label',
+  },
+  inputSlider: {
+    native: '.bal-input-slider__input__native',
+  },
+  inputStepper: {
+    native: '.bal-input-stepper__input',
+    decrease: byTestId('decrease'),
+    text: '.bal-input-stepper__inner__text',
+    increase: byTestId('increase'),
   },
   input: {
-    main: 'input',
+    native: 'input',
   },
-  textarea: {
-    main: '> textarea',
-  },
-  slider: {
-    main: 'input',
-  },
-  modal: {
-    main: 'div.modal',
-  },
-  tag: {
-    text: '.bal-tag__label',
-  },
-  card: {
-    title: 'bal-heading',
+  numberInput: {
+    native: 'input',
   },
   radio: {
     input: 'input.data-test-radio-input',
@@ -58,6 +99,16 @@ export const selectors = {
     options: 'button.bal-select__option',
     chips: '.bal-select__control__selections > .bal-tag',
   },
+  popover: {
+    trigger: 'bal-popover-trigger',
+    content: 'bal-popover-content',
+  },
+  textarea: {
+    main: '> textarea',
+  },
+  modal: {
+    main: 'div.modal',
+  },
   tabs: {
     tabItems: 'li.data-test-tab-item',
     action: '.data-test-tabs-action',
@@ -67,12 +118,6 @@ export const selectors = {
   },
   snackbar: {
     main: '.bal-notices > .bal-snackbar',
-  },
-  pagination: {
-    next: '.bal-pagination__nav__pagination-next',
-    previous: '.bal-pagination__nav__pagination-previous',
-    pages: '.bal-pagination__nav__pagination-list > li > bal-button',
-    button: '.bal-pagination__nav__pagination-list > li > bal-button > button',
   },
   hint: {
     trigger: '.data-test-hint-trigger',
