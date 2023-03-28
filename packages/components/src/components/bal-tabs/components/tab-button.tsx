@@ -118,8 +118,6 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
       ) : (
         ''
       )}
-
-      {/* {accordion ? <bal-icon name="nav-go-down" color={iconColor} size="small" turn={item.active}></bal-icon> : ''} */}
     </a>
   )
 }
