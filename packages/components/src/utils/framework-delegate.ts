@@ -1,4 +1,4 @@
-import { componentOnReady } from './helpers'
+import { componentOnReady, deepReady } from './helpers'
 
 // eslint-disable-next-line
 export type ComponentRef = Function | HTMLElement | string | null
@@ -35,8 +35,8 @@ export const attachComponent = async (
   }
 
   container.appendChild(el)
-  await new Promise(resolve => componentOnReady(el, resolve))
-
+  // await new Promise(resolve => componentOnReady(el, resolve))
+  await deepReady(el, true)
   return el
 }
 

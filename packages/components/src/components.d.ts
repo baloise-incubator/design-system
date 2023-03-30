@@ -10,10 +10,10 @@ import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 import { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-import { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+import { ComponentProps, ComponentRef, Events, Props } from "./types";
+import { Action, LevelInfo, MetaLevelInfo, NavigationBreakpoints } from "./components/bal-navigation/bal-navigation.types";
 import { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
-import { Events, Props } from "./types";
 import { BalStepOption } from "./components/bal-steps/bal-step.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export { BalConfigState, BalMode } from "./utils/config";
@@ -21,10 +21,10 @@ export { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type
 export { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
 export { Frameworks } from "./components/docs/bal-doc-code-sandbox/code-sandbox.util";
 export { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-export { LevelInfo } from "./components/bal-navigation/utils/level.utils";
+export { ComponentProps, ComponentRef, Events, Props } from "./types";
+export { Action, LevelInfo, MetaLevelInfo, NavigationBreakpoints } from "./components/bal-navigation/bal-navigation.types";
 export { PopoverPresentOptions } from "./components/bal-popover/bal-popover";
 export { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
-export { Events, Props } from "./types";
 export { BalStepOption } from "./components/bal-steps/bal-step.type";
 export { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -1571,6 +1571,25 @@ export namespace Components {
          */
         "metaValue"?: string;
     }
+    interface BalNavigationAction {
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+    }
+    interface BalNavigationDesktop {
+        "actions": Action[];
+        "breakpoints": NavigationBreakpoints;
+        "levels": LevelInfo[];
+    }
     interface BalNavigationLevelBlock {
         "color": BalProps.BalNavigationLevelBlockColor;
         "getLevelInfo": () => Promise<LevelInfo>;
@@ -1616,6 +1635,15 @@ export namespace Components {
     }
     interface BalNavigationLevels {
         "getLevelInfos": () => Promise<LevelInfo[]>;
+    }
+    interface BalNavigationMeta {
+        "actions": Action[];
+        "container": BalProps.BalNavigationContainer;
+        "levels": MetaLevelInfo[];
+    }
+    interface BalNavigationTouch {
+        "actions": Action[];
+        "levels": LevelInfo[];
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -3296,6 +3324,18 @@ declare global {
         prototype: HTMLBalNavigationElement;
         new (): HTMLBalNavigationElement;
     };
+    interface HTMLBalNavigationActionElement extends Components.BalNavigationAction, HTMLStencilElement {
+    }
+    var HTMLBalNavigationActionElement: {
+        prototype: HTMLBalNavigationActionElement;
+        new (): HTMLBalNavigationActionElement;
+    };
+    interface HTMLBalNavigationDesktopElement extends Components.BalNavigationDesktop, HTMLStencilElement {
+    }
+    var HTMLBalNavigationDesktopElement: {
+        prototype: HTMLBalNavigationDesktopElement;
+        new (): HTMLBalNavigationDesktopElement;
+    };
     interface HTMLBalNavigationLevelBlockElement extends Components.BalNavigationLevelBlock, HTMLStencilElement {
     }
     var HTMLBalNavigationLevelBlockElement: {
@@ -3325,6 +3365,18 @@ declare global {
     var HTMLBalNavigationLevelsElement: {
         prototype: HTMLBalNavigationLevelsElement;
         new (): HTMLBalNavigationLevelsElement;
+    };
+    interface HTMLBalNavigationMetaElement extends Components.BalNavigationMeta, HTMLStencilElement {
+    }
+    var HTMLBalNavigationMetaElement: {
+        prototype: HTMLBalNavigationMetaElement;
+        new (): HTMLBalNavigationMetaElement;
+    };
+    interface HTMLBalNavigationTouchElement extends Components.BalNavigationTouch, HTMLStencilElement {
+    }
+    var HTMLBalNavigationTouchElement: {
+        prototype: HTMLBalNavigationTouchElement;
+        new (): HTMLBalNavigationTouchElement;
     };
     interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
     }
@@ -3599,11 +3651,15 @@ declare global {
         "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
         "bal-navigation": HTMLBalNavigationElement;
+        "bal-navigation-action": HTMLBalNavigationActionElement;
+        "bal-navigation-desktop": HTMLBalNavigationDesktopElement;
         "bal-navigation-level-block": HTMLBalNavigationLevelBlockElement;
         "bal-navigation-level-block-item": HTMLBalNavigationLevelBlockItemElement;
         "bal-navigation-level-main": HTMLBalNavigationLevelMainElement;
         "bal-navigation-level-meta": HTMLBalNavigationLevelMetaElement;
         "bal-navigation-levels": HTMLBalNavigationLevelsElement;
+        "bal-navigation-meta": HTMLBalNavigationMetaElement;
+        "bal-navigation-touch": HTMLBalNavigationTouchElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-number-input": HTMLBalNumberInputElement;
@@ -5237,6 +5293,25 @@ declare namespace LocalJSX {
          */
         "metaValue"?: string;
     }
+    interface BalNavigationAction {
+        /**
+          * The component to display inside of the modal.
+         */
+        "component"?: ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+    }
+    interface BalNavigationDesktop {
+        "actions"?: Action[];
+        "breakpoints"?: NavigationBreakpoints;
+        "levels"?: LevelInfo[];
+    }
     interface BalNavigationLevelBlock {
         "color"?: BalProps.BalNavigationLevelBlockColor;
         "label"?: string;
@@ -5281,6 +5356,15 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalNavigationLevels {
+    }
+    interface BalNavigationMeta {
+        "actions"?: Action[];
+        "container"?: BalProps.BalNavigationContainer;
+        "levels"?: MetaLevelInfo[];
+    }
+    interface BalNavigationTouch {
+        "actions"?: Action[];
+        "levels"?: LevelInfo[];
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -6402,11 +6486,15 @@ declare namespace LocalJSX {
         "bal-navbar-menu-end": BalNavbarMenuEnd;
         "bal-navbar-menu-start": BalNavbarMenuStart;
         "bal-navigation": BalNavigation;
+        "bal-navigation-action": BalNavigationAction;
+        "bal-navigation-desktop": BalNavigationDesktop;
         "bal-navigation-level-block": BalNavigationLevelBlock;
         "bal-navigation-level-block-item": BalNavigationLevelBlockItem;
         "bal-navigation-level-main": BalNavigationLevelMain;
         "bal-navigation-level-meta": BalNavigationLevelMeta;
         "bal-navigation-levels": BalNavigationLevels;
+        "bal-navigation-meta": BalNavigationMeta;
+        "bal-navigation-touch": BalNavigationTouch;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-number-input": BalNumberInput;
@@ -6530,11 +6618,15 @@ declare module "@stencil/core" {
             "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
             "bal-navigation": LocalJSX.BalNavigation & JSXBase.HTMLAttributes<HTMLBalNavigationElement>;
+            "bal-navigation-action": LocalJSX.BalNavigationAction & JSXBase.HTMLAttributes<HTMLBalNavigationActionElement>;
+            "bal-navigation-desktop": LocalJSX.BalNavigationDesktop & JSXBase.HTMLAttributes<HTMLBalNavigationDesktopElement>;
             "bal-navigation-level-block": LocalJSX.BalNavigationLevelBlock & JSXBase.HTMLAttributes<HTMLBalNavigationLevelBlockElement>;
             "bal-navigation-level-block-item": LocalJSX.BalNavigationLevelBlockItem & JSXBase.HTMLAttributes<HTMLBalNavigationLevelBlockItemElement>;
             "bal-navigation-level-main": LocalJSX.BalNavigationLevelMain & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMainElement>;
             "bal-navigation-level-meta": LocalJSX.BalNavigationLevelMeta & JSXBase.HTMLAttributes<HTMLBalNavigationLevelMetaElement>;
             "bal-navigation-levels": LocalJSX.BalNavigationLevels & JSXBase.HTMLAttributes<HTMLBalNavigationLevelsElement>;
+            "bal-navigation-meta": LocalJSX.BalNavigationMeta & JSXBase.HTMLAttributes<HTMLBalNavigationMetaElement>;
+            "bal-navigation-touch": LocalJSX.BalNavigationTouch & JSXBase.HTMLAttributes<HTMLBalNavigationTouchElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;

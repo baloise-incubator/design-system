@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Method } from '@stencil/core'
-import { LevelInfo, readSubLevels } from '../utils/level.utils'
+import { LevelInfo } from '../bal-navigation.types'
+import { readSubLevels } from '../utils/level.utils'
 
 @Component({
   tag: 'bal-navigation-levels',

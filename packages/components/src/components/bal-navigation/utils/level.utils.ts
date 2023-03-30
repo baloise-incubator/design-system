@@ -1,18 +1,4 @@
-import { Attributes } from '../../../utils/attributes'
-
-export interface LevelInfo {
-  type: 'meta' | 'main' | 'block' | 'block-item'
-  value: string
-  label: string
-  isTabLink?: boolean
-  link?: string
-  target?: BalProps.BalButtonTarget
-  linkLabel?: string
-  color?: BalProps.BalNavigationLevelBlockColor
-  subLevels?: LevelInfo[]
-  trackingData?: Attributes
-  onClick: (event: MouseEvent) => void
-}
+import { LevelInfo, MetaLevelInfo } from '../bal-navigation.types'
 
 export const readSubLevels = async (element: HTMLElement, target: string): Promise<LevelInfo[]> => {
   const subLevels = Array.from(element.querySelectorAll<any>(target)) as any[]
@@ -22,4 +8,24 @@ export const readSubLevels = async (element: HTMLElement, target: string): Promi
     levels.push(info)
   }
   return levels
+}
+
+export const mapToMetaLevels = (levels: LevelInfo[]): MetaLevelInfo[] => {
+  return levels.filter(isMetaLevel).map(mapToMetaLevel)
+}
+
+const isMetaLevel = (level: LevelInfo): boolean => {
+  return level.type === 'meta'
+}
+
+const mapToMetaLevel = (level: LevelInfo): MetaLevelInfo => {
+  return {
+    value: level.value,
+    label: level.label,
+    isTabLink: level.isTabLink,
+    link: level.link,
+    linkLabel: level.linkLabel,
+    trackingData: level.trackingData,
+    onClick: level.onClick,
+  }
 }

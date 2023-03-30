@@ -5,6 +5,7 @@
 
 namespace BalProps {
   export type BalNavigationLevelBlockColor = 'white' | 'grey' | 'yellow' | 'red' | 'purple' | 'green'
+  export type BalNavigationContainer = '' | 'fluid' | 'detail-page' | 'compact' | 'wide'
 }
 
 namespace BalEvents {

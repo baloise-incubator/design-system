@@ -5,6 +5,8 @@ declare namespace BalProps {}
 
 declare namespace BalEvents {}
 
+export type BalContainer = '' | 'fluid' | ''
+
 import './components/bal-accordion/bal-accordion.interfaces'
 import './components/bal-app/bal-app.interfaces'
 import './components/bal-badge/bal-badge.interfaces'

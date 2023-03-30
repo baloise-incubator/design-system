@@ -1,56 +1,40 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <body>
-    <bal-doc-app>
-      <div>
-        <bal-navigation meta-value="meta-1">
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
+
+<body>
+  <bal-doc-app>
+    <div>
+      <header>
+        <bal-navigation meta-value="meta-1" id="navigation">
           <bal-navigation-levels>
             <!-- hidden in the dom but can be grabbed by the mutation observer -->
-            <bal-navigation-level-meta
-              value="meta-1"
-              label="Privatkunden"
-              link="/?path=/story/components-navigation--basic"
-              link-label="Zur Privatkundenübersicht"
-              data-tracking-style="my-meta"
-            >
-              <bal-navigation-level-main
-                value="meta-1-main-1"
-                label="Versichern"
-                link="http://"
-                link-label="Alle Versicherungslösungen"
-                data-tracking-style="my-main"
-              >
+            <bal-navigation-level-meta value="meta-1" label="Privatkunden"
+              link="/?path=/story/components-navigation--basic" link-label="Zur Privatkundenübersicht"
+              data-tracking-style="my-meta">
+              <bal-navigation-level-main value="meta-1-main-1" label="Versichern" link="http://"
+                link-label="Alle Versicherungslösungen" data-tracking-style="my-main">
                 <bal-navigation-level-block label="Wohnen & Recht" link="http://" data-tracking-style="my-block">
-                  <bal-navigation-level-block-item
-                    label="Haushaltsversicherung"
-                    link="http://"
-                    data-tracking-style="link-list"
-                    data-tracking-topic="Unfallversicherung für Hausangestellte"
-                    data-tracking-context="Versichern"
-                    data-tracking-id="Main Navigation"
-                  >
+                  <bal-navigation-level-block-item label="Haushaltsversicherung" link="http://"
+                    data-tracking-style="link-list" data-tracking-topic="Unfallversicherung für Hausangestellte"
+                    data-tracking-context="Versichern" data-tracking-id="Main Navigation">
                   </bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Haftpflicht" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Einzel Gegenstände vom Handy bis zum e-Bike" link="http://">
                   </bal-navigation-level-block-item>
                   <bal-navigation-level-block-item
-                    label="Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)"
-                    link="http://"
-                  >
+                    label="Cyber-Versicherung (Kreditkartenmissbrauch, Cyber-Mobbing, Schadsoftware)" link="http://">
                   </bal-navigation-level-block-item>
-                  <bal-navigation-level-block-item
-                    label="Rechtsschutz"
-                    link="http://"
-                  ></bal-navigation-level-block-item>
+                  <bal-navigation-level-block-item label="Rechtsschutz"
+                    link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
                 <bal-navigation-level-block label="Wohneigentum" link="http://">
                   <bal-navigation-level-block-item label="Gebäudeversicherung" link="http://">
@@ -93,32 +77,20 @@
                   </bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-1-main-2"
-                label="Sparen, Zahlen & Finanzieren"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+              <bal-navigation-level-main value="meta-1-main-2" label="Sparen, Zahlen & Finanzieren" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 1 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-1-main-3"
-                label="Anlegen & Vorsorgen"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+              <bal-navigation-level-main value="meta-1-main-3" label="Anlegen & Vorsorgen" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 1 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-1-main-4"
-                label="Kontakt & Services"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+              <bal-navigation-level-main value="meta-1-main-4" label="Kontakt & Services" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 1 Main 4 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
@@ -126,120 +98,72 @@
               <bal-navigation-level-main value="meta-1-main-5" label="Magazin" link="#" is-tab-link>
               </bal-navigation-level-main>
             </bal-navigation-level-meta>
-            <bal-navigation-level-meta
-              value="meta-2"
-              label="Unternehmen"
-              link="/?path=/story/components-navigation--basic"
-              link-label="Go to Meta 2 Overview"
-            >
-              <bal-navigation-level-main
-                value="meta-2-main-1"
-                label="Meta 2 Main 1"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+            <bal-navigation-level-meta value="meta-2" label="Unternehmen"
+              link="/?path=/story/components-navigation--basic" link-label="Go to Meta 2 Overview">
+              <bal-navigation-level-main value="meta-2-main-1" label="Meta 2 Main 1" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 2 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-2-main-2"
-                label="Meta 2 Main 2"
-                link="http://"
-                link-label="Go to Main 2"
-              >
+              <bal-navigation-level-main value="meta-2-main-2" label="Meta 2 Main 2" link="http://"
+                link-label="Go to Main 2">
                 <bal-navigation-level-block label="Meta 2 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
             </bal-navigation-level-meta>
-            <bal-navigation-level-meta
-              value="meta-3"
-              label="Institutionelle Anleger"
-              link="/?path=/story/components-navigation--basic"
-              link-label="Go to Meta 2 Overview"
-            >
-              <bal-navigation-level-main
-                value="meta-3-main-1"
-                label="Meta 3 Main 1"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+            <bal-navigation-level-meta value="meta-3" label="Institutionelle Anleger"
+              link="/?path=/story/components-navigation--basic" link-label="Go to Meta 2 Overview">
+              <bal-navigation-level-main value="meta-3-main-1" label="Meta 3 Main 1" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 3 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-3-main-2"
-                label="Meta 3 Main 2"
-                link="http://"
-                link-label="Go to Main 2"
-              >
+              <bal-navigation-level-main value="meta-3-main-2" label="Meta 3 Main 2" link="http://"
+                link-label="Go to Main 2">
                 <bal-navigation-level-block label="Meta 3 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-3-main-3"
-                label="Meta 3 Main 3"
-                link="http://"
-                link-label="Go to Main 3"
-              >
+              <bal-navigation-level-main value="meta-3-main-3" label="Meta 3 Main 3" link="http://"
+                link-label="Go to Main 3">
                 <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-3-main-4"
-                label="Meta 3 Main 4"
-                link="http://"
-                link-label="Go to Main 3"
-              >
+              <bal-navigation-level-main value="meta-3-main-4" label="Meta 3 Main 4" link="http://"
+                link-label="Go to Main 3">
                 <bal-navigation-level-block label="Meta 3 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
             </bal-navigation-level-meta>
-            <bal-navigation-level-meta
-              value="meta-4"
-              label="Über uns"
-              link="/?path=/story/components-navigation--basic"
-              link-label="Go to Meta 2 Overview"
-            >
-              <bal-navigation-level-main
-                value="meta-4-main-1"
-                label="Meta 4 Main 1"
-                link="http://"
-                link-label="Go to Main 1"
-              >
+            <bal-navigation-level-meta value="meta-4" label="Über uns" link="/?path=/story/components-navigation--basic"
+              link-label="Go to Meta 2 Overview">
+              <bal-navigation-level-main value="meta-4-main-1" label="Meta 4 Main 1" link="http://"
+                link-label="Go to Main 1">
                 <bal-navigation-level-block label="Meta 4 Main 1 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-4-main-2"
-                label="Meta 4 Main 2"
-                link="http://"
-                link-label="Go to Main 2"
-              >
+              <bal-navigation-level-main value="meta-4-main-2" label="Meta 4 Main 2" link="http://"
+                link-label="Go to Main 2">
                 <bal-navigation-level-block label="Meta 4 Main 2 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
                 </bal-navigation-level-block>
               </bal-navigation-level-main>
-              <bal-navigation-level-main
-                value="meta-4-main-3"
-                label="Meta 4 Main 3"
-                link="http://"
-                link-label="Go to Main 3"
-              >
+              <bal-navigation-level-main value="meta-4-main-3" label="Meta 4 Main 3" link="http://"
+                link-label="Go to Main 3">
                 <bal-navigation-level-block label="Meta 4 Main 3 Block 1" link="http://">
                   <bal-navigation-level-block-item label="Item 1" link="http://"></bal-navigation-level-block-item>
                   <bal-navigation-level-block-item label="Item 2" link="http://"></bal-navigation-level-block-item>
@@ -248,7 +172,61 @@
             </bal-navigation-level-meta>
           </bal-navigation-levels>
 
-          <bal-button-group slot="meta-actions">
+        </bal-navigation>
+        <script>
+
+          // function createNavAction() {
+          // create component to open
+
+          if (!document.getElementById('action-1')) {
+            const element = document.createElement('bal-button');
+            element.id = `action-1`;
+            element.innerHTML = `Login`;
+            element.color = `light`;
+            element.inverted = true;
+            element.size = 'small';
+            element.addEventListener('click', () => console.log('clicked!!!!'))
+
+            // present the modal
+            const navActionElement = Object.assign(document.createElement('bal-navigation-action'), {
+              component: element,
+              htmlAttributes: {
+                'data-testid': 'basic-modal',
+              },
+            });
+
+            document.getElementById('navigation').appendChild(navActionElement);
+          }
+          // return navActionElement;
+        // }
+
+// bal-navigation-action
+
+        </script>
+      </header>
+      <main class="container py-medium">
+        <h1 class="title">Title</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ratione blanditiis tempore iste nam
+          repellat tenetur explicabo, dignissimos labore. Repellat vel inventore nobis quis suscipit odit deleniti id
+          necessitatibus molestias!
+          Hic explicabo dolor sequi totam aliquam natus accusamus illum quisquam. Officia doloribus, commodi dolorem
+          laborum dolorum tenetur animi, natus, quae facilis illum at doloremque magni rem nam corporis. Iusto,
+          consequatur.
+          Sint vel culpa quis commodi natus at! Similique eveniet minima iste impedit ipsum nostrum, sit ad libero
+          veritatis. Iure, saepe? Enim nisi doloremque cupiditate consequatur, nesciunt sapiente voluptas expedita
+          officiis.
+          Commodi quo reiciendis doloribus sit labore, sapiente eligendi aut fuga vitae amet esse est minima impedit,
+          unde totam quod? Ut temporibus enim pariatur a aperiam magnam dolore, eum eaque nemo?
+          Molestias, omnis ex corporis cum nemo ipsam dolore commodi doloribus voluptatum fugit voluptatibus ipsa illum
+          nobis mollitia beatae ut cumque consectetur earum tenetur alias aperiam eos. Iusto velit deserunt fuga?</p>
+      </main>
+    </div>
+  </bal-doc-app>
+</body>
+
+</html>
+
+<!-- <bal-button-group slot="meta-actions">
             <bal-button square size="small" color="light" inverted icon="location"></bal-button>
             <bal-button square size="small" color="light" inverted icon="search"></bal-button>
           </bal-button-group>
@@ -290,9 +268,4 @@
             </bal-navigation-popover>
             <bal-button square inverted icon="web"></bal-button>
             <bal-button square inverted icon="location"></bal-button>
-          </div>
-        </bal-navigation>
-      </div>
-    </bal-doc-app>
-  </body>
-</html>
+          </div> -->
