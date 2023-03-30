@@ -101,10 +101,9 @@ export class Tabs implements Loggable, BalConfigObserver {
   }
 
   /**
-   * @deprecated
    * Defines the layout of the tabs.
    */
-  @Prop() interface: BalProps.BalTabsInterface = 'tabs'
+  @Prop() context?: BalProps.BalTabsContext
 
   /**
    * Defines the layout of the tabs.
@@ -196,7 +195,7 @@ export class Tabs implements Loggable, BalConfigObserver {
     attachComponentToConfig(this)
     this.mutationHandler.connect(this.el, () => this.onOptionChange())
 
-    if (this.options === undefined) {
+    if (this.options === undefined || this.options.length < 1) {
       this.mutationHandler.observe()
     } else {
       this.mutationHandler.stopObserve()
@@ -591,8 +590,10 @@ export class Tabs implements Loggable, BalConfigObserver {
    */
 
   private onOptionChange = async () => {
+    console.log('onOptionChange')
     try {
       const options = await this.getOptions()
+      console.log('options', options)
       this.updateStore(options)
       this.setActiveItem()
       this.setActiveContent()
@@ -650,6 +651,8 @@ export class Tabs implements Loggable, BalConfigObserver {
     const expanded = this.accordionState === AccordionState.Expanded || this.accordionState === AccordionState.Expanding
     const contentPart = expanded ? 'content expanded' : 'content'
 
+    console.log('tabs render', tabs)
+
     return (
       <Host
         class={{
@@ -686,6 +689,7 @@ export class Tabs implements Loggable, BalConfigObserver {
             lineActive={this.value !== undefined}
             inverted={isInverted}
             animated={this.animated}
+            context={this.context}
             border={this.border}
             spaceless={this.spaceless}
             expanded={this.expanded}
@@ -708,7 +712,6 @@ export class Tabs implements Loggable, BalConfigObserver {
         >
           <div
             id={this.tabsId}
-            data-testid="bal-accordion-content"
             class={{
               ...block.element('tabs').element('content').element('wrapper').class(),
             }}

@@ -19,6 +19,7 @@ export interface TabButtonProps {
   spaceless: boolean
   clickable: boolean
   iconPosition: Props.BalTabsIconPosition
+  context?: BalProps.BalTabsContext
   onSelectTab: (event: MouseEvent, item: BalTabOption) => void
 }
 
@@ -36,6 +37,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
   spaceless,
   clickable,
   iconPosition,
+  context,
   onSelectTab,
 }) => {
   const bemEl = BEM.block('tabs').element('nav').element('item')
@@ -76,6 +78,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('last').class(isLast),
         ...bemEl.modifier('passed').class(item.passed),
         ...bemEl.modifier('vertical').class(isVertical),
+        ...bemEl.modifier(`context-${context}`).class(context !== undefined),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
       }}
       draggable={false}
@@ -105,8 +108,9 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         isVertical={isVertical}
         hasBubble={hasLabelBubble}
         inverted={inverted}
+        context={context}
       ></TabLabel>
-      {accordion ? (
+      {accordion && !item.href ? (
         <TabIcon
           accordion={accordion}
           isAccordionOpen={isAccordionOpen}
