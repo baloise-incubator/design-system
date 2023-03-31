@@ -60,7 +60,7 @@ export class DataValue {
           <slot></slot>
         </div>
         <bal-button
-          class="bal-data-value-btn"
+          data-testid="bal-data-value-button"
           square
           outlined
           color="text"
