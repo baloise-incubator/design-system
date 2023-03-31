@@ -352,6 +352,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
   render() {
     const value = this.hasFocus ? formatFloatString(this.getRawValue()) : this.getFormattedValue()
+
+    if (this.nativeInput && this.nativeInput.value) {
+      this.nativeInput.value = value
+    }
+
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
