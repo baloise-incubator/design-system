@@ -26,6 +26,7 @@ describe('bal-navigation', () => {
         )
       })
       it('open menu', () => {
+        cy.wait(400)
         cy.scrollTo('top')
         cy.contains('Versichern').click()
         cy.compareSnapshot(`navigation-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
