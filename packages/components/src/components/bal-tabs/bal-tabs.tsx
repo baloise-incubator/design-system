@@ -590,10 +590,8 @@ export class Tabs implements Loggable, BalConfigObserver {
    */
 
   private onOptionChange = async () => {
-    console.log('onOptionChange')
     try {
       const options = await this.getOptions()
-      console.log('options', options)
       this.updateStore(options)
       this.setActiveItem()
       this.setActiveContent()
@@ -650,8 +648,6 @@ export class Tabs implements Loggable, BalConfigObserver {
 
     const expanded = this.accordionState === AccordionState.Expanded || this.accordionState === AccordionState.Expanding
     const contentPart = expanded ? 'content expanded' : 'content'
-
-    console.log('tabs render', tabs)
 
     return (
       <Host

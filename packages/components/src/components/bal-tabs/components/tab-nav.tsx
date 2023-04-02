@@ -75,8 +75,6 @@ export const TabNav: FunctionalComponent<TabNavProps> = ({
     ></TabButton>
   )
 
-  console.log('--> tabs', tabs)
-
   return (
     <nav
       role="tablist"

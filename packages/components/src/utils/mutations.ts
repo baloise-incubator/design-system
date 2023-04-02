@@ -19,7 +19,6 @@ export const MutationHandler = (options: MutationObserverOptions) => {
   }
 
   const callback = (mutationRecord: MutationRecord[]) => {
-    console.log('mutationRecord', mutationRecord)
     const hasChanges = mutationRecord.some(record => tags.includes(record.target.nodeName))
     if (hasChanges && mutationHandlerObserver) {
       mutationHandlerObserver()
@@ -35,7 +34,6 @@ export const MutationHandler = (options: MutationObserverOptions) => {
 
   return {
     connect: (el: HTMLElement | null, observer: MutationHandlerObserver) => {
-      console.log('connect')
       if (typeof MutationObserver === 'undefined') {
         return
       }
@@ -45,19 +43,16 @@ export const MutationHandler = (options: MutationObserverOptions) => {
       mutationObserver = new MutationObserver(callback)
     },
     observe: () => {
-      console.log('observe')
       if (!isObserving && targetNode && mutationObserver) {
         mutationObserver.observe(targetNode, config)
         isObserving = true
       }
     },
     stopObserve: () => {
-      console.log('stopObserve')
       mutationObserver?.disconnect()
       isObserving = false
     },
     disconnect: () => {
-      console.log('disconnect')
       destroyMutationObserver()
       mutationHandlerObserver = undefined
       isObserving = false
