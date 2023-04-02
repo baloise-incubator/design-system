@@ -80,6 +80,7 @@ export const TabButton: FunctionalComponent<TabButtonProps> = ({
         ...bemEl.modifier('vertical').class(isVertical),
         ...bemEl.modifier(`context-${context}`).class(context !== undefined),
         ...bemEl.modifier(`icon-position-${iconPosition}`).class(iconPosition !== 'horizontal'),
+        'bal-focusable': !item.disabled && !item.hidden,
       }}
       draggable={false}
       data-label={item.label}
