@@ -139,7 +139,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * verify if window object exist when checking if current browser is Safari ([e3239d3](https://github.com/baloise-incubator/design-system/commit/e3239d3eaf704f477e1495e7fd9848bf13beed25))
 
 
-
 ## [10.24.1](https://github.com/baloise-incubator/design-system/compare/v10.24.0...v10.24.1) (2022-10-03)
 
 
