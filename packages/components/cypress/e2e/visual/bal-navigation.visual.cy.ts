@@ -71,6 +71,7 @@ describe('bal-navigation-colors', () => {
 
       it('open menu', () => {
         cy.contains('Versichern').click()
+        cy.wait(400)
         cy.compareSnapshot(`navigation-colors-desktop-${platform}-open`, compareSnapshotOptions(platform, 0, 0, 0.1))
       })
     })
