@@ -123,7 +123,6 @@ Follow the migration guide [Migration from 11.x to 12.x](https://baloise-design-
 
 * remove source maps ([9ac37b1](https://github.com/baloise-incubator/design-system/commit/9ac37b13e4d634d43b51c4467e7174249f542c31))
 
-
 ### Performance Improvements
 
 * lazy load component styles ([2f90efe](https://github.com/baloise-incubator/design-system/commit/2f90efe0d920c2bb9ab4db54ca2b89b43f6ea33c))
