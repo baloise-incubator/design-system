@@ -36,12 +36,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (
-    isCheckbox(element) ||
-    isRadio(element) ||
-    hasClass(element, 'data-test-radio-label') ||
-    hasClass(element, 'data-test-checkbox-label')
-  ) {
+  if (isCheckbox(element) || isRadio(element) || hasClass(element, 'bal-radio-checkbox__label')) {
     if (isLabel(element)) {
       element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>', { log: false })
     }
@@ -115,7 +110,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.input.main, { log: false }), condition, key, value, options)
+      return originalFn(element.find(selectors.input.native, { log: false }), condition, key, value, options)
     }
   }
 
@@ -125,7 +120,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.textarea.main, { log: false }), condition, key, value, options)
+      return originalFn(element.find(selectors.textarea.native, { log: false }), condition, key, value, options)
     }
   }
 
@@ -135,7 +130,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.slider.main, { log: false }), condition, key, value, options)
+      return originalFn(element.find(selectors.slider.native, { log: false }), condition, key, value, options)
     }
   }
 

@@ -34,15 +34,15 @@ Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.
   }
 
   if (isInput(element) || isNumberInput(element)) {
-    return command(selectors.input.main)
+    return command(selectors.input.native)
   }
 
   if (isTextarea(element)) {
-    return command(selectors.textarea.main)
+    return command(selectors.textarea.native)
   }
 
   if (isSlider(element)) {
-    return command(selectors.slider.main)
+    return command(selectors.slider.native)
   }
 
   if (isRadio(element)) {

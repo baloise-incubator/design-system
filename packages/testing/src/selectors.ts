@@ -71,7 +71,7 @@ export const selectors = {
     input: byTestId('bal-file-upload-input'),
     label: byTestId('bal-file-upload-label'),
   },
-  inputSlider: {
+  slider: {
     native: byTestId('bal-input-slider'),
   },
   inputStepper: {
@@ -113,10 +113,12 @@ export const selectors = {
     action: '.data-test-tabs-action',
   },
   toast: {
+    main: byTestId('bal-toast'),
     label: byTestId('bal-toast-label'),
     close: byTestId('bal-toast-close'),
   },
   snackbar: {
+    main: byTestId('bal-snackbar'),
     heading: byTestId('bal-snackbar-heading'),
     label: byTestId('bal-snackbar-label'),
     close: byTestId('bal-snackbar-close'),

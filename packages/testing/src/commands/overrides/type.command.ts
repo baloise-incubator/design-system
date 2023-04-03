@@ -5,17 +5,17 @@ Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any,
   const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))
 
   if (isInput(element) || isNumberInput(element)) {
-    return command(selectors.input.main)
+    return command(selectors.input.native)
   }
 
   if (isTextarea(element)) {
-    return command(selectors.textarea.main)
+    return command(selectors.textarea.native)
   }
 
   if (isSlider(element)) {
     return cy
       .wrap(element, { log: false })
-      .find(selectors.slider.main, { log: false })
+      .find(selectors.slider.native, { log: false })
       .invoke('val', parseFloat(content))
       .trigger('change', { log: false })
       .wrap(element, { log: false })
