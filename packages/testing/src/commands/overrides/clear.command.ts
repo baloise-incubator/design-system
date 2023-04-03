@@ -23,8 +23,12 @@ Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress
     return command(selectors.datepicker.input)
   }
 
-  if (isInput(element) || isNumberInput(element)) {
+  if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isNumberInput(element)) {
+    return command(selectors.numberInput.native)
   }
 
   if (isTextarea(element)) {

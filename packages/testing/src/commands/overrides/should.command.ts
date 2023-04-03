@@ -104,13 +104,23 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (isInput(element) || isNumberInput(element)) {
+  if (isInput(element)) {
     if (
       ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
         condition,
       )
     ) {
       return originalFn(element.find(selectors.input.native, { log: false }), condition, key, value, options)
+    }
+  }
+
+  if (isNumberInput(element)) {
+    if (
+      ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
+        condition,
+      )
+    ) {
+      return originalFn(element.find(selectors.numberInput.native, { log: false }), condition, key, value, options)
     }
   }
 
