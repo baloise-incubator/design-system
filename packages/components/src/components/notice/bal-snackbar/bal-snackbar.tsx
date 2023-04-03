@@ -127,7 +127,7 @@ export class Snackbar {
     }
 
     return (
-      <Host id={this.snackbarId} class="bal-snackbar" data-testid="bal-snackbar">
+      <Host id={this.snackbarId} class="bal-snackbar">
         <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType}`}>
           <div class="bal-snackbar__header">
             <span class="icon-text is-size-small">

@@ -118,7 +118,7 @@ export const selectors = {
     close: byTestId('bal-toast-close'),
   },
   snackbar: {
-    main: byTestId('bal-snackbar'),
+    main: '.bal-notices > .bal-snackbar',
     heading: byTestId('bal-snackbar-heading'),
     label: byTestId('bal-snackbar-label'),
     close: byTestId('bal-snackbar-close'),
