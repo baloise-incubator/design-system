@@ -113,7 +113,7 @@ export const selectors = {
     action: '.data-test-tabs-action',
   },
   toast: {
-    main: byTestId('bal-toast'),
+    main: '.bal-notices > .bal-toast',
     label: byTestId('bal-toast-label'),
     close: byTestId('bal-toast-close'),
   },
