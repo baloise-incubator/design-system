@@ -4,8 +4,12 @@ import { selectors } from '../../selectors'
 Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any, options) => {
   const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))
 
-  if (isInput(element) || isNumberInput(element)) {
+  if (isInput(element)) {
     return command(selectors.input.native)
+  }
+
+  if (isNumberInput(element)) {
+    return command(selectors.numberInput.native)
   }
 
   if (isTextarea(element)) {
