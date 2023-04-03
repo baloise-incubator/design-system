@@ -15,7 +15,11 @@ export const getDecimalSeparator = (): string => {
 }
 
 export const getDecimalSeparators = (): string[] => {
-  return [getDecimalSeparator(), '.']
+  if (getThousandSeparator() !== '.') {
+    return [getDecimalSeparator(), '.']
+  }
+
+  return [getDecimalSeparator()]
 }
 
 export const getThousandSeparator = (): string => {
