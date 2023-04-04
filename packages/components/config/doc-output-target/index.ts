@@ -5,14 +5,17 @@ import { commandsToMarkdown } from './markdown-commands'
 import { propsToMarkdown } from './markdown-props'
 import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
+import { selectorsToMarkdown } from './markdown-selectors'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
 import testingCommands from '../../public/assets/data/commands.json'
 import contributors from '../../public/assets/data/contributors.json'
+import { selectors } from '../../../testing/src/selectors'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
   generator: (docs: JsonDocs) => {
+    console.log('--------> AJDE ')
     for (let index = 0; index < docs.components.length; index++) {
       // Component API
       const component = docs.components[index]
@@ -23,6 +26,13 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       const slots = slotsToMarkdown(component.slots)
       const componentApi = [...props, ...events, ...methods, ...slots]
       const hasComponentApi = componentApi.length > 0
+
+      let selectorsList: string[] = []
+      // console.log('selectors BEFORE ', selectors[formatComponentName(component.tag)])
+      if (selectors[formatComponentName(component.tag)] != undefined) {
+        selectorsList = selectorsToMarkdown(selectors[formatComponentName(component.tag)])
+      }
+      console.log('selectors FINAL ', selectorsList)
 
       let content: string[] = []
 
@@ -67,7 +77,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
               hasReachedHumanPart = true
             }
           }
-
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
 
           const content = [
@@ -108,4 +117,11 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       console.error(err)
     }
   },
+}
+
+const formatComponentName = (name: string) => {
+  const componentName = name.split('-')
+  return componentName.length === 2
+    ? componentName[1]
+    : componentName[1] + componentName[2].charAt(0).toUpperCase() + componentName[2].slice(1)
 }
