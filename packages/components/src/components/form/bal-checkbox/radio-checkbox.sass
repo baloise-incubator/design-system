@@ -1,11 +1,10 @@
 @import '@baloise/design-system-css/sass/mixins'
 @import './radio-checkbox.mixins'
 
-bal-radio
-  .bal-radio-checkbox__label
-    &::before,
-    &::after
-      margin-top: 0px !important
+.bal-radio-checkbox__label
+  &::before,
+  &::after
+    margin-top: 0px !important
 //
 //
 // radio & checkbox group
@@ -22,8 +21,8 @@ bal-radio
     align-items: stretch
     flex-wrap: wrap
     gap: var(--bal-space-normal)
-    +tablet
-      align-items: flex-start
+    // +tablet
+    //   align-items: flex-start
     //
     // transform the radios into buttons
     +modifier(select-button)
@@ -111,8 +110,8 @@ bal-radio
         padding-left: 0
         display: none
       +modifier(flat)
-          padding-top: 0
-          padding-bottom: 0
+        padding-top: 0
+        padding-bottom: 0
     +modifier(flat)
       &:not(.bal-radio-checkbox--select-button)
         &::before,
@@ -175,15 +174,19 @@ bal-radio
   //
   // Symbol colors main, inverted and background
   +radioCheckboxSymbol(--bal-color-primary, --bal-color-primary, --bal-color-primary-inverted, --bal-color-transparent)
-  &:hover
+  &:hover,
+  &--hovered
     +radioCheckboxSymbol(--bal-color-light-blue-5, --bal-color-light-blue-5, --bal-color-primary-inverted, --bal-color-grey-2)
-  &:active
+  &:active,
+  &--pressed
     +radioCheckboxSymbol(--bal-color-blue-6, --bal-color-blue-6, --bal-color-primary-inverted, --bal-color-grey-2)
   &--invalid
     +radioCheckboxSymbol(--bal-color-border-danger, --bal-color-border-danger, --bal-color-white, --bal-color-danger-1)
-    &:hover
+    &:hover,
+    &.bal-radio-checkbox--hovered
       +radioCheckboxSymbol(--bal-color-danger-5, --bal-color-danger-5, --bal-color-primary-inverted, --bal-color-danger-1)
-    &:active
+    &:active,
+    &.bal-radio-checkbox--pressed
       +radioCheckboxSymbol(--bal-color-danger-6, --bal-color-danger-6, --bal-color-primary-inverted, --bal-color-danger-1)
   &--disabled,
   &--disabled:hover,
@@ -192,19 +195,25 @@ bal-radio
   //
   // label colors
   +radioCheckboxLabel(--bal-color-primary)
-  &:hover
+  &:hover,
+  &--hovered
     +radioCheckboxLabel(--bal-color-light-blue-5)
-  &:active
+  &:active,
+  &--pressed
     +radioCheckboxLabel(--bal-color-blue-6)
   &--invalid
     +radioCheckboxLabel(--bal-color-border-danger)
-    &:hover
+    &:hover,
+    &.bal-radio-checkbox--hovered
       +radioCheckboxLabel(--bal-color-danger-5)
-    &:active
+    &:active,
+    &.bal-radio-checkbox--pressed
       +radioCheckboxLabel(--bal-color-danger-6)
   &--disabled,
   &--disabled:hover,
-  &--disabled:active
+  &--disabled:active,
+  &--disabled#{&}--hovered,
+  &--disabled#{&}--pressed
     +radioCheckboxLabel(--bal-color-text-grey)
   //
   //

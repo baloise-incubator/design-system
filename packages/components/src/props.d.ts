@@ -3,6 +3,14 @@ export namespace Props {
 
   export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 
+  export type BalContentDirection = 'column' | ''
+  export type BalContentSpace = 'medium' | ''
+  export type BalContentAlignment = 'center' | 'end' | ''
+
+  export type BalItemDirection = 'row' | ''
+  export type BalItemSpace = 'medium' | ''
+  export type BalItemAlignment = 'center' | 'end' | 'start' | ''
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
@@ -98,6 +106,7 @@ export namespace Props {
     | 'grey-light'
     | 'primary'
     | 'primary-light'
+    | 'auto'
     | ''
     | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
@@ -210,11 +219,16 @@ export namespace Props {
   export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 
+  export type BalLabelWeight = 'bold' | 'regular'
+  export type BalLabelSize = '' | 'small' | 'large'
+
   export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
   export type BalCheckboxInterface = BalCheckboxGroupInterface
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'
+  export type BalRadioGroupColumns = 1 | 2 | 3 | 4
   export type BalRadioInterface = BalRadioGroupInterface
+  export type BalRadioButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export type BalTextareaWrap = 'hard' | 'soft' | 'off'
   export type BalTextareaInputMode = BalInputInputMode

@@ -508,6 +508,20 @@ export namespace Components {
          */
         "size": Props.BalCloseSize;
     }
+    interface BalContent {
+        /**
+          * Defines the text positioning like center, end or default to start.
+         */
+        "alignment": Props.BalContentAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "direction": Props.BalContentDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space": Props.BalContentSpace;
+    }
     interface BalData {
         /**
           * If `true` a bottom border is added to the data-item.
@@ -1035,9 +1049,18 @@ export namespace Components {
         "color": Props.BalIconColor;
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered": boolean;
+        /**
           * If `true` the icon has display inline style
          */
         "inline": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` the icon is inverted
          */
@@ -1046,6 +1069,7 @@ export namespace Components {
           * Name of the baloise icon.
          */
         "name": string;
+        "pressed": boolean;
         /**
           * If `true` adds a box shadow to improve readability on image background
          */
@@ -1300,6 +1324,53 @@ export namespace Components {
           * The value of the input. Only allows values in the range of the min max attribute.
          */
         "value": number;
+    }
+    interface BalItem {
+        /**
+          * Defines the text positioning like center, right or default to left.
+         */
+        "alignment": Props.BalItemAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "direction": Props.BalItemDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space": Props.BalItemSpace;
+    }
+    interface BalLabel {
+        "configChanged": (state: BalConfigState) => Promise<void>;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered": boolean;
+        /**
+          * The value of the for attribute must be a single id for a labelable form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+         */
+        "htmlFor"?: string;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        "pressed": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size": Props.BalLabelSize;
+        /**
+          * Defines the font weight of the label.
+         */
+        "weight": Props.BalLabelWeight;
     }
     interface BalList {
         /**
@@ -1963,6 +2034,7 @@ export namespace Components {
           * If `true`, the value will not be send with a form submit
          */
         "hidden": boolean;
+        "hovered": boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -1987,6 +2059,7 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        "pressed": boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -1997,16 +2070,42 @@ export namespace Components {
         "required": boolean;
         "setButtonTabindex": (value: number) => Promise<void>;
         "setFocus": (ev: any) => Promise<void>;
+        "updateState": () => Promise<void>;
         /**
           * the value of the radio.
          */
         "value"?: any | null;
+    }
+    interface BalRadioButton {
+        "colSize": Props.BalRadioGroupColumns;
+        "colSizeMobile": Props.BalRadioGroupColumns;
+        "colSizeTablet": Props.BalRadioGroupColumns;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "color"?: Props.BalRadioButtonColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        "setChecked": (checked?: boolean) => Promise<void>;
     }
     interface BalRadioGroup {
         /**
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        "columns": Props.BalRadioGroupColumns;
+        "columnsMobile": Props.BalRadioGroupColumns;
+        "columnsTablet": Props.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -2502,17 +2601,27 @@ export namespace Components {
          */
         "color": Props.BalTextColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
           * If `true` the text has heading font family
          */
         "heading": boolean;
+        "hovered": boolean;
         /**
           * If `true` the text is shown as a display inline
          */
         "inline": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` the color gets inverted for dark backgrounds
          */
         "inverted": boolean;
+        "pressed": boolean;
         /**
           * If `true` adds a text shadow to improve readability on image background
          */
@@ -2911,6 +3020,12 @@ declare global {
         prototype: HTMLBalCloseElement;
         new (): HTMLBalCloseElement;
     };
+    interface HTMLBalContentElement extends Components.BalContent, HTMLStencilElement {
+    }
+    var HTMLBalContentElement: {
+        prototype: HTMLBalContentElement;
+        new (): HTMLBalContentElement;
+    };
     interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
     }
     var HTMLBalDataElement: {
@@ -3223,6 +3338,18 @@ declare global {
         prototype: HTMLBalInputStepperElement;
         new (): HTMLBalInputStepperElement;
     };
+    interface HTMLBalItemElement extends Components.BalItem, HTMLStencilElement {
+    }
+    var HTMLBalItemElement: {
+        prototype: HTMLBalItemElement;
+        new (): HTMLBalItemElement;
+    };
+    interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
+    }
+    var HTMLBalLabelElement: {
+        prototype: HTMLBalLabelElement;
+        new (): HTMLBalLabelElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -3463,6 +3590,12 @@ declare global {
         prototype: HTMLBalRadioElement;
         new (): HTMLBalRadioElement;
     };
+    interface HTMLBalRadioButtonElement extends Components.BalRadioButton, HTMLStencilElement {
+    }
+    var HTMLBalRadioButtonElement: {
+        prototype: HTMLBalRadioButtonElement;
+        new (): HTMLBalRadioButtonElement;
+    };
     interface HTMLBalRadioGroupElement extends Components.BalRadioGroup, HTMLStencilElement {
     }
     var HTMLBalRadioGroupElement: {
@@ -3612,6 +3745,7 @@ declare global {
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-close": HTMLBalCloseElement;
+        "bal-content": HTMLBalContentElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
@@ -3664,6 +3798,8 @@ declare global {
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-slider": HTMLBalInputSliderElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
+        "bal-item": HTMLBalItemElement;
+        "bal-label": HTMLBalLabelElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
@@ -3704,6 +3840,7 @@ declare global {
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
         "bal-radio": HTMLBalRadioElement;
+        "bal-radio-button": HTMLBalRadioButtonElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
@@ -4235,6 +4372,20 @@ declare namespace LocalJSX {
          */
         "size"?: Props.BalCloseSize;
     }
+    interface BalContent {
+        /**
+          * Defines the text positioning like center, end or default to start.
+         */
+        "alignment"?: Props.BalContentAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is verticaly.
+         */
+        "direction"?: Props.BalContentDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space"?: Props.BalContentSpace;
+    }
     interface BalData {
         /**
           * If `true` a bottom border is added to the data-item.
@@ -4761,9 +4912,18 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalIconColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered"?: boolean;
+        /**
           * If `true` the icon has display inline style
          */
         "inline"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` the icon is inverted
          */
@@ -4772,6 +4932,7 @@ declare namespace LocalJSX {
           * Name of the baloise icon.
          */
         "name"?: string;
+        "pressed"?: boolean;
         /**
           * If `true` adds a box shadow to improve readability on image background
          */
@@ -5065,6 +5226,52 @@ declare namespace LocalJSX {
           * The value of the input. Only allows values in the range of the min max attribute.
          */
         "value"?: number;
+    }
+    interface BalItem {
+        /**
+          * Defines the text positioning like center, right or default to left.
+         */
+        "alignment"?: Props.BalItemAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "direction"?: Props.BalItemDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space"?: Props.BalItemSpace;
+    }
+    interface BalLabel {
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        "hovered"?: boolean;
+        /**
+          * The value of the for attribute must be a single id for a labelable form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+         */
+        "htmlFor"?: string;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        "pressed"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
+          * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
+         */
+        "size"?: Props.BalLabelSize;
+        /**
+          * Defines the font weight of the label.
+         */
+        "weight"?: Props.BalLabelWeight;
     }
     interface BalList {
         /**
@@ -5719,6 +5926,7 @@ declare namespace LocalJSX {
           * If `true`, the value will not be send with a form submit
          */
         "hidden"?: boolean;
+        "hovered"?: boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -5759,6 +5967,7 @@ declare namespace LocalJSX {
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: BalRadioCustomEvent<FocusEvent>) => void;
+        "pressed"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -5772,11 +5981,35 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BalRadioButton {
+        "colSize"?: Props.BalRadioGroupColumns;
+        "colSizeMobile"?: Props.BalRadioGroupColumns;
+        "colSizeTablet"?: Props.BalRadioGroupColumns;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "color"?: Props.BalRadioButtonColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
+         */
+        "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+    }
     interface BalRadioGroup {
         /**
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        "columns"?: Props.BalRadioGroupColumns;
+        "columnsMobile"?: Props.BalRadioGroupColumns;
+        "columnsTablet"?: Props.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
@@ -6278,17 +6511,27 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalTextColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
           * If `true` the text has heading font family
          */
         "heading"?: boolean;
+        "hovered"?: boolean;
         /**
           * If `true` the text is shown as a display inline
          */
         "inline"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` the color gets inverted for dark backgrounds
          */
         "inverted"?: boolean;
+        "pressed"?: boolean;
         /**
           * If `true` adds a text shadow to improve readability on image background
          */
@@ -6490,6 +6733,7 @@ declare namespace LocalJSX {
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-group": BalCheckboxGroup;
         "bal-close": BalClose;
+        "bal-content": BalContent;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
@@ -6542,6 +6786,8 @@ declare namespace LocalJSX {
         "bal-input-group": BalInputGroup;
         "bal-input-slider": BalInputSlider;
         "bal-input-stepper": BalInputStepper;
+        "bal-item": BalItem;
+        "bal-label": BalLabel;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-accordion-body": BalListItemAccordionBody;
@@ -6582,6 +6828,7 @@ declare namespace LocalJSX {
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
         "bal-radio": BalRadio;
+        "bal-radio-button": BalRadioButton;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
@@ -6626,6 +6873,7 @@ declare module "@stencil/core" {
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
+            "bal-content": LocalJSX.BalContent & JSXBase.HTMLAttributes<HTMLBalContentElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
@@ -6678,6 +6926,8 @@ declare module "@stencil/core" {
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
+            "bal-item": LocalJSX.BalItem & JSXBase.HTMLAttributes<HTMLBalItemElement>;
+            "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
@@ -6718,6 +6968,7 @@ declare module "@stencil/core" {
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
+            "bal-radio-button": LocalJSX.BalRadioButton & JSXBase.HTMLAttributes<HTMLBalRadioButtonElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;

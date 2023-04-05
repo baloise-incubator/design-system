@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <style>
-      .bal-body {
-        visibility: hidden;
-      }
-      section {
-        padding: 1rem;
-      }
-    </style>
-    <script type="module" src="/build/design-system-components.esm.js"></script>
-    <script nomodule src="/build/design-system-components.js"></script>
-  </head>
 
-  <body class="bal-body">
-    <bal-doc-app>
-      <main>
-        <section data-testid="basic">
-          <bal-tabs data-testid="tabs" value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <style>
+    .bal-body {
+      visibility: hidden;
+    }
 
-        <section data-testid="expanded">
-          <bal-tabs expanded value="tab-a" border>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-          </bal-tabs>
-        </section>
+    section {
+      padding: 1rem;
+    }
+  </style>
+  <script type="module" src="/build/design-system-components.esm.js"></script>
+  <script nomodule src="/build/design-system-components.js"></script>
+</head>
 
-        <section data-testid="meta" class="has-background-primary">
-          <bal-tabs value="tab-a" interface="meta" spaceless inverted>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
+<body class="bal-body">
+  <bal-doc-app>
+    <main>
+      <section data-testid="basic">
+        <bal-tabs data-testid="tabs" value="tab-a" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
 
-        <section data-testid="navbar">
-          <bal-tabs value="tab-a" interface="navbar" spaceless>
-            <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
+      <section data-testid="expanded">
+        <bal-tabs expanded value="tab-a" border>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+        </bal-tabs>
+      </section>
 
-        <section data-testid="navigation">
-          <bal-tabs value="tab-a" interface="navigation" spaceless float="right" fullwidth>
-            <bal-tab-item value="tab-a" icon="nav-go-down" label="Tab A">Content of Tab A</bal-tab-item>
-            <bal-tab-item value="tab-b" icon="nav-go-down" label="Tab B">Content of Tab B</bal-tab-item>
-            <bal-tab-item bubble value="tab-c" icon="nav-go-down" label="Tab C">Content of Tab C</bal-tab-item>
-            <bal-tab-item disabled value="tab-d" icon="nav-go-down" label="Tab D">Content of Tab D</bal-tab-item>
-          </bal-tabs>
-        </section>
-      </main>
-    </bal-doc-app>
-  </body>
+      <section data-testid="meta" class="has-background-primary">
+        <bal-tabs value="tab-a" interface="meta" spaceless inverted>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="navbar">
+        <bal-tabs value="tab-a" interface="navbar" spaceless>
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+
+      <section data-testid="navigation">
+        <bal-tabs value="tab-a" interface="navigation" spaceless float="right" fullwidth>
+          <bal-tab-item value="tab-a" icon="nav-go-down" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" icon="nav-go-down" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item bubble value="tab-c" icon="nav-go-down" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item disabled value="tab-d" icon="nav-go-down" label="Tab D">Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </section>
+    </main>
+  </bal-doc-app>
+</body>
+
 </html>

@@ -1,0 +1,28 @@
+@import '@baloise/design-system-css/sass/mixins'
+
+.bal-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  gap: 0.25rem
+  text-align: left
+  align-items: flex-start
+  //
+  // alignment
+  &--alignment-center
+    align-items: center
+    text-align: center
+  &--alignment-end
+    align-items: flex-end
+    text-align: right
+  //
+  // direction
+  &--direction-row
+    flex-direction: row
+  //
+  // space
+  &--space-medium
+    gap: 0.5rem
+
+.bal-content > .bal-text
+  margin: 0

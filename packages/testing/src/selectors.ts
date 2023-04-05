@@ -8,6 +8,9 @@ export const byTestId = (testId: string): string => `[data-testid="${testId}"]`
  */
 export const selectors = {
   accordion: {
+    /**
+     * Comments
+     */
     button: byTestId('bal-accordion-button'),
     content: byTestId('bal-accordion-content'),
   },

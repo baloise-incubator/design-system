@@ -16,6 +16,7 @@ import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
+import { ComponentElementState } from '../../../utils/element-states'
 
 @Component({
   tag: 'bal-radio',
@@ -23,8 +24,9 @@ import { BalRadioOption } from './bal-radio.type'
     css: '../bal-checkbox/radio-checkbox.sass',
   },
 })
-export class Radio implements ComponentInterface, Loggable {
+export class Radio implements ComponentInterface, ComponentElementState, Loggable {
   private inputId = `bal-rb-${radioIds++}`
+  private radioButton: HTMLBalRadioButtonElement | null = null
   private radioGroup: HTMLBalRadioGroupElement | null = null
   private nativeInput!: HTMLInputElement
   private keyboardMode = true
@@ -48,7 +50,7 @@ export class Radio implements ComponentInterface, Loggable {
    * The tabindex of the radio button.
    * @internal
    */
-  @State() buttonTabindex = -1
+  @State() buttonTabindex?: number
 
   /**
    * PUBLIC PROPERTY API
@@ -122,6 +124,16 @@ export class Radio implements ComponentInterface, Loggable {
   @Prop() invalid = false
 
   /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
    * Emitted when the toggle has focus.
    */
   @Event() balFocus!: EventEmitter<FocusEvent>
@@ -150,15 +162,25 @@ export class Radio implements ComponentInterface, Loggable {
     if (this.value === undefined) {
       this.value = this.inputId
     }
+
+    const radioButton = (this.radioButton = this.el.closest('bal-radio-button'))
     const radioGroup = (this.radioGroup = this.el.closest('bal-radio-group'))
-    if (radioGroup) {
+
+    if (radioButton || radioGroup) {
       this.updateState()
+    }
+
+    if (radioGroup) {
       radioGroup.addEventListener('balInput', this.updateState)
     }
 
     this.el.addEventListener('keydown', this.onKeydown)
     this.el.addEventListener('touchstart', this.onPointerDown)
     this.el.addEventListener('mousedown', this.onPointerDown)
+  }
+
+  componentWillLoad() {
+    this.isEmptyHandler()
   }
 
   disconnectedCallback() {
@@ -191,14 +213,18 @@ export class Radio implements ComponentInterface, Loggable {
   /** @internal */
   @Method()
   async setButtonTabindex(value: number) {
-    this.buttonTabindex = value
+    if (this.radioButton) {
+      this.buttonTabindex = -1
+    } else {
+      this.buttonTabindex = value
+    }
   }
 
   /**
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement | undefined> {
+  async getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
   }
 
@@ -210,7 +236,31 @@ export class Radio implements ComponentInterface, Loggable {
     return this.option
   }
 
-  get option() {
+  /**
+   * @internal
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async updateState() {
+    if (this.radioGroup) {
+      this.checked = this.radioGroup.value === this.value
+    }
+
+    if (this.radioButton) {
+      this.buttonTabindex = -1
+
+      if (this.radioButton.setChecked) {
+        this.radioButton.setChecked(this.checked)
+      }
+    }
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private get option() {
     return {
       name: this.name,
       value: this.value,
@@ -227,17 +277,6 @@ export class Radio implements ComponentInterface, Loggable {
   }
 
   /**
-   * PRIVATE METHODS
-   * ------------------------------------------------------
-   */
-
-  private updateState = () => {
-    if (this.radioGroup) {
-      this.checked = this.radioGroup.value === this.value
-    }
-  }
-
-  /**
    * EVENT BINDING
    * ------------------------------------------------------
    */
@@ -250,7 +289,6 @@ export class Radio implements ComponentInterface, Loggable {
 
     this.checked = this.nativeInput.checked
     this.balClick.emit()
-    this.nativeInput.focus()
   }
 
   private onFocus = () => {
@@ -270,10 +308,6 @@ export class Radio implements ComponentInterface, Loggable {
 
   private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
 
-  componentWillLoad() {
-    this.isEmptyHandler()
-  }
-
   /**
    * RENDER
    * ------------------------------------------------------
@@ -285,7 +319,16 @@ export class Radio implements ComponentInterface, Loggable {
     const labelEl = block.element('label')
     const labelTextEl = labelEl.element('text')
 
+    const focused = this.focused && this.buttonTabindex !== -1
+
     const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
+
+    const inputAttributes = {} as any
+    if (this.buttonTabindex !== undefined) {
+      inputAttributes.tabIndex = this.buttonTabindex
+    }
+
+    const LabelTag = this.labelHidden ? 'span' : 'label'
 
     return (
       <Host
@@ -293,9 +336,9 @@ export class Radio implements ComponentInterface, Loggable {
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
-        aria-focused={this.focused ? 'true' : null}
+        aria-focused={focused ? 'true' : null}
         class={{
-          'bal-focused': this.focused,
+          'bal-focused': focused,
           ...block.class(),
           ...block.modifier('radio').class(),
           ...block.modifier('select-button').class(this.interface === 'select-button'),
@@ -303,6 +346,8 @@ export class Radio implements ComponentInterface, Loggable {
           ...block.modifier('checked').class(this.checked),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
+          ...block.modifier('hovered').class(this.hovered),
+          ...block.modifier('pressed').class(this.pressed),
         }}
         onClick={this.onClick}
       >
@@ -324,8 +369,9 @@ export class Radio implements ComponentInterface, Loggable {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl as HTMLInputElement)}
+          {...inputAttributes}
         />
-        <label
+        <LabelTag
           class={{
             ...labelEl.class(),
             ...labelEl.modifier('checked').class(this.checked),
@@ -333,6 +379,7 @@ export class Radio implements ComponentInterface, Loggable {
             'data-test-radio-label': true,
           }}
           htmlFor={this.inputId}
+          {...inputAttributes}
         >
           <span
             class={{
@@ -343,7 +390,7 @@ export class Radio implements ComponentInterface, Loggable {
             {this.label}
             <slot></slot>
           </span>
-        </label>
+        </LabelTag>
       </Host>
     )
   }

@@ -1,6 +1,7 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
+import { ComponentElementState } from '../../utils/element-states'
 
 @Component({
   tag: 'bal-text',
@@ -8,7 +9,12 @@ import { BEM } from '../../utils/bem'
     css: 'bal-text.sass',
   },
 })
-export class Text {
+export class Text implements ComponentInterface, ComponentElementState {
+  /**
+   * PUBLIC API
+   * ------------------------------------------------------
+   */
+
   /**
    * Defines the size of the paragraph
    */
@@ -49,9 +55,68 @@ export class Text {
    * */
   @Prop() shadow = false
 
+  /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled?: boolean = undefined
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid?: boolean = undefined
+
+  /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
+  private parseColor() {
+    if (this.disabled) {
+      return 'grey'
+    }
+
+    if (this.invalid) {
+      if (this.pressed) {
+        return 'danger-darker'
+      }
+
+      if (this.hovered) {
+        return 'danger-dark'
+      }
+      return 'danger'
+    }
+
+    const color = this.inverted ? 'white' : this.color === '' || this.color === 'info' ? 'primary' : this.color
+
+    if (this.pressed) {
+      return 'primary-dark'
+    }
+
+    if (this.hovered) {
+      return 'light-blue'
+    }
+
+    return color
+  }
+
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
   render() {
     const Text = this.inline ? 'span' : 'p'
-    const color = this.inverted ? 'white' : this.color === '' || this.color === 'info' ? 'primary' : this.color
+    const color = this.parseColor()
     const block = BEM.block('text')
 
     return (

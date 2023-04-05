@@ -11,7 +11,6 @@
   position: static
   pointer-events: visible
   +iconSize(1.125rem)
-  +fillSvg(var(--bal-color-primary))
   //
   // modifiers
   +modifier(shadow)
@@ -47,8 +46,13 @@
     +iconSize(1.625rem)
   +modifier(is-large)
     +iconSize(3.125rem)
-  +modifier(is-xlarge)
+  +modifier(is-x-large)
     +iconSize(4rem)
+  // TODO: breaking changes for v13
+  // +modifier(is-large)
+  //   +iconSize(2.5rem)
+  // +modifier(is-x-large)
+  //   +iconSize(5rem)
   //
   // colors
   +modifier(is-grey)
@@ -61,8 +65,18 @@
     +fillSvg(var(--bal-color-warning))
   +modifier(is-danger)
     +fillSvg(var(--bal-color-danger))
+  +modifier(is-danger-dark)
+    +fillSvg(var(--bal-color-danger-5))
+  +modifier(is-danger-darker)
+    +fillSvg(var(--bal-color-danger-6))
   +modifier(is-primary)
     +fillSvg(var(--bal-color-primary))
+  +modifier(is-primary-dark)
+    +fillSvg(var(--bal-color-primary-6))
+  +modifier(is-blue)
+    +fillSvg(var(--bal-color-primary))
+  +modifier(is-light-blue)
+    +fillSvg(var(--bal-color-light-blue-5))
   +modifiers(is-primary-light)
     +fillSvg(var(--bal-color-primary-2))
   +modifiers(is-white, is-inverted)
