@@ -13,20 +13,41 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['name']
+const excludedControls = []
 
-export const Basic = args => ({
-  components: {
-    ...component.components,
-  },
+const Template = args => ({
+  components: { ...component.components },
   setup: () => ({ args }),
-  template: `
-  <bal-item></bal-item>`,
+  template: `<bal-item v-bind="args">
+  <bal-icon name="date" size="medium"></bal-icon>
+  <bal-content>
+    <bal-label>My Item</bal-label>
+    <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
+  </bal-content>
+  <bal-button>Button</bal-button>
+</bal-item>`,
 })
+
+export const Basic = Template.bind({})
 Basic.args = {
-  value: '1',
+  direction: '',
+  alignment: '',
+  space: '',
 }
-Basic.parameters = {
-  ...component.sourceCode(Basic),
-  controls: { exclude: excludedControls },
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+
+export const Alignment = Template.bind({})
+Alignment.args = {
+  direction: 'column',
+  alignment: 'center',
+  space: '',
 }
+Alignment.parameters = { ...component.sourceCode(Alignment), controls: { exclude: excludedControls } }
+
+export const Direction = Template.bind({})
+Direction.args = {
+  direction: 'column',
+  alignment: '',
+  space: '',
+}
+Direction.parameters = { ...component.sourceCode(Direction), controls: { exclude: excludedControls } }

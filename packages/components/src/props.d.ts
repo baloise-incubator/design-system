@@ -7,7 +7,7 @@ export namespace Props {
   export type BalContentSpace = 'medium' | 'large' | ''
   export type BalContentAlignment = 'center' | 'end' | ''
 
-  export type BalItemDirection = 'row' | ''
+  export type BalItemDirection = 'row' | 'column' | ''
   export type BalItemSpace = 'medium' | ''
   export type BalItemAlignment = 'center' | 'end' | 'start' | ''
 

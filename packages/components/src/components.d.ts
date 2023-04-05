@@ -1334,10 +1334,6 @@ export namespace Components {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "direction": Props.BalItemDirection;
-        /**
-          * Defines the space between the child elements.
-         */
-        "space": Props.BalItemSpace;
     }
     interface BalLabel {
         "configChanged": (state: BalConfigState) => Promise<void>;
@@ -5233,10 +5229,6 @@ declare namespace LocalJSX {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "direction"?: Props.BalItemDirection;
-        /**
-          * Defines the space between the child elements.
-         */
-        "space"?: Props.BalItemSpace;
     }
     interface BalLabel {
         /**
