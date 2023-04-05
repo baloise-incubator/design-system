@@ -1,8 +1,9 @@
 import docs from './bal-text.docs.mdx'
-import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalText } from '../../../../.storybook/vue/generated/components'
+import { BalComponentStory, withContent } from '../../../../stories/utils'
+import { BalText } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Typography/Text',
   component: BalText,
   argTypes: {
     ...withContent(),

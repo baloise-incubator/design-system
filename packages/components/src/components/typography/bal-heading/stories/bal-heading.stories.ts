@@ -1,8 +1,9 @@
 import docs from './bal-heading.docs.mdx'
-import { withContent, BalComponentStory } from '../../../stories/utils'
-import { BalHeading } from '../../../../.storybook/vue/generated/components'
+import { withContent, BalComponentStory } from '../../../../stories/utils'
+import { BalHeading } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
+  title: 'Components/Typography/Heading',
   component: BalHeading,
   argTypes: {
     ...withContent(),

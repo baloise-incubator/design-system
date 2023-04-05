@@ -1367,9 +1367,6 @@ export namespace Components {
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
         "size": Props.BalLabelSize;
-        /**
-          * Defines the font weight of the label.
-         */
         "weight": Props.BalLabelWeight;
     }
     interface BalList {
@@ -5268,9 +5265,6 @@ declare namespace LocalJSX {
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
         "size"?: Props.BalLabelSize;
-        /**
-          * Defines the font weight of the label.
-         */
         "weight"?: Props.BalLabelWeight;
     }
     interface BalList {

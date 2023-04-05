@@ -71,15 +71,16 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
   @Prop() readonly?: boolean = undefined
 
   /**
-   * Defines the font weight of the label.
-   */
-  @Prop() weight: Props.BalLabelWeight = 'bold'
-
-  /**
    * Defines the size of the font. Default is like a heading 5 and small is used
    * with the form fields.
    */
   @Prop() size: Props.BalLabelSize = ''
+
+  /**
+   * @internal
+   * Defines the font weight of the label.
+   */
+  @Prop() weight: Props.BalLabelWeight = 'bold'
 
   /**
    * @internal

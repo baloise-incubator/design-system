@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { Props } from '../../types'
-import { BEM } from '../../utils/bem'
+import { Props } from '../../../types'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-heading',

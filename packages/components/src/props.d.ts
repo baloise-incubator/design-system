@@ -3,8 +3,8 @@ export namespace Props {
 
   export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 
-  export type BalContentDirection = 'column' | ''
-  export type BalContentSpace = 'medium' | ''
+  export type BalContentDirection = 'column' | 'row' | ''
+  export type BalContentSpace = 'medium' | 'large' | ''
   export type BalContentAlignment = 'center' | 'end' | ''
 
   export type BalItemDirection = 'row' | ''
