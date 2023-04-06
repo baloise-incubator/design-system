@@ -26,6 +26,14 @@ const filterVariableStatements = nodes => {
   return filterDeclarationsAndStatements(nodes, 233)
 }
 
+const filterVariableStatement = nodes => {
+  return filterDeclarationsAndStatements(nodes, 236)
+}
+
+const filterDeclarationList = nodes => {
+  return filterDeclarationsAndStatements(nodes, 254)
+}
+
 const filterVariableDeclaration = nodes => {
   return filterDeclarationsAndStatements(nodes, 249)
 }
@@ -56,6 +64,18 @@ const parseParameters = parameter => {
     name: parameter.name.escapedText,
     type: parseType(parameter.type),
   }
+}
+
+const parseSelectorComment = (node, sourceFile) => {
+  return node
+    .getFullText(sourceFile)
+    .split('\n')
+    .map(l => l.trim())
+    .filter(l => l)
+    .filter(l => l !== '/**' && l !== '*/')
+    .map(l => (l.startsWith('*') ? l.substring(2) : l))
+    .map(l => (l.endsWith('{') ? l.substring(0, l.length - 3) : l))
+    .slice(0, 2)
 }
 
 const parseFunctionComment = (node, sourceFile) =>
@@ -105,6 +125,9 @@ module.exports = {
   createSourceFile,
   filterDeclarationsAndStatements,
   filterVariableStatements,
+  filterVariableStatement,
+  filterDeclarationList,
+  parseSelectorComment,
   filterVariableDeclaration,
   filterFunctionStatements,
   filterExportedStatements,

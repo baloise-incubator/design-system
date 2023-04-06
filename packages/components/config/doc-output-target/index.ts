@@ -15,10 +15,10 @@ import { selectors } from '../../../testing/src/selectors'
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
   generator: (docs: JsonDocs) => {
-    console.log('--------> AJDE ')
     for (let index = 0; index < docs.components.length; index++) {
       // Component API
       const component = docs.components[index]
+      const componentName = component.tag
 
       const props = propsToMarkdown(component.props)
       const events = eventsToMarkdown(component.events)
@@ -28,16 +28,18 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       const hasComponentApi = componentApi.length > 0
 
       let selectorsList: string[] = []
-      // console.log('selectors BEFORE ', selectors[formatComponentName(component.tag)])
-      if (selectors[formatComponentName(component.tag)] != undefined) {
-        selectorsList = selectorsToMarkdown(selectors[formatComponentName(component.tag)])
+      if (selectors[formatComponentName(componentName)] != undefined) {
+        selectorsList = selectorsToMarkdown(
+          selectors[formatComponentName(componentName)],
+          formatComponentName(componentName),
+        )
       }
       console.log('selectors FINAL ', selectorsList)
 
       let content: string[] = []
 
       if (hasComponentApi) {
-        content = [`### ${component.tag}`, SPACE, ...componentApi, SPACE]
+        content = [`### ${componentName}`, SPACE, ...componentApi, SPACE]
       }
 
       try {
@@ -46,7 +48,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         console.error(err)
       }
 
-      const docsPath = path.join(component.dirPath || '', 'generated')
+      const docsPath = path.join(component.dirPath || '', 'stories')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -78,7 +80,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             }
           }
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
-
+          console.log('HUMAN LINES ', humanLines)
           const content = [
             `## Testing`,
             SPACE,

@@ -1,10 +1,15 @@
 ## Testing
-
+ 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
-
+ 
 - [More information about the installation and usage](?path=/docs/development-testing--page)
-
+ 
 <!-- START: human documentation -->
+ 
+ 
+ 
+ 
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -20,15 +25,21 @@ describe('Pagination', () => {
 })
 ```
 
+ 
+ 
+ 
+ 
+ 
 <!-- END: human documentation -->
-
+ 
 ### Custom Commands
-
+ 
 A list of the custom commands for this specific component.
-
-| Command                           | Description                                               | Signature               |
-| --------------------------------- | --------------------------------------------------------- | ----------------------- |
-| `balPaginationFindPages`          | Returns all the page buttons.                             | `(): Chainable<JQuery>` |
-| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(): Chainable<JQuery>` |
-| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(): Chainable<JQuery>` |
-| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(): Chainable<JQuery>` |
+ 
+| Command                           | Description                                               | Signature                                          |
+| --------------------------------- | --------------------------------------------------------- | -------------------------------------------------- |
+| `balPaginationFindPages`          | Returns all the page buttons.                             | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindCurrentPage`    | Returns the current listed page button.                   | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindNextButton`     | Returns the next button to navigate to next page.         | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+| `balPaginationFindPreviousButton` | Returns the previous button to navigate to previous page. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
+ 
