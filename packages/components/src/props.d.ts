@@ -7,9 +7,9 @@ export namespace Props {
   export type BalContentSpace = 'x-small' | 'small' | 'normal' | ''
   export type BalContentAlignment = 'center' | 'end' | ''
 
-  export type BalItemDirection = 'row' | 'column' | ''
-  export type BalItemSpace = 'large' | 'x-large' | 'xx-large' | ''
-  export type BalItemAlignment = 'center' | 'end' | 'start' | ''
+  export type BalStackDirection = 'row' | 'column' | ''
+  export type BalStackSpace = 'large' | 'x-large' | 'xx-large' | ''
+  export type BalStackAlignment = 'center' | 'end' | 'start' | ''
 
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'

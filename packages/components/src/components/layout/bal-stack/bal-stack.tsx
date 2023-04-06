@@ -4,15 +4,15 @@ import { BEM } from '../../../utils/bem'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 
 @Component({
-  tag: 'bal-item',
+  tag: 'bal-stack',
   styleUrls: {
-    css: './bal-item.sass',
+    css: './bal-stack.sass',
   },
 })
-export class BalItem implements ComponentInterface, Loggable {
+export class BalStack implements ComponentInterface, Loggable {
   log!: LogInstance
 
-  @Logger('bal-item')
+  @Logger('bal-stack')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -26,25 +26,25 @@ export class BalItem implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() direction: Props.BalItemDirection = ''
+  @Prop() direction: Props.BalStackDirection = ''
 
   /**
    * Defines the text positioning like center, right or
    * default to left.
    */
-  @Prop() alignment: Props.BalItemAlignment = ''
+  @Prop() alignment: Props.BalStackAlignment = ''
 
   /**
    * Defines the space between the child elements.
    */
-  @Prop() space: Props.BalItemSpace = ''
+  @Prop() space: Props.BalStackSpace = ''
 
   /**
    * RENDER
    * ------------------------------------------------------
    */
   render() {
-    const block = BEM.block('item')
+    const block = BEM.block('stack')
     const direction = !!this.direction
     const alignment = !!this.alignment
     const space = !!this.space

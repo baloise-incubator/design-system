@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { BalRadioGroup, BalRadio, BalRadioButton, BalItem } from '../../.storybook/vue/generated/components'
+import { BalRadioGroup, BalRadio, BalRadioButton, BalStack } from '../../.storybook/vue/generated/components'
 </script>
 
 <template>
   <BalRadioGroup>
     <BalRadioButton>
-      <BalItem>
+      <BalStack>
         <BalRadio name="radio-test" value="1" label="Radio 1"></BalRadio>
-      </BalItem>
+      </BalStack>
     </BalRadioButton>
     <BalRadioButton>
-      <BalItem>
+      <BalStack>
         <BalRadio name="radio-test" value="2" label="Radio 2"></BalRadio>
-      </BalItem>
+      </BalStack>
     </BalRadioButton>
     <BalRadioButton>
-      <BalItem>
+      <BalStack>
         <BalRadio name="radio-test" value="3" label="Radio 3"></BalRadio>
-      </BalItem>
+      </BalStack>
     </BalRadioButton>
   </BalRadioGroup>
 </template>

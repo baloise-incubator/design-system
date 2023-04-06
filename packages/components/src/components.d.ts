@@ -1328,20 +1328,6 @@ export namespace Components {
          */
         "value": number;
     }
-    interface BalItem {
-        /**
-          * Defines the text positioning like center, right or default to left.
-         */
-        "alignment": Props.BalItemAlignment;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-         */
-        "direction": Props.BalItemDirection;
-        /**
-          * Defines the space between the child elements.
-         */
-        "space": Props.BalItemSpace;
-    }
     interface BalLabel {
         "configChanged": (state: BalConfigState) => Promise<void>;
         /**
@@ -2367,6 +2353,20 @@ export namespace Components {
          */
         "small": boolean;
     }
+    interface BalStack {
+        /**
+          * Defines the text positioning like center, right or default to left.
+         */
+        "alignment": Props.BalStackAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "direction": Props.BalStackDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space": Props.BalStackSpace;
+    }
     interface BalStage {
         /**
           * Defines the background color of the stage section
@@ -3346,12 +3346,6 @@ declare global {
         prototype: HTMLBalInputStepperElement;
         new (): HTMLBalInputStepperElement;
     };
-    interface HTMLBalItemElement extends Components.BalItem, HTMLStencilElement {
-    }
-    var HTMLBalItemElement: {
-        prototype: HTMLBalItemElement;
-        new (): HTMLBalItemElement;
-    };
     interface HTMLBalLabelElement extends Components.BalLabel, HTMLStencilElement {
     }
     var HTMLBalLabelElement: {
@@ -3646,6 +3640,12 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStackElement extends Components.BalStack, HTMLStencilElement {
+    }
+    var HTMLBalStackElement: {
+        prototype: HTMLBalStackElement;
+        new (): HTMLBalStackElement;
+    };
     interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
     }
     var HTMLBalStageElement: {
@@ -3806,7 +3806,6 @@ declare global {
         "bal-input-group": HTMLBalInputGroupElement;
         "bal-input-slider": HTMLBalInputSliderElement;
         "bal-input-stepper": HTMLBalInputStepperElement;
-        "bal-item": HTMLBalItemElement;
         "bal-label": HTMLBalLabelElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
@@ -3856,6 +3855,7 @@ declare global {
         "bal-sheet": HTMLBalSheetElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-stack": HTMLBalStackElement;
         "bal-stage": HTMLBalStageElement;
         "bal-stage-back-link": HTMLBalStageBackLinkElement;
         "bal-stage-body": HTMLBalStageBodyElement;
@@ -5239,20 +5239,6 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
-    interface BalItem {
-        /**
-          * Defines the text positioning like center, right or default to left.
-         */
-        "alignment"?: Props.BalItemAlignment;
-        /**
-          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
-         */
-        "direction"?: Props.BalItemDirection;
-        /**
-          * Defines the space between the child elements.
-         */
-        "space"?: Props.BalItemSpace;
-    }
     interface BalLabel {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -6299,6 +6285,20 @@ declare namespace LocalJSX {
          */
         "small"?: boolean;
     }
+    interface BalStack {
+        /**
+          * Defines the text positioning like center, right or default to left.
+         */
+        "alignment"?: Props.BalStackAlignment;
+        /**
+          * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
+         */
+        "direction"?: Props.BalStackDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space"?: Props.BalStackSpace;
+    }
     interface BalStage {
         /**
           * Defines the background color of the stage section
@@ -6807,7 +6807,6 @@ declare namespace LocalJSX {
         "bal-input-group": BalInputGroup;
         "bal-input-slider": BalInputSlider;
         "bal-input-stepper": BalInputStepper;
-        "bal-item": BalItem;
         "bal-label": BalLabel;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
@@ -6857,6 +6856,7 @@ declare namespace LocalJSX {
         "bal-sheet": BalSheet;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
+        "bal-stack": BalStack;
         "bal-stage": BalStage;
         "bal-stage-back-link": BalStageBackLink;
         "bal-stage-body": BalStageBody;
@@ -6947,7 +6947,6 @@ declare module "@stencil/core" {
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-input-slider": LocalJSX.BalInputSlider & JSXBase.HTMLAttributes<HTMLBalInputSliderElement>;
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
-            "bal-item": LocalJSX.BalItem & JSXBase.HTMLAttributes<HTMLBalItemElement>;
             "bal-label": LocalJSX.BalLabel & JSXBase.HTMLAttributes<HTMLBalLabelElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
@@ -6997,6 +6996,7 @@ declare module "@stencil/core" {
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-stack": LocalJSX.BalStack & JSXBase.HTMLAttributes<HTMLBalStackElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
             "bal-stage-back-link": LocalJSX.BalStageBackLink & JSXBase.HTMLAttributes<HTMLBalStageBackLinkElement>;
             "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;

@@ -2,9 +2,9 @@ import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule, NgZone 
 import { CommonModule, DOCUMENT } from '@angular/common'
 
 import { appInitialize, BaloiseDesignSystemAngularConfig } from './app-initialize'
-import { AngularDelegate, BalAppModule, BalItemModule, BalLabelModule, BalNoticesModule } from '.'
+import { AngularDelegate, BalAppModule, BalNoticesModule } from '.'
 
-const MODULES = [BalAppModule, BalNoticesModule, BalLabelModule, BalItemModule]
+const MODULES = [BalAppModule, BalNoticesModule]
 
 export const ConfigToken = new InjectionToken<any>('USERCONFIG')
 

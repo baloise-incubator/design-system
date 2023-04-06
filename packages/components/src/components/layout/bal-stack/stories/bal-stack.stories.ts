@@ -1,7 +1,7 @@
-import docs from './bal-item.docs.mdx'
+import docs from './bal-stack.docs.mdx'
 import { BalComponentStory, sourceCode } from '../../../../stories/utils'
 import {
-  BalItem,
+  BalStack,
   BalLabel,
   BalText,
   BalButton,
@@ -13,8 +13,8 @@ import {
 } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
-  title: 'Components/Layout/Item',
-  component: BalItem,
+  title: 'Components/Layout/Stack',
+  component: BalStack,
   subcomponents: { BalLabel, BalText, BalButton, BalIcon, BalHeading, BalContent, BalCard, BalCardContent },
   docs,
   argTypes: {},
@@ -28,14 +28,14 @@ const excludedControls = []
 const Template = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-item v-bind="args">
+  template: `<bal-stack v-bind="args">
   <bal-icon name="date" size="medium"></bal-icon>
   <bal-content>
     <bal-label>My Item</bal-label>
     <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
   </bal-content>
   <bal-button>Button</bal-button>
-</bal-item>`,
+</bal-stack>`,
 })
 
 export const Basic = Template.bind({})
@@ -49,14 +49,14 @@ Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: exclud
 export const Alignment = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-item v-bind="args">
+  template: `<bal-stack v-bind="args">
   <bal-icon name="date" size="medium"></bal-icon>
   <bal-content alignment="center">
     <bal-label>My Item</bal-label>
     <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
   </bal-content>
   <bal-button>Button</bal-button>
-</bal-item>`,
+</bal-stack>`,
 })
 Alignment.args = {
   direction: 'column',
@@ -82,7 +82,7 @@ export const Space = args => ({
   },
   setup: () => ({ args }),
   template: `<div>
-  <bal-item class="has-background-red-2">
+  <bal-stack class="has-background-red-2">
     <bal-content class="has-background-green-2">
       <bal-label>Space Default</bal-label>
     </bal-content>
@@ -92,8 +92,8 @@ export const Space = args => ({
     <bal-content class="has-background-green-2">
       <bal-label>Space Default</bal-label>
     </bal-content>
-  </bal-item>
-  <bal-item space="large" class="has-background-red-2 my-large">
+  </bal-stack>
+  <bal-stack space="large" class="has-background-red-2 my-large">
     <bal-content class="has-background-green-2">
       <bal-label>Space Large</bal-label>
     </bal-content>
@@ -103,8 +103,8 @@ export const Space = args => ({
     <bal-content class="has-background-green-2">
       <bal-label>Space Large</bal-label>
     </bal-content>
-  </bal-item>
-  <bal-item space="x-large" class="has-background-red-2 my-large">
+  </bal-stack>
+  <bal-stack space="x-large" class="has-background-red-2 my-large">
     <bal-content class="has-background-green-2">
       <bal-label>Space X-Large</bal-label>
     </bal-content>
@@ -114,8 +114,8 @@ export const Space = args => ({
     <bal-content class="has-background-green-2">
       <bal-label>Space X-Large</bal-label>
     </bal-content>
-  </bal-item>
-  <bal-item space="xx-large" class="has-background-red-2">
+  </bal-stack>
+  <bal-stack space="xx-large" class="has-background-red-2">
     <bal-content class="has-background-green-2">
       <bal-label>Space XX-Large</bal-label>
     </bal-content>
@@ -125,14 +125,14 @@ export const Space = args => ({
     <bal-content class="has-background-green-2">
       <bal-label>Space XX-Large</bal-label>
     </bal-content>
-  </bal-item>
+  </bal-stack>
 </div>`,
 })
 Space.args = {}
 Space.parameters = {
   ...sourceCode(
     () => ({
-      template: `<bal-item>
+      template: `<bal-stack>
 <bal-content>
   <bal-label>Space Default</bal-label>
 </bal-content>
@@ -142,8 +142,8 @@ Space.parameters = {
 <bal-content>
   <bal-label>Space Default</bal-label>
 </bal-content>
-</bal-item>
-<bal-item space="large">
+</bal-stack>
+<bal-stack space="large">
 <bal-content>
   <bal-label>Space Large</bal-label>
 </bal-content>
@@ -153,8 +153,8 @@ Space.parameters = {
 <bal-content>
   <bal-label>Space Large</bal-label>
 </bal-content>
-</bal-item>
-<bal-item space="x-large">
+</bal-stack>
+<bal-stack space="x-large">
 <bal-content>
   <bal-label>Space X-Large</bal-label>
 </bal-content>
@@ -164,8 +164,8 @@ Space.parameters = {
 <bal-content>
   <bal-label>Space X-Large</bal-label>
 </bal-content>
-</bal-item>
-<bal-item space="xx-large">
+</bal-stack>
+<bal-stack space="xx-large">
 <bal-content>
   <bal-label>Space XX-Large</bal-label>
 </bal-content>
@@ -175,7 +175,7 @@ Space.parameters = {
 <bal-content>
   <bal-label>Space XX-Large</bal-label>
 </bal-content>
-</bal-item>`,
+</bal-stack>`,
       components: [],
     }),
     Space.args,
@@ -204,7 +204,7 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="purple-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigPurple" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Teaser Card</bal-heading>
@@ -212,35 +212,35 @@ export const TeaserCards = args => ({
             teaser layout.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>
   <div class="column is-one-third">
     <bal-card color="yellow-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigYellow" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Auto Height</bal-heading>
             <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>
   <div class="column is-one-third">
     <bal-card color="red-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigRed" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Item Component</bal-heading>
             <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>

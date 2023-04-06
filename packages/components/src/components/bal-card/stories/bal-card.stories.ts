@@ -29,7 +29,7 @@ import {
   BalTag,
   BalTagGroup,
   BalLabel,
-  BalItem,
+  BalStack,
   BalContent,
 } from '../../../../.storybook/vue/generated/components'
 
@@ -119,7 +119,7 @@ export const TeaserCards = args => ({
     BalButton,
     BalText,
     BalLabel,
-    BalItem,
+    BalStack,
     BalContent,
     BalHeading,
   },
@@ -139,7 +139,7 @@ export const TeaserCards = args => ({
   <div class="column is-one-third">
     <bal-card color="purple-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigPurple" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Teaser Card</bal-heading>
@@ -147,35 +147,35 @@ export const TeaserCards = args => ({
             teaser layout.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>
   <div class="column is-one-third">
     <bal-card color="yellow-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigYellow" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Auto Height</bal-heading>
             <bal-text>The height of the cards adjust to the longest in the row.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>
   <div class="column is-one-third">
     <bal-card color="red-light" fullheight>
       <bal-card-content>
-        <bal-item direction="column" alignment="center" space="large">
+        <bal-stack direction="column" alignment="center" space="large">
           <bal-icon :svg="svgPigRed" color="auto" size="xx-large"></bal-icon>
           <bal-content alignment="center">
             <bal-heading level="x-large">Item Component</bal-heading>
             <bal-text>Item is used to easaly group components and not be concered about the correct spacing.</bal-text>
           </bal-content>
           <bal-button>Button</bal-button>
-        </bal-item>
+        </bal-stack>
       </bal-card-content>
     </bal-card>
   </div>
