@@ -72,7 +72,6 @@ import { BEM } from '../../../utils/bem'
 import { isPlatform } from '../../../utils/platform'
 import { ResizeHandler } from '../../../utils/resize'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
-import { sep } from 'path'
 
 @Component({
   tag: 'bal-datepicker',
