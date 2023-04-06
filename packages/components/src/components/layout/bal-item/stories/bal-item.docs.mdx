@@ -4,7 +4,7 @@ import { Basic } from './bal-item.stories'
 <bal-doc-banner id="story--components-layout-item--basic" >Item</bal-doc-banner>
 
 <bal-doc-lead>
-  <b>Item</b> is used to easaly group components and not be concered about the correct spacing.
+  <b>Item</b> is used to easily group components and not be concerned about the correct spacing.
 </bal-doc-lead>
 
 <Canvas withSource="open">
@@ -35,7 +35,7 @@ import { Basic } from './bal-item.stories'
 
 ### Direction
 
-Default direction is verically, but can be changed by setting the property `direction` to `row`.
+Default direction is vertically, but can be changed by setting the property `direction` to `row`.
 
 After that the content is rendered horizontally.
 
@@ -51,6 +51,27 @@ With the direction `column` the children of the item can be aligned to `start` (
 
 <Canvas>
   <Story id="components-layout-item--alignment" />
+</Canvas>
+
+<span id="story--components-layout-item--space" style={{ opacity: 0 }}></span>
+
+### Space
+
+There are 4 sizes of the space between the item children.
+
+<Canvas>
+  <Story id="components-layout-item--space" />
+</Canvas>
+
+<span id="story--components-layout-item--teaser-cards" style={{ opacity: 0 }}></span>
+
+### Teaser Cards
+
+The item component can easily be combined with the [card component](?path=/docs/components-card--basic) to achieve a nice
+teaser layout.
+
+<Canvas>
+  <Story id="components-layout-item--teaser-cards" />
 </Canvas>
 
 ## Component Api

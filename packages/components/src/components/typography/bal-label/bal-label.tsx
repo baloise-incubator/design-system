@@ -43,7 +43,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
    */
 
   /**
-   * The value of the for attribute must be a single id for a labelable
+   * The value of the for attribute must be a single id for a labeled
    * form-related element in the same document as the <label> element.
    * So, any given label element can be associated with only one form control.
    */
@@ -53,7 +53,12 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
    * If `true` the form control needs to be filled. If it is set to
    * `false` an optional label is added to the label..
    */
-  @Prop() required?: boolean = undefined
+  @Prop() required = true
+
+  /**
+   * If `true` the component gets a valid green style.
+   */
+  @Prop() valid?: boolean = undefined
 
   /**
    * If `true` the component gets a invalid red style.
@@ -107,6 +112,11 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
     this.radioMutationHandler.disconnect()
   }
 
+  /**
+   * PRIVATE METHODS
+   * ------------------------------------------------------
+   */
+
   async attachLabelToInput() {
     const radio = this.getRadioElement()
 
@@ -153,6 +163,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
     const suffix = this.required === false ? i18nLabel[this.language].optional || '' : ''
     const disabled = !!this.disabled || !!this.readonly
     const danger = !!this.invalid
+    const success = !!this.valid
     const regular = this.weight === 'regular'
     const small = this.size === 'small'
     const large = this.size === 'large'
@@ -165,6 +176,7 @@ export class BalLabel implements ComponentInterface, BalConfigObserver, Loggable
             ...block.element('native').class(),
             ...block.element('native').modifier('disabled').class(disabled),
             ...block.element('native').modifier('danger').class(danger),
+            ...block.element('native').modifier('success').class(success),
             ...block.element('native').modifier('regular').class(regular),
             ...block.element('native').modifier('small').class(small),
             ...block.element('native').modifier('large').class(large),

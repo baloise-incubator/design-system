@@ -4,11 +4,11 @@ export namespace Props {
   export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 
   export type BalContentDirection = 'column' | 'row' | ''
-  export type BalContentSpace = 'medium' | 'large' | ''
+  export type BalContentSpace = 'x-small' | 'small' | 'normal' | ''
   export type BalContentAlignment = 'center' | 'end' | ''
 
   export type BalItemDirection = 'row' | 'column' | ''
-  export type BalItemSpace = 'medium' | ''
+  export type BalItemSpace = 'large' | 'x-large' | 'xx-large' | ''
   export type BalItemAlignment = 'center' | 'end' | 'start' | ''
 
   export type BalBadgeSize = 'small' | 'large' | ''
@@ -109,7 +109,7 @@ export namespace Props {
     | 'auto'
     | ''
     | string
-  export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
+  export type BalIconSize = 'xsmall' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | ''
 
   export type BalListItemAccordionHeadIcon = 'plus' | 'nav-go-down'
   export type BalListItemTarget = BalButtonTarget

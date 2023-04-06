@@ -1,11 +1,11 @@
 import docs from './bal-content.docs.mdx'
-import { BalComponentStory } from '../../../../stories/utils'
-import { BalContent } from '../../../../../.storybook/vue/generated/components'
+import { BalComponentStory, sourceCode } from '../../../../stories/utils'
+import { BalContent, BalLabel, BalText } from '../../../../../.storybook/vue/generated/components'
 
 const component = BalComponentStory({
   title: 'Components/Layout/Content',
   component: BalContent,
-  // subcomponents: { BalRadio },
+  subcomponents: { BalLabel, BalText },
   docs,
   argTypes: {},
   args: {},
@@ -44,7 +44,7 @@ export const Direction = Template.bind({})
 Direction.args = {
   direction: 'row',
   alignment: '',
-  space: '',
+  space: 'normal',
 }
 Direction.parameters = { ...component.sourceCode(Direction), controls: { exclude: excludedControls } }
 
@@ -54,22 +54,48 @@ export const Space = args => ({
   },
   setup: () => ({ args }),
   template: `<div>
-  <bal-content>
-    <bal-label>Default Space</bal-label>
-    <bal-text>Content helps to align text nodes inside a section.</bal-text>
+  <bal-content class="has-background-red-2">
+    <bal-label class="has-background-green-2">Default Space</bal-label>
+    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
-  <bal-content space="medium" class="mt-medium">
-    <bal-label>Medium Space</bal-label>
-    <bal-text>Content helps to align text nodes inside a section.</bal-text>
+  <bal-content space="x-small" class="has-background-red-2 mt-medium">
+    <bal-label class="has-background-green-2">X Small Space</bal-label>
+    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
-  <bal-content space="large" class="mt-medium">
-    <bal-label>Large Space</bal-label>
-    <bal-text>Content helps to align text nodes inside a section.</bal-text>
+  <bal-content space="small" class="has-background-red-2 mt-medium">
+    <bal-label class="has-background-green-2">Small Space</bal-label>
+    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
+  </bal-content>
+  <bal-content space="normal" class="has-background-red-2 mt-medium">
+    <bal-label class="has-background-green-2">Normal Space</bal-label>
+    <bal-text class="has-background-green-2">Content helps to align text nodes inside a section.</bal-text>
   </bal-content>
 </div>`,
 })
 Space.args = {}
 Space.parameters = {
-  ...component.sourceCode(Space),
+  ...sourceCode(
+    () => ({
+      template: `<bal-content>
+  <bal-label>Default Space</bal-label>
+  <bal-text>Content helps to align text nodes inside a section.</bal-text>
+</bal-content>
+<bal-content space="x-small">
+  <bal-label>X Small Space</bal-label>
+  <bal-text>Content helps to align text nodes inside a section.</bal-text>
+</bal-content>
+<bal-content space="small">
+  <bal-label>Small Space</bal-label>
+  <bal-text>Content helps to align text nodes inside a section.</bal-text>
+</bal-content>
+<bal-content space="normal">
+  <bal-label>Normal Space</bal-label>
+  <bal-text>Content helps to align text nodes inside a section.</bal-text>
+</bal-content>`,
+      components: [],
+    }),
+    Space.args,
+    {},
+  ),
   controls: { exclude: excludedControls },
 }

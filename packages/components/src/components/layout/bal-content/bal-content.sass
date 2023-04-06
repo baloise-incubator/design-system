@@ -4,9 +4,9 @@
   display: flex
   flex: 1
   flex-direction: column
-  gap: 0.25rem
-  text-align: left
   align-items: flex-start
+  text-align: left
+  gap: 0.25rem
   //
   // alignment
   &--alignment-center
@@ -22,11 +22,15 @@
   &--direction-column
     flex-direction: column
   //
-  // space
-  &--space-medium
+  // spaces
+  &--space-x-small
     gap: 0.5rem
-  &--space-large
+  &--space-small
+    gap: 0.75rem
+  &--space-normal
     gap: 1rem
 
+//
+// custom position
 .bal-content > .bal-text
   margin: 0

@@ -821,19 +821,22 @@ export namespace Components {
         "subject"?: string;
     }
     interface BalFieldLabel {
-        "configChanged": (state: BalConfigState) => Promise<void>;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
+        /**
+          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+         */
+        "htmlFor"?: string;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "invalid": boolean;
+        "invalid"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
-        "readonly": boolean;
+        "readonly"?: boolean;
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
          */
@@ -841,7 +844,7 @@ export namespace Components {
         /**
           * If `true` the component gets a valid green style.
          */
-        "valid": boolean;
+        "valid"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -1334,6 +1337,10 @@ export namespace Components {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "direction": Props.BalItemDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space": Props.BalItemSpace;
     }
     interface BalLabel {
         "configChanged": (state: BalConfigState) => Promise<void>;
@@ -1343,7 +1350,7 @@ export namespace Components {
         "disabled"?: boolean;
         "hovered": boolean;
         /**
-          * The value of the for attribute must be a single id for a labelable form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
          */
         "htmlFor"?: string;
         /**
@@ -1358,11 +1365,15 @@ export namespace Components {
         /**
           * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
          */
-        "required"?: boolean;
+        "required": boolean;
         /**
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
         "size": Props.BalLabelSize;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid"?: boolean;
         "weight": Props.BalLabelWeight;
     }
     interface BalList {
@@ -4690,6 +4701,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+         */
+        "htmlFor"?: string;
+        /**
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
@@ -5229,6 +5244,10 @@ declare namespace LocalJSX {
           * Defines the position of the child elements if they are showed verticaly or horizontally. Default is horizontally.
          */
         "direction"?: Props.BalItemDirection;
+        /**
+          * Defines the space between the child elements.
+         */
+        "space"?: Props.BalItemSpace;
     }
     interface BalLabel {
         /**
@@ -5237,7 +5256,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "hovered"?: boolean;
         /**
-          * The value of the for attribute must be a single id for a labelable form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
+          * The value of the for attribute must be a single id for a labeled form-related element in the same document as the <label> element. So, any given label element can be associated with only one form control.
          */
         "htmlFor"?: string;
         /**
@@ -5257,6 +5276,10 @@ declare namespace LocalJSX {
           * Defines the size of the font. Default is like a heading 5 and small is used with the form fields.
          */
         "size"?: Props.BalLabelSize;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid"?: boolean;
         "weight"?: Props.BalLabelWeight;
     }
     interface BalList {

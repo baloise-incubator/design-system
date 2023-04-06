@@ -101,3 +101,17 @@ Sizes.parameters = {
   ),
   controls: { exclude: excludedControls },
 }
+
+export const FieldLabel = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-field v-bind="args">
+    <bal-field-label required>Field Label</bal-field-label>
+    <bal-field-control>
+      <bal-input name="my-input" placeholder="Placeholder"></bal-input>
+    </bal-field-control>
+    <bal-field-message>Field Message</bal-field-message>
+  </bal-field>`,
+})
+Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }

@@ -35,6 +35,11 @@ export class BalItem implements ComponentInterface, Loggable {
   @Prop() alignment: Props.BalItemAlignment = ''
 
   /**
+   * Defines the space between the child elements.
+   */
+  @Prop() space: Props.BalItemSpace = ''
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -42,6 +47,7 @@ export class BalItem implements ComponentInterface, Loggable {
     const block = BEM.block('item')
     const direction = !!this.direction
     const alignment = !!this.alignment
+    const space = !!this.space
 
     return (
       <Host
@@ -49,6 +55,7 @@ export class BalItem implements ComponentInterface, Loggable {
           ...block.class(),
           ...block.modifier(`direction-${this.direction}`).class(direction),
           ...block.modifier(`alignment-${this.alignment}`).class(alignment),
+          ...block.modifier(`space-${this.space}`).class(space),
         }}
       >
         <slot></slot>
