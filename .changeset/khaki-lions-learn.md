@@ -1,5 +1,5 @@
 ---
-'@baloise/design-system-components': minor
+'@baloise/design-system-components': patch
 ---
 
-improve datepicker user input by automatically adding the date separators between day and month and month and a year
+fix the datepicker by allowing the separators to be entered even when day or month which are 0-9 are entered without the 0 in front (e.g 2/2/2022)
