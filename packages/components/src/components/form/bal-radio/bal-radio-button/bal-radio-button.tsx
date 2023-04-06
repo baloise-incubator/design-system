@@ -1,9 +1,22 @@
-import { Component, ComponentInterface, h, Host, Prop, Watch, Element, State, Method } from '@stencil/core'
+import {
+  Component,
+  ComponentInterface,
+  h,
+  Host,
+  Prop,
+  Watch,
+  Element,
+  State,
+  Method,
+  Event,
+  EventEmitter,
+} from '@stencil/core'
 import { BEM } from '../../../../utils/bem'
 import { stopEventBubbling } from '../../../../utils/form-input'
 import { defaultElementStateState, ElementStateHandler, ElementStateState } from '../../../../utils/element-states'
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { Props } from '../../../../types'
+import { FOCUS_KEYS } from '../../../../utils/focus-visible'
 
 @Component({
   tag: 'bal-radio-button',
@@ -14,7 +27,9 @@ import { Props } from '../../../../types'
 export class BalRadioButton implements ComponentInterface, Loggable {
   @Element() el!: HTMLElement
 
-  elementStateHandler = ElementStateHandler()
+  private elementStateHandler = ElementStateHandler()
+  private keyboardMode = true
+
   log!: LogInstance
 
   @Logger('bal-radio-button')
@@ -24,6 +39,7 @@ export class BalRadioButton implements ComponentInterface, Loggable {
 
   @State() interactionState: ElementStateState = defaultElementStateState
   @State() checked = false
+  @State() focused = false
 
   /**
    * PUBLIC PROPERTY API
@@ -81,12 +97,21 @@ export class BalRadioButton implements ComponentInterface, Loggable {
   @Prop() colSizeMobile: Props.BalRadioGroupColumns = 1
 
   /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
 
   connectedCallback() {
-    // this.mutationO = observeItems(this.el, undefined, () => this.triggerAllHandlers())
     this.triggerAllHandlers()
     this.elementStateHandler.connect(this.el)
     this.elementStateHandler.onStateChange(state => {
@@ -95,6 +120,10 @@ export class BalRadioButton implements ComponentInterface, Loggable {
         element.pressed = state.pressed
       })
     })
+
+    this.el.addEventListener('keydown', this.onKeydown)
+    this.el.addEventListener('touchstart', this.onPointerDown)
+    this.el.addEventListener('mousedown', this.onPointerDown)
   }
 
   componentWillLoad() {
@@ -103,6 +132,10 @@ export class BalRadioButton implements ComponentInterface, Loggable {
 
   disconnectedCallback(): void {
     this.elementStateHandler.disconnect()
+
+    this.el.removeEventListener('keydown', this.onKeydown)
+    this.el.removeEventListener('touchstart', this.onPointerDown)
+    this.el.removeEventListener('mousedown', this.onPointerDown)
   }
 
   /**
@@ -161,6 +194,23 @@ export class BalRadioButton implements ComponentInterface, Loggable {
     }
   }
 
+  private onFocus = () => {
+    this.balFocus.emit()
+
+    if (this.keyboardMode) {
+      this.focused = true
+    }
+  }
+
+  private onBlur = () => {
+    this.balBlur.emit()
+    this.focused = false
+  }
+
+  private onPointerDown = () => (this.keyboardMode = false)
+
+  private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
+
   /**
    * RENDER
    * ------------------------------------------------------
@@ -195,6 +245,8 @@ export class BalRadioButton implements ComponentInterface, Loggable {
           }}
           disabled={disabled}
           onClick={ev => this.clickHandler(ev)}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
         >
           <slot></slot>
         </button>

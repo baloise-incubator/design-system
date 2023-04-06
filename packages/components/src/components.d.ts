@@ -2891,6 +2891,10 @@ export interface BalRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioElement;
 }
+export interface BalRadioButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBalRadioButtonElement;
+}
 export interface BalRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBalRadioGroupElement;
@@ -6006,6 +6010,14 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * Emitted when the toggle loses focus.
+         */
+        "onBalBlur"?: (event: BalRadioButtonCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onBalFocus"?: (event: BalRadioButtonCustomEvent<FocusEvent>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
