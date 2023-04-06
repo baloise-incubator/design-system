@@ -36,24 +36,27 @@ SVG.parameters = { ...component.sourceCode(SVG) }
 export const Sizes = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `
-<bal-icon name="date" size="xsmall"></bal-icon>
-<bal-icon name="date" size="small"></bal-icon>
-<bal-icon name="date"></bal-icon>
-<bal-icon name="date" size="medium"></bal-icon>
-<bal-icon name="date" size="large"></bal-icon>
-<bal-icon name="date" size="xlarge"></bal-icon>`,
+  template: `<div>
+  <bal-icon name="date" size="x-small"></bal-icon>
+  <bal-icon name="date" size="small"></bal-icon>
+  <bal-icon name="date"></bal-icon>
+  <bal-icon name="date" size="medium"></bal-icon>
+  <bal-icon name="date" size="large"></bal-icon>
+  <bal-icon name="date" size="x-large"></bal-icon>
+  <bal-icon name="date" size="xx-large"></bal-icon>
+</div>`,
 })
 Sizes.parameters = { ...component.sourceCode(Sizes) }
 
 export const Colors = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `
-<bal-icon color="primary" name="github"></bal-icon>
-<bal-icon color="grey" name="github"></bal-icon>
-<bal-icon color="success" name="github"></bal-icon>
-<bal-icon color="warning" name="github"></bal-icon>
-<bal-icon color="danger" name="github"></bal-icon>`,
+  template: `<div>
+  <bal-icon color="primary" name="github"></bal-icon>
+  <bal-icon color="grey" name="github"></bal-icon>
+  <bal-icon color="success" name="github"></bal-icon>
+  <bal-icon color="warning" name="github"></bal-icon>
+  <bal-icon color="danger" name="github"></bal-icon>
+</div>`,
 })
 Colors.parameters = { ...component.sourceCode(Colors) }
