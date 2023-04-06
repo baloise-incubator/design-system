@@ -21,8 +21,6 @@ bal-radio .bal-radio-checkbox__label
     align-items: stretch
     flex-wrap: wrap
     gap: var(--bal-space-normal)
-    // +tablet
-    //   align-items: flex-start
     //
     // transform the radios into buttons
     +modifier(select-button)
@@ -44,6 +42,8 @@ bal-radio .bal-radio-checkbox__label
     // shows the radios verically
     +modifier(vertical)
       +radioGroupVertical
+      +tablet
+        align-items: flex-start
     //
     // only shows the radios verically on mobile
     +modifier(vertical-mobile)
