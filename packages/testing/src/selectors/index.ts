@@ -7,157 +7,226 @@ export { byTestId, dataTestSelector } from './selectors.util'
 export const selectors = {
   accordion: {
     /**
-     * Description.
+     * The trigger button.
      */
     trigger: byTestId('bal-accordion-button'),
+    /**
+     * Content wrapper.
+     */
     content: byTestId('bal-accordion-content'),
   },
   badge: {
     /**
-     * Description.
+     * Badge label.
      */
     label: byTestId('bal-badge-label'),
   },
   button: {
     /**
-     * Description.
+     * Native button element.
      */
     native: byTestId('bal-button'),
+    /**
+     * Button label.
+     */
     label: byTestId('bal-button-label'),
   },
   carousel: {
     /**
-     * Description.
+     * Pagination left control.
      */
     paginationPrevious: byTestId('bal-pagination-controls-left'),
+    /**
+     * Pagination right control.
+     */
     paginationNext: byTestId('bal-pagination-controls-right'),
+    /**
+     * Carousel small right control.
+     */
     carouselSmallControlsPrevious: byTestId('bal-carousel-small-controls-left'),
+    /**
+     * Carousel small left control.
+     */
     carouselSmallControlsNext: byTestId('bal-carousel-small-controls-right'),
+    /**
+     * Carousel large left control.
+     */
     carouselLargeControlsPrevious: byTestId('bal-carousel-large-controls-left'),
+    /**
+     * Carousel large right control.
+     */
     carouselLargeControlsNext: byTestId('bal-carousel-large-controls-right'),
   },
   close: {
     /**
-     * Description.
+     * The trigger button.
      */
     button: byTestId('bal-close'),
   },
   data: {
     /**
-     * Description.
+     * Editable button.
      */
     editable: byTestId('bal-data-value-button'),
   },
   footer: {
     /**
-     * Description.
+     * Language select element.
      */
     language: byTestId('bal-footer-language"'),
   },
   heading: {
     /**
-     * Description.
+     * Native h1 element.
      */
     native: byTestId('bal-heading'),
   },
   notification: {
     /**
-     * Description.
+     * Notification inner element.
      */
     native: byTestId('bal-notification'),
   },
   pagination: {
     /**
-     * Description.
+     * Pagination left control.
      */
     previous: byTestId('bal-pagination-controls-left'),
+    /**
+     * Pagination right control.
+     */
     next: byTestId('bal-pagination-controls-right'),
+    /**
+     * Pagination ul list.
+     */
     list: byTestId('bal-pagination-list'),
+    /**
+     * The number of the page.
+     */
     pageNumber: byTestId('bal-pagination-page-number'),
+    /**
+     * bal-button of the number of the page..
+     */
     pages: '.bal-pagination__nav__pagination-list > li > bal-button',
+    /**
+     * The native button of the number of the page.
+     */
     button: '.bal-pagination__nav__pagination-list > li > bal-button > button',
   },
   tag: {
     /**
-     * Description.
+     * Tag label..
      */
     label: byTestId('bal-tag-label'),
+    /**
+     * Close button.
+     */
     close: byTestId('bal-tag-close'),
   },
   text: {
     /**
-     * Description.
+     * Native p element.
      */
     native: byTestId('bal-text'),
   },
   checkbox: {
     /**
-     * Description.
+     * Native input element.
      */
     input: byTestId('bal-checkbox-input'),
+    /**
+     * Label element.
+     */
     label: byTestId('bal-checkbox-label'),
+    /**
+     * Label span element.
+     */
     text: byTestId('bal-checkbox-text'),
   },
   datepicker: {
     /**
-     * Description.
+     * Native input element.
      */
     input: byTestId('bal-datepicker-input'),
   },
   field: {
     /**
-     * Description.
+     * Hint element.
      */
     hint: byTestId('bal-field-hint'),
   },
   fileUpload: {
     /**
-     * Description.
+     * Native input element.
      */
     input: byTestId('bal-file-upload-input'),
+    /**
+     * Native span element.
+     */
     label: byTestId('bal-file-upload-label'),
   },
   slider: {
     /**
-     * Description.
+     * Native input element.
      */
     native: byTestId('bal-input-slider'),
   },
   inputStepper: {
     /**
-     * Description.
+     * Decrease button.
      */
     decrease: byTestId('bal-input-stepper-decrease'),
+    /**
+     * Increase button.
+     */
     increase: byTestId('bal-input-stepper-increase'),
+    /**
+     * Native input element.
+     */
     native: byTestId('bal-input-stepper'),
+    /**
+     * Text element.
+     */
     text: byTestId('bal-input-stepper-text'),
   },
   input: {
     /**
-     * Description.
+     * Native input element.
      */
     native: byTestId('bal-input'),
   },
   numberInput: {
     /**
-     * Description.
+     * Native input element.
      */
     native: byTestId('bal-number-input'),
   },
   radio: {
     /**
-     * Description.
+     * Native input element.
      */
     input: byTestId('bal-radio-input'),
+    /**
+     * Native label element.
+     */
     label: byTestId('bal-radio-label'),
+    /**
+     * Native span element.
+     */
     text: byTestId('bal-radio-text'),
   },
   select: {
     /**
-     * Description.
+     * Native input element.
      */
     input: byTestId('bal-select-input'),
+    /**
+     * Select option.
+     */
     options: byTestId('bal-select-option'),
+    /**
+     * Description.
+     */
     chips: byTestId('bal-select-chip'),
   },
   popover: {
@@ -165,11 +234,14 @@ export const selectors = {
      * Description.
      */
     trigger: 'bal-popover-trigger',
+    /**
+     * Popover content element.
+     */
     content: byTestId('bal-popover-content'),
   },
   textarea: {
     /**
-     * Description.
+     * Native input element.
      */
     native: byTestId('bal-textarea-input'),
   },
@@ -184,6 +256,9 @@ export const selectors = {
      * Description.
      */
     tabItems: 'li.data-test-tab-item',
+    /**
+     * Description.
+     */
     action: '.data-test-tabs-action',
   },
   toast: {
@@ -191,7 +266,13 @@ export const selectors = {
      * Description.
      */
     main: '.bal-notices > .bal-toast',
+    /**
+     * Description.
+     */
     label: byTestId('bal-toast-label'),
+    /**
+     * Description.
+     */
     close: byTestId('bal-toast-close'),
   },
   snackbar: {
@@ -199,9 +280,21 @@ export const selectors = {
      * Description.
      */
     main: '.bal-notices > .bal-snackbar',
+    /**
+     * Description.
+     */
     heading: byTestId('bal-snackbar-heading'),
+    /**
+     * Description.
+     */
     label: byTestId('bal-snackbar-label'),
+    /**
+     * Description.
+     */
     close: byTestId('bal-snackbar-close'),
+    /**
+     * Description.
+     */
     action: byTestId('bal-snackbar-action'),
   },
   hint: {
@@ -209,7 +302,13 @@ export const selectors = {
      * Description.
      */
     trigger: byTestId('bal-hint-trigger'),
+    /**
+     * Description.
+     */
     content: byTestId('bal-hint-content'),
+    /**
+     * Description.
+     */
     close: byTestId('bal-hint-close'),
   },
 }

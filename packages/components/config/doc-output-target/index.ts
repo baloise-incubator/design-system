@@ -10,7 +10,7 @@ import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
 import testingCommands from '../../public/assets/data/commands.json'
 import contributors from '../../public/assets/data/contributors.json'
-import { selectors } from '../../../testing/src/selectors'
+import testingSelectors from '../../public/assets/data/selectors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -28,14 +28,14 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       const hasComponentApi = componentApi.length > 0
 
       let selectorsList: string[] = []
-      if (selectors[formatComponentName(componentName)] != undefined) {
+      if (testingSelectors[0][formatComponentName(componentName)] != undefined) {
         selectorsList = selectorsToMarkdown(
-          selectors[formatComponentName(componentName)],
+          testingSelectors[0][formatComponentName(componentName)],
           formatComponentName(componentName),
         )
       }
-      console.log('selectors FINAL ', selectorsList)
-
+      console.log('ajde ', selectorsList)
+      console.log('---------------------------------')
       let content: string[] = []
 
       if (hasComponentApi) {
@@ -80,7 +80,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             }
           }
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
-          console.log('HUMAN LINES ', humanLines)
+          // console.log('HUMAN LINES ', humanLines)
           const content = [
             `## Testing`,
             SPACE,
@@ -91,12 +91,14 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             '<!-- START: human documentation -->',
             SPACE,
             ...humanLines,
+            // SPACE,
+            // ...selectorsList,
             SPACE,
             '<!-- END: human documentation -->',
             SPACE,
             ...commandsToMarkdown(componentCommands),
           ]
-
+          console.log('humanLines ', humanLines)
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))
         } catch (err) {
           console.error(err)
