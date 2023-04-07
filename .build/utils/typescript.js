@@ -67,15 +67,16 @@ const parseParameters = parameter => {
 }
 
 const parseSelectorComment = (node, sourceFile) => {
+  const pattern = /[a-zA-Z]/
+
   return node
     .getFullText(sourceFile)
     .split('\n')
     .map(l => l.trim())
     .filter(l => l)
-    .filter(l => l !== '/**' && l !== '*/')
+    .filter(l => pattern.test(l))
     .map(l => (l.startsWith('*') ? l.substring(2) : l))
-    .map(l => (l.endsWith('{') ? l.substring(0, l.length - 3) : l))
-    .slice(0, 2)
+    .map(l => l.split(':')[0])
 }
 
 const parseFunctionComment = (node, sourceFile) =>

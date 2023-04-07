@@ -1,11 +1,7 @@
 import { MarkdownTable } from './docs-util'
-import testingSelectors from '../../public/assets/data/selectors.json'
 
-export const selectorsToMarkdown = (selectorsList: any[], componentName: string) => {
-  const selectors = Object.entries(selectorsList).map(entry => {
-    return { [entry[0]]: entry[1] }
-  })
-
+export const selectorsToMarkdown = (selectorsList: any, componentName: string) => {
+  const selectors = selectorsList.selectors
   const content: string[] = []
 
   if (selectors.length === 0) {
@@ -19,7 +15,7 @@ export const selectorsToMarkdown = (selectorsList: any[], componentName: string)
 
   table.addHeader(['Selector', 'Element'])
   selectors.forEach(prop => {
-    table.addRow([componentName + '.' + Object.keys(prop)[0], testingSelectors[0][componentName].description])
+    table.addRow([componentName + '.' + prop, selectorsList.description])
   })
 
   content.push(...table.toMarkdown())
