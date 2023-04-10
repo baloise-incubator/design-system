@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -25,6 +26,19 @@ describe('Snackbar', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector         | Element                   |
+| ---------------- | ------------------------- |
+| snackbar.main    | Snackbar element.         |
+| snackbar.heading | Snackbar heading element. |
+| snackbar.label   | Snackbar label element.   |
+| snackbar.close   | Snackbar close element.   |
+| snackbar.action  | Snackbar action element.  |
+
+
  
 <!-- END: human documentation -->
  

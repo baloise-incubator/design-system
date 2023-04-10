@@ -10,11 +10,21 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
  
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector    | Element           |
+| ----------- | ----------------- |
+| text.native | Native p element. |
+
+
  
 <!-- END: human documentation -->
  

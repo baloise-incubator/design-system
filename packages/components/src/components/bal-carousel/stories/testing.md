@@ -10,11 +10,26 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
  
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector                               | Element                       |
+| -------------------------------------- | ----------------------------- |
+| carousel.paginationPrevious            | Pagination left control.      |
+| carousel.paginationNext                | Pagination right control.     |
+| carousel.carouselSmallControlsPrevious | Carousel small right control. |
+| carousel.carouselSmallControlsNext     | Carousel small left control.  |
+| carousel.carouselLargeControlsPrevious | Carousel large left control.  |
+| carousel.carouselLargeControlsNext     | Carousel large right control. |
+
+
  
 <!-- END: human documentation -->
  

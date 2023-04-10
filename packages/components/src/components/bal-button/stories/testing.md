@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -26,6 +27,16 @@ describe('Button', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector      | Element                |
+| ------------- | ---------------------- |
+| button.native | Native button element. |
+| button.label  | Button label.          |
+
+
  
 <!-- END: human documentation -->
  

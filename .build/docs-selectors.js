@@ -22,15 +22,21 @@ const parseTypes = (fileContent, filePath) => {
 
   const selectors = {}
 
-  properties.forEach(commandNode => {
+  properties.forEach((commandNode) => {
     const commandComment = parseSelectorComment(commandNode, sourceFile)
+    let selectorsList = []
+
+    for(let i = 1; i < commandComment.length; i += 2) {
+      selectorsList.push({
+        selector: commandComment[i + 1],
+        description: commandComment[i]
+      })
+    }
 
     selectors[commandComment[0]] = {
-      description: commandComment[1],
-      selectors: [...commandComment.slice(2, commandComment.length)]
+      selectors: [...selectorsList]
     }
   })
-
   return selectors
 }
 

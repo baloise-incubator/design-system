@@ -34,8 +34,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
           formatComponentName(componentName),
         )
       }
-      console.log('ajde ', selectorsList)
-      console.log('---------------------------------')
+
       let content: string[] = []
 
       if (hasComponentApi) {
@@ -48,7 +47,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         console.error(err)
       }
 
-      const docsPath = path.join(component.dirPath || '', 'stories')
+      const docsPath = path.join(component.dirPath || '', 'generated')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -80,7 +79,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             }
           }
           const componentCommands = testingCommands.filter(c => c.component === component.tag)
-          // console.log('HUMAN LINES ', humanLines)
+
           const content = [
             `## Testing`,
             SPACE,
@@ -91,14 +90,13 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             '<!-- START: human documentation -->',
             SPACE,
             ...humanLines,
-            // SPACE,
-            // ...selectorsList,
+            SPACE,
+            ...selectorsList,
             SPACE,
             '<!-- END: human documentation -->',
             SPACE,
             ...commandsToMarkdown(componentCommands),
           ]
-          console.log('humanLines ', humanLines)
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))
         } catch (err) {
           console.error(err)

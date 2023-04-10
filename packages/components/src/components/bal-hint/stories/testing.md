@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -32,6 +33,17 @@ describe('Hint', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector     | Element               |
+| ------------ | --------------------- |
+| hint.trigger | Hint trigger element. |
+| hint.content | Hint content element. |
+| hint.close   | Hint close element.   |
+
+
  
 <!-- END: human documentation -->
  

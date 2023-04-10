@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 describe('Select', () => {
@@ -51,6 +52,17 @@ describe('multiple', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector       | Element               |
+| -------------- | --------------------- |
+| select.input   | Native input element. |
+| select.options | Select option.        |
+| select.chips   | Multi select tag .    |
+
+
  
 <!-- END: human documentation -->
  

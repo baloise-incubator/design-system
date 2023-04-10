@@ -225,13 +225,13 @@ export const selectors = {
      */
     options: byTestId('bal-select-option'),
     /**
-     * Description.
+     * Multi select tag .
      */
     chips: byTestId('bal-select-chip'),
   },
   popover: {
     /**
-     * Description.
+     * Popover trigger.
      */
     trigger: 'bal-popover-trigger',
     /**
@@ -247,67 +247,67 @@ export const selectors = {
   },
   modal: {
     /**
-     * Description.
+     * Modal element.
      */
     main: 'div.modal',
   },
   tabs: {
     /**
-     * Description.
+     * Tab item element.
      */
     tabItems: 'li.data-test-tab-item',
     /**
-     * Description.
+     * Tab action element.
      */
     action: '.data-test-tabs-action',
   },
   toast: {
     /**
-     * Description.
+     * Toast element.
      */
     main: '.bal-notices > .bal-toast',
     /**
-     * Description.
+     * Toast label element.
      */
     label: byTestId('bal-toast-label'),
     /**
-     * Description.
+     * Toast close element.
      */
     close: byTestId('bal-toast-close'),
   },
   snackbar: {
     /**
-     * Description.
+     * Snackbar element.
      */
     main: '.bal-notices > .bal-snackbar',
     /**
-     * Description.
+     * Snackbar heading element.
      */
     heading: byTestId('bal-snackbar-heading'),
     /**
-     * Description.
+     * Snackbar label element.
      */
     label: byTestId('bal-snackbar-label'),
     /**
-     * Description.
+     * Snackbar close element.
      */
     close: byTestId('bal-snackbar-close'),
     /**
-     * Description.
+     * Snackbar action element.
      */
     action: byTestId('bal-snackbar-action'),
   },
   hint: {
     /**
-     * Description.
+     * Hint trigger element.
      */
     trigger: byTestId('bal-hint-trigger'),
     /**
-     * Description.
+     * Hint content element.
      */
     content: byTestId('bal-hint-content'),
     /**
-     * Description.
+     * Hint close element.
      */
     close: byTestId('bal-hint-close'),
   },

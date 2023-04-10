@@ -10,11 +10,22 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
  
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector  | Element       |
+| --------- | ------------- |
+| tag.label | Tag label..   |
+| tag.close | Close button. |
+
+
  
 <!-- END: human documentation -->
  

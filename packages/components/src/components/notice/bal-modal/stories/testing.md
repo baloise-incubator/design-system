@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -30,6 +31,15 @@ describe('Modal', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector   | Element        |
+| ---------- | -------------- |
+| modal.main | Modal element. |
+
+
  
 <!-- END: human documentation -->
  

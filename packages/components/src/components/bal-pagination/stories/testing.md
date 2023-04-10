@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -29,6 +30,20 @@ describe('Pagination', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector              | Element                                      |
+| --------------------- | -------------------------------------------- |
+| pagination.previous   | Pagination left control.                     |
+| pagination.next       | Pagination right control.                    |
+| pagination.list       | Pagination ul list.                          |
+| pagination.pageNumber | The number of the page.                      |
+| pagination.pages      | bal-button of the number of the page..       |
+| pagination.button     | The native button of the number of the page. |
+
+
  
 <!-- END: human documentation -->
  

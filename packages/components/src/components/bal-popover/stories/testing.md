@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -31,6 +32,16 @@ describe('Popover', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector        | Element                  |
+| --------------- | ------------------------ |
+| popover.trigger | Popover trigger.         |
+| popover.content | Popover content element. |
+
+
  
 <!-- END: human documentation -->
  

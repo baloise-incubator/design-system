@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId, selectors } from '@baloise/design-system-testing'
@@ -27,21 +28,13 @@ describe('Accordion', () => {
   })
 })
 ```
-
+ 
 ### Custom Selectors
 
-A list of the custom commands for this specific component.
-
-| Selector            | Element             |
-| ------------------- | ------------------- |
-| `accordion.button`  | The trigger button. |
-| `accordion.content` | Content wrapper.    |
-
- 
- 
- 
- 
- 
+| Selector          | Element             |
+| ----------------- | ------------------- |
+| accordion.trigger | The trigger button. |
+| accordion.content | Content wrapper.    | 
 <!-- END: human documentation -->
  
 ### Custom Commands

@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -22,6 +23,8 @@ describe('Input Slider', () => {
 })
 ```
 
+ 
+ 
  
  
  

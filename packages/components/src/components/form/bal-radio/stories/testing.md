@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -26,6 +27,17 @@ describe('Radio', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector    | Element               |
+| ----------- | --------------------- |
+| radio.input | Native input element. |
+| radio.label | Native label element. |
+| radio.text  | Native span element.  |
+
+
  
 <!-- END: human documentation -->
  

@@ -10,11 +10,21 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
  
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector      | Element          |
+| ------------- | ---------------- |
+| data.editable | Editable button. |
+
+
  
 <!-- END: human documentation -->
  

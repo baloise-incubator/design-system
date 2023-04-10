@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -25,6 +26,17 @@ describe('Toast', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector    | Element              |
+| ----------- | -------------------- |
+| toast.main  | Toast element.       |
+| toast.label | Toast label element. |
+| toast.close | Toast close element. |
+
+
  
 <!-- END: human documentation -->
  

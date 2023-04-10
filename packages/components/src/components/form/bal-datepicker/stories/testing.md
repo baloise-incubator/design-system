@@ -10,6 +10,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
@@ -36,6 +37,15 @@ describe('Datepicker', () => {
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector         | Element               |
+| ---------------- | --------------------- |
+| datepicker.input | Native input element. |
+
+
  
 <!-- END: human documentation -->
  

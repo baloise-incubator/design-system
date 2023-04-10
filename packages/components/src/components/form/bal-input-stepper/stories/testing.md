@@ -15,6 +15,19 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector              | Element               |
+| --------------------- | --------------------- |
+| inputStepper.decrease | Decrease button.      |
+| inputStepper.increase | Increase button.      |
+| inputStepper.native   | Native input element. |
+| inputStepper.text     | Text element.         |
+
+
+ 
 <!-- END: human documentation -->
  
 ### Custom Commands

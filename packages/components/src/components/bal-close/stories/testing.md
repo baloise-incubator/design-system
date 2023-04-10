@@ -15,5 +15,15 @@ The Baloise Design System provides a collection of custom cypress commands for o
  
  
  
+ 
+ 
+### Custom Selectors
+
+| Selector     | Element             |
+| ------------ | ------------------- |
+| close.button | The trigger button. |
+
+
+ 
 <!-- END: human documentation -->
  

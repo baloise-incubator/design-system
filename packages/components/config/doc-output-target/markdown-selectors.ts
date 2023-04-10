@@ -15,9 +15,8 @@ export const selectorsToMarkdown = (selectorsList: any, componentName: string) =
 
   table.addHeader(['Selector', 'Element'])
   selectors.forEach(prop => {
-    table.addRow([componentName + '.' + prop, selectorsList.description])
+    table.addRow([componentName + '.' + prop.selector, prop.description])
   })
-
   content.push(...table.toMarkdown())
   content.push(``)
   content.push(``)
