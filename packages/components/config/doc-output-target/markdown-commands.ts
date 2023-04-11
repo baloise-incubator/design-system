@@ -15,7 +15,7 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
     return content
   }
 
-  content.push(`### Custom Commands`)
+  content.push(`### Component Commands`)
   content.push(SPACE)
   content.push(`A list of the custom commands for this specific component.`)
   content.push(SPACE)

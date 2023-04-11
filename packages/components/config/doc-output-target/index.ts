@@ -88,10 +88,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             SPACE,
             '<!-- START: human documentation -->',
             SPACE,
-            humanLines
-              .map(line => line.trim())
-              .join(NEWLINE)
-              .trim(),
+            humanLines.join(NEWLINE).trim(),
             SPACE,
             '<!-- END: human documentation -->',
             SPACE,

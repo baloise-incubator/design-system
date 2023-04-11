@@ -8,7 +8,7 @@ export const selectorsToMarkdown = (selectorsList: any, componentName: string) =
     return content
   }
 
-  content.push(`### Custom Selectors`)
+  content.push(`### Component Element Selectors`)
   content.push(``)
 
   const table = new MarkdownTable()

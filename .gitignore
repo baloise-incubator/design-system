@@ -127,6 +127,9 @@ packages/maps/src/markers.json
 packages/css/css/
 packages/css/assets/fonts/
 
+packages/components/src/components/**/stories/testing.md
+packages/components/src/components/**/**/stories/testing.md
+
 # Design System Cypress
 packages/components/cypress/snapshots/actual
 packages/components/cypress/snapshots/diff

@@ -38,7 +38,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         rounded
         onClick={() => onPreviousClick()}
         disabled={isFirst}
-        data-testid="bal-carousel-large-controls-left"
+        data-testid="bal-carousel-control-left"
       ></bal-button>
       <bal-button
         class={{
@@ -51,7 +51,7 @@ export const LargeControl: FunctionalComponent<LargeControlProps> = ({
         rounded
         onClick={() => onNextClick()}
         disabled={isLast}
-        data-testid="bal-carousel-large-controls-right"
+        data-testid="bal-carousel-control-right"
       ></bal-button>
     </div>
   )
