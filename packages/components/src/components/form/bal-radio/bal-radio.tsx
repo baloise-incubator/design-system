@@ -17,6 +17,7 @@ import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
 import { ComponentElementState } from '../../../utils/element-states'
+import { inheritAttributes } from '../../../utils/attributes'
 
 @Component({
   tag: 'bal-radio',
@@ -26,10 +27,11 @@ import { ComponentElementState } from '../../../utils/element-states'
 })
 export class Radio implements ComponentInterface, ComponentElementState, Loggable {
   private inputId = `bal-rb-${radioIds++}`
-  private radioButton: HTMLBalRadioButtonElement | null = null
-  private radioGroup: HTMLBalRadioGroupElement | null = null
-  private nativeInput!: HTMLInputElement
+  private inheritedAttributes: { [k: string]: any } = {}
   private keyboardMode = true
+  nativeInput!: HTMLInputElement
+
+  @Element() el!: HTMLBalRadioElement
 
   log!: LogInstance
 
@@ -38,18 +40,8 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
     this.log = log
   }
 
-  @Element() el!: HTMLBalRadioElement
-
-  /**
-   * If `true`, the radio is selected.
-   */
   @State() checked = false
   @State() focused = false
-
-  /**
-   * The tabindex of the radio button.
-   * @internal
-   */
   @State() buttonTabindex?: number
 
   /**
@@ -168,8 +160,8 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
       this.value = this.inputId
     }
 
-    const radioButton = (this.radioButton = this.el.closest('bal-radio-button'))
-    const radioGroup = (this.radioGroup = this.el.closest('bal-radio-group'))
+    const radioButton = this.radioButton
+    const radioGroup = this.radioGroup
 
     if (radioButton || radioGroup) {
       this.updateState()
@@ -186,13 +178,13 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
 
   componentWillLoad() {
     this.isEmptyHandler()
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   disconnectedCallback() {
     const radioGroup = this.radioGroup
     if (radioGroup) {
       radioGroup.removeEventListener('balInput', this.updateState)
-      this.radioGroup = null
     }
 
     this.el.removeEventListener('keydown', this.onKeydown)
@@ -258,6 +250,19 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
         this.radioButton.setChecked(this.checked)
       }
     }
+  }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get radioButton(): HTMLBalRadioButtonElement | null {
+    return this.el.closest('bal-radio-button')
+  }
+
+  private get radioGroup(): HTMLBalRadioGroupElement | null {
+    return this.el.closest('bal-radio-group')
   }
 
   /**
@@ -329,7 +334,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
 
     const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
 
-    const inputAttributes = {} as any
+    const inputAttributes = this.inheritedAttributes
     if (this.buttonTabindex !== undefined) {
       inputAttributes.tabIndex = this.buttonTabindex
     }

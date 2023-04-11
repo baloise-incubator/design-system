@@ -224,10 +224,12 @@ export namespace Props {
 
   export type BalCheckboxGroupInterface = 'checkbox' | 'select-button' | 'switch'
   export type BalCheckboxInterface = BalCheckboxGroupInterface
+  export type BalCheckboxGroupColumns = 1 | 2 | 3 | 4
+  export type BalCheckboxButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'
-  export type BalRadioGroupColumns = 1 | 2 | 3 | 4
   export type BalRadioInterface = BalRadioGroupInterface
+  export type BalRadioGroupColumns = 1 | 2 | 3 | 4
   export type BalRadioButtonColor = '' | 'purple' | 'green' | 'yellow' | 'red'
 
   export type BalTextareaWrap = 'hard' | 'soft' | 'off'

@@ -101,7 +101,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   disabledChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(child => {
+        this.getCheckboxes().forEach(child => {
           child.disabled = value
         })
       }
@@ -117,7 +117,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
   readonlyChanged(value: boolean | undefined) {
     if (this.control) {
       if (value !== undefined) {
-        this.children.forEach(child => {
+        this.getCheckboxes().forEach(child => {
           child.readonly = value
         })
       }
@@ -138,6 +138,27 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     } else {
       this.onOptionChange()
     }
+  }
+
+  @Prop() columns: Props.BalRadioGroupColumns = 1
+
+  @Watch('columns')
+  columnsChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
+  }
+
+  @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsTablet')
+  columnsTabletChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeTablet = value))
+  }
+
+  @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
+
+  @Watch('columnsMobile')
+  columnsMobileChanged(value: Props.BalRadioGroupColumns) {
+    this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeMobile = value))
   }
 
   /**
@@ -169,6 +190,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
       this.readonlyChanged(this.readonly)
     }
 
+    this.columnsChanged(this.columns)
+    this.columnsTabletChanged(this.columnsTablet)
+    this.columnsMobileChanged(this.columnsMobile)
     this.onOptionChange()
   }
 
@@ -243,12 +267,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
         return false
       }
 
-      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+      this.getCheckboxes().forEach((checkbox: HTMLBalCheckboxElement) => {
         checkbox.checked = isChecked(checkbox)
       })
     }
 
-    this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+    this.getCheckboxes().forEach((checkbox: HTMLBalCheckboxElement) => {
       if (this.interface) {
         checkbox.interface = this.interface
       }
@@ -260,8 +284,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private get children(): HTMLBalCheckboxElement[] {
+  private getCheckboxes(): HTMLBalCheckboxElement[] {
     return Array.from(this.el.querySelectorAll('bal-checkbox'))
+  }
+
+  private getCheckboxButtons(): HTMLBalCheckboxButtonElement[] {
+    return Array.from(this.el.querySelectorAll('bal-checkbox-button'))
   }
 
   /**
@@ -291,7 +319,7 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
 
     // generate new value array out of the checked checkboxes
     const newValue: any[] = []
-    this.children.forEach(cb => {
+    this.getCheckboxes().forEach(cb => {
       if (cb.checked) {
         newValue.push(cb.value)
       }

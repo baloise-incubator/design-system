@@ -36,13 +36,13 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   private inputId = `bal-cb-${checkboxIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
-
   nativeInput?: HTMLInputElement
 
-  @Element() el!: HTMLElement
+  @Element() el!: HTMLBalCheckboxElement
 
-  @State() hasFocus = false
   @State() hasLabel = true
+  @State() focused = false
+  @State() buttonTabindex?: number
 
   log!: LogInstance
 
@@ -50,6 +50,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   createLogger(log: LogInstance) {
     this.log = log
   }
+
+  /**
+   * PUBLIC PROPERTY API
+   * ------------------------------------------------------
+   */
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -60,6 +65,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
    * Label of the radio item.
    */
   @Prop() label = ''
+
+  /**
+   * If `true` the radio is invisible, but sill active
+   */
+  @Prop() invisible = false
 
   /**
    * If `true` the checkbox has no label
@@ -115,6 +125,16 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   @Prop() invalid = false
 
   /**
+   * @internal
+   */
+  @Prop() hovered = false
+
+  /**
+   * @internal
+   */
+  @Prop() pressed = false
+
+  /**
    * Emitted when the toggle has focus.
    */
   @Event() balFocus!: EventEmitter<FocusEvent>
@@ -133,6 +153,41 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
    * Emitted when the input has clicked.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
+
+  /**
+   * LIFECYCLE
+   * ------------------------------------------------------
+   */
+
+  connectedCallback() {
+    const groupEl = this.group
+    const checkboxButton = this.checkboxButton
+
+    if (checkboxButton || groupEl) {
+      this.updateState()
+    }
+
+    if (groupEl) {
+      groupEl.addEventListener('balChange', () => this.updateState())
+    }
+
+    this.initialValue = this.checked
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  disconnectedCallback() {
+    if (this.group) {
+      this.group.removeEventListener('balChange', () => this.updateState())
+    }
+  }
+
+  /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -153,23 +208,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     }
   }
 
-  connectedCallback() {
-    if (this.group) {
-      this.updateState()
-      this.group.addEventListener('balChange', () => this.updateState())
-    }
-    this.initialValue = this.checked
-  }
-
-  componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
-  disconnectedCallback() {
-    if (this.group) {
-      this.group.removeEventListener('balChange', () => this.updateState())
-    }
-  }
+  /**
+   * PUBLIC METHODS
+   * ------------------------------------------------------
+   */
 
   /**
    * Sets the focus on the checkbox input element.
@@ -205,6 +247,40 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     return this.option
   }
 
+  /** @internal */
+  @Method()
+  async setButtonTabindex(value: number) {
+    if (this.checkboxButton) {
+      this.buttonTabindex = -1
+    } else {
+      this.buttonTabindex = value
+    }
+  }
+
+  /**
+   * @internal
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async updateState() {
+    if (this.group && this.group.control && Array.isArray(this.group.value)) {
+      this.checked = this.group.value.includes(this.value)
+    }
+
+    if (this.checkboxButton) {
+      this.buttonTabindex = -1
+
+      if (this.checkboxButton.setChecked) {
+        this.checkboxButton.setChecked(this.checked)
+      }
+    }
+  }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
   get option() {
     return {
       name: this.name,
@@ -218,6 +294,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
       readonly: this.readonly,
       required: this.required,
       hidden: this.hidden,
+      invisible: this.invisible,
       invalid: this.invalid,
     }
   }
@@ -226,11 +303,14 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     return this.el.closest('bal-checkbox-group')
   }
 
-  private updateState = () => {
-    if (this.group && this.group.control && Array.isArray(this.group.value)) {
-      this.checked = this.group.value.includes(this.value)
-    }
+  get checkboxButton(): HTMLBalCheckboxButtonElement | null {
+    return this.el.closest('bal-checkbox-button')
   }
+
+  /**
+   * EVENT HANDLERS
+   * ------------------------------------------------------
+   */
 
   private onInputFocus = (ev: FocusEvent) => inputHandleFocus<any>(this, ev)
 
@@ -270,11 +350,25 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     }
   }
 
+  /**
+   * RENDER
+   * ------------------------------------------------------
+   */
+
   render() {
     const block = BEM.block('radio-checkbox')
     const inputEl = block.element('input')
     const labelEl = block.element('label')
     const labelTextEl = labelEl.element('text')
+
+    const focused = this.focused && this.buttonTabindex !== -1
+
+    const inputAttributes = this.inheritedAttributes
+    if (this.buttonTabindex !== undefined) {
+      inputAttributes.tabIndex = this.buttonTabindex
+    }
+
+    const LabelTag = this.labelHidden ? 'span' : 'label'
 
     return (
       <Host
@@ -282,24 +376,25 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
-        aria-focused={this.hasFocus ? 'true' : null}
+        aria-focused={focused ? 'true' : null}
         class={{
+          'bal-focused': focused,
           ...block.class(),
           ...block.modifier('checkbox').class(),
           ...block.modifier('select-button').class(this.interface === 'select-button'),
           ...block.modifier('switch').class(this.interface === 'switch'),
-          ...block.modifier('focused').class(this.hasFocus),
+          ...block.modifier('focused').class(this.focused),
           ...block.modifier('invalid').class(this.invalid),
           ...block.modifier('checked').class(this.checked),
+          ...block.modifier('invisible').class(this.invisible),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
-          'bal-focusable': !this.disabled && !this.readonly,
+          // 'bal-focusable': !this.disabled && !this.readonly,
         }}
         onKeypress={this.onKeypress}
         onClick={this.onClick}
         onFocus={this.onInputFocus}
         onBlur={this.onInputBlur}
-        {...this.inheritedAttributes}
       >
         <input
           class={{
@@ -319,30 +414,35 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           onFocus={this.onInputFocus}
           onBlur={this.onInputBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
+          {...inputAttributes}
         />
-        <label
-          class={{
-            ...labelEl.class(),
-            ...labelEl.modifier('checked').class(this.checked),
-            ...labelEl.modifier('switch').class(this.interface === 'switch'),
-            ...labelEl.modifier('checkbox').class(),
-            ...labelEl.modifier('hidden').class(this.labelHidden),
-            ...labelEl.modifier('flat').class(this.flat),
-            'data-test-checkbox-label': true,
-          }}
-          htmlFor={this.inputId}
-        >
-          <span
+        {!this.invisible ? (
+          <LabelTag
             class={{
-              ...labelTextEl.class(),
-              ...labelTextEl.modifier('hidden').class(this.labelHidden),
-              ...labelTextEl.modifier('flat').class(this.flat),
+              ...labelEl.class(),
+              ...labelEl.modifier('checked').class(this.checked),
+              ...labelEl.modifier('switch').class(this.interface === 'switch'),
+              ...labelEl.modifier('checkbox').class(),
+              ...labelEl.modifier('hidden').class(this.labelHidden),
+              ...labelEl.modifier('flat').class(this.flat),
+              'data-test-checkbox-label': true,
             }}
+            htmlFor={this.inputId}
           >
-            {this.label}
-            <slot></slot>
-          </span>
-        </label>
+            <span
+              class={{
+                ...labelTextEl.class(),
+                ...labelTextEl.modifier('hidden').class(this.labelHidden),
+                ...labelTextEl.modifier('flat').class(this.flat),
+              }}
+            >
+              {this.label}
+              <slot></slot>
+            </span>
+          </LabelTag>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }
