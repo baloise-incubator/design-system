@@ -46,8 +46,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
       } catch (err) {
         console.error(err)
       }
-
-      const docsPath = path.join(component.dirPath || '', 'generated')
+      const docsPath = path.join(component.dirPath || '', 'stories')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -89,13 +88,16 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             SPACE,
             '<!-- START: human documentation -->',
             SPACE,
-            ...humanLines,
-            SPACE,
-            ...selectorsList,
+            humanLines
+              .map(line => line.trim())
+              .join(NEWLINE)
+              .trim(),
             SPACE,
             '<!-- END: human documentation -->',
             SPACE,
             ...commandsToMarkdown(componentCommands),
+            SPACE,
+            ...selectorsList,
           ]
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))
         } catch (err) {
