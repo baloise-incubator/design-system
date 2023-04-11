@@ -41,21 +41,13 @@ export const selectors = {
      */
     paginationNext: byTestId('bal-pagination-controls-right'),
     /**
-     * Carousel small right control.
+     * Carousel right control.
      */
-    carouselSmallControlsPrevious: byTestId('bal-carousel-small-controls-left'),
+    carouselControlPrevious: byTestId('bal-carousel-control-left'),
     /**
-     * Carousel small left control.
+     * Carousel left control.
      */
-    carouselSmallControlsNext: byTestId('bal-carousel-small-controls-right'),
-    /**
-     * Carousel large left control.
-     */
-    carouselLargeControlsPrevious: byTestId('bal-carousel-large-controls-left'),
-    /**
-     * Carousel large right control.
-     */
-    carouselLargeControlsNext: byTestId('bal-carousel-large-controls-right'),
+    carouselControlNext: byTestId('bal-carousel-control-right'),
   },
   close: {
     /**
@@ -83,9 +75,9 @@ export const selectors = {
   },
   notification: {
     /**
-     * Notification inner element.
+     * Notification content element.
      */
-    native: byTestId('bal-notification'),
+    content: byTestId('bal-notification-content'),
   },
   pagination: {
     /**
