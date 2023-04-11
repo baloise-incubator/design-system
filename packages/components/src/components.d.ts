@@ -4432,9 +4432,21 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the toggle loses focus.
+         */
+        "onBalBlur"?: (event: BalCheckboxGroupCustomEvent<FocusEvent>) => void;
+        /**
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
+        /**
+          * Emitted when the toggle has focus.
+         */
+        "onBalFocus"?: (event: BalCheckboxGroupCustomEvent<FocusEvent>) => void;
+        /**
+          * @deprecated Emitted when the checked property has changed.
+         */
+        "onBalInput"?: (event: BalCheckboxGroupCustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * Steps can be passed as a property or through HTML markup.
          */

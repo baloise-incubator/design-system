@@ -10,14 +10,18 @@ import {
   ComponentInterface,
   State,
   Watch,
+  Listen,
 } from '@stencil/core'
 import { Props, Events } from '../../../types'
+import { isDescendant } from '../../../utils/helpers'
 import { BEM } from '../../../utils/bem'
 import { FOCUS_KEYS } from '../../../utils/focus-visible'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
 import { BalRadioOption } from './bal-radio.type'
 import { ComponentElementState } from '../../../utils/element-states'
 import { inheritAttributes } from '../../../utils/attributes'
+import { stopEventBubbling } from '../../../utils/form-input'
+import { isSpaceKey } from '@baloise/web-app-utils'
 
 @Component({
   tag: 'bal-radio',
@@ -193,6 +197,22 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   }
 
   /**
+   * LISTENERS
+   * ------------------------------------------------------
+   */
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (
+      (this.disabled || this.readonly) &&
+      ev.target &&
+      (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))
+    ) {
+      stopEventBubbling(ev)
+    }
+  }
+
+  /**
    * PUBLIC METHODS
    * ------------------------------------------------------
    */
@@ -292,26 +312,59 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
    * ------------------------------------------------------
    */
 
-  private onClick = (ev: Event) => {
+  private onKeypress = (ev: KeyboardEvent) => {
+    if (isSpaceKey(ev)) {
+      const element = ev.target as HTMLAnchorElement
+      if (element.href) {
+        return
+      }
+
+      if (element.nodeName === 'INPUT' && !this.disabled && !this.readonly) {
+        this.checked = !this.checked
+        this.balChange.emit(this.checked)
+        ev.preventDefault()
+      } else {
+        stopEventBubbling(ev)
+      }
+    }
+  }
+
+  private onClick = (ev: MouseEvent) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
       return
     }
 
-    this.checked = this.nativeInput.checked
-    this.balClick.emit()
+    if (element.nodeName !== 'INPUT' && !this.disabled && !this.readonly) {
+      this.checked = !this.checked
+      this.balClick.emit(ev)
+      this.nativeInput?.focus()
+      this.balChange.emit(this.checked)
+      ev.preventDefault()
+    } else {
+      stopEventBubbling(ev)
+    }
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
+  private onFocus = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      this.focused = false
+      return stopEventBubbling(event)
+    }
+
+    this.balFocus.emit(event)
 
     if (this.keyboardMode) {
       this.focused = true
     }
   }
 
-  private onBlur = () => {
-    this.balBlur.emit()
+  private onBlur = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    this.balBlur.emit(event)
     this.focused = false
   }
 
@@ -361,6 +414,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
           ...block.modifier('pressed').class(this.pressed),
           ...block.modifier('invisible').class(this.invisible),
         }}
+        onKeypress={this.onKeypress}
         onClick={this.onClick}
       >
         <input

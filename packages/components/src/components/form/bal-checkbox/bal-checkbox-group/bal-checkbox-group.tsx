@@ -13,7 +13,7 @@ import {
   Method,
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../utils/form-input'
-import { findItemLabel, isDescendant } from '../../../../utils/helpers'
+import { findItemLabel, hasTagName, isDescendant } from '../../../../utils/helpers'
 import { inheritAttributes } from '../../../../utils/attributes'
 import { Props, Events } from '../../../../types'
 import { BEM } from '../../../../utils/bem'
@@ -131,10 +131,12 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
 
   @Watch('value')
   valueChanged(_value: any[], oldValue: any[]) {
+    console.log('valueChanged', this.control, this.value, _value)
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()
       }
+      this.balInput.emit(this.value)
     } else {
       this.onOptionChange()
     }
@@ -165,6 +167,21 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+
+  /**
+   * @deprecated Emitted when the checked property has changed.
+   */
+  @Event() balInput!: EventEmitter<Events.BalCheckboxGroupChangeDetail>
+
+  /**
+   * Emitted when the toggle has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * LIFECYCLE
@@ -222,6 +239,24 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
         this.value = []
       }
       this.onOptionChange()
+    }
+  }
+
+  @Listen('balFocus', { capture: true, target: 'document' })
+  checkboxFocusListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
+      stopEventBubbling(event)
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('balBlur', { capture: true, target: 'document' })
+  checkboxBlurListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-checkbox')) {
+      stopEventBubbling(event)
+      this.balBlur.emit(event.detail)
     }
   }
 
@@ -308,12 +343,10 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     }
     ev.preventDefault()
 
-    // toggle clicked checkbox
     const selectedCheckbox = ev.target && (ev.target as HTMLElement).closest('bal-checkbox')
     if (selectedCheckbox) {
       if (selectedCheckbox.disabled || selectedCheckbox.readonly) {
-        ev.stopPropagation()
-        return
+        return ev.stopPropagation()
       }
     }
 

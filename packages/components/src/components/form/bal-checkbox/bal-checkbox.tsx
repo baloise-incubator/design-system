@@ -11,14 +11,7 @@ import {
   State,
   ComponentInterface,
 } from '@stencil/core'
-import {
-  FormInput,
-  inputHandleBlur,
-  inputHandleFocus,
-  inputSetBlur,
-  inputSetFocus,
-  stopEventBubbling,
-} from '../../../utils/form-input'
+import { FormInput, inputSetBlur, inputSetFocus, stopEventBubbling } from '../../../utils/form-input'
 import { isDescendant } from '../../../utils/helpers'
 import { inheritAttributes } from '../../../utils/attributes'
 import { BEM } from '../../../utils/bem'
@@ -26,6 +19,7 @@ import { Props, Events } from '../../../types'
 import { isSpaceKey } from '@baloise/web-app-utils'
 import { BalCheckboxOption } from './bal-checkbox.type'
 import { Loggable, Logger, LogInstance } from '../../../utils/log'
+import { FOCUS_KEYS } from '../../../utils/focus-visible'
 
 @Component({
   tag: 'bal-checkbox',
@@ -36,6 +30,7 @@ import { Loggable, Logger, LogInstance } from '../../../utils/log'
 export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
   private inputId = `bal-cb-${checkboxIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
+  private keyboardMode = true
   nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLBalCheckboxElement
@@ -172,6 +167,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     }
 
     this.initialValue = this.checked
+
+    this.el.addEventListener('keydown', this.onKeydown)
+    this.el.addEventListener('touchstart', this.onPointerDown)
+    this.el.addEventListener('mousedown', this.onPointerDown)
   }
 
   componentWillLoad() {
@@ -182,6 +181,10 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
     if (this.group) {
       this.group.removeEventListener('balChange', () => this.updateState())
     }
+
+    this.el.removeEventListener('keydown', this.onKeydown)
+    this.el.removeEventListener('touchstart', this.onPointerDown)
+    this.el.removeEventListener('mousedown', this.onPointerDown)
   }
 
   /**
@@ -312,10 +315,6 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
    * ------------------------------------------------------
    */
 
-  private onInputFocus = (ev: FocusEvent) => inputHandleFocus<any>(this, ev)
-
-  private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
-
   private onKeypress = (ev: KeyboardEvent) => {
     if (isSpaceKey(ev)) {
       const element = ev.target as HTMLAnchorElement
@@ -349,6 +348,32 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
       stopEventBubbling(ev)
     }
   }
+
+  private onFocus = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      this.focused = false
+      return stopEventBubbling(event)
+    }
+
+    this.balFocus.emit(event)
+
+    if (this.keyboardMode) {
+      this.focused = true
+    }
+  }
+
+  private onBlur = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    this.balBlur.emit(event)
+    this.focused = false
+  }
+
+  private onPointerDown = () => (this.keyboardMode = false)
+
+  private onKeydown = (ev: any) => (this.keyboardMode = FOCUS_KEYS.includes(ev.key))
 
   /**
    * RENDER
@@ -389,12 +414,11 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           ...block.modifier('invisible').class(this.invisible),
           ...block.modifier('flat').class(this.flat),
           ...block.modifier('disabled').class(this.disabled || this.readonly),
-          // 'bal-focusable': !this.disabled && !this.readonly,
+          ...block.modifier('hovered').class(this.hovered),
+          ...block.modifier('pressed').class(this.pressed),
         }}
         onKeypress={this.onKeypress}
         onClick={this.onClick}
-        onFocus={this.onInputFocus}
-        onBlur={this.onInputBlur}
       >
         <input
           class={{
@@ -411,8 +435,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           disabled={this.disabled || this.hidden}
           readonly={this.readonly}
           required={this.required}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           ref={inputEl => (this.nativeInput = inputEl)}
           {...inputAttributes}
         />

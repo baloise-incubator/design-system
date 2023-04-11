@@ -17,6 +17,7 @@ import { defaultElementStateState, ElementStateHandler, ElementStateState } from
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { Props } from '../../../../types'
 import { FOCUS_KEYS } from '../../../../utils/focus-visible'
+import { isDescendant } from '../../../../utils/helpers'
 
 @Component({
   tag: 'bal-radio-button',
@@ -183,28 +184,81 @@ export class BalRadioButton implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  private clickHandler = (event: MouseEvent) => {
-    if (!!this.disabled) {
-      stopEventBubbling(event)
+  private onClick = (event: Event) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const element = event.target as HTMLAnchorElement
+    if (element && element.href) {
+      return
     }
 
     const radioEl = this.el.querySelector('bal-radio')
-    if (radioEl) {
-      radioEl.click()
+    const targetEl = event.target
+
+    if (radioEl && targetEl) {
+      const isCheckbox = targetEl === radioEl || isDescendant(radioEl, targetEl)
+      if (!isCheckbox) {
+        stopEventBubbling(event)
+        radioEl.click()
+      }
     }
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
+  // private clickHandler = (event: MouseEvent) => {
+  //   if (!!this.disabled) {
+  //     stopEventBubbling(event)
+  //   }
+
+  //   const radioEl = this.el.querySelector('bal-radio')
+  //   if (radioEl) {
+  //     radioEl.click()
+  //   }
+  // }
+
+  private onFocus = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const radioEl = this.el.querySelector('bal-radio')
+    const targetEl = event.target
 
     if (this.keyboardMode) {
       this.focused = true
     }
+
+    if (radioEl && targetEl) {
+      const isCheckbox = targetEl === radioEl || isDescendant(radioEl, targetEl)
+      if (isCheckbox) {
+        stopEventBubbling(event)
+        radioEl.querySelector('input')?.focus()
+      }
+    } else {
+      this.balFocus.emit()
+    }
   }
 
-  private onBlur = () => {
-    this.balBlur.emit()
+  private onBlur = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const radioEl = this.el.querySelector('bal-radio')
+    const targetEl = event.target
+
     this.focused = false
+
+    if (radioEl && targetEl) {
+      const isRadio = targetEl === radioEl || isDescendant(radioEl, targetEl)
+      if (isRadio) {
+        stopEventBubbling(event)
+        radioEl.querySelector('input')?.blur()
+      }
+    } else {
+      this.balBlur.emit()
+    }
   }
 
   private onPointerDown = () => (this.keyboardMode = false)
@@ -231,6 +285,7 @@ export class BalRadioButton implements ComponentInterface, Loggable {
           ...block.modifier(`column-tablet-${this.colSizeTablet}`).class(this.colSizeTablet > 1),
           ...block.modifier(`column-mobile-${this.colSizeMobile}`).class(this.colSizeMobile > 1),
         }}
+        onClick={this.onClick}
       >
         <button
           role="radio"
@@ -244,7 +299,6 @@ export class BalRadioButton implements ComponentInterface, Loggable {
             'bal-focusable': !this.disabled,
           }}
           disabled={disabled}
-          onClick={ev => this.clickHandler(ev)}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
         >

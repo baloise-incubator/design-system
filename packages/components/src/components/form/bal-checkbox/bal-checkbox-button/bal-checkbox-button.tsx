@@ -17,6 +17,7 @@ import { defaultElementStateState, ElementStateHandler, ElementStateState } from
 import { Loggable, Logger, LogInstance } from '../../../../utils/log'
 import { Props } from '../../../../types'
 import { FOCUS_KEYS } from '../../../../utils/focus-visible'
+import { isDescendant } from '../../../../utils/helpers'
 
 @Component({
   tag: 'bal-checkbox-button',
@@ -179,32 +180,74 @@ export class BalCheckboxButton implements ComponentInterface, Loggable {
   }
 
   /**
-   * EVENT HANDLER
+   * EVENT BINDING
    * ------------------------------------------------------
    */
 
-  private clickHandler = (event: MouseEvent) => {
-    if (!!this.disabled) {
-      stopEventBubbling(event)
+  private onClick = (event: Event) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const element = event.target as HTMLAnchorElement
+    if (element && element.href) {
+      return
     }
 
     const checkboxEl = this.el.querySelector('bal-checkbox')
-    if (checkboxEl) {
-      checkboxEl.click()
+    const targetEl = event.target
+
+    if (checkboxEl && targetEl) {
+      const isCheckbox = targetEl === checkboxEl || isDescendant(checkboxEl, targetEl)
+      if (!isCheckbox) {
+        stopEventBubbling(event)
+        checkboxEl.click()
+      }
     }
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
+  private onFocus = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const checkboxEl = this.el.querySelector('bal-checkbox')
+    const targetEl = event.target
 
     if (this.keyboardMode) {
       this.focused = true
     }
+
+    if (checkboxEl && targetEl) {
+      const isCheckbox = targetEl === checkboxEl || isDescendant(checkboxEl, targetEl)
+      if (isCheckbox) {
+        stopEventBubbling(event)
+        checkboxEl.querySelector('input')?.focus()
+      }
+    } else {
+      this.balFocus.emit()
+    }
   }
 
-  private onBlur = () => {
-    this.balBlur.emit()
+  private onBlur = (event: FocusEvent) => {
+    if (this.disabled || this.readonly) {
+      return stopEventBubbling(event)
+    }
+
+    const checkboxEl = this.el.querySelector('bal-checkbox')
+    const targetEl = event.target
+
     this.focused = false
+
+    if (checkboxEl && targetEl) {
+      const isCheckbox = targetEl === checkboxEl || isDescendant(checkboxEl, targetEl)
+      if (isCheckbox) {
+        stopEventBubbling(event)
+        checkboxEl.querySelector('input')?.blur()
+      }
+    } else {
+      this.balBlur.emit()
+    }
   }
 
   private onPointerDown = () => (this.keyboardMode = false)
@@ -231,6 +274,7 @@ export class BalCheckboxButton implements ComponentInterface, Loggable {
           ...block.modifier(`column-tablet-${this.colSizeTablet}`).class(this.colSizeTablet > 1),
           ...block.modifier(`column-mobile-${this.colSizeMobile}`).class(this.colSizeMobile > 1),
         }}
+        onClick={this.onClick}
       >
         <button
           role="checkbox"
@@ -244,7 +288,6 @@ export class BalCheckboxButton implements ComponentInterface, Loggable {
             'bal-focusable': !this.disabled,
           }}
           disabled={disabled}
-          onClick={ev => this.clickHandler(ev)}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
         >

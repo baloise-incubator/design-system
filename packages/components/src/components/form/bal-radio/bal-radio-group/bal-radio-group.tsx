@@ -222,20 +222,28 @@ export class RadioGroup implements ComponentInterface, Loggable {
    * ------------------------------------------------------
    */
 
-  @Listen('balFocus', { target: 'document' })
-  radioFocusListener(event: CustomEvent<FocusEvent>) {
-    const { target } = event
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
-      this.balFocus.emit(event.detail)
-      stopEventBubbling(event)
+  @Listen('balChange', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (isDescendant(this.el, ev.target as HTMLElement)) {
+      stopEventBubbling(ev)
     }
   }
 
-  @Listen('balBlur', { target: 'document' })
+  @Listen('balFocus', { capture: true, target: 'document' })
+  radioFocusListener(event: CustomEvent<FocusEvent>) {
+    const { target } = event
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
+      stopEventBubbling(event)
+      this.balFocus.emit(event.detail)
+    }
+  }
+
+  @Listen('balBlur', { capture: true, target: 'document' })
   radioBlurListener(event: CustomEvent<FocusEvent>) {
     const { target } = event
-    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-blur')) {
-      this.balFocus.emit(event.detail)
+    if (target && isDescendant(this.el, target) && hasTagName(target, 'bal-radio')) {
+      stopEventBubbling(event)
+      this.balBlur.emit(event.detail)
     }
   }
 
