@@ -30,10 +30,6 @@ const filterVariableStatement = nodes => {
   return filterDeclarationsAndStatements(nodes, 236)
 }
 
-const filterDeclarationList = nodes => {
-  return filterDeclarationsAndStatements(nodes, 254)
-}
-
 const filterVariableDeclaration = nodes => {
   return filterDeclarationsAndStatements(nodes, 249)
 }
@@ -127,7 +123,6 @@ module.exports = {
   filterDeclarationsAndStatements,
   filterVariableStatements,
   filterVariableStatement,
-  filterDeclarationList,
   parseSelectorComment,
   filterVariableDeclaration,
   filterFunctionStatements,
