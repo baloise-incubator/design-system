@@ -219,11 +219,11 @@ export const selectors = {
     /**
      * Native input element.
      */
-    input: byTestId('bal-select-input'),
+    input: 'input.data-test-select-input',
     /**
      * Select option.
      */
-    options: byTestId('bal-select-option'),
+    options: 'button.bal-select__option',
     /**
      * Multi select tag .
      */

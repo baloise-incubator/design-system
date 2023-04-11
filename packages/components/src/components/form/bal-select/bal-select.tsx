@@ -1039,6 +1039,7 @@ export class Select implements ComponentInterface, Loggable {
                   'is-danger': this.invalid,
                   'is-disabled': this.disabled || this.readonly,
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
+                  'data-test-select-input': true,
                 }}
                 data-testid="bal-select-input"
                 autocomplete={this.autocomplete}
