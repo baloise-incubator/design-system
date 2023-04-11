@@ -2034,6 +2034,10 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
+          * If `true` the radio is invisible, but sill active
+         */
+        "invisible": boolean;
+        /**
           * @deprecated If `true` the radio has no label
          */
         "isEmpty": undefined;
@@ -5934,6 +5938,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the radio is invisible, but sill active
+         */
+        "invisible"?: boolean;
         /**
           * @deprecated If `true` the radio has no label
          */

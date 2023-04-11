@@ -84,6 +84,11 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
   @Prop() label = ''
 
   /**
+   * If `true` the radio is invisible, but sill active
+   */
+  @Prop() invisible = false
+
+  /**
    * If `true` the radio has no label
    */
   @Prop() labelHidden = false
@@ -272,6 +277,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
       readonly: this.readonly,
       required: this.required,
       hidden: this.hidden,
+      invisible: this.invisible,
       invalid: this.invalid,
     }
   }
@@ -348,6 +354,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
           ...block.modifier('disabled').class(this.disabled || this.readonly),
           ...block.modifier('hovered').class(this.hovered),
           ...block.modifier('pressed').class(this.pressed),
+          ...block.modifier('invisible').class(this.invisible),
         }}
         onClick={this.onClick}
       >
@@ -371,26 +378,30 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
           ref={inputEl => (this.nativeInput = inputEl as HTMLInputElement)}
           {...inputAttributes}
         />
-        <LabelTag
-          class={{
-            ...labelEl.class(),
-            ...labelEl.modifier('checked').class(this.checked),
-            ...labelEl.modifier('radio').class(),
-            'data-test-radio-label': true,
-          }}
-          htmlFor={this.inputId}
-          {...inputAttributes}
-        >
-          <span
+        {!this.invisible ? (
+          <LabelTag
             class={{
-              ...labelTextEl.class(),
-              ...labelTextEl.modifier('hidden').class(this.labelHidden),
+              ...labelEl.class(),
+              ...labelEl.modifier('checked').class(this.checked),
+              ...labelEl.modifier('radio').class(),
+              'data-test-radio-label': true,
             }}
+            htmlFor={this.inputId}
+            {...inputAttributes}
           >
-            {this.label}
-            <slot></slot>
-          </span>
-        </LabelTag>
+            <span
+              class={{
+                ...labelTextEl.class(),
+                ...labelTextEl.modifier('hidden').class(this.labelHidden),
+              }}
+            >
+              {this.label}
+              <slot></slot>
+            </span>
+          </LabelTag>
+        ) : (
+          ''
+        )}
       </Host>
     )
   }

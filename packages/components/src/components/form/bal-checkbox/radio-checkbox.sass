@@ -71,6 +71,10 @@ bal-radio .bal-radio-checkbox__label
   +element(input)
     +hidden-input
   //
+  // hide native input
+  +modifier(invisible)
+    +hidden-input
+  //
   // set cursor
   &:not(#{&}--disabled)
     &,
