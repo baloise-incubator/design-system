@@ -81,19 +81,19 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
 
           const content = [
             `## Testing`,
-            SPACE,
+            '',
             'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.',
-            SPACE,
+            '',
             '- [More information about the installation and usage](?path=/docs/development-testing--page)',
-            SPACE,
+            '',
             '<!-- START: human documentation -->',
-            SPACE,
+            '',
             humanLines.join(NEWLINE).trim(),
-            SPACE,
+            '',
             '<!-- END: human documentation -->',
-            SPACE,
+            '',
             ...commandsToMarkdown(componentCommands),
-            SPACE,
+            '',
             ...selectorsList,
           ]
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))

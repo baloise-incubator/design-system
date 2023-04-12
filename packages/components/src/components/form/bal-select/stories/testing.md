@@ -1,11 +1,11 @@
 ## Testing
- 
+
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
- 
+
 - [More information about the installation and usage](?path=/docs/development-testing--page)
- 
+
 <!-- START: human documentation -->
- 
+
 ```typescript
 describe('Select', () => {
   const select = byTestId('my-select') // [data-testid="my-select"]
@@ -41,9 +41,9 @@ describe('multiple', () => {
   })
 })
 ```
- 
+
 <!-- END: human documentation -->
- 
+
 ### Component Commands
  
 A list of the custom commands for this specific component.
@@ -54,7 +54,7 @@ A list of the custom commands for this specific component.
 | `balSelectFindChips`         | Returns the closable select chips (only with multiselect). | `(options?: Partial<Loggable>): Chainable<JQuery>`                                                                           |
 | `balSelectShouldHaveOptions` | Asserts that the select has the given options.             | `(       labels: string[],       dataType?: 'label' \| 'value',       options?: Partial<Loggable>,     ): Chainable<JQuery>` |
  
- 
+
 ### Component Element Selectors
 
 | Selector       | Element               |
