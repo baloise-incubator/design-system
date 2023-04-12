@@ -13,7 +13,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 ### Component Element Selectors
 
-| Selector        | Element                  |
-| --------------- | ------------------------ |
-| footer.language | Language select element. |
+| Selector          | Element                  |
+| ----------------- | ------------------------ |
+| `footer.language` | Language select element. |
 

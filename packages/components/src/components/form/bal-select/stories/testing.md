@@ -57,9 +57,9 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector       | Element               |
-| -------------- | --------------------- |
-| select.input   | Native input element. |
-| select.options | Select option.        |
-| select.chips   | Multi select tag .    |
+| Selector         | Element               |
+| ---------------- | --------------------- |
+| `select.input`   | Native input element. |
+| `select.options` | Select option.        |
+| `select.chips`   | Multi select tag .    |
 

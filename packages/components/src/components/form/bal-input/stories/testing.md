@@ -24,7 +24,7 @@ describe('Input', () => {
 
 ### Component Element Selectors
 
-| Selector     | Element               |
-| ------------ | --------------------- |
-| input.native | Native input element. |
+| Selector       | Element               |
+| -------------- | --------------------- |
+| `input.native` | Native input element. |
 

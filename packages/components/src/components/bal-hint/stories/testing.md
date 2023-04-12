@@ -37,9 +37,9 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector     | Element               |
-| ------------ | --------------------- |
-| hint.trigger | Hint trigger element. |
-| hint.content | Hint content element. |
-| hint.close   | Hint close element.   |
+| Selector       | Element               |
+| -------------- | --------------------- |
+| `hint.trigger` | Hint trigger element. |
+| `hint.content` | Hint content element. |
+| `hint.close`   | Hint close element.   |
 

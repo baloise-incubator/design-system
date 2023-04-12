@@ -22,9 +22,9 @@ describe('Checkbox', () => {
 
 ### Component Element Selectors
 
-| Selector       | Element               |
-| -------------- | --------------------- |
-| checkbox.input | Native input element. |
-| checkbox.label | Label element.        |
-| checkbox.text  | Label span element.   |
+| Selector         | Element               |
+| ---------------- | --------------------- |
+| `checkbox.input` | Native input element. |
+| `checkbox.label` | Label element.        |
+| `checkbox.text`  | Label span element.   |
 

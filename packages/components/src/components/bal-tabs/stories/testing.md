@@ -38,8 +38,8 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector      | Element             |
-| ------------- | ------------------- |
-| tabs.tabItems | Tab item element.   |
-| tabs.action   | Tab action element. |
+| Selector        | Element             |
+| --------------- | ------------------- |
+| `tabs.tabItems` | Tab item element.   |
+| `tabs.action`   | Tab action element. |
 

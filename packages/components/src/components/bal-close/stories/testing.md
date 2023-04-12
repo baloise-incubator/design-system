@@ -13,7 +13,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 ### Component Element Selectors
 
-| Selector     | Element             |
-| ------------ | ------------------- |
-| close.button | The trigger button. |
+| Selector       | Element             |
+| -------------- | ------------------- |
+| `close.button` | The trigger button. |
 

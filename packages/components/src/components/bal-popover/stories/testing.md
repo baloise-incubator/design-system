@@ -39,8 +39,8 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector        | Element                  |
-| --------------- | ------------------------ |
-| popover.trigger | Popover trigger.         |
-| popover.content | Popover content element. |
+| Selector          | Element                  |
+| ----------------- | ------------------------ |
+| `popover.trigger` | Popover trigger.         |
+| `popover.content` | Popover content element. |
 

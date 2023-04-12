@@ -22,10 +22,10 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector              | Element               |
-| --------------------- | --------------------- |
-| inputStepper.decrease | Decrease button.      |
-| inputStepper.increase | Increase button.      |
-| inputStepper.native   | Native input element. |
-| inputStepper.text     | Text element.         |
+| Selector                | Element               |
+| ----------------------- | --------------------- |
+| `inputStepper.decrease` | Decrease button.      |
+| `inputStepper.increase` | Increase button.      |
+| `inputStepper.native`   | Native input element. |
+| `inputStepper.text`     | Text element.         |
 

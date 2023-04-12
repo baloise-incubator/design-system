@@ -37,7 +37,7 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector   | Element        |
-| ---------- | -------------- |
-| modal.main | Modal element. |
+| Selector     | Element        |
+| ------------ | -------------- |
+| `modal.main` | Modal element. |
 

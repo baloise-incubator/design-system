@@ -31,9 +31,9 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector    | Element              |
-| ----------- | -------------------- |
-| toast.main  | Toast element.       |
-| toast.label | Toast label element. |
-| toast.close | Toast close element. |
+| Selector      | Element              |
+| ------------- | -------------------- |
+| `toast.main`  | Toast element.       |
+| `toast.label` | Toast label element. |
+| `toast.close` | Toast close element. |
 

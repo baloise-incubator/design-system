@@ -21,7 +21,7 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector   | Element       |
-| ---------- | ------------- |
-| field.hint | Hint element. |
+| Selector     | Element       |
+| ------------ | ------------- |
+| `field.hint` | Hint element. |
 

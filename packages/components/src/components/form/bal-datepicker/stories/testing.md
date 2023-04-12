@@ -45,7 +45,7 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector         | Element               |
-| ---------------- | --------------------- |
-| datepicker.input | Native input element. |
+| Selector           | Element               |
+| ------------------ | --------------------- |
+| `datepicker.input` | Native input element. |
 

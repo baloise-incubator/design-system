@@ -37,8 +37,8 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector          | Element             |
-| ----------------- | ------------------- |
-| accordion.trigger | The trigger button. |
-| accordion.content | Content wrapper.    |
+| Selector            | Element             |
+| ------------------- | ------------------- |
+| `accordion.trigger` | The trigger button. |
+| `accordion.content` | Content wrapper.    |
 

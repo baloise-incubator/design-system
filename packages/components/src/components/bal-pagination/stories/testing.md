@@ -36,12 +36,12 @@ A list of the custom commands for this specific component.
 
 ### Component Element Selectors
 
-| Selector              | Element                                      |
-| --------------------- | -------------------------------------------- |
-| pagination.previous   | Pagination left control.                     |
-| pagination.next       | Pagination right control.                    |
-| pagination.list       | Pagination ul list.                          |
-| pagination.pageNumber | The number of the page.                      |
-| pagination.pages      | bal-button of the number of the page..       |
-| pagination.button     | The native button of the number of the page. |
+| Selector                | Element                                      |
+| ----------------------- | -------------------------------------------- |
+| `pagination.previous`   | Pagination left control.                     |
+| `pagination.next`       | Pagination right control.                    |
+| `pagination.list`       | Pagination ul list.                          |
+| `pagination.pageNumber` | The number of the page.                      |
+| `pagination.pages`      | bal-button of the number of the page..       |
+| `pagination.button`     | The native button of the number of the page. |
 
