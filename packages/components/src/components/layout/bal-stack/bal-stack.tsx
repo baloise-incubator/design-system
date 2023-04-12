@@ -32,7 +32,7 @@ export class BalStack implements ComponentInterface, Loggable {
    * Defines the text positioning like center, right or
    * default to start.
    */
-  @Prop() alignment: Props.BalStackAlignment = 'center'
+  @Prop() alignment: Props.BalStackAlignment = ''
 
   /**
    * Defines the space between the child elements. Default is normal.
