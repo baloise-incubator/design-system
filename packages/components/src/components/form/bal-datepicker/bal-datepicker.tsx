@@ -670,14 +670,30 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   private onYearSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const yearValue = parseInt(inputValue, 10)
-    const defaultDate = parse(this.defaultDate!) as Date
-    const maxDate = parse(this.max!) as Date
-    const month = defaultDate.getMonth() > maxDate.getMonth() ? maxDate.getMonth() : this.pointerDate.month
+    let month = undefined
+
+    if (this.defaultDate) {
+      const defaultDate = parse(this.defaultDate) as Date
+
+      if (this.max) {
+        const maxDate = parse(this.max) as Date
+        if (defaultDate.getMonth() > maxDate.getMonth()) {
+          month = maxDate.getMonth()
+        }
+      }
+
+      if (this.min) {
+        const minDate = parse(this.min) as Date
+        if (defaultDate.getMonth() < minDate.getMonth()) {
+          month = minDate.getMonth()
+        }
+      }
+    }
 
     this.pointerDate = {
       day: 1,
       year: yearValue,
-      month: month,
+      month: month !== undefined ? month : this.pointerDate.month,
     }
   }
 
