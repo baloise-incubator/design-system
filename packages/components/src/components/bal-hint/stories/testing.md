@@ -1,11 +1,11 @@
 ## Testing
-
+ 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
-
+ 
 - [More information about the installation and usage](?path=/docs/development-testing--page)
-
+ 
 <!-- START: human documentation -->
-
+ 
 ```typescript
 import { byTestId } from '@baloise/design-system-testing'
 
@@ -22,22 +22,24 @@ describe('Hint', () => {
   })
 })
 ```
-
+ 
 <!-- END: human documentation -->
-
-### Custom Commands
-
+ 
+### Component Commands
+ 
 A list of the custom commands for this specific component.
-
+ 
 | Command                  | Description                                                                    | Signature                                          |
 | ------------------------ | ------------------------------------------------------------------------------ | -------------------------------------------------- |
 | `balHintFindOverlay`     | Returns the hint content overlay with the title, content and the close button. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
 | `balHintFindCloseButton` | Returns the close button of the overlay content.                               | `(options?: Partial<Loggable>): Chainable<JQuery>` |
-
-### Custom Selectors
+ 
+ 
+### Component Element Selectors
 
 | Selector     | Element               |
 | ------------ | --------------------- |
 | hint.trigger | Hint trigger element. |
 | hint.content | Hint content element. |
 | hint.close   | Hint close element.   |
+
