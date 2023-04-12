@@ -143,6 +143,9 @@ export class RadioGroup implements ComponentInterface, Loggable {
     }
   }
 
+  /**
+   * Defines the column size like the grid.
+   */
   @Prop() columns: Props.BalRadioGroupColumns = 1
 
   @Watch('columns')
@@ -150,6 +153,9 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSize = value))
   }
 
+  /**
+   * Defines the column size for tablet and bigger like the grid.
+   */
   @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
 
   @Watch('columnsTablet')
@@ -157,6 +163,9 @@ export class RadioGroup implements ComponentInterface, Loggable {
     this.getRadioButtons().forEach(radioButton => (radioButton.colSizeTablet = value))
   }
 
+  /**
+   * Defines the column size for mobile and bigger like the grid.
+   */
   @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
 
   @Watch('columnsMobile')

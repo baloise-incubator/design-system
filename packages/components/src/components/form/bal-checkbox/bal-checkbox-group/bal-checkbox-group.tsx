@@ -131,7 +131,6 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
 
   @Watch('value')
   valueChanged(_value: any[], oldValue: any[]) {
-    console.log('valueChanged', this.control, this.value, _value)
     if (this.control) {
       if (!areArraysEqual(this.value, oldValue)) {
         this.onOptionChange()
@@ -142,6 +141,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     }
   }
 
+  /**
+   * Defines the column size like the grid.
+   */
   @Prop() columns: Props.BalRadioGroupColumns = 1
 
   @Watch('columns')
@@ -149,6 +151,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSize = value))
   }
 
+  /**
+   * Defines the column size for tablet and bigger like the grid.
+   */
   @Prop() columnsTablet: Props.BalRadioGroupColumns = 1
 
   @Watch('columnsTablet')
@@ -156,6 +161,9 @@ export class CheckboxGroup implements ComponentInterface, Loggable {
     this.getCheckboxButtons().forEach(checkboxButton => (checkboxButton.colSizeTablet = value))
   }
 
+  /**
+   * Defines the column size for mobile and bigger like the grid.
+   */
   @Prop() columnsMobile: Props.BalRadioGroupColumns = 1
 
   @Watch('columnsMobile')

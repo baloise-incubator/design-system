@@ -482,8 +482,17 @@ export namespace Components {
         "setChecked": (checked?: boolean) => Promise<void>;
     }
     interface BalCheckboxGroup {
+        /**
+          * Defines the column size like the grid.
+         */
         "columns": Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+         */
         "columnsMobile": Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+         */
         "columnsTablet": Props.BalRadioGroupColumns;
         /**
           * If `true` it acts as the main form control
@@ -551,7 +560,7 @@ export namespace Components {
          */
         "direction": Props.BalContentDirection;
         /**
-          * Defines the space between the child elements.
+          * Defines the space between the child elements. Default is xx-small.
          */
         "space": Props.BalContentSpace;
     }
@@ -2130,8 +2139,17 @@ export namespace Components {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        /**
+          * Defines the column size like the grid.
+         */
         "columns": Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+         */
         "columnsMobile": Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+         */
         "columnsTablet": Props.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -2392,7 +2410,7 @@ export namespace Components {
     }
     interface BalStack {
         /**
-          * Defines the text positioning like center, right or default to left.
+          * Defines the text positioning like center, right or default to start.
          */
         "alignment": Props.BalStackAlignment;
         /**
@@ -2400,7 +2418,7 @@ export namespace Components {
          */
         "direction": Props.BalStackDirection;
         /**
-          * Defines the space between the child elements.
+          * Defines the space between the child elements. Default is normal.
          */
         "space": Props.BalStackSpace;
     }
@@ -4408,8 +4426,17 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
     }
     interface BalCheckboxGroup {
+        /**
+          * Defines the column size like the grid.
+         */
         "columns"?: Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+         */
         "columnsMobile"?: Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+         */
         "columnsTablet"?: Props.BalRadioGroupColumns;
         /**
           * If `true` it acts as the main form control
@@ -4488,7 +4515,7 @@ declare namespace LocalJSX {
          */
         "direction"?: Props.BalContentDirection;
         /**
-          * Defines the space between the child elements.
+          * Defines the space between the child elements. Default is xx-small.
          */
         "space"?: Props.BalContentSpace;
     }
@@ -6116,8 +6143,17 @@ declare namespace LocalJSX {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        /**
+          * Defines the column size like the grid.
+         */
         "columns"?: Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for mobile and bigger like the grid.
+         */
         "columnsMobile"?: Props.BalRadioGroupColumns;
+        /**
+          * Defines the column size for tablet and bigger like the grid.
+         */
         "columnsTablet"?: Props.BalRadioGroupColumns;
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -6389,7 +6425,7 @@ declare namespace LocalJSX {
     }
     interface BalStack {
         /**
-          * Defines the text positioning like center, right or default to left.
+          * Defines the text positioning like center, right or default to start.
          */
         "alignment"?: Props.BalStackAlignment;
         /**
@@ -6397,7 +6433,7 @@ declare namespace LocalJSX {
          */
         "direction"?: Props.BalStackDirection;
         /**
-          * Defines the space between the child elements.
+          * Defines the space between the child elements. Default is normal.
          */
         "space"?: Props.BalStackSpace;
     }

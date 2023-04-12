@@ -206,17 +206,6 @@ export class BalRadioButton implements ComponentInterface, Loggable {
     }
   }
 
-  // private clickHandler = (event: MouseEvent) => {
-  //   if (!!this.disabled) {
-  //     stopEventBubbling(event)
-  //   }
-
-  //   const radioEl = this.el.querySelector('bal-radio')
-  //   if (radioEl) {
-  //     radioEl.click()
-  //   }
-  // }
-
   private onFocus = (event: FocusEvent) => {
     if (this.disabled || this.readonly) {
       return stopEventBubbling(event)

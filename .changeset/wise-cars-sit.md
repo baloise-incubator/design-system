@@ -14,3 +14,8 @@ New radio and checkbox style:
 
 - [bal-checkbox button](https://baloise-design-system.vercel.app/?path=/docs/components-form-checkbox--basic#checkbox-button)
 - [bal-radio button](https://baloise-design-system.vercel.app/?path=/docs/components-form-radio--basic#radio-button)
+
+Updated bal-icon component. New colors, sizes are added and state properties invalid and disabled. Moreover, the color `auto` can
+be used to leave the color as it is.
+
+Check out the updated [documentation](https://baloise-design-system.vercel.app/?path=/docs/components-icon--basic) for the bal-icon.

@@ -1,6 +1,5 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../../stories/utils'
-import readme from '../readme.md'
 import { Basic } from './bal-checkbox.stories'
 
 <bal-doc-banner id="story--components-form-checkbox--basic" >Checkbox</bal-doc-banner>
@@ -109,9 +108,9 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ### Checkbox Button
 
-The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic).
+The content can be created flexible since we use the components [stack component](?path=/docs/components-layout-stack--basic) and [content component](?path=/docs/components-layout-content--basic).
 
-Invalid and disabled are also supported.
+The states invalid and disabled are also supported.
 
 <Canvas>
   <Story id="components-form-checkbox--checkbox-button" />
@@ -131,7 +130,13 @@ By default on mobile we only support one item per line. To overwrite this use th
 
 ## Component Api
 
+import readme from '../readme.md'
+import checkboxGroup from '../bal-checkbox-group/readme.md'
+import checkboxButton from '../bal-checkbox-button/readme.md'
+
 <Description markdown={readme} />
+<Description markdown={checkboxGroup} />
+<Description markdown={checkboxButton} />
 
 <br />
 

@@ -26,18 +26,18 @@ export class BalContent implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is verticaly.
    */
-  @Prop() direction: Props.BalContentDirection = ''
+  @Prop() direction: Props.BalContentDirection = 'column'
 
   /**
    * Defines the text positioning like center, end or
    * default to start.
    */
-  @Prop() alignment: Props.BalContentAlignment = ''
+  @Prop() alignment: Props.BalContentAlignment = 'start'
 
   /**
-   * Defines the space between the child elements.
+   * Defines the space between the child elements. Default is xx-small.
    */
-  @Prop() space: Props.BalContentSpace = ''
+  @Prop() space: Props.BalContentSpace = 'xx-small'
 
   /**
    * RENDER

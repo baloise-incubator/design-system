@@ -26,18 +26,18 @@ export class BalStack implements ComponentInterface, Loggable {
    * Defines the position of the child elements if they
    * are showed verticaly or horizontally. Default is horizontally.
    */
-  @Prop() direction: Props.BalStackDirection = ''
+  @Prop() direction: Props.BalStackDirection = 'row'
 
   /**
    * Defines the text positioning like center, right or
-   * default to left.
+   * default to start.
    */
-  @Prop() alignment: Props.BalStackAlignment = ''
+  @Prop() alignment: Props.BalStackAlignment = 'center'
 
   /**
-   * Defines the space between the child elements.
+   * Defines the space between the child elements. Default is normal.
    */
-  @Prop() space: Props.BalStackSpace = ''
+  @Prop() space: Props.BalStackSpace = 'normal'
 
   /**
    * RENDER

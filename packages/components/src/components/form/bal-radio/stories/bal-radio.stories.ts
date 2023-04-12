@@ -168,7 +168,7 @@ export const RadioButton = args => ({
         <bal-stack>
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
           <bal-content>
-            <bal-label>Radio Button 1</bal-label>
+            <bal-label>Simple radio button</bal-label>
           </bal-content>
           <bal-radio label-hidden name="radio-example" value="1"></bal-radio>
         </bal-stack>
@@ -177,7 +177,7 @@ export const RadioButton = args => ({
         <bal-stack>
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
           <bal-content>
-            <bal-label>Radio Button 2</bal-label>
+            <bal-label>Radio button with a description</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
           </bal-content>
           <bal-radio label-hidden name="radio-example" value="2"></bal-radio>
@@ -187,7 +187,7 @@ export const RadioButton = args => ({
         <bal-stack>
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
           <bal-content>
-            <bal-label>Radio Button 3</bal-label>
+            <bal-label>Invalid button</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
           </bal-content>
           <bal-radio label-hidden name="radio-example" value="3"></bal-radio>
@@ -197,7 +197,7 @@ export const RadioButton = args => ({
         <bal-stack>
           <bal-icon :svg="autoSvg" size="large" color="auto"></bal-icon>
           <bal-content>
-            <bal-label>Radio Button 4</bal-label>
+            <bal-label>Disabled button</bal-label>
             <bal-text size="small">Radio input is normally displayed in a radio group. The user can only select one option from a number of choices.</bal-text>
           </bal-content>
           <bal-radio label-hidden name="radio-example" value="4"></bal-radio>

@@ -4,11 +4,11 @@ export namespace Props {
   export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
 
   export type BalContentDirection = 'column' | 'row' | ''
-  export type BalContentSpace = 'x-small' | 'small' | 'normal' | ''
-  export type BalContentAlignment = 'center' | 'end' | ''
+  export type BalContentSpace = 'xx-small' | 'x-small' | 'small' | 'normal' | ''
+  export type BalContentAlignment = 'start' | 'center' | 'end' | ''
 
   export type BalStackDirection = 'row' | 'column' | ''
-  export type BalStackSpace = 'large' | 'x-large' | 'xx-large' | ''
+  export type BalStackSpace = 'normal' | 'large' | 'x-large' | 'xx-large' | ''
   export type BalStackAlignment = 'center' | 'end' | 'start' | ''
 
   export type BalBadgeSize = 'small' | 'large' | ''
