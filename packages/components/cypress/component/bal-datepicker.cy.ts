@@ -17,6 +17,28 @@ describe('bal-datepicker.cy.ts', () => {
     })
     cy.waitForDesignSystem()
   })
+  it('should open last available month if month from defaultDate is bigger that max month', () => {
+    cy.mount(BalDatepicker, {
+      props: {
+        defaultDate: '2023-04-12',
+        min: '2023-01-12',
+        max: '2024-02-28',
+      },
+    })
+    cy.waitForDesignSystem()
+
+    cy.get('bal-datepicker')
+      .click()
+      .waitForComponents()
+      .find('.bal-datepicker-pagination__month-and-year__select--year select')
+      .select(1)
+      .waitForComponents()
+
+    cy.get('bal-datepicker')
+      .find('.bal-datepicker-grid__row .bal-datepicker-grid__cell')
+      .first()
+      .should('not.be.disabled')
+  })
   it('should fire balChange when field is cleared', () => {
     const onBalChangeSpy = cy.spy().as('balChange')
     cy.mount(BalDatepicker, {
