@@ -19,13 +19,13 @@ describe('Snackbar', () => {
 <!-- END: human documentation -->
 
 ### Component Commands
- 
+
 A list of the custom commands for this specific component.
- 
+
 | Command           | Description                    | Signature                                          |
 | ----------------- | ------------------------------ | -------------------------------------------------- |
 | `balSnackbarFind` | Returns the visible snackbars. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
- 
+
 
 ### Component Element Selectors
 

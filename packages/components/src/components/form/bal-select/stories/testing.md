@@ -45,15 +45,15 @@ describe('multiple', () => {
 <!-- END: human documentation -->
 
 ### Component Commands
- 
+
 A list of the custom commands for this specific component.
- 
+
 | Command                      | Description                                                | Signature                                                                                                                    |
 | ---------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `balSelectFindOptions`       | Returns the select options.                                | `(options?: Partial<Loggable>): Chainable<JQuery>`                                                                           |
 | `balSelectFindChips`         | Returns the closable select chips (only with multiselect). | `(options?: Partial<Loggable>): Chainable<JQuery>`                                                                           |
 | `balSelectShouldHaveOptions` | Asserts that the select has the given options.             | `(       labels: string[],       dataType?: 'label' \| 'value',       options?: Partial<Loggable>,     ): Chainable<JQuery>` |
- 
+
 
 ### Component Element Selectors
 

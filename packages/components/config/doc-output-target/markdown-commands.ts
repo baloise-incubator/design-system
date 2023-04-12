@@ -16,9 +16,9 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
   }
 
   content.push(`### Component Commands`)
-  content.push(SPACE)
+  content.push('')
   content.push(`A list of the custom commands for this specific component.`)
-  content.push(SPACE)
+  content.push('')
 
   const table = new MarkdownTable()
 
@@ -29,7 +29,7 @@ export const commandsToMarkdown = (commands: TestingCommand[] = []) => {
   })
 
   content.push(...table.toMarkdown())
-  content.push(SPACE)
+  content.push('')
 
   return content
 }

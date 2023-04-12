@@ -21,13 +21,13 @@ describe('Toast', () => {
 <!-- END: human documentation -->
 
 ### Component Commands
- 
+
 A list of the custom commands for this specific component.
- 
+
 | Command        | Description                 | Signature                                          |
 | -------------- | --------------------------- | -------------------------------------------------- |
 | `balToastFind` | Returns the visible toasts. | `(options?: Partial<Loggable>): Chainable<JQuery>` |
- 
+
 
 ### Component Element Selectors
 
