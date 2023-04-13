@@ -48,13 +48,23 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
 
   /**
+   * @deprecated use `active` property instead.
    * If `true` the accordion is open.
    */
-  @Prop({ mutable: true, reflect: true }) value = false
+  @Prop() value = false
   @Watch('value')
-  protected async valueChanged(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue) {
-      this.balChange.emit(newValue)
+  protected async valueChanged(newValue: boolean) {
+    this.activeChanged(newValue, this.active)
+  }
+
+  /**
+   * If `true` the accordion is open.
+   */
+  @Prop({ mutable: true, reflect: true }) active = false
+  @Watch('active')
+  protected async activeChanged(newActive: boolean, oldActive: boolean) {
+    if (newActive !== oldActive) {
+      this.balChange.emit(newActive)
     }
   }
 
@@ -91,6 +101,12 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * If `true` the accordion is used on the bottom of a card
    */
   @Prop() card = false
+
+  /**
+   * @internal
+   * defines the version of the component
+   */
+  @Prop() version = 1
 
   /**
    * Emitted when the accordion has opened or closed
@@ -135,28 +151,57 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    * Opens the accordion
    */
   @Method()
-  async present() {
-    this.expandAccordion()
+  async present(): Promise<boolean> {
+    return this.expand()
   }
 
   /**
    * Closes the accordion
    */
   @Method()
-  async dismiss() {
-    this.collapseAccordion()
+  async dismiss(): Promise<boolean> {
+    return this.collapse()
   }
 
   /**
    * Triggers the accordion
    */
   @Method()
-  async toggle() {
-    if (this.value) {
-      this.collapseAccordion()
+  async toggle(): Promise<boolean> {
+    if (this.active) {
+      return this.collapse()
     } else {
-      this.expandAccordion()
+      return this.expand()
     }
+  }
+
+  /**
+   * GETTERS
+   * ------------------------------------------------------
+   */
+
+  private get summaryElement(): HTMLBalAccordionSummaryElement | null {
+    return this.el?.querySelector(`#${this.componentId}-summary`) || null
+  }
+
+  private get triggerElement(): HTMLBalAccordionTriggerElement | null {
+    return this.el?.querySelector(`#${this.componentId}-trigger`) || null
+  }
+
+  private get detailsElement(): HTMLBalAccordionDetailsElement | HTMLDivElement | null {
+    if (this.version === 1) {
+      return this.contentEl || null
+    }
+
+    return this.el?.querySelector(`#${this.componentId}-details`) || null
+  }
+
+  private get detailsWrapperElement(): HTMLDivElement | null {
+    if (this.version === 1) {
+      return this.contentElWrapper || null
+    }
+
+    return this.el?.querySelector(`#${this.componentId}-details > div`) || null
   }
 
   /**
@@ -165,24 +210,59 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
 
   private updateState = (initialUpdate = false) => {
-    if (this.value) {
-      this.expandAccordion(initialUpdate)
+    if (this.active) {
+      this.expand(initialUpdate)
     } else {
-      this.collapseAccordion(initialUpdate)
+      this.collapse(initialUpdate)
     }
   }
 
-  private expandAccordion = (initialUpdate = false) => {
-    this.value = true
+  private setState = (state: AccordionState) => {
+    this.state = state
+    if (this.version === 2) {
+      this.updateTriggerElement()
+      this.updateDetailsElement()
+      this.updateSummaryElement()
+    }
+  }
 
-    const { contentEl, contentElWrapper } = this
-    if (initialUpdate || contentEl === undefined || contentElWrapper === undefined) {
-      this.state = AccordionState.Expanded
-      return
+  private updateDetailsElement = () => {
+    const detailsElement = this.detailsElement as HTMLBalAccordionDetailsElement | null
+    if (detailsElement) {
+      detailsElement.state = this.state
+      detailsElement.active = this.active
+      detailsElement.animated = this.animated
+    }
+  }
+
+  private updateTriggerElement = () => {
+    const triggerElement = this.triggerElement
+    if (triggerElement) {
+      triggerElement.state = this.state
+      triggerElement.active = this.active
+    }
+  }
+
+  private updateSummaryElement = () => {
+    const summaryElement = this.summaryElement
+    if (summaryElement) {
+      summaryElement.state = this.state
+      summaryElement.active = this.active
+    }
+  }
+
+  private expand = (initialUpdate = false): boolean => {
+    this.active = true
+
+    const detailsElement = this.detailsElement
+    const detailsWrapperElement = this.detailsWrapperElement
+    if (initialUpdate || detailsElement === null || detailsWrapperElement === null) {
+      this.setState(AccordionState.Expanded)
+      return this.active
     }
 
     if (this.state === AccordionState.Expanded) {
-      return
+      return this.active
     }
 
     if (this.currentRaf !== undefined) {
@@ -191,35 +271,37 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
     if (this.shouldAnimate()) {
       raf(() => {
-        this.state = AccordionState.Expanding
+        this.setState(AccordionState.Expanding)
 
         this.currentRaf = raf(async () => {
-          const contentHeight = contentElWrapper.offsetHeight
-          const waitForTransition = transitionEndAsync(contentEl, 300)
-          contentEl.style.setProperty('max-height', `${contentHeight}px`)
+          const contentHeight = detailsWrapperElement.offsetHeight
+          const waitForTransition = transitionEndAsync(detailsElement, 300)
+          detailsElement.style.setProperty('max-height', `${contentHeight}px`)
 
           await waitForTransition
 
-          this.state = AccordionState.Expanded
-          contentEl.style.removeProperty('max-height')
+          this.setState(AccordionState.Expanded)
+          detailsElement.style.removeProperty('max-height')
         })
       })
     } else {
-      this.state = AccordionState.Expanded
+      this.setState(AccordionState.Expanded)
     }
+
+    return this.active
   }
 
-  private collapseAccordion = (initialUpdate = false) => {
-    this.value = false
+  private collapse = (initialUpdate = false): boolean => {
+    this.active = false
 
-    const { contentEl } = this
-    if (initialUpdate || contentEl === undefined) {
-      this.state = AccordionState.Collapsed
-      return
+    const detailsElement = this.detailsElement
+    if (initialUpdate || detailsElement === null) {
+      this.setState(AccordionState.Collapsed)
+      return this.active
     }
 
     if (this.state === AccordionState.Collapsed) {
-      return
+      return this.active
     }
 
     if (this.currentRaf !== undefined) {
@@ -228,23 +310,25 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
 
     if (this.shouldAnimate()) {
       this.currentRaf = raf(async () => {
-        const contentHeight = contentEl.offsetHeight
-        contentEl.style.setProperty('max-height', `${contentHeight}px`)
+        const contentHeight = detailsElement.offsetHeight
+        detailsElement.style.setProperty('max-height', `${contentHeight}px`)
 
         raf(async () => {
-          const waitForTransition = transitionEndAsync(contentEl, 300)
+          const waitForTransition = transitionEndAsync(detailsElement, 300)
 
-          this.state = AccordionState.Collapsing
+          this.setState(AccordionState.Collapsing)
 
           await waitForTransition
 
-          this.state = AccordionState.Collapsed
-          contentEl.style.removeProperty('max-height')
+          this.setState(AccordionState.Collapsed)
+          detailsElement.style.removeProperty('max-height')
         })
       })
     } else {
-      this.state = AccordionState.Collapsed
+      this.setState(AccordionState.Collapsed)
     }
+
+    return this.active
   }
 
   private shouldAnimate = () => {
@@ -261,8 +345,27 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
    */
 
   render() {
-    const label = this.value ? this.closeLabel : this.openLabel
-    const icon = this.value ? this.closeIcon : this.openIcon
+    return this.version === 2 ? this.renderVersion2() : this.renderVersion1()
+  }
+
+  renderVersion2() {
+    const block = BEM.block('accordion')
+
+    return (
+      <Host
+        id={this.componentId}
+        class={{
+          ...block.class(),
+          ...block.modifier('card-v2').class(this.card),
+          ...block.modifier('animated').class(this.animated),
+        }}
+      ></Host>
+    )
+  }
+
+  renderVersion1() {
+    const label = this.active ? this.closeLabel : this.openLabel
+    const icon = this.active ? this.closeIcon : this.openIcon
     const block = BEM.block('accordion')
 
     const expanded = this.state === AccordionState.Expanded || this.state === AccordionState.Expanding
@@ -274,8 +377,8 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
         id={this.componentId}
         class={{
           ...block.class(),
-          ...block.modifier('card').class(this.card),
-          ...block.modifier('active').class(this.value),
+          ...block.modifier('card-v1').class(this.card),
+          ...block.modifier('active').class(this.active),
           ...block.modifier('expanding').class(this.state === AccordionState.Expanding),
           ...block.modifier('expanded').class(this.state === AccordionState.Expanded),
           ...block.modifier('collapsing').class(this.state === AccordionState.Collapsing),
