@@ -451,7 +451,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
               ...labelEl.modifier('flat').class(this.flat),
             }}
             htmlFor={this.inputId}
-            data-testid="bal-checkbox-text"
+            data-testid="bal-checkbox-label"
           >
             <span
               class={{
@@ -459,6 +459,7 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
                 ...labelTextEl.modifier('hidden').class(this.labelHidden),
                 ...labelTextEl.modifier('flat').class(this.flat),
               }}
+              data-testid="bal-checkbox-text"
             >
               {this.label}
               <slot></slot>
