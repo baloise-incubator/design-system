@@ -100,7 +100,7 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
 
   private onClick = (event: MouseEvent) => {
     stopEventBubbling(event)
-    this.parentAccordionElement?.toggle()
+    this.parentAccordionElement?.humanToggle()
   }
 
   /**
@@ -153,8 +153,9 @@ export class AccordionTrigger implements ComponentInterface, Loggable {
             }}
             id={`${id}-button`}
             aria-controls={`${this.parentAccordionId}-details-content`}
+            aria-label="accordion trigger"
             part={buttonPart}
-            data-testid="bal-accordion-button"
+            data-testid="bal-accordion-trigger"
             onClick={this.onClick}
           >
             <bal-icon turn={turn} name={icon}></bal-icon>

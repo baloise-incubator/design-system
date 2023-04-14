@@ -64,7 +64,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Watch('active')
   protected async activeChanged(newActive: boolean, oldActive: boolean) {
     if (newActive !== oldActive) {
-      this.balChange.emit(newActive)
+      this.active = newActive
     }
   }
 
@@ -173,6 +173,21 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
     } else {
       return this.expand()
     }
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async humanToggle(): Promise<boolean> {
+    if (this.active) {
+      await this.collapse()
+    } else {
+      await this.expand()
+    }
+
+    this.balChange.emit(this.active)
+    return this.active
   }
 
   /**
@@ -340,6 +355,15 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   }
 
   /**
+   * EVENT BINDING
+   * ------------------------------------------------------
+   */
+
+  private onTriggerClickV1 = () => {
+    this.humanToggle()
+  }
+
+  /**
    * RENDER
    * ------------------------------------------------------
    */
@@ -356,6 +380,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
         id={this.componentId}
         class={{
           ...block.class(),
+          ...block.modifier('active').class(this.active),
           ...block.modifier('card-v2').class(this.card),
           ...block.modifier('animated').class(this.animated),
         }}
@@ -396,16 +421,17 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
               ...block.element('trigger').class(),
               ...block.element('trigger').modifier('card').class(this.card),
             }}
+            data-testid="bal-accordion-summary"
           >
             <bal-button
               id={`${this.componentId}-button`}
               aria-controls={`${this.componentId}-content`}
               part={buttonPart}
-              data-testid="bal-accordion-button"
+              data-testid="bal-accordion-trigger"
               expanded={true}
               color={'info'}
               icon={icon}
-              onClick={() => this.toggle()}
+              onClick={this.onTriggerClickV1}
             >
               {label}
             </bal-button>
@@ -423,7 +449,7 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           >
             <div
               id={`${this.componentId}-content-wrapper`}
-              data-testid="bal-accordion-content"
+              data-testid="bal-accordion-details"
               class={{
                 ...block.element('content').element('wrapper').class(),
               }}

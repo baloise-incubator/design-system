@@ -90,7 +90,7 @@ export class AccordionSummary implements ComponentInterface, Loggable {
 
   private onClick = (event: MouseEvent) => {
     stopEventBubbling(event)
-    this.parentAccordionElement?.toggle()
+    this.parentAccordionElement?.humanToggle()
   }
 
   /**

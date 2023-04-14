@@ -44,6 +44,7 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": () => Promise<boolean>;
+        "humanToggle": () => Promise<boolean>;
         /**
           * BalIcon of the open trigger button
          */
