@@ -424,8 +424,8 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
           class={{
             ...inputEl.class(),
             ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
-            'data-test-checkbox-input': true,
           }}
+          data-testid="bal-checkbox-input"
           type="checkbox"
           id={this.inputId}
           name={this.name}
@@ -449,9 +449,9 @@ export class Checkbox implements ComponentInterface, FormInput<any>, Loggable {
               ...labelEl.modifier('checkbox').class(),
               ...labelEl.modifier('hidden').class(this.labelHidden),
               ...labelEl.modifier('flat').class(this.flat),
-              'data-test-checkbox-label': true,
             }}
             htmlFor={this.inputId}
+            data-testid="bal-checkbox-text"
           >
             <span
               class={{

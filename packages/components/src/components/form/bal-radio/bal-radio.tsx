@@ -421,8 +421,8 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
           class={{
             ...inputEl.class(),
             ...inputEl.modifier('select-button').class(this.interface === 'select-button'),
-            'data-test-radio-input': true,
           }}
+          data-testid="bal-radio-input"
           type="radio"
           id={this.inputId}
           name={this.name}
@@ -443,8 +443,8 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
               ...labelEl.class(),
               ...labelEl.modifier('checked').class(this.checked),
               ...labelEl.modifier('radio').class(),
-              'data-test-radio-label': true,
             }}
+            data-testid="bal-radio-label"
             htmlFor={this.inputId}
             {...inputAttributes}
           >
@@ -453,6 +453,7 @@ export class Radio implements ComponentInterface, ComponentElementState, Loggabl
                 ...labelTextEl.class(),
                 ...labelTextEl.modifier('hidden').class(this.labelHidden),
               }}
+              data-testid="bal-radio-text"
             >
               {this.label}
               <slot></slot>
