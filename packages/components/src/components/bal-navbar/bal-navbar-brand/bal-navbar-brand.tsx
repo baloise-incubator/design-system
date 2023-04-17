@@ -1,13 +1,13 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
-import { BodyScrollBlocker } from '../../../utils/toggle-scrolling-body'
 import { Props } from '../../../types'
+import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-brand',
 })
 export class NavbarBrand {
-  private bodyScrollBlocker = BodyScrollBlocker()
+  private scrollHandler = ScrollHandler()
 
   @Element() el!: HTMLElement
 
@@ -71,12 +71,17 @@ export class NavbarBrand {
 
   connectedCallback() {
     this.migrateLinkTarget()
+    this.scrollHandler.connect()
   }
 
   componentWillLoad() {
     if (window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
+  }
+
+  disconnectedCallback() {
+    this.scrollHandler.disconnect()
   }
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
@@ -89,9 +94,9 @@ export class NavbarBrand {
     this.isMenuActive = isMenuActive
 
     if (this.isMenuActive) {
-      this.bodyScrollBlocker.block()
+      this.scrollHandler.disable()
     } else {
-      this.bodyScrollBlocker.allow()
+      this.scrollHandler.enable()
     }
 
     const navbar = this.el.closest('bal-navbar')
