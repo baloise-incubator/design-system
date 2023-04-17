@@ -38,6 +38,7 @@
   "files": [
     "dist/",
     "loader/",
+    "hydrate/",
     "src/styles/",
     "src/components/**/*.sass",
     "src/components/**/*.scss"

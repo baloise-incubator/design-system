@@ -99,6 +99,7 @@ cypress/videos
 
 # Design System
 packages/components/loader/
+packages/components/hydrate/
 packages/components/lib/
 packages/components/www/
 packages/components/.storybook/vue/
