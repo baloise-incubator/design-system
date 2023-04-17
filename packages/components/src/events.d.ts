@@ -70,4 +70,64 @@ export namespace Events {
   export type BalInputTimeChange = CustomEvent<BalInputTimeChangeDetail>
   export type BalInputTimeInputDetail = string | undefined
   export type BalInputTimeInput = CustomEvent<BalInputTimeInputDetail>
+
+  export type BalAccordionWillAnimateDetail = void
+  export interface BalAccordionWillAnimate extends CustomEvent {
+    detail: BalAccordionWillAnimateDetail
+    target: HTMLBalAccordionElement
+  }
+
+  export type BalAccordionDidAnimateDetail = void
+  export interface BalAccordionDidAnimate extends CustomEvent {
+    detail: BalAccordionDidAnimateDetail
+    target: HTMLBalAccordionElement
+  }
+
+  export type BalTabsWillAnimateDetail = void
+  export interface BalTabsWillAnimate extends CustomEvent {
+    detail: BalTabsWillAnimateDetail
+    target: HTMLBalTabsElement
+  }
+
+  export type BalTabsDidAnimateDetail = void
+  export interface BalTabsDidAnimate extends CustomEvent {
+    detail: BalTabsDidAnimateDetail
+    target: HTMLBalTabsElement
+  }
+
+  export type BalListItemWillAnimateDetail = void
+  export interface BalListItemWillAnimate extends CustomEvent {
+    detail: BalListItemWillAnimateDetail
+    target: HTMLBalListItemElement
+  }
+
+  export type BalListItemDidAnimateDetail = void
+  export interface BalListItemDidAnimate extends CustomEvent {
+    detail: BalListItemDidAnimateDetail
+    target: HTMLBalListItemElement
+  }
+
+  export type BalNavbarBrandWillAnimateDetail = void
+  export interface BalNavbarBrandWillAnimate extends CustomEvent {
+    detail: BalNavbarBrandWillAnimateDetail
+    target: HTMLBalNavbarBrandElement
+  }
+
+  export type BalNavbarBrandDidAnimateDetail = void
+  export interface BalNavbarBrandDidAnimate extends CustomEvent {
+    detail: BalNavbarBrandDidAnimateDetail
+    target: HTMLBalNavbarBrandElement
+  }
+
+  export type BalPopoverWillAnimateDetail = void
+  export interface BalPopoverWillAnimate extends CustomEvent {
+    detail: BalPopoverWillAnimateDetail
+    target: HTMLBalPopoverElement
+  }
+
+  export type BalPopoverDidAnimateDetail = void
+  export interface BalPopoverDidAnimate extends CustomEvent {
+    detail: BalPopoverDidAnimateDetail
+    target: HTMLBalPopoverElement
+  }
 }

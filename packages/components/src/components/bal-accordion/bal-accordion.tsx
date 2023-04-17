@@ -114,6 +114,16 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
   @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
 
   /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalAccordionWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalAccordionDidAnimateDetail>
+
+  /**
    * LIFECYCLE
    * ------------------------------------------------------
    */
@@ -292,15 +302,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const contentHeight = detailsWrapperElement.offsetHeight
           const waitForTransition = transitionEndAsync(detailsElement, 300)
           detailsElement.style.setProperty('max-height', `${contentHeight}px`)
+          this.balWillAnimate.emit()
 
           await waitForTransition
 
           this.setState(AccordionState.Expanded)
           detailsElement.style.removeProperty('max-height')
+          this.balDidAnimate.emit()
         })
       })
     } else {
+      this.balWillAnimate.emit()
       this.setState(AccordionState.Expanded)
+      this.balDidAnimate.emit()
     }
 
     return this.active
@@ -332,15 +346,19 @@ export class Accordion implements ComponentInterface, BalConfigObserver, Loggabl
           const waitForTransition = transitionEndAsync(detailsElement, 300)
 
           this.setState(AccordionState.Collapsing)
+          this.balDidAnimate.emit()
 
           await waitForTransition
 
           this.setState(AccordionState.Collapsed)
           detailsElement.style.removeProperty('max-height')
+          this.balDidAnimate.emit()
         })
       })
     } else {
+      this.balDidAnimate.emit()
       this.setState(AccordionState.Collapsed)
+      this.balDidAnimate.emit()
     }
 
     return this.active
