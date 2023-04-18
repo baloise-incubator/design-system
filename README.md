@@ -1,3 +1,13 @@
+<br />
+
+<a href="https://github.com/baloise/design-system" target="blank">
+  <h2 style="color: red">The Baloise Design System has moved back to his origin place <b>baloise/design-system</b>!</h2>
+</a>
+
+<br />
+<br />
+<br />
+
 <a href="https://baloise-design.vercel.app" target="blank">
     <img src="https://raw.githubusercontent.com/baloise-incubator/design-system/next/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
