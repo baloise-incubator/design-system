@@ -22,12 +22,6 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'checkbox',
   },
   {
-    elementSelectors: ['bal-popover', 'bal-accordion'],
-    event: 'balChange',
-    targetAttr: 'value',
-    type: 'boolean',
-  },
-  {
     elementSelectors: ['bal-number-input', 'bal-input-stepper'],
     event: 'balInput',
     targetAttr: 'value',
@@ -48,6 +42,9 @@ export const AngularGenerator = () =>
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [...docComponents],
     componentGroups: {
+      'bal-accordion': {
+        components: ['bal-accordion-details', 'bal-accordion-summary', 'bal-accordion-trigger'],
+      },
       'bal-button': {
         components: ['bal-button-group'],
       },

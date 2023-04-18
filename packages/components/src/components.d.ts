@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Events, Props } from "./types";
+import { AccordionState, Events, Props } from "./types";
 import { BalConfigState, BalMode } from "./utils/config";
 import { BalCarouselItemData } from "./components/bal-carousel/bal-carousel.type";
 import { BalCheckboxOption } from "./components/form/bal-checkbox/bal-checkbox.type";
@@ -19,6 +19,10 @@ import { BalRadioOption } from "./components/form/bal-radio/bal-radio.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
+        /**
+          * If `true` the accordion is open.
+         */
+        "active": boolean;
         /**
           * If `true` the accordion is used on the bottom of a card
          */
@@ -39,7 +43,8 @@ export namespace Components {
         /**
           * Closes the accordion
          */
-        "dismiss": () => Promise<void>;
+        "dismiss": () => Promise<boolean>;
+        "humanToggle": () => Promise<boolean>;
         /**
           * BalIcon of the open trigger button
          */
@@ -51,15 +56,53 @@ export namespace Components {
         /**
           * Opens the accordion
          */
-        "present": () => Promise<void>;
+        "present": () => Promise<boolean>;
         /**
           * Triggers the accordion
          */
-        "toggle": () => Promise<void>;
+        "toggle": () => Promise<boolean>;
         /**
-          * If `true` the accordion is open.
+          * @deprecated use `active` property instead. If `true` the accordion is open.
          */
         "value": boolean;
+        "version": number;
+    }
+    interface BalAccordionDetails {
+        "active": boolean;
+        "animated": boolean;
+        "state": AccordionState;
+    }
+    interface BalAccordionSummary {
+        "active": boolean;
+        "state": AccordionState;
+        /**
+          * If `true` the whole summary component acts as a trigger and can be clicked
+         */
+        "trigger": boolean;
+    }
+    interface BalAccordionTrigger {
+        "active": boolean;
+        /**
+          * Trigger will be a bal-button
+         */
+        "button": boolean;
+        /**
+          * BalIcon of the close trigger button
+         */
+        "closeIcon": string;
+        /**
+          * Label of the close trigger button
+         */
+        "closeLabel": string;
+        /**
+          * BalIcon of the open trigger button
+         */
+        "openIcon": string;
+        /**
+          * Label of the open trigger button
+         */
+        "openLabel": string;
+        "state": AccordionState;
     }
     interface BalApp {
         /**
@@ -132,6 +175,10 @@ export namespace Components {
           * Name of the right button icon
          */
         "iconRight": string;
+        /**
+          * If `true` the icon turns
+         */
+        "iconTurn": boolean;
         /**
           * If `true` the button is inverted
          */
@@ -2997,6 +3044,24 @@ declare global {
         prototype: HTMLBalAccordionElement;
         new (): HTMLBalAccordionElement;
     };
+    interface HTMLBalAccordionDetailsElement extends Components.BalAccordionDetails, HTMLStencilElement {
+    }
+    var HTMLBalAccordionDetailsElement: {
+        prototype: HTMLBalAccordionDetailsElement;
+        new (): HTMLBalAccordionDetailsElement;
+    };
+    interface HTMLBalAccordionSummaryElement extends Components.BalAccordionSummary, HTMLStencilElement {
+    }
+    var HTMLBalAccordionSummaryElement: {
+        prototype: HTMLBalAccordionSummaryElement;
+        new (): HTMLBalAccordionSummaryElement;
+    };
+    interface HTMLBalAccordionTriggerElement extends Components.BalAccordionTrigger, HTMLStencilElement {
+    }
+    var HTMLBalAccordionTriggerElement: {
+        prototype: HTMLBalAccordionTriggerElement;
+        new (): HTMLBalAccordionTriggerElement;
+    };
     interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
     }
     var HTMLBalAppElement: {
@@ -3803,6 +3868,9 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
+        "bal-accordion-details": HTMLBalAccordionDetailsElement;
+        "bal-accordion-summary": HTMLBalAccordionSummaryElement;
+        "bal-accordion-trigger": HTMLBalAccordionTriggerElement;
         "bal-app": HTMLBalAppElement;
         "bal-badge": HTMLBalBadgeElement;
         "bal-button": HTMLBalButtonElement;
@@ -3942,6 +4010,10 @@ declare global {
 declare namespace LocalJSX {
     interface BalAccordion {
         /**
+          * If `true` the accordion is open.
+         */
+        "active"?: boolean;
+        /**
           * If `true` the accordion is used on the bottom of a card
          */
         "card"?: boolean;
@@ -3970,9 +4042,47 @@ declare namespace LocalJSX {
          */
         "openLabel"?: string;
         /**
-          * If `true` the accordion is open.
+          * @deprecated use `active` property instead. If `true` the accordion is open.
          */
         "value"?: boolean;
+        "version"?: number;
+    }
+    interface BalAccordionDetails {
+        "active"?: boolean;
+        "animated"?: boolean;
+        "state"?: AccordionState;
+    }
+    interface BalAccordionSummary {
+        "active"?: boolean;
+        "state"?: AccordionState;
+        /**
+          * If `true` the whole summary component acts as a trigger and can be clicked
+         */
+        "trigger"?: boolean;
+    }
+    interface BalAccordionTrigger {
+        "active"?: boolean;
+        /**
+          * Trigger will be a bal-button
+         */
+        "button"?: boolean;
+        /**
+          * BalIcon of the close trigger button
+         */
+        "closeIcon"?: string;
+        /**
+          * Label of the close trigger button
+         */
+        "closeLabel"?: string;
+        /**
+          * BalIcon of the open trigger button
+         */
+        "openIcon"?: string;
+        /**
+          * Label of the open trigger button
+         */
+        "openLabel"?: string;
+        "state"?: AccordionState;
     }
     interface BalApp {
         /**
@@ -4045,6 +4155,10 @@ declare namespace LocalJSX {
           * Name of the right button icon
          */
         "iconRight"?: string;
+        /**
+          * If `true` the icon turns
+         */
+        "iconTurn"?: boolean;
         /**
           * If `true` the button is inverted
          */
@@ -6877,6 +6991,9 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
+        "bal-accordion-details": BalAccordionDetails;
+        "bal-accordion-summary": BalAccordionSummary;
+        "bal-accordion-trigger": BalAccordionTrigger;
         "bal-app": BalApp;
         "bal-badge": BalBadge;
         "bal-button": BalButton;
@@ -7018,6 +7135,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+            "bal-accordion-details": LocalJSX.BalAccordionDetails & JSXBase.HTMLAttributes<HTMLBalAccordionDetailsElement>;
+            "bal-accordion-summary": LocalJSX.BalAccordionSummary & JSXBase.HTMLAttributes<HTMLBalAccordionSummaryElement>;
+            "bal-accordion-trigger": LocalJSX.BalAccordionTrigger & JSXBase.HTMLAttributes<HTMLBalAccordionTriggerElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;

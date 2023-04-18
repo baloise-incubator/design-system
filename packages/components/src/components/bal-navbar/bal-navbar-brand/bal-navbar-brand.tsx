@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop, State, Event, EventEmitter, Watch } from '@stencil/core'
-import { Props } from '../../../types'
+import { Events, Props } from '../../../types'
 import { ScrollHandler } from '../../../utils/scroll'
 import { BEM } from '../../../utils/bem'
 
@@ -69,6 +69,16 @@ export class NavbarBrand {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  /**
+   * @internal Emitted before the animation starts
+   */
+  @Event() balWillAnimate!: EventEmitter<Events.BalNavbarBrandWillAnimateDetail>
+
+  /**
+   * @internal Emitted after the animation has finished
+   */
+  @Event() balDidAnimate!: EventEmitter<Events.BalNavbarBrandDidAnimateDetail>
+
   connectedCallback() {
     this.migrateLinkTarget()
     this.scrollHandler.connect()
@@ -91,6 +101,7 @@ export class NavbarBrand {
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
+    this.balWillAnimate.emit()
     this.isMenuActive = isMenuActive
 
     if (this.isMenuActive) {
@@ -106,6 +117,7 @@ export class NavbarBrand {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
+    this.balDidAnimate.emit()
   }
 
   async onClick() {
