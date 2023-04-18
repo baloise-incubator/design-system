@@ -1,8 +1,4 @@
-<br />
-
-<a href="https://github.com/baloise/design-system" target="blank">
-  <h2 style="color: red">The Baloise Design System has moved back to his origin place <b>baloise/design-system</b>!</h2>
-</a>
+# The Baloise Design System has moved back to his origin place [baloise/design-system](https://github.com/baloise/design-system)!
 
 <br />
 <br />
