@@ -1,0 +1,16 @@
+contact_links:
+  - name: 🐛 Bug Report
+    url: https://github.com/baloise/design-system/issues/new/choose
+    about: Create a report to help us improve the Baloise Design System.
+  - name: 💥 Breaking Change Report
+    url: https://github.com/baloise/design-system/issues/new/choose
+    about: Request a breaking change an existing feature
+  - name: 🎨 Design Request
+    url: https://github.com/baloise/design-system/issues/new/choose
+    about: Suggest an idea for this project
+  - name: ✨ Feature Report
+    url: https://github.com/baloise/design-system/issues/new/choose
+    about: Suggest an idea for this project
+  - name: 💬 Question
+    url: https://github.com/baloise/design-system/issues/new/choose
+    about: Usage question or discussion about the Baloise Design System
