@@ -124,7 +124,7 @@ export const AngularGenerator = () =>
         components: ['bal-form-col'],
       },
       'bal-radio': {
-        components: ['bal-radio-group'],
+        components: ['bal-radio-group', 'bal-radio-button'],
       },
       'bal-select': {
         components: ['bal-select-option'],

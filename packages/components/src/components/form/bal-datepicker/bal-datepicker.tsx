@@ -93,7 +93,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @State() language: BalLanguage = defaultConfig.language
   @State() region: BalRegion = defaultConfig.region
   @State() isMobile = isPlatform('mobile')
-  @State() hasFocus = false
+  @State() focused = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string = ''
   @State() pointerDate: BalPointerDate = {
@@ -701,7 +701,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputBlur = (event: FocusEvent) => {
     preventDefault(event)
-    this.hasFocus = false
+    this.focused = false
   }
 
   private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
