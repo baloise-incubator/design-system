@@ -1,5 +1,5 @@
 describe('css-typography.visual', () => {
-  beforeEach(() => cy.visit('/test/css-background-colors.visual.html').platform('desktop').waitForDesignSystem())
+  beforeEach(() => cy.visit('/test/css-display.visual.html').platform('desktop').waitForDesignSystem())
 
   it('basic', () => {
     cy.platform('desktop')
