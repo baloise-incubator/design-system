@@ -17,6 +17,7 @@ packages/components/src/stories/contributors.md
 packages/components/src/components.d.ts
 packages/icons/src/icons.ts
 
+packages/components/hydrate/
 packages/components/loader/
 packages/components/www/
 packages/components/.storybook/vue/generated/

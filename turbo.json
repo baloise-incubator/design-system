@@ -6,6 +6,7 @@
       "outputs": [
         "dist/**",
         "loader/**",
+        "hydrate/**",
         "wwww/**",
         ".tmp/**",
         "css/baloise-design-system.css",

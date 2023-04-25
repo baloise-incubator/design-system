@@ -23,6 +23,9 @@ export const config: Config = {
       type: 'docs-json',
       file: './public/assets/data/components.json',
     },
+    {
+      type: 'dist-hydrate-script',
+    },
     VueGenerator(),
     AngularGenerator(),
     ReactGenerator(),
